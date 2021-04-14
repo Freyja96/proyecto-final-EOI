@@ -1,0 +1,46 @@
+form {
+    position: relative;
+    float: center;
+    input {
+        padding-left: 60px;
+        border-radius: 25px;
+        width: 850px;
+        margin-left: -55px;
+    }
+    button {
+        margin-left: 5px;
+        position: relative;
+        border-radius: 25px;
+        border: 0;
+        &:hover {
+            background-color: #e9e9e9;
+        }
+    }
+}
+
+ul {
+    margin-right: 5px;
+    position: relative;
+    li {
+        float: right;
+        margin-left: 5px;
+        a.nav-link.sign-in {
+            padding: 10px;
+            margin-top: 15px;
+            &:hover {
+                background-color: #e9e9e9;
+                font-weight: bold;
+            }
+        }
+        a.nav-link.sign-up {
+            padding: 10px;
+            background-color: #8EC06C;
+            color: white;
+            text-align: center;
+            &:hover {
+                font-weight: bold;
+                background-color: #85b465;
+            }
+        }
+    }
+}
