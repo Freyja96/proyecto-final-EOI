@@ -1,7 +1,9 @@
+@import '../styles';
 form {
     position: relative;
     float: center;
     input {
+        box-shadow: 0px 0px 7px 1px #dcdcdc;
         padding-left: 60px;
         border-radius: 25px;
         width: 850px;
@@ -19,27 +21,27 @@ form {
 }
 
 ul {
-    margin-right: 5px;
     position: relative;
     li {
-        float: right;
         margin-left: 5px;
         a.nav-link.sign-in {
             padding: 10px;
             margin-top: 15px;
+            color: grey;
             &:hover {
+                color: black;
                 background-color: #e9e9e9;
-                font-weight: bold;
             }
         }
         a.nav-link.sign-up {
             padding: 10px;
             background-color: #8EC06C;
-            color: white;
+            color: black;
             text-align: center;
+            transition: all 0.6s ease;
             &:hover {
-                font-weight: bold;
                 background-color: #85b465;
+                color: white;
             }
         }
     }
