@@ -1,9 +1,35 @@
 <div class="row">
-    <div class="col-md-3 order-md-1 mb-4">
-        <ul class="d-flex justify-content-between align-items-center mb-3"></ul>
-    </div>
-    <div class="col-md-6 order-md-2 mb-8">
-
+    <app-side-bar-profile></app-side-bar-profile>
+    <div class="col-md-8 order-md-1">
+        <form class="needs-validation" novalidate>
+            <div class="photos">
+                <p>Foto de perfil</p>
+            </div>
+            <div class="mb-3">
+                <span class="text-muted cc-cursor">Información pública</span>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">Nombre</label>
+                    <input type="text" class="form-control" id="firstName" placeholder value required>
+                    <div class="invalid-feedback">
+                        El nombre es requerido.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">Apellidos</label>
+                    <input type="text" class="form-control" id="firstName" placeholder value required>
+                    <div class="invalid-feedback">
+                        El apellido es requerido.
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <div class="mb-3">
+                <label for="address">Ubicación de tus productos</label>
+                <input type="text" class="form-control" id="address" placeholder="pon aquí la ubicación de tus productos" required>
+            </div>
+        </form>
     </div>
 
 </div>
