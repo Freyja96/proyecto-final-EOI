@@ -1,1 +1,23 @@
 @import '../../styles';
+.map-container {
+    margin-top: 5px;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+    margin-bottom: 10px;
+    iframe {
+        left: 0;
+        top: 0;
+        height: 50%;
+        width: 100%;
+        position: absolute;
+    }
+}
+
+button.btn.btn-primary {
+    color: white;
+    font-weight: bold;
+    float: center;
+    border-radius: 25px;
+}
