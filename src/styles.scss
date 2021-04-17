@@ -3,6 +3,7 @@ $green:#8EC06C;
 //when &:hover
 $darkergreen: #85b465;
 //Color fonts:
+$black: black;
 $grey: #737373;
 $dark-green: #1E7400;
 //for background colors:
@@ -23,5 +24,5 @@ $danger: #DC3D54;
 $red: #DC3D54;
 //la de info me hace dudar entre ponerle el verde clarito y el verde oscuro que tiene ahora.
 $info: #354829;
-$gray-900: black;
+$gray-900: $black;
 $light: #ECEFF1;
