@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-$green:#8EC06C;
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+$green: #8ec06c;
 //when &:hover
 $darkergreen: #85b465;
 //Color fonts:
 $black: black;
 $gray: #737373;
-$dark-green: #1E7400;
+$dark-green: #1e7400;
 //for background colors:
-$white: #ECEFF1;
-$bg-darkergrey: #BDBDBD;
+$white: #eceff1;
+$bg-darkergrey: #bdbdbd;
 //Bootstrap colors and themes:
 $blue: $green;
 $success: $green;
@@ -16,13 +16,15 @@ $info: $green;
 $warning: $green;
 $primary: $green;
 $cyan: $green;
-$secondary: #BDBDBD;
-$gray-100: #DCDCDC;
-$gray-200: #BDBDBD;
+$secondary: #bdbdbd;
+$gray-100: #dcdcdc;
+$gray-200: #bdbdbd;
 $dark: #354829;
-$danger: #DC3D54;
-$red: #DC3D54;
+$danger: #dc3d54;
+$red: #dc3d54;
 //la de info me hace dudar entre ponerle el verde clarito y el verde oscuro que tiene ahora.
 $info: #354829;
 $gray-900: $black;
-$light: #ECEFF1;
+$light: #eceff1;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
