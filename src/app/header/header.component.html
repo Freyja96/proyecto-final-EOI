@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{titulo}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-    <div class="input-group mb-3 search-box">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="input-group mb-3">
         <div class="input-group-prepend">
             <button class="btn btn-outline-secondary" type="button" id="button-addon1">🔍</button>
         </div>
-        <input type="text" class="form-control" placeholder="¿Qué estás buscando?" aria-label="text with button addon" aria-describedby="button-addon1">
+        <input type="search" class="form-control mr-sm-5" placeholder="¿Qué estás buscando?" aria-label="Search with button addon" aria-describedby="button-addon1">
     </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
