@@ -1,0 +1,48 @@
+@import '../../styles';
+* {
+    background-color: $gray-100;
+    font-size: 18px;
+    transition: all 0.6s ease;
+}
+
+.save-changes {
+    button.btn.btn-primary {
+        position: relative;
+        margin-left: 40%;
+        color: white;
+        font-weight: bold;
+        border-radius: 25px;
+    }
+}
+
+.birthday {
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: $white;
+    box-shadow: 0px 2px 15px $gray-200;
+    * {
+        background-color: $white;
+    }
+}
+
+.info-account {
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: $white;
+    box-shadow: 0px 2px 15px $gray-200;
+    button {
+        color: $dark-green;
+        &:hover {
+            background-color: $gray-100;
+        }
+    }
+    * {
+        background-color: $white;
+    }
+}
+
+a {
+    color: $gray;
+}

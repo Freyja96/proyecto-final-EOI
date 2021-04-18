@@ -1,1 +1,10 @@
 @import '../../styles';
+a {
+    font-size: 18px;
+}
+
+.nav-link {
+    &:active {
+        background-color: $green;
+    }
+}

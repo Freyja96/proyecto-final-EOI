@@ -1,10 +1,10 @@
 <div class="d-flex flex-column p-3 bg-gray-200" style="width: 280px;">
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="#" class="nav-link active">Datos de perfil</a>
+            <a class="nav-link active" [routerLink]="['/edit/profile']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">Datos de perfil</a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">Cuenta</a>
+            <a class="nav-link" [routerLink]="['/edit/account']" routerLink="router-link">Cuenta</a>
         </li>
     </ul>
 </div>

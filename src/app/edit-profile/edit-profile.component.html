@@ -4,37 +4,43 @@
         <form class="needs-validation" novalidate>
             <div class="photos">
                 <p>Foto de perfil</p>
+                <div class="input-group mb-3 px-0 py-0">
+                    <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
+                    <label for="upload" class="btn btn-primary m-0 rounded-pill shadow-sm"><i class="fa fa-cloud-upload mr-0"></i>Cambiar foto</label>
+                </div>
+                <p class="text-muted text-center">La imagen que subas aparecerá en el cuadro inferior:</p>
+                <div class="image-area mt-6"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
             </div>
-            <div class="mb-3">
-                <span class="text-muted cc-cursor">Información pública</span>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="firstName">Nombre</label>
-                    <input type="text" class="form-control" id="firstName" placeholder value required>
-                    <div class="invalid-feedback">
-                        El nombre es requerido.
+
+            <div class="public">
+                <div class="mb-3">
+                    <span class="text-muted cc-cursor">Información pública</span>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">Nombre</label>
+                        <input type="text" class="form-control" id="firstName" placeholder value required>
+                        <div class="invalid-feedback">El nombre es requerido.</div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="surName">Apellidos</label>
+                        <input type="text" class="form-control" id="surName" placeholder value required>
+                        <div class="invalid-feedback">El apellido es requerido.</div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <label for="firstName">Apellidos</label>
-                    <input type="text" class="form-control" id="firstName" placeholder value required>
-                    <div class="invalid-feedback">
-                        El apellido es requerido.
+                <hr class="mb-4">
+                <div class="mb-3">
+                    <label for="address">Ubicación de tus productos</label>
+                    <input type="text" class="form-control" id="address" required>
+                    <!--Google Maps-->
+                    <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 200px">
+                        <iframe id="ubicationResult" src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
+                    <!--Google Maps-->
+                    <p class="text-muted">Aquí está ubicado tu perfil y aparecerá todo lo que subas.</p>
                 </div>
             </div>
-            <hr class="mb-4">
-            <div class="mb-3">
-                <label for="address">Ubicación de tus productos</label>
-                <input type="text" class="form-control" id="address" required>
-                <!--Google map-->
-                <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 200px">
-                    <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-                <!--Google Maps-->
-            </div>
-            <button class="btn btn-primary" type="submit">Guardar cambios</button>
+            <button type="button" class="btn btn-primary position-relative" type="submit">Guardar cambios</button>
         </form>
     </div>
 </div>

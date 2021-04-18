@@ -1,23 +1,94 @@
 @import '../../styles';
-.map-container {
-    margin-top: 5px;
-    overflow: hidden;
-    padding-bottom: 56.25%;
+.photos {
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: $white;
+    box-shadow: 0px 2px 15px $gray-200;
+    * {
+        background-color: $white;
+    }
+}
+
+* {
+    transition: all 0.6s ease;
+    background-color: $gray-100;
+    font-size: 18px;
+}
+
+label.btn.btn-primary {
+    color: $dark-green;
+    &:hover {
+        background-color: $gray-100;
+    }
+}
+
+#upload {
+    opacity: 0;
+}
+
+#upload-label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+}
+
+.image-area {
+    border: 2px dashed $gray-200;
+    padding: 1rem;
     position: relative;
-    height: 0;
+    img {
+        z-index: 2;
+        position: relative;
+    }
+}
+
+.image-area::before {
+    content: 'Uploaded image result';
+    color: $gray;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    z-index: 1;
+}
+
+.public {
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: $white;
+    box-shadow: 0px 2px 15px $gray-200;
+    * {
+        background-color: $white;
+    }
+}
+
+.text-muted {
+    font-size: 16px;
+}
+
+.map-container {
+    overflow: hidden;
+    position: relative;
     margin-bottom: 10px;
+    margin-top: 2px;
     iframe {
         left: 0;
         top: 0;
-        height: 50%;
+        height: 100%;
         width: 100%;
-        position: absolute;
     }
 }
 
 button.btn.btn-primary {
+    position: relative;
+    margin-left: 40%;
     color: white;
     font-weight: bold;
-    float: center;
     border-radius: 25px;
 }
