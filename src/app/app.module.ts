@@ -9,8 +9,9 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SideBarProfileComponent } from './side-bar-profile/side-bar-profile.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
 import { PublicProfileComponent } from './public-profile/public-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
       HeaderComponent,
       ProductComponent,
@@ -18,6 +19,7 @@ import { PublicProfileComponent } from './public-profile/public-profile.componen
       SideBarProfileComponent,
       EditAccountComponent,
       PublicProfileComponent,
+      NotFoundComponent
    ],
   imports: [
     BrowserModule,

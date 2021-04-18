@@ -1,3 +1,38 @@
-<p>
-  edit-account works!
-</p>
+<div class="row">
+    <app-side-bar-profile></app-side-bar-profile>
+    <div class="col-md-8 order-md-1">
+        <form class="needs-validation" novalidate>
+            <div class="photos">
+                <p>Foto de perfil</p>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Sube tus fotos</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <span class="text-muted cc-cursor">Información pública</span>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">Cambiar email</label>
+                    <input type="text" class="form-control" id="firstName" placeholder value>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="firstName">Cambiar contraseña</label>
+                <input type="text" class="form-control" id="firstName" placeholder value>
+            </div>
+
+            <hr class="mb-4">
+            <div class="mb-3">
+                <label for="address">Ubicación de tus productos</label>
+                <input type="text" class="form-control" id="address" required>
+                <!--Google map-->
+                <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 200px">
+                    <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <!--Google Maps-->
+            </div>
+            <button class="btn btn-primary" type="submit">Guardar cambios</button>
+        </form>
+    </div>
