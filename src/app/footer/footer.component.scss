@@ -7,6 +7,18 @@ p {
     }
 }
 
+span {
+    font-size: 32px;
+}
+
+.container {
+    .row {
+        div.col-sm-4.mx-3 {
+            margin-left: 20px;
+        }
+    }
+}
+
 span.copyright {
     font-size: 14px;
 }
