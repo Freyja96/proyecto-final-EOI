@@ -1,3 +1,31 @@
-<p>
-  footer works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="mx-3 font-weight-bold">{{ titulo }}</p>
+            <span class="font-weight-bold copyright">Copyright © 2021 {{titulo}} © de sus respectivos propietarios</span>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <p class="mx-3 font-bold">{{ titulo }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <p class="mx-3 font-bold">Soporte</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <p class="mx-3 font-bold">Legal</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="nav nav-pills flex-column flex-sm-row">
+    <a class="flex-sm text-sm-center nav-link active" href="#">{{ titulo }}</a>
+    <a class="flex-sm text-sm-center nav-link" href="#">Longer nav link</a>
+    <a class="flex-sm text-sm-center nav-link" href="#">Link</a>
+    <a class="flex-sm text-sm-center nav-link disabled" href="#">Disabled</a>
+</nav>

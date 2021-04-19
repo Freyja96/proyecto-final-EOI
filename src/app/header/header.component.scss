@@ -2,14 +2,13 @@
 nav {
     a.navbar-brand {
         font-weight: bold;
-        color: $black;
+        color: $dark-green;
         transition: all 0.6s ease;
         &:hover {
-            color: $dark-green;
+            color: $green;
         }
     }
     button {
-        transition: all 0.6s ease;
         border-top-left-radius: 25px;
         border-bottom-left-radius: 25px;
         border-color: $gray-200;
@@ -22,29 +21,20 @@ nav {
     }
 }
 
-ul {
-    li.nav-item.text-nowrap.py-2.bg-light {
-        transition: all 0.6s ease;
-        &:hover {
-            background-color: $black;
-        }
+ul.navbar-nav.text-center {
+    li.nav-item.text-nowrap.py-3.bg-light {
         a.nav-link.sign-in {
             color: $gray;
-            transition: all 0.6s ease;
             &:hover {
                 color: $black;
             }
-            a.nav-link.sign-up {
-                transition: all 0.6s ease;
-                &:hover {
-                    background-color: $darkergreen;
-                    color: $white;
-                }
-            }
         }
     }
-}
-
-* {
-    transition: all 0.6s ease;
+    li.nav-item.text-nowrap.py-auto {
+        background-color: $green;
+        color: white;
+        &:hover {
+            background-color: $darkergreen;
+        }
+    }
 }

@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+//velocidad de las transiciones
+* {
+    transition: all 0.6s ease;
+}
+
 $green: #8ec06c;
 //when &:hover
 $darkergreen: #7aa55d;

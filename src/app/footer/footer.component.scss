@@ -1,0 +1,12 @@
+@import '../../styles';
+p {
+    color: $dark-green;
+    background-color: transparent;
+    .disabled {
+        color: black;
+    }
+}
+
+span.copyright {
+    font-size: 14px;
+}
