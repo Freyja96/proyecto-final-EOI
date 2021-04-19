@@ -7,6 +7,7 @@
                     <div class="mb-3">
                         <label for="birthday">Fecha de nacimiento:</label>
                         <span>
+                          <!-- input type="date" habría que ponerle formato en ts con .format(DD-MM-YYYY)-->
                           <input type="number" min="1" max="31" id="day" />
                         </span>
                         <span>
@@ -26,7 +27,7 @@
                           </select>
                         </span>
                         <span>
-                          <input placeholder="Año" min="1800" max=date>
+                          <input type="number" placeholder="Año" min="1800" max=date>
                         </span>
                     </div>
                 </div>

@@ -10,8 +10,10 @@ import { SideBarProfileComponent } from './side-bar-profile/side-bar-profile.com
 import { EditAccountComponent } from './edit-account/edit-account.component';
 import { PublicProfileComponent } from './public-profile/public-profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 @NgModule({
-  declarations: [	
+  declarations: [			
     AppComponent,
       HeaderComponent,
       ProductComponent,
@@ -19,7 +21,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
       SideBarProfileComponent,
       EditAccountComponent,
       PublicProfileComponent,
-      NotFoundComponent
+      NotFoundComponent,
+      FooterComponent,
+      HomeComponent
    ],
   imports: [
     BrowserModule,
