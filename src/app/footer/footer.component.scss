@@ -1,24 +1,17 @@
-@import '../../styles';
-p {
-    color: $dark-green;
-    background-color: transparent;
-    .disabled {
-        color: black;
-    }
+@import "../../styles";
+p,
+a {
+  color: $dark-green;
+  background-color: transparent;
+  .disabled {
+    color: black;
+  }
 }
 
 span {
-    font-size: 32px;
-}
-
-.container {
-    .row {
-        div.col-sm-4.mx-3 {
-            margin-left: 20px;
-        }
-    }
+  font-size: 32px;
 }
 
 span.copyright {
-    font-size: 14px;
+  font-size: 14px;
 }
