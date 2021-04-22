@@ -1,1 +1,25 @@
 @import '../../styles';
+.image {
+    background-image: url("https://cdn.pixabay.com/photo/2015/11/07/11/50/succulents-1031541_1280.jpg");
+    background-color: #cccccc;
+}
+
+.card {
+    width: 19rem;
+}
+
+.background {
+    background-color: $white;
+}
+
+a {
+    color: $dark-green;
+    font-size: 18px;
+}
+
+.btn-primary {
+    color: white;
+    &:hover {
+        color: $gray-100;
+    }
+}

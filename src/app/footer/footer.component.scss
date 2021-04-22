@@ -1,17 +1,20 @@
 @import "../../styles";
-p,
+.footer {
+    background-color: $gray-100;
+}
+
 a {
-  color: $dark-green;
-  background-color: transparent;
-  .disabled {
-    color: black;
-  }
+    color: $dark-green;
+    background-color: transparent;
+    .disabled {
+        color: black;
+    }
 }
 
 span {
-  font-size: 32px;
+    font-size: 32px;
 }
 
 span.copyright {
-  font-size: 14px;
+    font-size: 14px;
 }

@@ -1,1 +1,36 @@
-<app-product></app-product>
+<div class="image">
+    <div class="container p-5">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">¡Te damos la bienvenida a {{titulo}}!</h5>
+                <p class="card-text">Vende o compra plantas e insectos de otros usuarios.</p>
+                <button type="button" class="btn btn-primary font-weight-bold">Empieza a vender. ¡Es gratis!</button>
+                <a href="#" class="card-link float-right font-weight-bold">¿Cómo funciona?</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="background">
+    <div class="container">
+        <div class="col-12">
+            <h1 class="font-weight-bold">¿Qué estás buscando?</h1>
+            <div class="row bg-light">
+                <div class="col-3">
+                    <p class="col-md-6 mb-3">Insectos</p>
+                    <p class="col-md-6 mb-3">Plantas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-12">
+            <h1 class="font-weight-bold">Los más destacados</h1>
+            <div class="row bg-light">
+                <div class="col-3">
+                    <app-product></app-product>
+                    <!--No sé cómo hacer la repetición del producto dentro de otro componente <div *ngFor="let item of lista;let indice=index">-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
