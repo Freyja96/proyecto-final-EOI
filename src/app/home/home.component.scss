@@ -1,37 +1,48 @@
-@import '../../styles';
-.image {
-    background-image: url("https://cdn.pixabay.com/photo/2015/11/07/11/50/succulents-1031541_1280.jpg");
-    background-color: #cccccc;
-}
+            @import '../../styles';
+            .image {
+                background-image: url("https://cdn.pixabay.com/photo/2015/11/07/11/50/succulents-1031541_1280.jpg");
+                background-color: #cccccc;
+            }
 
-p {
-    font-size: 20px;
-}
+            p {
+                font-size: 20px;
+            }
 
-i {
-    font-size: 64px;
-}
+            i {
+                font-size: 64px;
+            }
 
-h1 {
-    font-size: 34px;
-}
+            .h2 {
+                font-size: 34px;
+            }
 
-.card {
-    width: 19rem;
-}
+            .card {
+                width: 19rem;
+            }
 
-.background {
-    background-color: $white;
-}
+            .background {
+                background-color: $white;
+            }
 
-a {
-    color: $dark-green;
-    font-size: 18px;
-}
+            a {
+                color: $dark-green;
+                font-size: 18px;
+            }
 
-.btn-primary {
-    color: white;
-    &:hover {
-        color: $gray-100;
-    }
-}
+            .btn-primary {
+                color: white;
+                &:hover {
+                    color: $gray-100;
+                }
+            }
+
+            .btn-light {
+                color: $green;
+                &:hover {
+                    background: $white;
+                    color: $dark-green
+                }
+                p {
+                    color: $black;
+                }
+            }
