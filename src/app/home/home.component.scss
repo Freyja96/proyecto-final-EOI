@@ -3,39 +3,43 @@
                 background-image: url("https://cdn.pixabay.com/photo/2015/11/07/11/50/succulents-1031541_1280.jpg");
                 background-color: #cccccc;
             }
-
+            
             p {
                 font-size: 20px;
             }
-
+            
             i {
                 font-size: 64px;
             }
-
+            
             .h2 {
                 font-size: 34px;
             }
-
+            
             .card {
                 width: 19rem;
             }
-
+            
             .background {
                 background-color: $white;
             }
-
+            
             a {
-                color: $dark-green;
+                color: $green;
                 font-size: 18px;
+                text-decoration: underline;
+                &:hover {
+                    color: $dark-green;
+                }
             }
-
+            
             .btn-primary {
                 color: white;
                 &:hover {
-                    color: $gray-100;
+                    color: white;
                 }
             }
-
+            
             .btn-light {
                 color: $green;
                 &:hover {

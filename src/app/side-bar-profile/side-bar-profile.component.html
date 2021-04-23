@@ -1,10 +1,12 @@
-<div class="d-flex flex-column p-3 bg-gray-200" style="width: 280px;">
-    <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-            <a class="nav-link active" [routerLink]="['/edit/profile']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">Datos de perfil</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/edit/account']" routerLink="router-link">Cuenta</a>
-        </li>
-    </ul>
+<div class="nav-pills d-flex flex-column sm-row p-3 bg-gray-200" style="width: 280px;">
+    <div class="nav-item">
+        <a class="nav-link" [routerLink]="['/edit/profile']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              Datos de perfil
+        </a>
+    </div>
+    <div class="nav-item">
+        <a class="nav-link" [routerLink]="['/edit/account']" routerLinkActive="active">
+          Cuenta
+        </a>
+    </div>
 </div>

@@ -12,7 +12,7 @@ const routes: Routes = [
     [
       { path: "edit/profile", component: EditProfileComponent },
       { path: "edit/account", component: EditAccountComponent },
-      { path: "edit", redirectTo: "edit/account"},
+      { path: "edit", redirectTo: "edit/profile"},
       { path: "", component: HomeComponent },
       { path: "profile", component: PublicProfileComponent },
     ]},

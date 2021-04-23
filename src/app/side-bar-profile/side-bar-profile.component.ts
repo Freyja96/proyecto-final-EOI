@@ -9,7 +9,7 @@ export class SideBarProfileComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit():void {
   }
 
 }
