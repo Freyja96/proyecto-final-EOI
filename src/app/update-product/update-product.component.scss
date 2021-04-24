@@ -1,0 +1,10 @@
+@import '../../styles';
+.image-area {
+    border: 2px dashed $gray-200;
+    padding: 1rem;
+    position: relative;
+    img {
+        z-index: 2;
+        position: relative;
+    }
+}

@@ -1,3 +1,4 @@
+import { UpdateProductComponent } from './update-product/update-product.component';
 import { NormalLayoutComponent } from './normal-layout/normal-layout.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: "edit", redirectTo: "edit/profile"},
       { path: "", component: HomeComponent },
       { path: "profile", component: PublicProfileComponent },
+      {path: "update-product", component: UpdateProductComponent}
     ]},
   {path:"404", component: NotFoundComponent},
   {path:"**", redirectTo: "/404"},

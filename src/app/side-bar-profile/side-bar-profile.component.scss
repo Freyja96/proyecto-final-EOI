@@ -1,20 +1,2 @@
 @import '../../styles';
-div.nav-pills.d-flex.flex-column.p-3.bg-gray-200 {
-    div.nav-item {
-        a.nav-link {
-            font-size: 20px;
-            text-align: center;
-            background: none;
-            color: $gray;
-            &:active {
-                color: $black;
-                font-weight: bold;
-            }
-            &:hover {
-                color: $black;
-            }
-        }
-    }
-}
-
 //no soy capaz de conseguir que el active se quede puesto el estilo cuando está activado.

@@ -13,8 +13,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { NormalLayoutComponent } from './normal-layout/normal-layout.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
 @NgModule({
-  declarations: [				
+  declarations: [
     AppComponent,
       HeaderComponent,
       ProductComponent,
@@ -25,7 +26,8 @@ import { NormalLayoutComponent } from './normal-layout/normal-layout.component';
       NotFoundComponent,
       FooterComponent,
       HomeComponent,
-      NormalLayoutComponent
+      NormalLayoutComponent,
+      UpdateProductComponent
    ],
   imports: [
     BrowserModule,
