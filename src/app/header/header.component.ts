@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  titulo = 'MyGardenToYours';
+  titulo = 'GardenForYou';
   constructor(private router: Router) { }
 
   ngOnInit() {

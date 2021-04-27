@@ -4,32 +4,46 @@
         <form class="needs-validation" novalidate>
             <div class="birthday">
                 <div class="row">
-                    <div class="mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="birthday">Fecha de nacimiento:</label>
-                        <input type="date" id="birthday" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="date" id="birthday" class="form-control" required/>
                     </div>
                 </div>
             </div>
             <div class="info-account">
-                <div class="mb-3">
-                    <span class="text-muted cc-cursor">Información de la cuenta</span>
-                </div>
-                <div class="row">
+                <div class="form new-email-form">
                     <div class="col-md-6 mb-3">
-                        <button type="button" class="btn btn-primary email">Cambiar email</button>
+                        <span class="text-muted cc-cursor">Información de la cuenta</span>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <button type="button" class="btn btn-primary password">Cambiar Contraseña</button>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="email">Email Actual</label>
+                            <p class="border border-dark" id="email">email.actual@gmail.com</p>
+                            <!--Habría que relacionarlo con la API para saber el email actual del usuario y poder poner {{user.email}}-->
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="new-email">Nuevo email</label>
+                            <input type="email" id="new-email" placeholder="Introduce tu nuevo email" />
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary email">Cambiar email</button>
                 </div>
+
+                <div class="col-md-6 mb-3">
+                    <button type="button" class="btn btn-primary password">Cambiar Contraseña</button>
+                </div>
+                <div class="save-changes">
+                    <button class="btn btn-primary" type="submit">Guardar cambios</button>
+                </div>
+
+                <p>Si ya no quieres formar parte de {{titulo}} puedes darte de baja pulsando en el siguiente enlace
+                    <a href="#">Eliminar cuenta</a> aunque estaremos muy tristes de que te vayas.
+                </p>
             </div>
-
-            <div class="save-changes">
-                <button class="btn btn-primary" type="submit">Guardar cambios</button>
-            </div>
-
-            <a href="#">Eliminar cuenta</a>
-
-
         </form>
     </div>
+</div>

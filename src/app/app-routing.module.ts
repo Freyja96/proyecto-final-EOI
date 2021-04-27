@@ -9,17 +9,18 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path:"", component: NormalLayoutComponent, children:
+  { path:"", component: NormalLayoutComponent, children:
     [
       { path: "edit/profile", component: EditProfileComponent },
       { path: "edit/account", component: EditAccountComponent },
-      { path: "edit", redirectTo: "edit/profile"},
+      { path: "edit", redirectTo: "edit/profile" },
       { path: "", component: HomeComponent },
       { path: "profile", component: PublicProfileComponent },
-      {path: "update-product", component: UpdateProductComponent}
+      { path: "update-product", component: UpdateProductComponent },
+      { path: "update", redirectTo:"update-product" }
     ]},
-  {path:"404", component: NotFoundComponent},
-  {path:"**", redirectTo: "/404"},
+  { path:"404", component: NotFoundComponent },
+  { path:"**", redirectTo: "/404" },
 ];
 
 @NgModule({

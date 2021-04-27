@@ -1,6 +1,15 @@
-<div class="input-group mb-3 px-0 py-0">
-    <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-    <label for="upload" class="btn btn-primary m-0 rounded-pill shadow-sm"><i class="fa fa-cloud-upload"></i>Cambiar foto</label>
+<div class="container">
+    <div class="col-md-12">
+
+        <div class="input-group mb-3 px-0 py-0">
+            <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
+            <label for="upload" class="btn btn-primary m-0 rounded-pill shadow-sm">Cambiar foto</label>
+        </div>
+        <p class="text-muted text-center">La imagen que subas aparecerá en el cuadro inferior:</p>
+        <div class="image-area mt-6"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+    </div>
 </div>
-<p class="text-muted text-center">La imagen que subas aparecerá en el cuadro inferior:</p>
-<div class="image-area mt-6"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+
+<div class="save-changes">
+    <button class="btn btn-primary" type="submit">Guardar cambios</button>
+</div>

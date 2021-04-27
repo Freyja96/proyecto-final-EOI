@@ -8,3 +8,19 @@
         position: relative;
     }
 }
+
+button {
+    color: $dark-green;
+    &:hover {
+        background-color: $gray-100;
+    }
+    .save-changes {
+        button.btn.btn-primary {
+            position: relative;
+            margin-left: 40%;
+            color: white;
+            font-weight: bold;
+            border-radius: 25px;
+        }
+    }
+}
