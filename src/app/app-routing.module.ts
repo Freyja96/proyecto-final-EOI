@@ -16,8 +16,8 @@ const routes: Routes = [
       { path: "edit", redirectTo: "edit/profile" },
       { path: "", component: HomeComponent },
       { path: "profile", component: PublicProfileComponent },
-      { path: "update-product", component: UpdateProductComponent },
-      { path: "update", redirectTo:"update-product" }
+      { path: "update/product", component: UpdateProductComponent },
+      { path: "update", redirectTo:"update/product" }
     ]},
   { path:"404", component: NotFoundComponent },
   { path:"**", redirectTo: "/404" },

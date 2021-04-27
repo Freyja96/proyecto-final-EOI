@@ -4,6 +4,14 @@
     font-size: 18px;
 }
 
+.text-muted {
+    font-size: 16px;
+    a {
+        color: $dark-green;
+        font-size: 16px;
+    }
+}
+
 .save-changes {
     button.btn.btn-primary {
         position: relative;
@@ -20,18 +28,7 @@
     margin-bottom: 20px;
     background-color: $white;
     box-shadow: 0px 2px 15px $gray-200;
-    * {
-        background-color: $white;
-    }
-}
-
-.info-account {
-    padding: 20px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    background-color: $white;
-    box-shadow: 0px 2px 15px $gray-200;
-    .save-changes {
+    .save-changes.py-2 {
         .btn.btn-primary {
             background-color: $green;
             color: white;
@@ -45,6 +42,13 @@
     }
 }
 
-a {
-    color: $gray;
+.info-account {
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: $white;
+    box-shadow: 0px 2px 15px $gray-200;
+    * {
+        background-color: $white;
+    }
 }
