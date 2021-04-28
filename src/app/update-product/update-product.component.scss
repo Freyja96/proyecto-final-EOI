@@ -5,6 +5,7 @@
 }
 
 .container {
+    box-shadow: 0px 2px 15px $gray-200;
     * {
         background-color: $white;
     }
@@ -47,32 +48,19 @@ el área de insertar imagen-----------------------*/
 
 #upload {
     opacity: 0;
+    margin-top: -30%;
+    margin-left: -30%;
 }
 
-#upload-label {
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
+i.fas.fa-plus {
+    font-size: 20px;
 }
 
 .image-area {
-    border: 2px dashed $gray;
-    padding: 1rem;
+    border: 2px dashed $gray-200;
+    padding-right: 50%;
+    padding-left: 50%;
     position: relative;
-}
-
-.image-area::before {
-    content: 'zona de subida';
-    color: $gray;
-    font-weight: bold;
-    text-transform: uppercase;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.8rem;
-    z-index: 1;
 }
 
 .image-area img {

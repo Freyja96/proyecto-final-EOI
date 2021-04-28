@@ -1,19 +1,19 @@
-<div class="container d-flex justify-content-center">
-    <div class="col-md-8 bg-light">
+<div class="d-flex justify-content-center">
+    <div class="container col-md-8 bg-light mt-3">
         <div class="row mx-auto py-4">
             <div class="col-12 text-center">
                 <p class="h2">¿Qué quieres vender?</p>
             </div>
             <div class="col-sm-12 col-md-6 mx-auto">
                 <div class="row">
-                    <button type="button" class="btn btn-light col-6 my-3 text-center border-0">
+                    <button type="button" class="btn btn-light col-6 my-3 text-center">
                     <p>Insecto</p>
                     <i class="fas fa-bug ml-1"></i>
-                </button>
-                    <button type="button" class="btn btn-light col-6 my-3 text-center border-0">
+                  </button>
+                    <button type="button" class="btn btn-light col-6 my-3 text-center">
                     <p>Planta</p>
                     <i class="fas fa-seedling ml-1"></i>
-                </button>
+                  </button>
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="title">Título</label>
@@ -22,29 +22,25 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="description">Descripción</label>
-                    <input type="text" class="form-control" id="description" placeholder value required>
+                    <textarea class="form-control" id="description" placeholder value required></textarea>
                     <div class="invalid-feedback">Una descripción es requerida.</div>
                 </div>
             </div>
         </div>
-
         <hr class="mb-4" />
         <!-- Upload image input-->
         <div class="row py-4">
             <div class="col-lg-6 mx-auto">
-                <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                    <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-                    <label id="upload-label" for="upload" class="font-weight-light text-muted">Subir foto</label>
-                    <div class="input-group-append">
-                        <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Subir foto</small></label>
+                <p class="text-left text-muted mb-0"><small>Sube hasta 5 fotos de lo que quieres vender.</small></p>
+                <div class="image-area px-4">
+                    <div class="input-group pl-5 py-5 bg-white">
+                        <p for="upload" class="btn btn-primary rounded-pill px-2 shadow-sm font-weight-light"><i class="fas fa-plus"></i> Sube fotos</p>
+                        <input id="upload" type="file" onchange="readURL(this);">
                     </div>
                 </div>
-                <p class="text-center text-muted">Las imágenes que subas aparecerán en el siguiente cuadro.</p>
-                <div class="image-area mt-3 px-0"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
             </div>
         </div>
         <!-- Uploaded image area-->
-
         <hr class="mb-4" />
         <div class="row">
             <div class="col-md-6 mb-3">
@@ -54,7 +50,7 @@
             <div class="col-md-6 mb-3">
                 <label for="surName">Precio</label>
                 <input type="text" class="form-control" id="surName" placeholder value unrequired>
-                <p>€</p>
+                <p class="">€</p>
             </div>
         </div>
         <div class="row">
@@ -70,6 +66,6 @@
         </div>
     </div>
 </div>
-<div class="save-changes">
+<div class="save-changes d-flex justify-content-center my-3">
     <button class="btn btn-primary" type="submit">Guardar cambios</button>
 </div>
