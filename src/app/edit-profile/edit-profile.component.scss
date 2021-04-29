@@ -10,52 +10,11 @@
     }
 }
 
-* {
-    transition: all 0.6s ease;
-    background-color: $gray-100;
-    font-size: 18px;
-}
-
 label.btn.btn-primary {
     color: $dark-green;
     &:hover {
         background-color: $gray-100;
     }
-}
-
-#upload {
-    opacity: 0;
-}
-
-#upload-label {
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
-}
-
-.image-area {
-    border: 2px dashed $gray-200;
-    border-radius: 50%;
-    padding: 1rem;
-    position: relative;
-    img {
-        z-index: 2;
-        position: relative;
-    }
-}
-
-.image-area::before {
-    content: 'Imagen subida';
-    color: $gray;
-    font-weight: bold;
-    text-transform: uppercase;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.8rem;
-    z-index: 1;
 }
 
 .public {
@@ -93,3 +52,41 @@ button.btn.btn-primary {
     font-weight: bold;
     border-radius: 25px;
 }
+
+//---------------------------------------
+#upload {
+    opacity: 0;
+}
+
+#upload-label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+}
+
+.image-area {
+    border: 2px dashed $gray-200;
+    border-radius: 50%;
+    padding: 1rem;
+    position: relative;
+    img {
+        z-index: 2;
+        position: relative;
+    }
+}
+
+.image-area::before {
+    content: 'Imagen subida';
+    color: $gray;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    z-index: 1;
+}
+
+//-----------------------------------------------------

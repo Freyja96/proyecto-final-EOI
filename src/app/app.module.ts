@@ -14,8 +14,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { NormalLayoutComponent } from './normal-layout/normal-layout.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
+import { UploadProductComponent } from './upload-product/upload-product.component';
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
       HeaderComponent,
       ProductComponent,
@@ -27,7 +28,8 @@ import { UpdateProductComponent } from './update-product/update-product.componen
       FooterComponent,
       HomeComponent,
       NormalLayoutComponent,
-      UpdateProductComponent
+      UpdateProductComponent,
+      UploadProductComponent
    ],
   imports: [
     BrowserModule,

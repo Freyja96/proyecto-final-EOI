@@ -1,3 +1,4 @@
+import { UploadProductComponent } from './upload-product/upload-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { NormalLayoutComponent } from './normal-layout/normal-layout.component';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,8 @@ const routes: Routes = [
       { path: "edit", redirectTo: "edit/profile" },
       { path: "", component: HomeComponent },
       { path: "profile", component: PublicProfileComponent },
+      { path: "upload/product", component: UploadProductComponent },
+      { path: "upload", redirectTo: "upload/product"},
       { path: "update/product", component: UpdateProductComponent },
       { path: "update", redirectTo:"update/product" }
     ]},
