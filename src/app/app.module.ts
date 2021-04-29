@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { NormalLayoutComponent } from './normal-layout/normal-layout.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
+import { FormBuilder, FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,12 +29,13 @@ import { UpdateProductComponent } from './update-product/update-product.componen
       HomeComponent,
       NormalLayoutComponent,
       UpdateProductComponent,
+      //FormsModule
    ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

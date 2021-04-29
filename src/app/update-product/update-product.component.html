@@ -85,9 +85,11 @@
                     </div>
                 </div>
             </div>
-            <!--
-            <button type="button" class="btn btn-primary position-relative mt-1 mb-4" type="submit">{{ cond_vall == true ? 'Subir producto' : 'Guardar cambios' }}</button>
-        -->
+            <button type="button" class="btn btn-primary position-relative mt-1 mb-4">
+              <div *ngIf="condition; then thenBlock else elseBlock"></div>
+              <ng-template #thenBlock>Subir producto</ng-template>
+              <ng-template #elseBlock>Guardar cambios</ng-template>
+            </button>
         </form>
     </div>
 </div>
