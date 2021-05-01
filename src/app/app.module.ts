@@ -15,8 +15,10 @@ import { HomeComponent } from './home/home.component';
 import { NormalLayoutComponent } from './normal-layout/normal-layout.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { FormBuilder, FormsModule } from '@angular/forms';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SingUpComponent } from './sing-up/sing-up.component';
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
       HeaderComponent,
       ProductComponent,
@@ -29,7 +31,9 @@ import { FormBuilder, FormsModule } from '@angular/forms';
       HomeComponent,
       NormalLayoutComponent,
       UpdateProductComponent,
-      //FormsModule
+      //FormsModule,
+      SignInComponent,
+      SingUpComponent
    ],
   imports: [
     BrowserModule,

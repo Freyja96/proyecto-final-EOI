@@ -1,95 +1,97 @@
-<div class="row background">
-    <div class="col-md-12 d-flex justify-content-center">
-        <form class="needs-validation" novalidate>
-            <div class="product">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <p class="h2">¿Qué quieres vender?</p>
+<div class="row background d-flex justify-content-center">
+    <div class="col-8">
+        <div class="col-md-12">
+            <form class="needs-validation" novalidate>
+                <div class="product">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <p class="h2">¿Qué quieres vender?</p>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 mx-auto">
-                                <button type="button" class="btn btn-light col-6 my-3 text-center">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 mx-auto">
+                                    <button type="button" class="btn btn-light col-6 my-3 text-center">
                               <p>Insecto</p>
                               <i class="fas fa-bug ml-1"></i>
                             </button>
-                                <button type="button" class="btn btn-light col-6 my-3 text-center">
+                                    <button type="button" class="btn btn-light col-6 my-3 text-center">
                               <p>Planta</p>
                               <i class="fas fa-seedling ml-1"></i>
                             </button>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 mb-3">
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-12 mt-2">
+                                        <label for="title">Título</label>
+                                    </div>
+                                    <div class="col-md-10 col-sm-12">
+                                        <input type="text" class="form-control" id="title" placeholder value required>
+                                        <div class="invalid-feedback">Un título es requerido.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <label for="description">Descripción</label>
+                                <textarea class="form-control" id="description" placeholder value required></textarea>
+                                <div class="invalid-feedback">Una descripción es requerida.</div>
                             </div>
                         </div>
-                        <div class="col-md-12 col-sm-12 mb-3">
+                    </div>
+                    <hr class="my-3" />
+                    <!-- Upload image input-->
+                    <div class="row">
+                        <div class="col-lg-12 mx-auto">
+                            <p class="text-left text-muted mb-0">
+                                <small>Sube hasta 5 fotos de lo que quieres vender.</small>
+                            </p>
+                            <div class="image-area px-4">
+                                <div class="input-group pl-5 py-5 bg-white">
+                                    <p for="upload" class="btn btn-primary rounded-pill mx-auto shadow-sm font-weight-light"><i class="fas fa-plus"></i> Sube fotos</p>
+                                    <input id="upload" type="file" onchange="readURL(this);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Uploaded image area-->
+                    <hr class="my-3" />
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">Categoría</label>
+                            <input type="text" class="form-control" id="firstName" value unrequired>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="price">Precio</label>
                             <div class="row">
-                                <div class="col-md-2 col-sm-12 mt-2">
-                                    <label for="title">Título</label>
+                                <div class="col-8">
+                                    <input type="number" class="form-control" id="price" placeholder value required>
+                                    <div class="invalid-feedback">Tienes que poner un precio.</div>
                                 </div>
-                                <div class="col-md-10 col-sm-12">
-                                    <input type="text" class="form-control" id="title" placeholder value required>
-                                    <div class="invalid-feedback">Un título es requerido.</div>
+                                <div class="col-1">
+                                    <p class="pt-2 text-muted"><i class="fas fa-euro-sign"></i></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 col-sm-12">
-                            <label for="description">Descripción</label>
-                            <textarea class="form-control" id="description" placeholder value required></textarea>
-                            <div class="invalid-feedback">Una descripción es requerida.</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">Subcategoría</label>
+                            <input type="text" class="form-control" id="firstName" placeholder value unrequired>
+                        </div>
+                        <div class="col-md-5 mb-3">
+                            <label for="surName">Tamaño</label>
+                            <input type="text" class="form-control" id="surName" placeholder value unrequired>
                         </div>
                     </div>
                 </div>
-                <hr class="my-3" />
-                <!-- Upload image input-->
-                <div class="row">
-                    <div class="col-lg-12 mx-auto">
-                        <p class="text-left text-muted mb-0">
-                            <small>Sube hasta 5 fotos de lo que quieres vender.</small>
-                        </p>
-                        <div class="image-area px-4">
-                            <div class="input-group pl-5 py-5 bg-white">
-                                <p for="upload" class="btn btn-primary rounded-pill mx-auto shadow-sm font-weight-light"><i class="fas fa-plus"></i> Sube fotos</p>
-                                <input id="upload" type="file" onchange="readURL(this);">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Uploaded image area-->
-                <hr class="my-3" />
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="firstName">Categoría</label>
-                        <input type="text" class="form-control" id="firstName" value unrequired>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="price">Precio</label>
-                        <div class="row">
-                            <div class="col-8">
-                                <input type="number" class="form-control" id="price" placeholder value required>
-                                <div class="invalid-feedback">Tienes que poner un precio.</div>
-                            </div>
-                            <div class="col-1">
-                                <p class="pt-2 text-muted"><i class="fas fa-euro-sign"></i></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="firstName">Subcategoría</label>
-                        <input type="text" class="form-control" id="firstName" placeholder value unrequired>
-                    </div>
-                    <div class="col-md-5 mb-3">
-                        <label for="surName">Tamaño</label>
-                        <input type="text" class="form-control" id="surName" placeholder value unrequired>
-                    </div>
-                </div>
-            </div>
-            <button type="button" class="btn btn-primary position-relative mt-1 mb-4">
+                <button type="button" class="btn btn-primary position-relative mt-1 mb-4">
               <div *ngIf="condition; then thenBlock else elseBlock"></div>
               <ng-template #thenBlock>Subir producto</ng-template>
               <ng-template #elseBlock>Guardar cambios</ng-template>
             </button>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

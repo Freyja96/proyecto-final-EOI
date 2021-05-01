@@ -1,3 +1,5 @@
+import { SingUpComponent } from './sing-up/sing-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { NormalLayoutComponent } from './normal-layout/normal-layout.component';
 import { NgModule } from '@angular/core';
@@ -21,6 +23,8 @@ const routes: Routes = [
       { path: "update/product/new", component: UpdateProductComponent },*/
       { path: "update", redirectTo:"update/product" }
     ]},
+  { path: "signin", component: SignInComponent },
+  { path: "signup", component: SingUpComponent },
   { path:"404", component: NotFoundComponent },
   { path:"**", redirectTo: "/404" },
 ];
