@@ -1,3 +1,43 @@
-<p>
-  sign-in works!
-</p>
+<div class="bg-light">
+    <div class="container-fluid">
+        <div class="col-12 d-flex justify-content-center">
+            <form class="form-signin">
+                <div class="col-12">
+                    <div class="row justify-content-center mt-5">
+                        <p class="h3 font-weight-bold mt-5">{{titulo}}</p>
+                    </div>
+                    <div class="row justify-content-center">
+                        <h1 class="font-weight-normal mt-2 mb-3">Inicia sesión</h1>
+                    </div>
+                    <div class="row">
+                        <label for="inputEmail" class="sr-only">Email</label>
+                        <input type="email" class="form-control py-4 mt-2" id="inputEmail" placeholder="Email" aria-describedby="inputGroup-sizing-lg" required autofocus>
+                    </div>
+                    <div class="row">
+                        <label for="inputPassword" class="sr-only">Contraseña</label>
+                        <input type="password" class="form-control py-4" id="inputPassword" placeholder="Contraseña" aria-describedby="inputGroup-sizing-lg" required>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="checkbox my-2 p-1">
+                            <label>
+                              <input type="checkbox" class="mr-2" value="remember-me"/>Recuérdame
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center my-2">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block p-2">Iniciar sesión</button>
+                    </div>
+                    <div class="row text-center justify-content-center">
+                        <a class="nav-link sign-up" [routerLink]="['/signup']">
+                          ¿No tienes cuenta? Regístrate, ¡es gratis!
+                          <span class="sr-only">(current)</span>
+                        </a>
+                    </div>
+                    <div class="row justify-content-center mt-4">
+                        <p class="text-muted">© 2021</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
