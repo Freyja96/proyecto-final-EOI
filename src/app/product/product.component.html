@@ -1,10 +1,16 @@
 <div class="card">
-    <img src="https://www.hola.com/imagenes/decoracion/20200609169726/plantas-de-interior-cuidados-duren-tiempo-mc/0-833-734/trucos-plantas-interior-duren-1-z.jpg" class="card-img-top" alt="..." />
-    <div class="card-body">
-        <h5 class="card-title">Nombre Producto</h5>
-        <p class="card-text">
-            Detalles del producto, origen, tipo de cuidados, etc...
-        </p>
-        <p> 00,00€</p>
-    </div>
+  <div class="image-part overflow-hidden">
+    <img
+      src="{{ product.images[0].url }}"
+      class="w-100 h-100"
+      alt="{{ product.title }}"
+    />
+  </div>
+  <div class="card-body text-center">
+    <h5 class="card-title overflow-hidden">{{ product.title }}</h5>
+    <p class="card-text text-break">
+      {{ product.description }}
+    </p>
+    <p class="h5 font-weight-bold">{{ product.price }}€</p>
+  </div>
 </div>
