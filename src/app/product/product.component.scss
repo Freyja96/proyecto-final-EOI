@@ -1,1 +1,11 @@
-@import '../../styles';
+.image-part {
+  height: 250px;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.card-text {
+  height: 80px;
+}

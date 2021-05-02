@@ -1,30 +1,43 @@
-<div class="container">
+<div class="container mt-2">
   <div class="row">
-    <div class="col-sm-12 col-md-3">
-      <img
-        src="https://xavierferras.com/wp-content/uploads/2019/02/266-Persona.jpg"
-        class="rounded img-fluid"
-        alt="..."
-      />
-    </div>
-    <div class="col-9">
-      <p class="h1">nombre de usuario</p>
-      <label for="address">Ubicación</label>
-      <!--Google Maps-->
-      <div id="map-container-google-1" class="w-100" style="height: 200px">
-        <iframe
-          id="ubicationResult"
-          src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          frameborder="0"
-          style="border: 0"
-          allowfullscreen
-        ></iframe>
+    <div class="col-12 bg-light">
+      <div class="row">
+        <div class="col-sm-12 col-md-3 p-3">
+          <img
+            src="{{ userProfile.image.url }}"
+            class="rounded img-fluid"
+            alt="..."
+          />
+        </div>
+        <div class="col-sm-12 col-md-9 p-2 text-center">
+          <h1>
+            {{ userProfile.username }}
+            <i
+              *ngIf="userProfile.emailVerified"
+              title="Correo verificado"
+              class="fas fa-check fa-sm text-success"
+            ></i>
+          </h1>
+          <label for="address">{{ userProfile.location }}</label>
+          <div id="map-container-google-1" class="w-100" style="height: 200px">
+            <iframe
+              id="ubicationResult"
+              src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              frameborder="0"
+              style="border: 0"
+            ></iframe>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-12">
       <div class="row">
-        <div class="col-12"><p class="text-muted">LISTADO DE PRODUCTOS</p></div>
-        <div *ngFor="let item of products" class="col-4 mb-2">
+        <div class="col-12">
+          <p class="text-muted h2 py-2 mt-2 border-bottom border-success">
+            Listado de productos
+          </p>
+        </div>
+        <div *ngFor="let item of products" class="col-4 p-3 mb-2">
           <app-product></app-product>
         </div>
       </div>
