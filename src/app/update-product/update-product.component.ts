@@ -11,9 +11,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./update-product.component.scss']
 })
 export class UpdateProductComponent implements OnInit {
- isNew = true;
- id: string | null = "";
- form: FormGroup;
+  isNew: boolean = true;
+/*
+
+  id: string | null = "";
+
+  form: FormGroup;
 
 
  constructor(private productService: ProductService,
@@ -41,15 +44,17 @@ export class UpdateProductComponent implements OnInit {
 }
   products: Array<Product> = []
   product: Product = new Product
-
+*/
   ngOnInit() {
+    /*
     if(!this.isNew){
       this.getProduct()
     }else{
       console.log("Añadir nuevo producto")
     }
+    */
   }
-
+/*
   save(){
     if(this.isNew){
       this.saveProduct()
@@ -73,6 +78,7 @@ export class UpdateProductComponent implements OnInit {
       }
     );
   }
+
   getProduct() {
     this.productService.getProduct(this.id).subscribe(data => {
       this.product = data
@@ -121,4 +127,5 @@ export class UpdateProductComponent implements OnInit {
       }
     );
   }
+*/
 }

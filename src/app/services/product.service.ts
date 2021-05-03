@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class ProductService {
 
 constructor(private httpClient: HttpClient) {}
-
+/*
 saveProduct(product: Product): Observable<any> {
   return this.httpClient.post(`${environment.apiUrl}/product`, product)
       .pipe(
@@ -43,4 +43,5 @@ deleteProduct(id: string): Observable<any> {
     })
   );
 }
+*/
 }
