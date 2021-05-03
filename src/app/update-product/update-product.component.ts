@@ -1,8 +1,10 @@
+import { Product } from './../models/product.model';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-update-product',
   templateUrl: './update-product.component.html',
@@ -11,15 +13,17 @@ import { FormGroup } from '@angular/forms';
 export class UpdateProductComponent implements OnInit {
  condition: boolean = true;
 
- /*
+
  isNew = true;
  id: string | null = "";
- formGroup: FormGroup;
+ form: FormGroup;
+
 
  constructor(private productService: ProductService,
   private router: Router,
   private activatedRoute: ActivatedRoute,
-  private location: Location) {
+  private location: Location,
+  private formBuilder: FormBuilder) {
   this.router.events.subscribe((currentUrl) => {
     if (currentUrl instanceof NavigationEnd){
       this.id = activatedRoute.snapshot.paramMap.get("id")
@@ -31,34 +35,22 @@ export class UpdateProductComponent implements OnInit {
         console.log("Llamar al servicio de GET/:id")
       }
     }
+  });
+  this.form = this.formBuilder.group({
+    name: ["", Validators.required],
+    type: ["", Validators.required],
+    price: ["", Validators.required],
   })
 }
-*/
+  products: Array<Product> = []
+  product: Product = new Product
+
   ngOnInit() {
-    /*
     if(!this.isNew){
       this.getProduct()
     }else{
       console.log("Añadir nuevo producto")
     }
-    */
-  }
-/*
-  getProduct() {
-    this.productService.getProduct(this.id).subscribe(data => {
-      this.product = data
-      this.form.patchValue({
-        title: this.product.title,
-        type: this.product.type,
-        image: this.product.image,
-        size: this.product.size,
-        price: this.product.price
-      })
-    },
-      error => {
-      console.log("Error:", error);
-      }
-    );
   }
 
   save(){
@@ -70,11 +62,11 @@ export class UpdateProductComponent implements OnInit {
   }
 
   saveProduct(){
-    const product: Product = new Product()
-    product.title = this.form.controls.title.value
-    product.type = this.form.controls.type.value
+    this.product.title = this.form.controls.title.value
+    this.product.type = this.form.controls.type.value
+    this.product.price = this.form.controls.price.value
 
-    this.productService.saveProduct(product).subscribe(
+    this.productService.saveProduct(this.product).subscribe(
       data => {
         this.location.back()
         console.log("Producto creado satisfactoriamente")
@@ -84,24 +76,42 @@ export class UpdateProductComponent implements OnInit {
       }
     );
   }
-  updateProduct() {
-    const product: Product = new Product()
-      product._id = this.id || ""
-      product.title = this.form.controls.title.value
-      product.type = this.form.controls.type.value
-      product.image = this.form.controls.image.value
-      product.size = this.form.controls.size.value
-      product.price = this.form.controls.price.value
-
-    this.productService.updateProduct(product).subscribe(data => {
-      console.log("Buen trabajo")
-      this.location.back()
+  getProduct() {
+    this.productService.getProduct(this.id).subscribe(data => {
+      this.product = data
+      this.form.patchValue({
+        title: this.product.title,
+        type: this.product.type,
+        category: this.product.category,
+        image: this.product.image,
+        size: this.product.size,
+        price: this.product.price
+      })
     },
-    error => {
+      error => {
       console.log("Error:", error);
-    }
+      }
     );
   }
+
+    updateProduct() {
+      const product: Product = new Product()
+        product._id = this.id || ""
+        product.title = this.form.controls.title.value
+        product.type = this.form.controls.type.value
+        product.image = this.form.controls.image.value
+        product.size = this.form.controls.size.value
+        product.price = this.form.controls.price.value
+
+      this.productService.updateProduct(product).subscribe(data => {
+        console.log("Buen trabajo")
+        this.location.back()
+      },
+      error => {
+        console.log("Error:", error);
+      }
+      );
+    }
   deleteProduct() {
     this.productService.deleteProduct(this.id || "").subscribe(
       data => {
@@ -114,5 +124,4 @@ export class UpdateProductComponent implements OnInit {
       }
     );
   }
-  */
 }

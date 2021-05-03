@@ -1,5 +1,11 @@
 export class Product {
     _id?: string;
+    type?: string;
+    category?: string;
+    __v?: number;
+    title?: string;
+    size?: string;
+    price?: number;
     publisherId?:{
       _id?: string;
       firstName?: string;
@@ -21,7 +27,5 @@ export class Product {
       _id?: string;
       url?: string
     }];
-    title?: string;
-    size?: string;
-    price?: number;
+
   }

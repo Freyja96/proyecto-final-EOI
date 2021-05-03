@@ -4,7 +4,7 @@
             <form class="form-signin">
                 <div class="col-12">
                     <div class="row justify-content-center mt-1">
-                        <p class="h3 font-weight-bold mt-4">{{titulo}}</p>
+                        <a class="h3 font-weight-bold mt-4" [routerLink]="['']">{{titulo}}</a>
                     </div>
                     <div class="row justify-content-center">
                         <h1 class="font-weight-normal mt-1 mb-3">Registro</h1>
@@ -12,7 +12,7 @@
                     <div class="row my-2">
                         <div class="col-md-6 col-sm-12 my-2">
                             <label for="inputName" class="mb-0">Nombre</label>
-                            <input type="email" class="form-control mt-0" id="inputName" placeholder="Nombre" required autofocus>
+                            <input type="email" autofocus class="form-control mt-0" id="inputName" placeholder="Nombre" required>
                         </div>
                         <div class="col-md-6 col-sm-12 my-2">
                             <label for="inputSurname" class="mb-0">Apellidos</label>
