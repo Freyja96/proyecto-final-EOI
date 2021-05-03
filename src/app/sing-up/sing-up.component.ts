@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sing-up.component.scss']
 })
 export class SingUpComponent implements OnInit {
-
+  titulo = 'GardenForYou';
   constructor() { }
 
   ngOnInit() {
