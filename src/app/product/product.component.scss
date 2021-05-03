@@ -1,12 +1,18 @@
 @import "../../styles";
-.image-part {
-  height: 250px;
 
+#user-part {
   img {
+    height: 45px;
+  }
+}
+
+#carouserImages {
+  img {
+    height: 500px;
     object-fit: cover;
   }
 }
 
-.card-text {
-  height: 80px;
+h1 {
+  font-size: 34px;
 }

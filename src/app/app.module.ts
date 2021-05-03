@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ProductComponent } from './product/product.component';
+import { ProductItemComponent } from './product-item/product-item.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SideBarProfileComponent } from './side-bar-profile/side-bar-profile.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
@@ -18,30 +18,29 @@ import { FormBuilder, FormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SingUpComponent } from './sing-up/sing-up.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductComponent } from './product/product.component';
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
-      HeaderComponent,
-      ProductComponent,
-      EditProfileComponent,
-      SideBarProfileComponent,
-      EditAccountComponent,
-      PublicProfileComponent,
-      NotFoundComponent,
-      FooterComponent,
-      HomeComponent,
-      NormalLayoutComponent,
-      UpdateProductComponent,
-      //FormsModule,
-      SignInComponent,
-      SingUpComponent,
-      ProductListComponent
-   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+    HeaderComponent,
+    ProductItemComponent,
+    EditProfileComponent,
+    SideBarProfileComponent,
+    EditAccountComponent,
+    PublicProfileComponent,
+    NotFoundComponent,
+    FooterComponent,
+    HomeComponent,
+    NormalLayoutComponent,
+    UpdateProductComponent,
+    //FormsModule,
+    SignInComponent,
+    SingUpComponent,
+    ProductListComponent,
+    ProductComponent,
   ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [FormBuilder],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

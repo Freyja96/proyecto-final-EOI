@@ -1,3 +1,4 @@
+import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { SingUpComponent } from './sing-up/sing-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -19,7 +20,6 @@ const routes: Routes = [
       { path: 'edit/profile', component: EditProfileComponent },
       { path: 'edit/account', component: EditAccountComponent },
       { path: 'edit', redirectTo: 'edit/profile' },
-      { path: '', component: HomeComponent },
       { path: 'user/:username', component: PublicProfileComponent },
       { path: 'update/product', component: UpdateProductComponent },
       /*{ path: "update/product/:id", component: UpdateProductComponent },
@@ -27,6 +27,8 @@ const routes: Routes = [
       { path: 'update', redirectTo: 'update/product' },
       { path: 'plants', component: ProductListComponent },
       { path: 'insects', component: ProductListComponent },
+      { path: 'product/:id', component: ProductComponent },
+      { path: '', component: HomeComponent },
     ],
   },
   { path: 'signin', component: SignInComponent },

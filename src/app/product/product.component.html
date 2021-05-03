@@ -1,16 +1,129 @@
-<div class="card">
-  <div class="image-part overflow-hidden">
-    <img
-      src="{{ product.images[0].url }}"
-      class="w-100 h-100"
-      alt="{{ product.title }}"
-    />
-  </div>
-  <div class="card-body text-center">
-    <h5 class="card-title overflow-hidden">{{ product.title }}</h5>
-    <p class="card-text text-break">
-      {{ product.description }}
-    </p>
-    <p class="h5 font-weight-bold">{{ product.price }}€</p>
+<div class="container-fluid bg-light">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 mx-auto bg-white rounded my-3 p-3">
+      <div class="row">
+        <div class="col-12" id="user-part">
+          <img
+            src="{{ product.publisherId.image.url }}"
+            class="rounded"
+            alt="Imagen del usuario"
+          />
+          <span class="h3 ml-2">{{ product.publisherId.firstName }}</span>
+          <button
+            *ngIf="!isTheOwner"
+            type="button"
+            class="btn btn-success rounded text-white float-right"
+          >
+            Chat
+          </button>
+          <div class="btn-group float-right" role="group" *ngIf="isTheOwner">
+            <button type="button" class="btn btn-danger text-white">
+              Borrar
+            </button>
+            <button type="button" class="btn btn-success text-white">
+              Vendido
+            </button>
+            <button type="button" class="btn btn-secondary text-white">
+              Editar
+            </button>
+          </div>
+        </div>
+        <div class="col-12">
+          <div
+            id="carouserImages"
+            class="carousel carousel-fade slide pt-2"
+            data-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div
+                *ngFor="let image of product.images; index as i"
+                class="carousel-item"
+                [ngClass]="{
+                  active: i == 0
+                }"
+              >
+                <img
+                  src="{{ image.url }}"
+                  class="d-block w-100 overflow-hidden"
+                  alt="{{ image._id }}"
+                />
+              </div>
+            </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouserImages"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Anterior</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouserImages"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Siguiente</span>
+            </a>
+          </div>
+        </div>
+        <div class="col-12 pt-3">
+          <p class="h2 float-right">{{ product.price }}€</p>
+          <h1 class="font-weight-normal">{{ product.title }}</h1>
+        </div>
+        <div class="col-12 py-2 my-2 border-top border-bottom border-success">
+          <div class="row">
+            <div class="col">
+              Tipo
+              <span class="ml-1 text-muted">{{
+                product.type == "plant" ? "Planta" : "Insecto"
+              }}</span>
+            </div>
+            <div *ngIf="product.category.category" class="col">
+              Categoria
+              <span class="ml-1 text-muted">{{
+                product.category.category
+              }}</span>
+            </div>
+            <div *ngIf="product.category.subcategory" class="col">
+              SubCategoria
+              <span class="ml-1 text-muted">{{
+                product.category.subcategory
+              }}</span>
+            </div>
+            <div *ngIf="product.size" class="col">
+              Formato
+              <span class="ml-1 text-muted">{{ product.size }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 pt-2">
+          <p class="font-weight-normal">{{ product.description }}</p>
+        </div>
+        <div class="col-12 pt-2">
+          <div id="map-container-google-1" class="w-100" style="height: 200px">
+            <iframe
+              id="ubicationResult"
+              class="w-100"
+              src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              frameborder="0"
+              style="border: 0"
+            ></iframe>
+          </div>
+        </div>
+        <div *ngIf="product.publishedDate" class="col-12 pt-2">
+          Fecha de publicación
+          <span class="ml-1 text-muted">{{ product.publishedDate }}</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

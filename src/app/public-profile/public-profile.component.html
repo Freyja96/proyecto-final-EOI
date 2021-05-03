@@ -6,7 +6,7 @@
           <img
             src="{{ userProfile.image.url }}"
             class="rounded img-fluid"
-            alt="..."
+            alt="Imagen del usuario"
           />
         </div>
         <div class="col-sm-12 col-md-9 p-2 text-center">
@@ -38,7 +38,7 @@
           </p>
         </div>
         <div *ngFor="let item of products" class="col-md-4 col-sm-12 mb-2">
-          <app-product></app-product>
+          <app-product-item></app-product-item>
         </div>
       </div>
     </div>
