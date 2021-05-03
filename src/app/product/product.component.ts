@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -51,7 +52,15 @@ export class ProductComponent implements OnInit {
     },
   };
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  goToProfile() {
+    this.router.navigate(['user', this.product.publisherId._id]);
+  }
+
+  goToEditProduct() {
+    this.router.navigate(['update/product', this.product._id]);
+  }
 }

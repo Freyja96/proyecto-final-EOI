@@ -5,7 +5,7 @@
         <div class="col-sm-12 col-md-3 p-3">
           <img
             src="{{ userProfile.image.url }}"
-            class="rounded img-fluid"
+            class="rounded w-100"
             alt="Imagen del usuario"
           />
         </div>
@@ -19,12 +19,12 @@
             ></i>
           </h1>
           <label for="address">{{ userProfile.location }}</label>
-          <div id="map-container-google-1" class="w-100" style="height: 200px">
+          <div id="map-container-google-1" class="w-100" style="height: 150px">
             <iframe
               id="ubicationResult"
+              class="h-100 border-0"
               src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
               frameborder="0"
-              style="border: 0"
             ></iframe>
           </div>
         </div>

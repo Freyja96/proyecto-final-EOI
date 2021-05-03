@@ -7,8 +7,11 @@
             src="{{ product.publisherId.image.url }}"
             class="rounded"
             alt="Imagen del usuario"
+            (click)="goToProfile()"
           />
-          <span class="h3 ml-2">{{ product.publisherId.firstName }}</span>
+          <span class="h3 ml-2" (click)="goToProfile()">{{
+            product.publisherId.firstName
+          }}</span>
           <button
             *ngIf="!isTheOwner"
             type="button"
@@ -23,7 +26,11 @@
             <button type="button" class="btn btn-success text-white">
               Vendido
             </button>
-            <button type="button" class="btn btn-secondary text-white">
+            <button
+              type="button"
+              class="btn btn-secondary text-white"
+              (click)="goToEditProduct()"
+            >
               Editar
             </button>
           </div>
@@ -112,10 +119,9 @@
           <div id="map-container-google-1" class="w-100" style="height: 200px">
             <iframe
               id="ubicationResult"
-              class="w-100"
+              class="w-100 h-100 border-0"
               src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
               frameborder="0"
-              style="border: 0"
             ></iframe>
           </div>
         </div>

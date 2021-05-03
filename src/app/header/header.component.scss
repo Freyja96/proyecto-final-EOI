@@ -1,47 +1,47 @@
 @import "../../styles";
 nav {
-    a.navbar-brand {
-        font-weight: bold;
-        color: $dark-green;
-        transition: all 0.6s ease;
-        &:hover {
-            color: $green;
-        }
+  a.navbar-brand {
+    font-weight: bold;
+    color: $dark-green;
+    transition: all 0.6s ease;
+    &:hover {
+      color: $green;
     }
-    button {
-        border-top-left-radius: 25px;
-        border-bottom-left-radius: 25px;
-        border-color: $gray-200;
-        &:hover {
-            background-color: $green;
-        }
-        i {
-            background: none;
-        }
+  }
+  button {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-color: $gray-200;
+    &:hover {
+      background-color: $green;
     }
-    input {
-        border-radius: 25px;
+    i {
+      background: none;
     }
+  }
+  input {
+    border-radius: 25px;
+  }
 }
 
 ul.navbar-nav.text-center {
-    li.nav-item.text-nowrap.py-3.bg-light {
-        a.nav-link.sign-in {
-            color: $gray;
-            &:hover {
-                color: $black;
-            }
-        }
+  li.nav-item.text-nowrap.py-3.bg-light {
+    a.nav-link.sign-in {
+      color: $gray;
+      &:hover {
+        color: $black;
+      }
     }
-    li.nav-item.text-nowrap.py-auto {
-        background-color: $green;
-        color: white;
-        &:hover {
-            background-color: $darkergreen;
-        }
+  }
+  li.nav-item.text-nowrap.py-auto {
+    background-color: $green;
+    color: white;
+    &:hover {
+      background-color: $darkergreen;
     }
+  }
 }
 
 * {
-    background-color: $white;
+  background-color: $light;
 }

@@ -22,8 +22,8 @@ const routes: Routes = [
       { path: 'edit', redirectTo: 'edit/profile' },
       { path: 'user/:username', component: PublicProfileComponent },
       { path: 'update/product', component: UpdateProductComponent },
-      /*{ path: "update/product/:id", component: UpdateProductComponent },
-      { path: "update/product/new", component: UpdateProductComponent },*/
+      { path: 'update/product/:id', component: UpdateProductComponent },
+      /*{ path: "update/product/new", component: UpdateProductComponent },*/
       { path: 'update', redirectTo: 'update/product' },
       { path: 'plants', component: ProductListComponent },
       { path: 'insects', component: ProductListComponent },
