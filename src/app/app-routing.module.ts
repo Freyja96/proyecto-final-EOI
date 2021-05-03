@@ -1,3 +1,4 @@
+import { ProductListComponent } from './product-list/product-list.component';
 import { SingUpComponent } from './sing-up/sing-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
@@ -11,27 +12,31 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path:"", component: NormalLayoutComponent, children:
-    [
-      { path: "edit/profile", component: EditProfileComponent },
-      { path: "edit/account", component: EditAccountComponent },
-      { path: "edit", redirectTo: "edit/profile" },
-      { path: "", component: HomeComponent },
-      { path: "profile", component: PublicProfileComponent },
-      { path: "update/product", component: UpdateProductComponent },
+  {
+    path: '',
+    component: NormalLayoutComponent,
+    children: [
+      { path: 'edit/profile', component: EditProfileComponent },
+      { path: 'edit/account', component: EditAccountComponent },
+      { path: 'edit', redirectTo: 'edit/profile' },
+      { path: '', component: HomeComponent },
+      { path: 'user/:username', component: PublicProfileComponent },
+      { path: 'update/product', component: UpdateProductComponent },
       /*{ path: "update/product/:id", component: UpdateProductComponent },
       { path: "update/product/new", component: UpdateProductComponent },*/
-      { path: "update", redirectTo:"update/product" }
-    ]},
-  { path: "signin", component: SignInComponent },
-  { path: "signup", component: SingUpComponent },
-  { path:"404", component: NotFoundComponent },
-  { path:"**", redirectTo: "/404" },
+      { path: 'update', redirectTo: 'update/product' },
+      { path: 'plants', component: ProductListComponent },
+      { path: 'insects', component: ProductListComponent },
+    ],
+  },
+  { path: 'signin', component: SignInComponent },
+  { path: 'signup', component: SingUpComponent },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}

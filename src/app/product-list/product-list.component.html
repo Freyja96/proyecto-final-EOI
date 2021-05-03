@@ -1,0 +1,106 @@
+<div class="container-fluid mt-2">
+  <div class="row">
+    <div class="col-12 p-2 bg-light">
+      <div class="row">
+        <div class="col-sm-12 col-md-3 mx-auto">
+          <img
+            src="{{ imageUrl }}"
+            class="rounded rounded-circle img-fluid"
+            alt="Imagen de portada"
+          />
+          <h1
+            id="text-image-title"
+            class="p-3 rounded-circle bg-light text-success"
+          >
+            {{ title }}
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-2">
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <button
+              [routerLink]="'/insects'"
+              type="button"
+              class="btn btn-light col-6 my-3 text-center border-0"
+              [disabled]="!isPlants"
+            >
+              <p>Insectos</p>
+              <i class="fas fa-bug ml-1"></i>
+            </button>
+            <button
+              [routerLink]="'/plants'"
+              type="button"
+              class="btn btn-light col-6 my-3 text-center border-0"
+              [disabled]="isPlants"
+            >
+              <p>Plantas</p>
+              <i class="fas fa-seedling ml-1"></i>
+            </button>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-12">
+          <div class="form-group mb-3">
+            <label for="categorySelect">Especie</label>
+            <select class="custom-select" id="categorySelect">
+              <option *ngFor="let category of categories" [value]="category">
+                {{ category }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-12">
+          <div class="form-group mb-3">
+            <label for="formatSelect">Formato</label>
+            <div *ngFor="let format of formats" class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [id]="format"
+                [value]="format"
+              />
+              <label class="form-check-label" [for]="format">{{
+                format
+              }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-10 mt-3">
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-3 ml-auto">
+              <div class="input-group mb-3">
+                <select class="custom-select" id="orderSelect">
+                  <option value="date">Novedades</option>
+                  <option value="priceAsc">De más barato a más caro</option>
+                  <option value="priceDesct">De más caro a más barato</option>
+                  <option value="dateAsc">Más antiguos primero</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let item of products" class="col-md-4 col-sm-12 mb-2">
+          <app-product></app-product>
+        </div>
+        <div class="col-12 my-3">
+          <div class="row">
+            <div class="col-sm-12 col-md-3 mx-auto">
+              <button
+                type="button"
+                class="btn btn-success btn-block text-white mx-auto"
+              >
+                Ver más
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

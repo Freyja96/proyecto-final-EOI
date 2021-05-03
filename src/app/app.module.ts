@@ -17,8 +17,9 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SingUpComponent } from './sing-up/sing-up.component';
+import { ProductListComponent } from './product-list/product-list.component';
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
       HeaderComponent,
       ProductComponent,
@@ -33,7 +34,8 @@ import { SingUpComponent } from './sing-up/sing-up.component';
       UpdateProductComponent,
       //FormsModule,
       SignInComponent,
-      SingUpComponent
+      SingUpComponent,
+      ProductListComponent
    ],
   imports: [
     BrowserModule,
