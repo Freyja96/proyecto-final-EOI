@@ -11,7 +11,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./update-product.component.scss']
 })
 export class UpdateProductComponent implements OnInit {
+
+  plant: boolean = true;
+
   isNew: boolean = true;
+
 /*
 
   id: string | null = "";
