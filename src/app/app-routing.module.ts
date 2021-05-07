@@ -1,3 +1,5 @@
+import { ChatListComponent } from './chat-list/chat-list.component';
+import { ChatItemComponent } from './chat-item/chat-item.component';
 import { ValidateEmailComponent } from './validate-email/validate-email.component';
 import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -31,6 +33,7 @@ const routes: Routes = [
       { path: 'product/:id', component: ProductComponent },
       { path: '', component: HomeComponent },
       { path: 'validate', component: ValidateEmailComponent },
+      {path: 'list', component: ChatListComponent}
     ],
   },
   { path: 'signin', component: SignInComponent },

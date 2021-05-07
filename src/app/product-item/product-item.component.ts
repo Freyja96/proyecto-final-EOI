@@ -19,7 +19,7 @@ export class ProductItemComponent implements OnInit {
           'https://www.hola.com/imagenes/decoracion/20200609169726/plantas-de-interior-cuidados-duren-tiempo-mc/0-833-734/trucos-plantas-interior-duren-1-z.jpg',
       },
     ],
-    title: 'Nombre del pruducto',
+    title: 'Nombre del producto',
     price: 1.26,
     type: 'plant',
     description: 'Detalles del producto, origen, tipo de cuidados, etc...',
