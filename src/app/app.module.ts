@@ -22,8 +22,9 @@ import { ProductComponent } from './product/product.component';
 import { ValidateEmailComponent } from './validate-email/validate-email.component';
 import { ChatItemComponent } from './chat-item/chat-item.component';
 import { ChatListComponent } from './chat-list/chat-list.component';
+import { ChatInfoComponent } from './chat-info/chat-info.component';
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
     HeaderComponent,
     ProductItemComponent,
@@ -43,7 +44,8 @@ import { ChatListComponent } from './chat-list/chat-list.component';
     ProductComponent,
       ValidateEmailComponent,
       ChatItemComponent,
-      ChatListComponent
+      ChatListComponent,
+      ChatInfoComponent
    ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [FormBuilder],
