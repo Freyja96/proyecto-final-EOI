@@ -1,3 +1,4 @@
+import { ValidateEmailComponent } from './validate-email/validate-email.component';
 import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { SingUpComponent } from './sing-up/sing-up.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: 'insects', component: ProductListComponent },
       { path: 'product/:id', component: ProductComponent },
       { path: '', component: HomeComponent },
+      { path: 'validate', component: ValidateEmailComponent },
     ],
   },
   { path: 'signin', component: SignInComponent },

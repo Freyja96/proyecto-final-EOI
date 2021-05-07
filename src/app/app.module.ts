@@ -19,8 +19,11 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SingUpComponent } from './sing-up/sing-up.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
+import { ValidateEmailComponent } from './validate-email/validate-email.component';
+import { ChatItemComponent } from './chat-item/chat-item.component';
+import { ChatListComponent } from './chat-list/chat-list.component';
 @NgModule({
-  declarations: [
+  declarations: [			
     AppComponent,
     HeaderComponent,
     ProductItemComponent,
@@ -38,7 +41,10 @@ import { ProductComponent } from './product/product.component';
     SingUpComponent,
     ProductListComponent,
     ProductComponent,
-  ],
+      ValidateEmailComponent,
+      ChatItemComponent,
+      ChatListComponent
+   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [FormBuilder],
   bootstrap: [AppComponent],
