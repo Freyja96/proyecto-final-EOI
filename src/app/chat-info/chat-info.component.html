@@ -1,3 +1,28 @@
-<p>
-  chat-info works!
-</p>
+<div class="container d-flex justify-content-end mr-0 mt-0">
+    <div class="col-md-3 col-sm-12">
+        <div class="container">
+            <div class="row py-3 m-1">
+                <p class="h5 mr-3 text-left">
+                    {{userProfile.username}}
+                </p>
+                <img class="rounded text-right" src="{{userProfile.image.url}}" width="50" height="50" />
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <img src="{{product.images.url}}" width="220" height="auto" />
+                <button class="btn btn-primary">Reservar</button>
+                <button class="btn btn-danger">Vendido</button>
+            </div>
+            <p>
+                <strong class="">{{product.title}}</strong>
+            </p>
+            <p>{{product.price}}€</p>
+        </div>
+        <button class="btn btn-light">Eliminar conversación</button>
+        <button class="btn btn-light">Reportar usuario</button>
+        <button class="btn btn-danger">Bloquear usuario</button>
+
+    </div>
+</div>

@@ -9,10 +9,10 @@ export class ChatItemComponent implements OnInit {
   message = "Ah pues es un buen envío";
 
   userProfile = {
-    username: 'Marina',
+    username: 'Sam',
     image: {
       url:
-        'https://xavierferras.com/wp-content/uploads/2019/02/266-Persona.jpg',
+        'https://thispersondoesnotexist.com/image',
     },
     product: {title: 'Huevos de samia ricini'}
   };
