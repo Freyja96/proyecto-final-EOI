@@ -23,6 +23,7 @@ import { ValidateEmailComponent } from './validate-email/validate-email.componen
 import { ChatItemComponent } from './chat-item/chat-item.component';
 import { ChatListComponent } from './chat-list/chat-list.component';
 import { ChatInfoComponent } from './chat-info/chat-info.component';
+import { ChatComponent } from './chat/chat.component';
 @NgModule({
   declarations: [				
     AppComponent,
@@ -45,7 +46,8 @@ import { ChatInfoComponent } from './chat-info/chat-info.component';
       ValidateEmailComponent,
       ChatItemComponent,
       ChatListComponent,
-      ChatInfoComponent
+      ChatInfoComponent,
+      ChatComponent
    ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [FormBuilder],

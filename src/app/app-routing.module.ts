@@ -1,3 +1,4 @@
+import { ChatComponent } from './chat/chat.component';
 import { ValidateEmailComponent } from './validate-email/validate-email.component';
 import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -29,6 +30,8 @@ const routes: Routes = [
       { path: 'plants', component: ProductListComponent },
       { path: 'insects', component: ProductListComponent },
       { path: 'product/:id', component: ProductComponent },
+      { path: 'chat', component: ChatComponent },
+      { path: 'chat/:chatid', component: ChatComponent },
       { path: '', component: HomeComponent },
       { path: 'validate', component: ValidateEmailComponent },
     ],
