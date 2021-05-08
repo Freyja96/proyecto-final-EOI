@@ -3,7 +3,7 @@
     <div
       class="col-sm-12 col-md-3 border-right border-light"
       [ngClass]="{
-        'd-sm-none d-md-block': chatId != null
+        'd-none d-md-block': chatId != null
       }"
     >
       <app-chat-list></app-chat-list>
@@ -11,7 +11,7 @@
     <div
       class="col-sm-12 col-md-6"
       [ngClass]="{
-        'd-sm-none d-md-block': chatId == null
+        'd-none d-md-block': chatId == null
       }"
     >
       <div class="row h-100">
@@ -30,6 +30,28 @@
             src="{{ otherUser.image.url }}"
           />
           <p class="ml-2 my-auto font-weight-bold">{{ otherUser.username }}</p>
+          <div class="dropdown ml-auto d-block d-md-none">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="dropdownChatMenu"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownChatMenu">
+              <a class="dropdown-item text-primary" href="#">Ver producto</a>
+              <a class="dropdown-item text-info" href="#"
+                >Marcar como vendido</a
+              >
+              <a class="dropdown-item text-danger" href="#"
+                >Eliminar conversación</a
+              >
+              <a class="dropdown-item text-danger" href="#">Reportar usuario</a>
+            </div>
+          </div>
         </div>
         <div *ngIf="chatId != null" class="align-self-end col-12 mb-3">
           <div
@@ -39,7 +61,7 @@
             [scrollTop]="allChatsContainer.scrollHeight"
           >
             <p
-              class="mt-3 mb-3"
+              class="my-3"
               *ngFor="let message of messages"
               [ngClass]="{
                 'text-right': message.senderId == userId,
@@ -51,7 +73,7 @@
                   'bg-light': message.senderId == userId,
                   'bg-white': message.senderId != userId
                 }"
-                class="p-2 border border-success rounded"
+                class="p-2 border border-light rounded shadow"
                 >{{ message.text }}</span
               >
             </p>
@@ -75,7 +97,7 @@
         </div>
       </div>
     </div>
-    <div class="d-sm-none d-md-block col-3">
+    <div class="d-none d-md-block col-3">
       <app-chat-info></app-chat-info>
     </div>
   </div>
