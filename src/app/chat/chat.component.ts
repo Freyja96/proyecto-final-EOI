@@ -10,6 +10,19 @@ export class ChatComponent implements OnInit {
   chatId = null;
   userId = 'unaid12345';
 
+  product = {
+    idPublisher: 'unaid12345',
+    image: 'http://example.com',
+    title: 'string',
+    specie: 'string',
+    size: 'string',
+    egg: true,
+    price: 0,
+    climate: 'string',
+    type: 'plant',
+    description: 'string',
+  };
+
   otherUser = {
     username: 'Sam',
     image: {

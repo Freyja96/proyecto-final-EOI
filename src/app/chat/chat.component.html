@@ -43,7 +43,10 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownChatMenu">
               <a class="dropdown-item text-primary" href="#">Ver producto</a>
-              <a class="dropdown-item text-info" href="#"
+              <a
+                class="dropdown-item text-info"
+                *ngIf="product.idPublisher == userId"
+                href="#"
                 >Marcar como vendido</a
               >
               <a class="dropdown-item text-danger" href="#"
