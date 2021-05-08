@@ -1,7 +1,63 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-12 col-md-3"><app-chat-list></app-chat-list></div>
-    <div class="col-sm-12 col-md-6"></div>
+    <div class="col-sm-12 col-md-3 border-right border-light">
+      <app-chat-list></app-chat-list>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <div class="row h-100">
+        <div
+          *ngIf="chatId == null"
+          class="text-center align-self-center col-12 border border-warning"
+        >
+          Selecciona un chat para empezar a hablar
+        </div>
+        <div
+          *ngIf="chatId != null"
+          class="align-self-start col-12 py-1 d-flex border-bottom border-success"
+        >
+          <img
+            class="d-block overflow-hidden"
+            src="{{ otherUser.image.url }}"
+          />
+          <p class="ml-2 my-auto font-weight-bold">{{ otherUser.username }}</p>
+        </div>
+        <div *ngIf="chatId != null" class="align-self-end col-12 mb-3">
+          <p
+            class="mt-3 mb-3"
+            *ngFor="let message of messages"
+            [ngClass]="{
+              'text-right': message.senderId == userId,
+              'text-left': message.senderId != userId
+            }"
+          >
+            <span
+              [ngClass]="{
+                'bg-light': message.senderId == userId,
+                'bg-white': message.senderId != userId
+              }"
+              class="p-2 border border-success rounded"
+              >{{ message.text }}</span
+            >
+          </p>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Escribe un mensaje"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-primary"
+                type="button"
+                id="send-button"
+              >
+                Enviar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="d-sm-none d-md-block col-md-3">
       <app-chat-info></app-chat-info>
     </div>
