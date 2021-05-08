@@ -167,7 +167,8 @@ export class ChatComponent implements OnInit {
 
   constructor(private activeRoute: ActivatedRoute) {
     this.activeRoute.params.subscribe((param) => {
-      this.chatId = param.chatid ? param.chatid : '';
+      this.chatId = param.chatid != null ? param.chatid : null;
+      console.log(param.chatid);
     });
   }
 

@@ -1,9 +1,19 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-12 col-md-3 border-right border-light">
+    <div
+      class="col-sm-12 col-md-3 border-right border-light"
+      [ngClass]="{
+        'd-sm-none d-md-block': chatId != null
+      }"
+    >
       <app-chat-list></app-chat-list>
     </div>
-    <div class="col-sm-12 col-md-6">
+    <div
+      class="col-sm-12 col-md-6"
+      [ngClass]="{
+        'd-sm-none d-md-block': chatId == null
+      }"
+    >
       <div class="row h-100">
         <div
           *ngIf="chatId == null"
@@ -65,7 +75,7 @@
         </div>
       </div>
     </div>
-    <div class="d-sm-none d-md-block col-md-3">
+    <div class="d-sm-none d-md-block col-3">
       <app-chat-info></app-chat-info>
     </div>
   </div>
