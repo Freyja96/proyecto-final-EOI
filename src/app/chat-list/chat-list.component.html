@@ -1,3 +1,12 @@
-<div *ngFor="let chat of chats" class="col-12 mb-2">
-  <app-chat-item></app-chat-item>
+<div class="row">
+    <div class="col-12 border-bottom">
+        <p class="h5 mt-2 text-center text-gray-dark">Bandeja de entrada</p>
+    </div>
+    <div class="col-12">
+        <div class="row overflow-auto">
+            <div *ngFor="let chat of chats" class="col-12">
+                <app-chat-item></app-chat-item>
+            </div>
+        </div>
+    </div>
 </div>
