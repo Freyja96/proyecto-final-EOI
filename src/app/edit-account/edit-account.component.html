@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="email">Email Actual</label>
-                            <p class="form-control p-2 mb-0" id="email">email.actual@gmail.com</p>
+                            <p class="form-control p-2 mb-0" id="email">{{userEmail}}</p>
                             <!--Habría que relacionarlo con la API para saber el email actual del usuario y poder poner {{user.email}}-->
                         </div>
                         <div class="col-md-6 mb-3">
@@ -42,17 +42,10 @@
                 <div class="form new-password-form">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="password">Contraseña actual</label>
-                            <p class="form-control p-2 mb-0" id="password">****************</p>
-                            <!--Habría que relacionarlo con la API para saber la contraseña actual del usuario y poder poner {{user.password}} en type="password"-->
-                        </div>
-                        <div class="col-md-6 mb-3">
                             <label for="new-password">Nueva Contraseña</label><br/>
                             <input class="form-control mb-0" type="password" id="new-password" placeholder="Introduce tu nuevo password" />
+                            <!--Habría que relacionarlo con la API para saber la contraseña actual del usuario y poder poner {{user.password}} en type="password"-->
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3"></div>
                         <div class="col-md-6 mb-3">
                             <label for="new-password">Confirma la nueva Contraseña</label><br/>
                             <input class="form-control mb-0" type="password" id="new-password" placeholder="Introduce tu nuevo password" />

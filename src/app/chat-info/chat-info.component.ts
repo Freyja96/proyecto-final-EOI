@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat-info.component.scss']
 })
 export class ChatInfoComponent implements OnInit {
-
+  ownProduct = true;
   userProfile = {
     username: 'Max',
     image: {
