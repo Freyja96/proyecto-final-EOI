@@ -8,3 +8,18 @@ img {
   height: 45px;
   cursor: pointer;
 }
+
+.text-muted {
+  font-size: 0.7em;
+}
+
+#chat-part-top {
+  height: 55px;
+}
+
+#chat-part-bot {
+  height: 50px;
+  .form-control {
+    height: 100%;
+  }
+}
