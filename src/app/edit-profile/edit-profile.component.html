@@ -5,22 +5,29 @@
     <div class="col-md-8 order-md-1">
         <form class="needs-validation" novalidate>
             <div class="row py-2 my-3 bg-white shadow-gray">
-                <div class="col-md-12">
+                <div class="col-md-12 mb-0">
                     <p>Foto de perfil</p>
                 </div>
-                <div class="col-6 mx-auto text-center">
-                    <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                        <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-                        <label id="upload-label" for="upload" class="font-weight-light text-muted">Cambiar foto</label>
+                <div class="col-5 mx-md-auto mb-4 mt-2 text-center">
+                    <div class="input-group p-1 rounded-pill bg-white shadow-gray">
+                        <input id="upload" type="file" onchange="readURL(this);" class="form-control">
+                        <label id="upload-label" for="upload" class="font-weight-light text-muted pl-3">Cambiar foto</label>
                         <div class="input-group-append">
-                            <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                            <label for="upload" class="btn btn-light m-0 rounded-pill py-1 px-4 bg-white">
+                              <p class="text-uppercase font-weight-bold text-muted mt-3">
+                                Cambiar foto
+                              </p>
+                            </label>
                         </div>
                     </div>
                 </div>
-                <div class="col-3 text-right"></div>
-                <div class="image-area p-5"><img id="imageResult" src="#" alt="" class="img-fluid rounded-pill shadow-sm mx-auto d-block"></div>
+                <div class="col-auto mt-0 mr-md-4 mb-4 text-center">
+                    <div class="image-area p-5">
+                        <img id="imageResult" src="#" alt="" class="img-fluid rounded-pill shadow-sm mx-auto d-block" />
+                    </div>
+                </div>
             </div>
-            <div class="row py-2 my-3 bg-white shadow-gray">
+            <div class="row py-2 bg-white shadow-gray">
                 <div class="col-12 mb-3">
                     <span class="text-muted">Información pública</span>
                 </div>
@@ -44,7 +51,7 @@
                         <iframe class="border-0 ml-0 mt-0" id="ubicationResult" src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 mt-0">
                     <p class="text-muted">Aquí está ubicado tu perfil y donde aparecerá todo lo que subas.</p>
                 </div>
             </div>

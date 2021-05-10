@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   titulo = 'GardenForYou';
   logged = true;
+
   constructor(private router: Router) { }
   userProfile = {
     image: {

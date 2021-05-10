@@ -1,16 +1,15 @@
 <div class="image d-none d-sm-block">
     <div class="container-fluid p-5 justify-content-center">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">¡Te damos la bienvenida a {{ titulo }}!</h5>
+        <div class="row">
+            <div class="col-3 bg-light px-3 py-4 rounded shadow-gray text-center">
+                <p class="h5 card-title">¡Te damos la bienvenida a {{ titulo }}!</p>
                 <p class="card-text">
                     Vende o compra plantas e insectos de otros usuarios.
                 </p>
-                <a [routerLink]="['/signup']">
-                    <button type="button" class="btn btn-primary font-weight-bold">
-                      Empieza a vender. ¡Es gratis!
-                    </button>
-                </a>
+                <button type="button" [routerLink]="['/signup']" class="btn btn-primary font-weight-bold">
+                      <p class="mb-0" *ngIf="!logged">Empieza a vender. ¡Es gratis!</p>
+                      <p class="mb-0" *ngIf="logged">Sube un producto</p>
+                </button>
                 <a href="#" class="card-link float-right font-weight-bold">¿Cómo funciona?</a>
             </div>
         </div>
@@ -23,11 +22,11 @@
         </div>
         <div class="col-sm-12 col-md-6 mx-auto">
             <div class="row">
-                <button [routerLink]="'/insects'" type="button" class="btn btn-light col-6 my-3 text-center border-0">
+                <button href="/insects" type="button" class="btn btn-light col-6 my-3 text-center border-0">
           <p>Insectos</p>
           <i class="fas fa-bug ml-1"></i>
         </button>
-                <button [routerLink]="'/plants'" type="button" class="btn btn-light col-6 my-3 text-center border-0">
+                <button href="/plants" type="button" class="btn btn-light col-6 my-3 text-center border-0">
           <p>Plantas</p>
           <i class="fas fa-seedling ml-1"></i>
         </button>

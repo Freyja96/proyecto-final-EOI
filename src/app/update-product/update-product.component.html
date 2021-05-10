@@ -1,100 +1,60 @@
-<div class="row background d-flex justify-content-center">
-  <div class="col-8">
-    <div class="col-md-12">
-      <form class="needs-validation" novalidate>
-        <div class="product">
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <p class="h2">¿Qué quieres vender?</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="row">
-                <div class="col-sm-12 col-md-6 mx-auto">
-                  <button
-                    type="button"
-                    class="btn btn-light col-6 my-3 text-center"
-                    (click)="(!plant)"
-                  >
-                    <p>Insecto</p>
-                    <i class="fas fa-bug ml-1"></i>
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-light col-6 my-3 text-center"
-                    (click)="(plant)"
-                  >
-                    <p>Planta</p>
-                    <i class="fas fa-seedling ml-1"></i>
-                  </button>
+<form class="needs-validation" novalidate>
+    <div class="row background d-flex justify-content-center">
+        <div class="col-md-8 col-sm-12 bg-light shadow-gray my-2 pt-4">
+            <div class="row">
+                <div class="col-12 text-center mb-2">
+                    <p class="h2 mt-2">¿Qué quieres vender?</p>
                 </div>
-              </div>
-              <div class="col-md-12 col-sm-12 mb-3">
-                <div class="row">
-                  <div class="col-md-2 col-sm-12 mt-2">
+                <div class="col-12 mx-md-auto mb-2 text-center">
+                    <button type="button" class="btn btn-light col-3 my-3" (click)="(!plant)">
+                      <p>Insecto</p>
+                      <i class="fas fa-bug ml-1"></i>
+                    </button>
+                    <button type="button" class="btn btn-light col-3 my-3" (click)="(plant)">
+                      <p>Planta</p>
+                      <i class="fas fa-seedling ml-1"></i>
+                    </button>
+                </div>
+                <div class="col-2 my-2">
                     <label for="title">Título</label>
-                  </div>
-                  <div class="col-md-10 col-sm-12">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="title"
-                      value
-                      required
-                    />
+                </div>
+                <div class="col-md-10 col-sm-12 my-2 float-end">
+                    <input type="text" class="form-control" id="title" value required />
                     <div class="invalid-feedback">Un título es requerido.</div>
-                  </div>
                 </div>
-              </div>
-              <div class="col-md-12 col-sm-12">
-                <label for="description">Descripción</label>
-                <textarea
-                  class="form-control"
-                  id="description"
-                  value
-                  required
-                ></textarea>
-                <div class="invalid-feedback">
-                  Una descripción es requerida.
+                <div class="col-12 mb-3">
+                    <label for="description">Descripción</label>
+                    <textarea class="form-control" id="description" value required></textarea>
+                    <div class="invalid-feedback">
+                        Una descripción es requerida.
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <hr class="my-3" />
-          <!-- Upload image input-->
-          <div class="row">
-            <div class="col-lg-12 mx-auto">
-              <p class="text-left text-muted mb-0">
-                <small>Sube hasta 5 fotos de lo que quieres vender.</small>
-              </p>
-              <div class="image-area px-4">
-                <div class="input-group pl-5 py-5 bg-white">
-                  <p
-                    for="upload"
-                    class="btn btn-primary rounded-pill mx-auto shadow-sm font-weight-light"
-                  >
-                    <i class="fas fa-plus"></i> Sube fotos
-                  </p>
-                  <input id="upload" type="file" onchange="readURL(this);" />
+                <!-- Upload image input-->
+                <div class="col-lg-12 mx-auto my-2 border-top border-bottom pt-2 pb-4">
+                    <p class="text-left text-muted mb-0">
+                        <small>Sube hasta 5 fotos de lo que quieres vender.</small>
+                    </p>
+                    <div class="image-area px-4 bg-white">
+                        <div class="input-group pl-5 py-5">
+                            <p for="upload" class="btn btn-primary rounded-pill mx-auto shadow-sm font-weight-light">
+                                <i class="fas fa-plus"></i> Sube fotos
+                            </p>
+                            <input id="upload" type="file" onchange="readURL(this);" />
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <!-- Uploaded image area-->
-          <hr class="my-3" />
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label>Categoría</label>
-              <select name="plants-category" class="form-control">
-                <option value="flor">Plantas de flor</option>
-                <option value="interior">Plantas de interior</option>
-                <option value="hortícolas">Plantas hortícolas</option>
-                <option value="exterior">Plantas de exterior</option>
-                <option value="cactus-suculentas">Cactus y suculentas</option>
-                <option value="arboles-arbustos">Árboles y arbustos</option>
-              </select>
-              <!--
+                <!-- Uploaded image area-->
+                <div class="col-md-6 col-sm-12 my-2">
+                    <label>Categoría</label>
+                    <select name="plants-category" class="form-control">
+                      <option value="flor">Plantas de flor</option>
+                      <option value="interior">Plantas de interior</option>
+                      <option value="hortícolas">Plantas hortícolas</option>
+                      <option value="exterior">Plantas de exterior</option>
+                      <option value="cactus-suculentas">Cactus y suculentas</option>
+                      <option value="arboles-arbustos">Árboles y arbustos</option>
+                    </select>
+                    <!--
                 <ng-template #selectInsect>
                     <select name="insects-category" class="form-control">
                       <option value="aracnidos">Arácnidos</option>
@@ -111,60 +71,41 @@
                     </select>
                 </ng-template>
               -->
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="price">Precio</label>
-              <div class="row">
-                <div class="col-8">
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="price"
-                    placeholder
-                    value
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Tienes que poner un precio.
-                  </div>
                 </div>
-                <div class="col-1">
-                  <p class="pt-2 text-muted">
+                <div class="col-5 my-2 border-dm-top mr-0">
+                    <label for="price">Precio</label>
+                    <input type="number" class="form-control" id="price" placeholder value required />
+                    <div class="invalid-feedback">
+                        Tienes que poner un precio.
+                    </div>
+                </div>
+                <div class="col-1 pt-5 text-muted ml-0">
                     <i class="fas fa-euro-sign"></i>
-                  </p>
                 </div>
-              </div>
+                <div class="col-md-6 col-sm-12 my-2">
+                    <label>Subcategoría</label>
+                    <select name="insect-subcategory" class="form-control">
+                    <option value="corteza">insectos corteza</option>
+                    <option value="hoja">insectos hoja</option>
+                    <option value="palo">insectos palo</option>
+                </select>
+                </div>
+                <div class="col-md-6 col-sm-12 my-2">
+                    <label>Tamaño</label>
+                    <select name="plants-size" class="form-control">
+                    <option value="semilla">semilla</option>
+                    <option value="bulbo">bulbo</option>
+                    <option value="esqueje">esqueje</option>
+                    <option value="planta">planta</option>
+                  </select>
+                </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label>Subcategoría</label>
-              <select name="insect-subcategory" class="form-control">
-                <option value="corteza">insectos corteza</option>
-                <option value="hoja">insectos hoja</option>
-                <option value="palo">insectos palo</option>
-              </select>
+            <div class="col-12 text-center">
+                <button type="button" class="btn btn-primary font-weight-bold mt-2 mb-4">
+                  <div *ngIf="isNew">Subir producto</div>
+                  <div *ngIf="!isNew">Guardar cambios</div>
+                </button>
             </div>
-            <div class="col-md-5 mb-3">
-              <label>Tamaño</label>
-              <select name="plants-size" class="form-control">
-                <option value="semilla">semilla</option>
-                <option value="bulbo">bulbo</option>
-                <option value="esqueje">esqueje</option>
-                <option value="planta">planta</option>
-              </select>
-            </div>
-          </div>
         </div>
-        <button
-          type="button"
-          class="btn btn-primary position-relative mt-1 mb-4"
-        >
-          <div *ngIf="isNew; then thenBlock; else elseBlock"></div>
-          <ng-template #thenBlock>Subir producto</ng-template>
-          <ng-template #elseBlock>Guardar cambios</ng-template>
-        </button>
-      </form>
     </div>
-  </div>
-</div>
+</form>

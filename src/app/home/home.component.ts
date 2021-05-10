@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   titulo="GardenForYou";
+  logged = true;
   products = [1, 2, 3, 4, 5, 6, 7, 8];
   constructor() { }
 
