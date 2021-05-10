@@ -1,4 +1,4 @@
-<div class="nav-pills d-flex flex-column sm-row p-3 bg-gray-200" style="width: 280px;">
+<div class="nav-pills d-flex flex-column sm-row p-3 bg-gray-200">
     <div class="nav-item">
         <a class="nav-link" [routerLink]="['/edit/profile']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               Datos de perfil
@@ -8,5 +8,10 @@
         <a class="nav-link" [routerLink]="['/edit/account']" routerLinkActive="active">
           Cuenta
         </a>
+    </div>
+    <div class="nav-item">
+        <a class="nav-link font-weight-bold" id="publicProfileLink" [routerLink]="['/user/:username']">
+        Perfil público
+      </a>
     </div>
 </div>

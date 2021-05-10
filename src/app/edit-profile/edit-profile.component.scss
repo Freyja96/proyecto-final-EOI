@@ -1,59 +1,18 @@
 @import '../../styles';
-.photos {
-    padding: 20px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    background-color: $white;
-    box-shadow: 0px 2px 15px $gray-200;
-    * {
-        background-color: $white;
-    }
-}
-
-label.btn.btn-primary {
-    color: $dark-green;
-    &:hover {
-        background-color: $gray-100;
-    }
-}
-
-.public {
-    padding: 20px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    background-color: $white;
-    box-shadow: 0px 2px 15px $gray-200;
-    * {
-        background-color: $white;
-    }
-}
-
 .text-muted {
-    font-size: 16px;
+    font-size: 17px;
 }
 
+//-MAP-------------------------------------------------
 .map-container {
     overflow: hidden;
-    position: relative;
-    margin-bottom: 10px;
-    margin-top: 2px;
     iframe {
-        left: 0;
-        top: 0;
         height: 100%;
         width: 100%;
     }
 }
 
-button.btn.btn-primary {
-    position: relative;
-    margin-left: 40%;
-    color: white;
-    font-weight: bold;
-    border-radius: 25px;
-}
-
-//---------------------------------------
+//-IMAGE-AREA--------------------------------------
 #upload {
     opacity: 0;
 }

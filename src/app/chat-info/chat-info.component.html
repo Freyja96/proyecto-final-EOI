@@ -1,5 +1,6 @@
 <div class="row" id="background">
     <div class="container m-2 p-2" id="product-box">
+
         <a class="text-decoration-none" href="product/:id">
             <div class="row">
                 <div class="col-12">
@@ -16,14 +17,11 @@
             </div>
         </div>
 
-
-        <a class="text-decoration-none" href="product/:id">
+        <a class="text-decoration-none mb-0" href="product/:id">
             <div class="row">
-                <div class="col-12">
-                    <p class="ml-2">
-                        <strong class="">{{product.title}}</strong>
-                    </p>
-                    <p class="ml-2">{{product.price}}€</p>
+                <div class="col-12 ml-2">
+                    <p class="font-weight-bold">{{product.title}}</p>
+                    <p>{{product.price}}€</p>
                 </div>
             </div>
         </a>
