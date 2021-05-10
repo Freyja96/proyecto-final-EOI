@@ -7,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   titulo="GardenForYou";
+  logged:boolean = true;
+
   constructor() { }
 
+  userProfile = {
+    image: {
+      url:
+        'https://thispersondoesnotexist.com/image',
+    }
+  };
   ngOnInit() {
   }
 

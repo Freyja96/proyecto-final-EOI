@@ -1,20 +1,37 @@
 @import "../../styles";
-.footer {
+//-footer-mobile----------
+.row.mobile {
+    background-color: $green;
+}
+
+.access {
+    color: $white
+}
+
+.icon {
+    i {
+        font-size: 45px;
+        color: $white;
+    }
+}
+
+i.fas.fa-plus-circle {
+    font-size: 60px;
+}
+
+//-footer-general----------------------
+.row.text-center {
     background-color: $gray-100;
 }
 
 a {
     color: $dark-green;
-    background-color: transparent;
-    .disabled {
-        color: black;
-    }
 }
 
-span {
+.title {
     font-size: 32px;
 }
 
-span.copyright {
+.copyright {
     font-size: 14px;
 }

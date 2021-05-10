@@ -6,9 +6,11 @@
                 <p class="card-text">
                     Vende o compra plantas e insectos de otros usuarios.
                 </p>
-                <button type="button" [routerLink]="['/signup']" class="btn btn-primary font-weight-bold">
-                      <p class="mb-0" *ngIf="!logged">Empieza a vender. ¡Es gratis!</p>
-                      <p class="mb-0" *ngIf="logged">Sube un producto</p>
+                <button type="button" *ngIf="!logged" [routerLink]="['/signup']" class="btn btn-primary font-weight-bold">
+                  <p class="mb-0">Empieza a vender. ¡Es gratis!</p>
+                </button>
+                <button type="button" *ngIf="logged" [routerLink]="['/update/product']" class="btn btn-primary font-weight-bold">
+                      <p class="mb-0">Sube un producto</p>
                 </button>
                 <a href="#" class="card-link float-right font-weight-bold">¿Cómo funciona?</a>
             </div>
