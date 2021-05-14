@@ -1,10 +1,6 @@
 @import "../../styles";
 //-footer-mobile----------
-.row.mobile {
-    background-color: $green;
-}
-
-.access {
+#access {
     color: $white
 }
 
@@ -28,7 +24,7 @@ a {
     color: $dark-green;
 }
 
-.title {
+#title {
     font-size: 32px;
 }
 
