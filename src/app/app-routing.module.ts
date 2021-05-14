@@ -2,7 +2,7 @@ import { ChatComponent } from './chat/chat.component';
 import { ValidateEmailComponent } from './validate-email/validate-email.component';
 import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
-import { SingUpComponent } from './sing-up/sing-up.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { NormalLayoutComponent } from './normal-layout/normal-layout.component';
@@ -36,8 +36,8 @@ const routes: Routes = [
       { path: 'validate', component: ValidateEmailComponent },
     ],
   },
-  { path: 'signin', component: SignInComponent },
-  { path: 'signup', component: SingUpComponent },
+  { path: 'login', component: SignInComponent },
+  { path: 'signup', component: SignUpComponent },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' },
 ];

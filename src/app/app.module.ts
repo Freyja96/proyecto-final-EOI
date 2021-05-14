@@ -16,7 +16,7 @@ import { NormalLayoutComponent } from './normal-layout/normal-layout.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { SingUpComponent } from './sing-up/sing-up.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { ValidateEmailComponent } from './validate-email/validate-email.component';
@@ -25,7 +25,7 @@ import { ChatListComponent } from './chat-list/chat-list.component';
 import { ChatInfoComponent } from './chat-info/chat-info.component';
 import { ChatComponent } from './chat/chat.component';
 @NgModule({
-  declarations: [				
+  declarations: [
     AppComponent,
     HeaderComponent,
     ProductItemComponent,
@@ -40,7 +40,7 @@ import { ChatComponent } from './chat/chat.component';
     UpdateProductComponent,
     //FormsModule,
     SignInComponent,
-    SingUpComponent,
+    SignUpComponent,
     ProductListComponent,
     ProductComponent,
       ValidateEmailComponent,
