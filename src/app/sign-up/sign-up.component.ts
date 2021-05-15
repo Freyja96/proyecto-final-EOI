@@ -1,3 +1,5 @@
+import { User } from './../models/user.model';
+import { UserService } from './../services/user.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,10 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class SignUpComponent implements OnInit {
   titulo = 'GardenForYou';
 
-  constructor(private router: Router) { }
-
-  onSubmit(){
-  }
+  constructor(private router: Router, private userService: UserService, private user: User) { }
 
   ngOnInit() {
   }

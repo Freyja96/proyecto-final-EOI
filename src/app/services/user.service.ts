@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
+import { User } from './../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +34,14 @@ export class UserService {
 
   deleteUser(): Observable<any> {
     return this.httpClient.delete(`${environment.apiUrl}/users`).pipe(
+      catchError((error) => {
+        return error;
+      })
+    );
+  }
+
+  postUser(user: User): Observable<any> {
+    return this.httpClient.post(`${environment.apiUrl}/user`, user).pipe(
       catchError((error) => {
         return error;
       })
