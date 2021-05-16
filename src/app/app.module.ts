@@ -15,7 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { NormalLayoutComponent } from './normal-layout/normal-layout.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
-import { FormBuilder, FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -51,14 +51,23 @@ import { InterceptorService } from './services/interceptors/interceptor.service'
     ChatInfoComponent,
     ChatComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
       multi: true,
     },
-    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    {
+      provide: JWT_OPTIONS,
+      useValue: JWT_OPTIONS
+    },
     JwtHelperService,
     FormBuilder,
   ],
