@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -24,6 +25,7 @@ import { ChatItemComponent } from './chat-item/chat-item.component';
 import { ChatListComponent } from './chat-list/chat-list.component';
 import { ChatInfoComponent } from './chat-info/chat-info.component';
 import { ChatComponent } from './chat/chat.component';
+import { InterceptorService } from './services/interceptors/interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,14 +45,23 @@ import { ChatComponent } from './chat/chat.component';
     SignUpComponent,
     ProductListComponent,
     ProductComponent,
-      ValidateEmailComponent,
-      ChatItemComponent,
-      ChatListComponent,
-      ChatInfoComponent,
-      ChatComponent
-   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [FormBuilder],
+    ValidateEmailComponent,
+    ChatItemComponent,
+    ChatListComponent,
+    ChatInfoComponent,
+    ChatComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true,
+    },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+    FormBuilder,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
