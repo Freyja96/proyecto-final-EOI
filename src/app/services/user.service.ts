@@ -39,12 +39,4 @@ export class UserService {
       })
     );
   }
-
-  addUser(user: User): Observable<any> {
-    return this.httpClient.post(`${environment.apiUrl}/user`, user).pipe(
-      catchError((error) => {
-        return error;
-      })
-    );
-  }
 }
