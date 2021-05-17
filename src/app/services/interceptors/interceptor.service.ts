@@ -27,7 +27,6 @@ export class InterceptorService {
         },
       });
     }
-    console.log(request.url);
     return next.handle(request);
   }
 }

@@ -1,53 +1,76 @@
 <div class="row">
-    <div class="col-md-2 col-sm-12">
-        <app-side-bar-profile></app-side-bar-profile>
-    </div>
-    <div class="col-md-8 order-md-1">
-        <form class="needs-validation" novalidate>
-            <div class="row py-2 my-3 bg-white shadow-gray">
-                <div class="col-md-6 col-sm-12 mb-3">
-                    <label for="birthday">Fecha de nacimiento:</label>
-                </div>
-                <div class="col-md-6 col-sm-12 mt-1 mb-3">
-                    <input type="date" id="birthday" class="form-control" required/>
-                </div>
-                <div class="col-12 py-2 text-center">
-                    <button class="btn btn-primary font-weight-bold" type="submit">Guardar cambios</button>
-                </div>
-            </div>
+  <div class="col-md-2 col-sm-12">
+    <app-side-bar-profile></app-side-bar-profile>
+  </div>
+  <div class="col-md-8 order-md-1">
+    <form class="needs-validation" novalidate>
+      <div class="row py-2 my-3 bg-white shadow-gray">
+        <div class="col-md-6 col-sm-12 mb-3">
+          <label for="birthday">Fecha de nacimiento:</label>
+        </div>
+        <div class="col-md-6 col-sm-12 mt-1 mb-3">
+          <input type="date" id="birthday" class="form-control" required />
+        </div>
+        <div class="col-12 py-2 text-center">
+          <button class="btn btn-primary font-weight-bold" type="submit">
+            Guardar cambios
+          </button>
+        </div>
+      </div>
 
-            <div class="row py-2 my-3 shadow-gray">
-                <div class="col-12 mb-3">
-                    <p class="text-muted">Información de la cuenta</p>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="email">Email Actual</label>
-                    <p class="form-control p-2 mb-0" id="email">{{userEmail}}</p>
-                    <!--Habría que relacionarlo con la API para saber el email actual del usuario y poder poner {{user.email}}-->
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="new-email">Nuevo email</label><br/>
-                    <input class="form-control mb-0" type="email" id="new-email" placeholder="Introduce tu nuevo email" />
-                </div>
-                <div class="col-12 mb-3 text-right">
-                    <button type="button" class="btn btn-primary mb-3">Cambiar email</button>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="new-password">Nueva Contraseña</label><br/>
-                    <input class="form-control mb-0" type="password" id="new-password" placeholder="Introduce tu nuevo password" />
-                    <!--Habría que relacionarlo con la API para saber la contraseña actual del usuario y poder poner {{user.password}} en type="password"-->
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="new-password">Confirma la nueva Contraseña</label><br/>
-                    <input class="form-control mb-0" type="password" id="new-password" placeholder="Introduce tu nuevo password" />
-                </div>
-                <div class="col-12 mb-3 text-right">
-                    <button type="button" class="btn btn-primary">Cambiar Contraseña</button>
-                </div>
-                <div class="col-12">
-                    <p class="text-muted">Si ya no quieres formar parte de {{titulo}} puedes darte de baja pulsando en el siguiente enlace para <a href="#">eliminar la cuenta</a>.</p>
-                </div>
-            </div>
-        </form>
-    </div>
+      <div class="row py-2 my-3 shadow-gray">
+        <div class="col-12 mb-3">
+          <p class="text-muted">Información de la cuenta</p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="email">Email Actual</label>
+          <p class="form-control p-2 mb-0" id="email">{{ userEmail }}</p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="new-email">Nuevo email</label><br />
+          <input
+            class="form-control mb-0"
+            type="email"
+            id="new-email"
+            placeholder="Introduce tu nuevo email"
+          />
+        </div>
+        <div class="col-12 mb-3 text-right">
+          <button type="button" class="btn btn-primary mb-3">
+            Cambiar email
+          </button>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="new-password">Nueva Contraseña</label><br />
+          <input
+            class="form-control mb-0"
+            type="password"
+            id="new-password"
+            placeholder="Introduce tu nuevo password"
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="new-password">Confirma la nueva Contraseña</label><br />
+          <input
+            class="form-control mb-0"
+            type="password"
+            id="new-password"
+            placeholder="Introduce tu nuevo password"
+          />
+        </div>
+        <div class="col-12 mb-3 text-right">
+          <button type="button" class="btn btn-primary">
+            Cambiar Contraseña
+          </button>
+        </div>
+        <div class="col-12">
+          <p class="text-muted">
+            Si ya no quieres formar parte de {{ titulo }} puedes darte de baja
+            pulsando en el siguiente enlace para
+            <a href="#">eliminar la cuenta</a>.
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
