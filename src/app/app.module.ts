@@ -40,7 +40,6 @@ import { InterceptorService } from './services/interceptors/interceptor.service'
     HomeComponent,
     NormalLayoutComponent,
     UpdateProductComponent,
-    //FormsModule,
     SignInComponent,
     SignUpComponent,
     ProductListComponent,

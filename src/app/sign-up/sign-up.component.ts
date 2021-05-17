@@ -1,7 +1,4 @@
-import { catchError } from 'rxjs/operators';
-import { environment } from './../../environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { AuthService } from './../services/auth/auth.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { User } from './../models/user.model';
 import { UserService } from './../services/user.service';
@@ -16,12 +13,14 @@ import { Component, OnInit } from '@angular/core';
 export class SignUpComponent implements OnInit {
   titulo = 'GardenForYou';
   mForm: FormGroup;
+  logged = false;
+  error = null;
 
   constructor(
     private router: Router,
     private userService: UserService,
-    private user: User,
-    private formBuilder: FormBuilder)
+    private formBuilder: FormBuilder,
+    private authService: AuthService)
     {
     this.mForm = this.formBuilder.group({
       firstName: ["", Validators.required],
@@ -55,12 +54,16 @@ export class SignUpComponent implements OnInit {
         this.router.navigate(["/login"])
       },
         error => {
+          this.error = error;
           console.log("Error:", error);
         }
       );
    }
 
   ngOnInit() {
+    if(this.logged = this.authService.isAuthenticated()){
+      this.router.navigate(['/'])
+    }
   }
 
 }

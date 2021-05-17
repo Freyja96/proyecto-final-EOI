@@ -1,7 +1,7 @@
 import { AppComponent } from './../app.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../services/auth/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   titulo = 'GardenForYou';
-  logged = true;
+  logged = false;
   searchProduct= "";
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   userProfile = {
     image: {
@@ -22,28 +22,9 @@ export class HeaderComponent implements OnInit {
   };
 
   ngOnInit() {
-   //this.loadProducts()
-  }
-/*
-  updateSearch(event: any){
-    this.searchProduct=event.target.value
-    this.loadProducts()
+    this.logged = this.authService.isAuthenticated();
   }
 
-  loadProducts(){
-    const params = this.searchProduct
-
-    this.productService.getProducts(params).subscribe(
-      (data: Product[]) => {
-        this.products = data
-        console.log(data)
-      },
-      error => {
-        console.log("Error:", error);
-      }
-    );
-  }
-*/
 navigateToSearch(){
   this.router.navigate(['/search'])
 }

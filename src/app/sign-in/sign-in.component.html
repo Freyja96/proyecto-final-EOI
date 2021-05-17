@@ -1,7 +1,7 @@
 <div class="bg-light">
     <div class="container-fluid">
         <div class="col-12 d-flex justify-content-center">
-            <form>
+            <form [formGroup]="loginForm" (ngSubmit)="login()" class="form-group">
                 <div class="col-12">
                     <div class="row justify-content-center mt-5">
                         <a class="h3 font-weight-bold mt-5" [routerLink]="['']">{{titulo}}</a>
@@ -11,11 +11,11 @@
                     </div>
                     <div class="row">
                         <label for="inputEmail" class="sr-only">Email</label>
-                        <input type="email" class="form-control py-4 mt-2" id="inputEmail" placeholder="Email" aria-describedby="inputGroup-sizing-lg" required autofocus>
+                        <input type="email" class="form-control py-4 mt-2" formControlName="email" id="inputEmail" placeholder="Email" aria-describedby="inputGroup-sizing-lg" required autofocus>
                     </div>
                     <div class="row">
                         <label for="inputPassword" class="sr-only">Contraseña</label>
-                        <input type="password" class="form-control py-4" id="inputPassword" placeholder="Contraseña" aria-describedby="inputGroup-sizing-lg" required>
+                        <input type="password" class="form-control py-4" formControlName="password" id="inputPassword" placeholder="Contraseña" aria-describedby="inputGroup-sizing-lg" required>
                     </div>
                     <div class="row justify-content-center">
                         <div class="checkbox my-2 p-1">

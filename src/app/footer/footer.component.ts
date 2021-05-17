@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   titulo="GardenForYou";
-  logged:boolean = true;
+  logged = false;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   userProfile = {
     image: {
@@ -18,6 +19,7 @@ export class FooterComponent implements OnInit {
     }
   };
   ngOnInit() {
+    this.logged = this.authService.isAuthenticated()
   }
 
 }
