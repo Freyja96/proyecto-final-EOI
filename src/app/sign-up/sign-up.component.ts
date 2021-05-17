@@ -32,6 +32,10 @@ export class SignUpComponent implements OnInit {
     })
    }
 
+   isOlderThan18(day:number, month:number, year:number) {
+    return new Date(year+18, month-1, day) <= new Date();
+   }
+
    get f(){
     return this.mForm.controls
   }
@@ -48,8 +52,17 @@ export class SignUpComponent implements OnInit {
         this.error="La contraseña tiene que ser la misma";
         return
       }
-      const user: User = new User()
+      if(password.length<8 || !(/[a-z]/.test(password)) || !(/[A-Z]/.test(password)) || !(/\d/.test(password))){
+        this.error="La contraseña tiene que tener, como mínimo, más de 8 caracteres, una letra mayúscula, una minúscula y un número";
+        return
+      }
+      if(dateOfBirth==this.isOlderThan18){
+        this.error="Lo siento, tienes que ser mayor de edad.";
+        return
+      }
 
+
+      const user: User = new User()
       user.firstName = firstName
       user.email = email
       user.password = password
@@ -65,6 +78,7 @@ export class SignUpComponent implements OnInit {
         }
       );
    }
+
 
   ngOnInit() {
     if(this.logged = this.authService.isAuthenticated()){
