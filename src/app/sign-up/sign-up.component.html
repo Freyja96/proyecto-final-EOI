@@ -1,7 +1,7 @@
 <div class="bg-light">
     <div class="container-fluid">
         <div class="col-12 d-flex justify-content-center">
-            <form [formGroup]="mForm" class="form-group">
+            <form [formGroup]="mForm" (ngSubmit)="signUp()" class="form-group">
                 <div class="col-12">
                     <div class="row justify-content-center mt-1">
                         <a class="h3 font-weight-bold mt-4" [routerLink]="['']">{{titulo}}</a>

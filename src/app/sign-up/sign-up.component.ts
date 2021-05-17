@@ -21,8 +21,7 @@ export class SignUpComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private user: User,
-    private formBuilder: FormBuilder,
-    private httpClient: HttpClient)
+    private formBuilder: FormBuilder)
     {
     this.mForm = this.formBuilder.group({
       firstName: ["", Validators.required],
@@ -33,13 +32,34 @@ export class SignUpComponent implements OnInit {
     })
    }
 
-   addUser(user: User): Observable<any> {
-    return this.httpClient.post(`${environment.apiUrl}/user`, user).pipe(
-      catchError((error) => {
-        return error;
-      })
-    );
+   get f(){
+    return this.mForm.controls
   }
+
+   signUp(){
+      let firstName = this.f.firstName.value
+      let email = this.f.email.value
+      let password = this.f.password.value
+      let lastName = this.f.lastName.value
+      let dateOfBirth = this.f.dateOfBirth.value
+
+      const user: User = new User()
+
+      user.firstName = firstName
+      user.email = email
+      user.password = password
+      user.lastName = lastName
+      user.dateOfBirth = dateOfBirth
+
+      this.userService.addUser(user).subscribe((data: any) => {
+        this.router.navigate(["/login"])
+      },
+        error => {
+          console.log("Error:", error);
+        }
+      );
+   }
+
   ngOnInit() {
   }
 

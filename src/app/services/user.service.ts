@@ -11,6 +11,14 @@ import { User } from './../models/user.model';
 export class UserService {
   constructor(private httpClient: HttpClient) {}
 
+  addUser(user: User): Observable<any> {
+    return this.httpClient.post(`${environment.apiUrl}/user`, user).pipe(
+      catchError((error) => {
+        return error;
+      })
+    );
+  }
+
   getUser(): Observable<any> {
     return this.httpClient.get(`${environment.apiUrl}/users`).pipe(
       catchError((error) => {
