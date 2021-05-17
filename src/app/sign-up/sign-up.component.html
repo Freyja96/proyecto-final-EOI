@@ -40,10 +40,10 @@
                     <div class="row my-2">
                         <div class="col-12">
                             <label for="inputAgainPassword" class="mb-0">Repite la contraseña</label>
-                            <input type="password" class="form-control mt-0" formControlName="password" id="inputAgainPassword" placeholder="Repite la contraseña" required>
+                            <input type="password" class="form-control mt-0" formControlName="repitPassword" id="inputAgainPassword" placeholder="Repite la contraseña" required>
                         </div>
                     </div>
-                    <div *ngIf="error != null" class="alert alert-danger" role="alert">
+                    <div *ngIf="error != ''" class="alert alert-danger" role="alert">
                         {{error}}
                     </div>
                     <div class="row justify-content-center my-2">

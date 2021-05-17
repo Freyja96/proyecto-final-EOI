@@ -14,7 +14,7 @@ export class SignUpComponent implements OnInit {
   titulo = 'GardenForYou';
   mForm: FormGroup;
   logged = false;
-  error = null;
+  error = "";
 
   constructor(
     private router: Router,
@@ -26,6 +26,7 @@ export class SignUpComponent implements OnInit {
       firstName: ["", Validators.required],
       email: ["", Validators.required],
       password: ["", Validators.required],
+      repitPassword: ["", Validators.required],
       lastName: ["", Validators.required],
       dateOfBirth: ["", Validators.required]
     })
@@ -39,9 +40,14 @@ export class SignUpComponent implements OnInit {
       let firstName = this.f.firstName.value
       let email = this.f.email.value
       let password = this.f.password.value
+      let repitPassword = this.f.repitPassword.value
       let lastName = this.f.lastName.value
       let dateOfBirth = this.f.dateOfBirth.value
 
+      if(password!=repitPassword){
+        this.error="La contraseña tiene que ser la misma";
+        return
+      }
       const user: User = new User()
 
       user.firstName = firstName
@@ -53,7 +59,7 @@ export class SignUpComponent implements OnInit {
       this.userService.addUser(user).subscribe((data: any) => {
         this.router.navigate(["/login"])
       },
-        error => {
+        (error: any) => {
           this.error = error;
           console.log("Error:", error);
         }

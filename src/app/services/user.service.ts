@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 import { environment } from './../../environments/environment';
 import { User } from './../models/user.model';
 
@@ -13,8 +13,11 @@ export class UserService {
 
   addUser(user: User): Observable<any> {
     return this.httpClient.post(`${environment.apiUrl}/users`, user).pipe(
-      catchError((error) => {
-        return error;
+      map(data=>{
+        return data
+      }),
+      catchError((error: any) => {
+        return throwError(error.error);
       })
     );
   }
