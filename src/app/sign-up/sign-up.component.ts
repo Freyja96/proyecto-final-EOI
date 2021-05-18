@@ -22,22 +22,22 @@ export class SignUpComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService)
     {
-    this.mForm = this.formBuilder.group({
-      firstName: ["", Validators.required],
-      email: ["", Validators.required],
-      password: ["", Validators.required],
-      repitPassword: ["", Validators.required],
-      lastName: ["", Validators.required],
-      dateOfBirth: ["", Validators.required]
-    })
-   };
+      this.mForm = this.formBuilder.group({
+        firstName: ["", Validators.required],
+        email: ["", Validators.required],
+        password: ["", Validators.required],
+        repitPassword: ["", Validators.required],
+        lastName: ["", Validators.required],
+        dateOfBirth: ["", Validators.required]
+      })
+    };
 
-   isOlderThan18(date:string) {
+  isOlderThan18(date:string) {
     let currentDate = new Date();
     return new Date(currentDate.getFullYear()-18, currentDate.getMonth()+1, currentDate.getDate()) <= new Date(date);
-   };
+  };
 
-   get f(){
+  get f(){
     return this.mForm.controls
   };
 
@@ -62,7 +62,6 @@ export class SignUpComponent implements OnInit {
         return
       };
 
-
       const user: User = new User();
       user.firstName = firstName;
       user.email = email;
@@ -74,8 +73,13 @@ export class SignUpComponent implements OnInit {
         this.router.navigate(["/login"])
       },
         (error: any) => {
-          this.error = error;
-          console.log("Error:", error);
+          if (error.status == 500) {
+            this.error = 'No se ha podido conectar con el servidor';
+          } else  if (error.status == 409) {
+            this.error = 'Ese correo ya existe';
+          } else {
+            this.error = 'Falta información';
+          }
         }
       );
    };

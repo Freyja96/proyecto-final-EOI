@@ -1,5 +1,8 @@
+import { AuthService } from './../services/auth/auth.service';
+import { Router } from '@angular/router';
+import { UserService } from './../services/user.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-validate-email',
   templateUrl: './validate-email.component.html',
@@ -7,9 +10,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ValidateEmailComponent implements OnInit {
   titulo = 'GardenForYou';
-  constructor() { }
+  error = '';
+  okey = '';
+  validateForm: FormGroup;
+  code = "";
+
+  constructor(private userService: UserService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService) {
+    this.validateForm = this.formBuilder.group({
+      code: ["", Validators.required]
+    })
+  };
+
+  get f(){
+    return this.validateForm.controls
+  };
+
+  validationCode(){
+    this.userService.confirmationEmail().subscribe(
+      (data: any) => {
+        localStorage.setItem('code', data.code);
+      },
+      (error) => {
+        if (error.status == 200) {
+          this.okey = 'Tu cuenta ha sido verificada correctamente'
+        } else if (error.status == 405) {
+          this.error = 'La cuenta ya ha sido verificada'
+        } else {
+          this.error = 'Solicitud incorrecta'
+        }
+      }
+    )
+  };
 
   ngOnInit() {
-  }
+  };
 
 }
