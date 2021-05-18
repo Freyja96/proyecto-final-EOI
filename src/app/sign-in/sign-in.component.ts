@@ -49,7 +49,17 @@ export class SignInComponent implements OnInit {
     );
  }
 
+redirectLogin(){
+  this.userService.getUser().subscribe((data: any) => {
 
+    this.router.navigate(["/"])
+  },
+    error => {
+      console.log("Error:", error);
+    }
+  );
+
+}
   ngOnInit() {
     if(this.logged = this.authService.isAuthenticated()){
       this.router.navigate(['/'])

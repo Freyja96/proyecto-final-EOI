@@ -32,8 +32,9 @@ export class SignUpComponent implements OnInit {
     })
    }
 
-   isOlderThan18(day:number, month:number, year:number) {
-    return new Date(year+18, month-1, day) <= new Date();
+   isOlderThan18(date:string) {
+    let currentDate = new Date();
+    return new Date(currentDate.getFullYear()-18, currentDate.getMonth()+1, currentDate.getDate()) <= new Date(date);
    }
 
    get f(){
@@ -56,7 +57,7 @@ export class SignUpComponent implements OnInit {
         this.error="La contraseña tiene que tener, como mínimo, más de 8 caracteres, una letra mayúscula, una minúscula y un número";
         return
       }
-      if(dateOfBirth==this.isOlderThan18){
+      if(this.isOlderThan18(dateOfBirth)){
         this.error="Lo siento, tienes que ser mayor de edad.";
         return
       }
