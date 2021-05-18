@@ -34,6 +34,7 @@ export class EditProfileComponent implements OnInit {
     this.userService.getUser().subscribe(
       (data: any) => {
         localStorage.setItem('userProfile', JSON.stringify(data));
+
         this.infoForm.controls['firstName'].setValue(data.firstName);
         this.infoForm.controls['lastName'].setValue(data.lastName);
         this.infoForm.controls['location'].setValue(data.location);
@@ -52,6 +53,8 @@ export class EditProfileComponent implements OnInit {
       lastName: this.infoForm.controls['lastName'].value,
       location: this.infoForm.controls['location'].value,
     };
+    this.messsageInfo = '';
+    this.messageError = '';
 
     this.userService.updateUser(data, 'updateprofile').subscribe(
       (returnData: any) => {
