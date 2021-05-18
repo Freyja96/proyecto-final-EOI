@@ -13,6 +13,7 @@ export class SignInComponent implements OnInit {
   titulo = 'GardenForYou';
   loginForm: FormGroup;
   logged = false;
+  error = "";
 
   constructor(
     private router: Router,
@@ -24,11 +25,11 @@ export class SignInComponent implements OnInit {
       email: ["", Validators.required],
       password: ["", Validators.required]
     })
-   }
+   };
 
   get f(){
     return this.loginForm.controls
-  }
+  };
 
   login(){
     let email = this.f.email.value;
@@ -45,25 +46,28 @@ export class SignInComponent implements OnInit {
     },
       error => {
         console.log("Error:", error);
+        this.error="El email o contraseña no son correctos.";
       }
     );
- }
+ };
 
-redirectLogin(){
-  this.userService.getUser().subscribe((data: any) => {
+  redirectLogin(){
+    this.userService.getUser().subscribe((data: any) => {
+      if(data.emailVerified){
+        this.router.navigate(["/"])
+      } else {
+        this.router.navigate(["/validate"])
+      }
+    },
+      error => {
+        console.log("Error:", error);
+      }
+    );
+  };
 
-    this.router.navigate(["/"])
-  },
-    error => {
-      console.log("Error:", error);
-    }
-  );
-
-}
   ngOnInit() {
     if(this.logged = this.authService.isAuthenticated()){
       this.router.navigate(['/'])
     }
   }
-
 }

@@ -24,6 +24,9 @@
                             </label>
                         </div>
                     </div>
+                    <div *ngIf="error != ''" class="alert alert-danger" role="alert">
+                        {{error}}
+                    </div>
                     <div class="row justify-content-center my-2">
                         <button type="submit" class="btn btn-primary btn-lg btn-block p-2">Iniciar sesión</button>
                     </div>
