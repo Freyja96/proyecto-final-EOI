@@ -17,17 +17,10 @@
                         <label for="inputPassword" class="sr-only">Contraseña</label>
                         <input type="password" class="form-control py-4" formControlName="password" id="inputPassword" placeholder="Contraseña" aria-describedby="inputGroup-sizing-lg" required>
                     </div>
-                    <div class="row justify-content-center">
-                        <div class="checkbox my-2 p-1">
-                            <label>
-                              <input type="checkbox" class="mr-2" value="remember-me"/>Recuérdame
-                            </label>
-                        </div>
-                    </div>
-                    <div *ngIf="error != ''" class="alert alert-danger" role="alert">
+                    <div *ngIf="error != ''" class="alert alert-danger mt-2" role="alert">
                         {{error}}
                     </div>
-                    <div class="row justify-content-center my-2">
+                    <div class="row justify-content-center mt-4 mb-2">
                         <button type="submit" class="btn btn-primary btn-lg btn-block p-2">Iniciar sesión</button>
                     </div>
                     <div class="row text-center justify-content-center">

@@ -17,7 +17,7 @@ export class UserService {
         return data;
       }),
       catchError((error: any) => {
-        return throwError(error.error);
+        return throwError(error);
       })
     );
   }
@@ -25,7 +25,7 @@ export class UserService {
   userLogin(user: User): Observable<any> {
     return this.httpClient.post(`${environment.apiUrl}/login`, user).pipe(
       catchError((error) => {
-        return throwError(error.error);
+        return throwError(error);
       })
     );
   }
@@ -33,7 +33,7 @@ export class UserService {
   getUser(): Observable<any> {
     return this.httpClient.get(`${environment.apiUrl}/users`).pipe(
       catchError((error) => {
-        return throwError(error.error);
+        return throwError(error);
       })
     );
   }
@@ -43,7 +43,7 @@ export class UserService {
       .put(`${environment.apiUrl}/users?action=${action}`, data)
       .pipe(
         catchError((error) => {
-          return throwError(error.error);
+          return throwError(error);
         })
       );
   }
