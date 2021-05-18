@@ -1,49 +1,44 @@
-    @import "../../styles";
-    nav {
-        a.navbar-brand {
-            transition: all 0.6s ease;
-            color: $dark-green;
-            &:hover {
-                color: $green;
-            }
-        }
-        button {
-            border-top-left-radius: 25px;
-            border-bottom-left-radius: 25px;
-            border-color: $gray-200;
-            &:hover {
-                background-color: $green;
-            }
-        }
-        input {
-            border-radius: 25px;
-        }
+@import "../../styles";
+nav {
+  a.navbar-brand {
+    transition: all 0.6s ease;
+    color: $dark-green;
+    &:hover {
+      color: $green;
     }
-    
-    ul.navbar-nav.text-center {
-        li.nav-item.text-nowrap.py-3.bg-light {
-            a.nav-link.sign-in {
-                transition: all 0.6s ease;
-                color: $gray;
-                &:hover {
-                    color: $black;
-                }
-            }
-        }
-        li.nav-item.text-nowrap.py-auto {
-            transition: all 0.6s ease;
-            background-color: $green;
-            &:hover {
-                background-color: $darkergreen;
-            }
-        }
+  }
+  button {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-color: $gray-200;
+    &:hover {
+      background-color: $green;
     }
-    
-    .btn.btn-primary {
-        transition: all 0.6s ease;
+  }
+  input {
+    border-radius: 25px;
+  }
+}
+
+ul.navbar-nav.text-center {
+  li.nav-item.text-nowrap.py-3.bg-light {
+    a.nav-link.sign-in {
+      transition: all 0.6s ease;
+      color: $gray;
+      &:hover {
+        color: $black;
+      }
     }
-    
-    #msgIcon {
-        font-size: 40px;
-        color: white;
+  }
+  li.nav-item.text-nowrap.py-auto {
+    transition: all 0.6s ease;
+    background-color: $green;
+    &:hover {
+      background-color: $darkergreen;
     }
+  }
+}
+
+.btn.btn-primary {
+  transition: all 0.6s ease;
+}

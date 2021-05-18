@@ -1,38 +1,66 @@
 <nav class="navbar navbar-expand-lg p-0 bg-light">
-    <a class="navbar-brand mr-0 px-3 font-weight-bold" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-      {{ titulo }}
-    </a>
-    <div class="input-group mb-0 mx-lg-3">
-        <div class="input-group-prepend">
-            <button (click)="navigateToSearch()" class="btn btn-outline-secondary" type="button" id="button-addon1">
-                  <i class="fas fa-search"></i>
-                </button>
-        </div>
-        <input type="search" class="form-control" placeholder="¿Qué estás buscando?" aria-label="Search with button addon" aria-describedby="button-addon1" />
+  <a
+    class="navbar-brand mr-0 px-3 font-weight-bold"
+    [routerLink]="['/']"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    {{ titulo }}
+  </a>
+  <div class="input-group mb-0 mx-lg-3">
+    <div class="input-group-prepend">
+      <button
+        (click)="navigateToSearch()"
+        class="btn btn-outline-secondary"
+        type="button"
+        id="button-addon1"
+      >
+        <i class="fas fa-search"></i>
+      </button>
     </div>
-    <div class="navbar-collapse d-none d-sm-none" id="navbarSupportedContent">
-        <ul *ngIf="!logged" class="navbar-nav text-center">
-            <li class="nav-item text-nowrap py-3 bg-light">
-                <a class="nav-link sign-in" [routerLink]="['/login']">Inicia sesión <i class="fas fa-user"></i><span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item text-nowrap py-auto">
-                <a class="nav-link sign-up text-body" [routerLink]="['/signup']">
-                    <p>¿No tienes cuenta?</p>
-                    ¡Regístrate!<span class="sr-only">(current)</span>
-                </a>
-            </li>
-        </ul>
-        <ul *ngIf="logged" class="navbar-nav text-center">
-            <li class="nav-item btn btn-primary rounded-0 text-nowrap">
-                <a class="nav-link text-body p-1" [routerLink]="['/chat']">
-                    <i class="fas fa-envelope" id="msgIcon"></i>
-                </a>
-            </li>
-            <li class="nav-item btn btn-primary rounded-0 text-nowrap p-0">
-                <a class="nav-link text-body" [routerLink]="['/edit/profile']">
-                    <img class="rounded" src="{{userProfile.image.url}}" width="45" height="45" />
-                </a>
-            </li>
-        </ul>
-    </div>
+    <input
+      type="search"
+      class="form-control"
+      placeholder="¿Qué estás buscando?"
+      aria-label="Search with button addon"
+      aria-describedby="button-addon1"
+    />
+  </div>
+  <div class="navbar-collapse d-none d-sm-none" id="navbarSupportedContent">
+    <ul *ngIf="!logged" class="navbar-nav text-center">
+      <li class="nav-item text-nowrap py-3 bg-light">
+        <a class="nav-link sign-in" [routerLink]="['/login']"
+          >Inicia sesión <i class="fas fa-user"></i
+          ><span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item text-nowrap py-auto">
+        <a class="nav-link sign-up text-body" [routerLink]="['/signup']">
+          <p>¿No tienes cuenta?</p>
+          ¡Regístrate!<span class="sr-only">(current)</span>
+        </a>
+      </li>
+    </ul>
+    <ul *ngIf="logged" class="navbar-nav text-center">
+      <li class="nav-item btn btn-primary rounded-0 text-nowrap">
+        <a class="nav-link text-body p-1" [routerLink]="['/chat']">
+          <i class="fas fa-envelope text-white header-icon"></i>
+        </a>
+      </li>
+      <li class="nav-item btn btn-primary rounded-0 text-nowrap p-0">
+        <a class="nav-link text-body" [routerLink]="['/edit/profile']">
+          <img
+            *ngIf="image != null"
+            class="rounded"
+            src="{{ image }}"
+            width="45"
+            height="45"
+          />
+          <div *ngIf="image == null">
+            <i class="fas fa-user-circle text-white header-icon"></i>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>

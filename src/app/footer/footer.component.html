@@ -1,76 +1,89 @@
 <!--footer-mobile-->
 <div class="row fixed-bottom bg-success d-sm-block d-md-none">
-    <div class="col-4 text-center pt-2 py-1">
-        <a href="" class="icon pl-5">
-            <i class="fas fa-home"></i>
+  <div class="col-4 text-center pt-2 py-1">
+    <a href="" class="icon pl-5">
+      <i class="fas fa-home"></i>
+    </a>
+  </div>
+  <div class="col-3">
+    <a href="update/product" class="icon ml-3 mr-4">
+      <i class="fas fa-plus-circle"></i>
+    </a>
+  </div>
+
+  <div *ngIf="!logged" class="col-4 py-2 text-center">
+    <a href="login" class="font-weight-bold" id="access">Accede</a>
+  </div>
+
+  <div *ngIf="logged" class="col-4">
+    <div class="row justify-content-end">
+      <div class="col-6 pt-2 pb-1">
+        <a href="chat" class="icon pl-1">
+          <i class="fas fa-envelope"></i>
         </a>
-    </div>
-    <div class="col-3">
-        <a href="update/product" class="icon ml-3 mr-4">
-            <i class="fas fa-plus-circle"></i>
+      </div>
+      <div class="col-6 py-1">
+        <a href="edit/profile" class="pl-1">
+          <img
+            *ngIf="image != null"
+            class="rounded"
+            src="{{ userProfile.image.url }}"
+            width="50"
+            height="50"
+          />
+          <i
+            *ngIf="image == null"
+            class="fas fa-user-circle text-white header-icon"
+          ></i>
         </a>
+      </div>
     </div>
-
-    <div *ngIf="!logged" class="col-4 py-2 text-center">
-        <a href="login" class="font-weight-bold" id="access">Accede</a>
-    </div>
-
-    <div *ngIf="logged" class="col-4">
-        <div class="row justify-content-end">
-            <div class="col-6 pt-2 pb-1">
-                <a href="chat" class="icon pl-1">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-            <div class="col-6 py-1">
-                <a href="edit/profile" class="pl-1">
-                    <img class="rounded" src="{{userProfile.image.url}}" width="50" height="50" />
-                </a>
-            </div>
-        </div>
-    </div>
-
+  </div>
 </div>
 <!--footer-general-->
 <div class="row text-center pb-3">
-    <div class="col-sm-12 col-md-4 mb-3 d-flex">
-        <div class="mx-auto">
-            <p class="font-weight-bold p-2 flex-fill" id="title">
-                {{ titulo }}
-            </p>
-            <p class="font-weight-bold px-2 flex-fill copyright mb-0">Copyright © 2021 {{ titulo }}©</p>
-            <p class="font-weight-bold px-2 flex-fill copyright mb-0">de sus respectivos propietarios</p>
-        </div>
+  <div class="col-sm-12 col-md-4 mb-3 d-flex">
+    <div class="mx-auto">
+      <p class="font-weight-bold p-2 flex-fill" id="title">
+        {{ titulo }}
+      </p>
+      <p class="font-weight-bold px-2 flex-fill copyright mb-0">
+        Copyright © 2021 {{ titulo }}©
+      </p>
+      <p class="font-weight-bold px-2 flex-fill copyright mb-0">
+        de sus respectivos propietarios
+      </p>
     </div>
-    <div class="col-md-8 col-sm-12">
-        <div class="row">
-            <div class="col-sm-5 col-md-4 mt-2">
-                <p class="font-weight-bold">{{ titulo }}</p>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#">Sobre nosotros</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-5 col-md-4 mt-2">
-                <p class="font-weight-bold">Soporte</p>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#">Contáctanos</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-5 col-md-4 mt-2">
-                <p class="font-weight-bold">Legal</p>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#">Política de privacidad</a>
-                    </li>
-                    <li>
-                        <a href="#">Condiciones de uso</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+  </div>
+  <div class="col-md-8 col-sm-12">
+    <div class="row">
+      <div class="col-sm-5 col-md-4 mt-2">
+        <p class="font-weight-bold">{{ titulo }}</p>
+        <ul class="list-unstyled">
+          <li>
+            <a href="#">Sobre nosotros</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-5 col-md-4 mt-2">
+        <p class="font-weight-bold">Soporte</p>
+        <ul class="list-unstyled">
+          <li>
+            <a href="#">Contáctanos</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-5 col-md-4 mt-2">
+        <p class="font-weight-bold">Legal</p>
+        <ul class="list-unstyled">
+          <li>
+            <a href="#">Política de privacidad</a>
+          </li>
+          <li>
+            <a href="#">Condiciones de uso</a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </div>

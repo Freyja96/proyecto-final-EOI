@@ -12,6 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class EditProfileComponent implements OnInit {
   infoForm: FormGroup;
   messsageInfo = '';
+  messageError = '';
 
   constructor(
     private router: Router,
@@ -32,13 +33,15 @@ export class EditProfileComponent implements OnInit {
     }
     this.userService.getUser().subscribe(
       (data: any) => {
-        console.log(data);
+        localStorage.setItem('userProfile', JSON.stringify(data));
         this.infoForm.controls['firstName'].setValue(data.firstName);
         this.infoForm.controls['lastName'].setValue(data.lastName);
         this.infoForm.controls['location'].setValue(data.location);
       },
       (error) => {
-        console.log('Error:', error);
+        if (error.status == 500) {
+          this.messageError = 'No se ha podido conectar con el servidor';
+        }
       }
     );
   }
@@ -57,7 +60,12 @@ export class EditProfileComponent implements OnInit {
         }
       },
       (error) => {
-        console.log('Error:', error);
+        if (error.status == 500) {
+          this.messageError = 'No se ha podido conectar con el servidor';
+        } else if (error.status == 401) {
+          localStorage.clear();
+          this.router.navigate(['/login']);
+        }
       }
     );
   }
