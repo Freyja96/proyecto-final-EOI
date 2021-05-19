@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class SignInComponent implements OnInit {
   titulo = 'GardenForYou';
   loginForm: FormGroup;
-  logged = false;
+  logged = true;
   error = '';
 
   constructor(
@@ -43,7 +43,7 @@ export class SignInComponent implements OnInit {
     this.userService.userLogin(user).subscribe(
       (data: any) => {
         localStorage.setItem('token', data.access_token);
-        this.router.navigate(['/']);
+        this.redirectLogin();
       },
       (error) => {
         if (error.status == 500) {
@@ -62,6 +62,7 @@ export class SignInComponent implements OnInit {
           this.router.navigate(['/']);
         } else {
           this.router.navigate(['/validate']);
+          this.userService.resendTokenEmail();
         }
       },
       (error) => {

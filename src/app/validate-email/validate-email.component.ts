@@ -29,9 +29,10 @@ export class ValidateEmailComponent implements OnInit {
   };
 
   validationCode(){
-    this.userService.confirmationEmail().subscribe(
+    let code = this.f.code.value;
+
+    this.userService.confirmationEmail(code).subscribe(
       (data: any) => {
-        localStorage.setItem('code', data.code);
       },
       (error) => {
         if (error.status == 200) {
@@ -44,6 +45,10 @@ export class ValidateEmailComponent implements OnInit {
       }
     )
   };
+
+  resendEmail() {
+    this.userService.resendTokenEmail()
+  }
 
   ngOnInit() {
   };

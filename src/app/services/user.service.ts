@@ -37,18 +37,17 @@ export class UserService {
     );
   }
 
-  confirmationEmail(): Observable<any> {
-    return this.httpClient.get(`${environment.apiUrl}/confirmation`).pipe(
+  confirmationEmail(code: string): Observable<any> {
+    return this.httpClient.post(`${environment.apiUrl}/confirmation`, code).pipe(
       catchError((error) => {
         return throwError(error);
       })
     );
   }
 
-  resendTokenEmail(code: string): Observable<any> {
+  resendTokenEmail(): Observable<any> {
     return this.httpClient
-      .post(`${environment.apiUrl}/confirmation`, code)
-      .pipe(
+      .get(`${environment.apiUrl}/confirmation`).pipe(
         catchError((error) => {
           return throwError(error);
         })
