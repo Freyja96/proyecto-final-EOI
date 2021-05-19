@@ -40,7 +40,7 @@ export class ValidateEmailComponent implements OnInit {
         } else if (error.status == 405) {
           this.error = 'La cuenta ya ha sido verificada'
         } else {
-          this.error = 'Solicitud incorrecta'
+          this.error = 'El código no es correcto, inténtalo de nuevo'
         }
       }
     )

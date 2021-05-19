@@ -62,7 +62,6 @@ export class SignInComponent implements OnInit {
           this.router.navigate(['/']);
         } else {
           this.router.navigate(['/validate']);
-          this.userService.resendTokenEmail();
         }
       },
       (error) => {
