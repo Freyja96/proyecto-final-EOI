@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -9,6 +10,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class ChatComponent implements OnInit {
   chatId = null;
   userId = 'unaid12345';
+  logged = true;
 
   product = {
     idPublisher: 'unaid12345',
@@ -178,12 +180,16 @@ export class ChatComponent implements OnInit {
     },
   ];
 
-  constructor(private activeRoute: ActivatedRoute) {
+  constructor(private activeRoute: ActivatedRoute, private authService: AuthService, private router: Router) {
     this.activeRoute.params.subscribe((param) => {
       this.chatId = param.chatid != null ? param.chatid : null;
       console.log(param.chatid);
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/']);
+    }
+  }
 }

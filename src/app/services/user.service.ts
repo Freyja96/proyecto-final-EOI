@@ -38,7 +38,7 @@ export class UserService {
   }
 
   confirmationEmail(code: string): Observable<any> {
-    return this.httpClient.post(`${environment.apiUrl}/confirmation`, code).pipe(
+    return this.httpClient.post(`${environment.apiUrl}/confirmation`, {code: code}).pipe(
       catchError((error) => {
         return throwError(error);
       })
