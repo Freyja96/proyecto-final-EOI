@@ -15,6 +15,7 @@ export class EditAccountComponent implements OnInit {
   messsageInfo = '';
   messageError = '';
   dateOfBirth = '';
+  showDeleteModal = false;
 
   dateForm: FormGroup;
   emailForm: FormGroup;
@@ -148,6 +149,26 @@ export class EditAccountComponent implements OnInit {
         if (returnData.success != null) {
           this.messsageInfo = 'La contraseña se ha actualizado correctamente';
         }
+      },
+      (error) => {
+        if (error.status == 500) {
+          this.messageError = 'No se ha podido conectar con el servidor';
+        } else if (error.status == 401) {
+          localStorage.clear();
+          this.router.navigate(['/login']);
+        }
+      }
+    );
+  }
+
+  deleteAccount() {
+    this.messsageInfo = '';
+    this.messageError = '';
+
+    this.userService.deleteUser().subscribe(
+      (returnData: any) => {
+        localStorage.clear();
+        this.router.navigate(['/']);
       },
       (error) => {
         if (error.status == 500) {
