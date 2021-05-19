@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class EditProfileComponent implements OnInit {
   infoForm: FormGroup;
-  messsageInfo = '';
+  messageInfo = '';
   messageError = '';
 
   constructor(
@@ -56,13 +56,13 @@ export class EditProfileComponent implements OnInit {
       lastName: this.infoForm.controls['lastName'].value,
       location: this.infoForm.controls['location'].value,
     };
-    this.messsageInfo = '';
+    this.messageInfo = '';
     this.messageError = '';
 
     this.userService.updateUser(data, 'updateprofile').subscribe(
       (returnData: any) => {
         if (returnData.success != null) {
-          this.messsageInfo = 'Los datos se han actualizado correctamente';
+          this.messageInfo = 'Los datos se han actualizado correctamente';
         }
       },
       (error) => {
