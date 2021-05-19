@@ -144,8 +144,53 @@
         <p class="text-muted">
           Si ya no quieres formar parte de {{ titulo }} puedes darte de baja
           pulsando en el siguiente enlace para
-          <a href="#">eliminar la cuenta</a>.
+          <span class="text-danger" (click)="showDeleteModal = true"
+            >eliminar la cuenta</span
+          >.
         </p>
+      </div>
+    </div>
+    <div *ngIf="showDeleteModal" class="modal fade show d-block" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Borrar cuenta</h5>
+            <button
+              type="button"
+              class="close"
+              (click)="showDeleteModal = false"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Una vez des a
+              <span class="text-danger">Borrar Cuenta</span> borraremos tu
+              cuenta en un plazo de 7 días, puedes cancelar el borrado de tu
+              cuenta si te vuelves a conectar a nuestra web en ese plazo
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              (click)="showDeleteModal = false"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="deleteAccount()"
+            >
+              Borrar Cuenta
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
