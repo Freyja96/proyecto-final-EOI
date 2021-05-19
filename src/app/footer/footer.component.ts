@@ -25,6 +25,7 @@ export class FooterComponent implements OnInit {
       this.userProfile = localStorage.getItem('userProfile');
 
       if (
+        this.userProfile != null &&
         this.userProfile.image != null &&
         this.userProfile.image.url != null
       ) {

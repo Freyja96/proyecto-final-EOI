@@ -23,12 +23,14 @@ export class HeaderComponent implements OnInit {
   userProfile: any;
 
   ngOnInit() {
+
     this.logged = this.authService.isAuthenticated();
 
     if (this.logged) {
       this.userProfile = localStorage.getItem('userProfile');
 
       if (
+        this.userProfile != null &&
         this.userProfile.image != null &&
         this.userProfile.image.url != null
       ) {
