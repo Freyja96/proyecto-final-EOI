@@ -47,7 +47,14 @@ export class ValidateEmailComponent implements OnInit {
   };
 
   resendEmail() {
-    this.userService.resendTokenEmail()
+    this.userService.resendTokenEmail().subscribe(
+      (data: any) => {
+        console.log(data)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
   }
 
   ngOnInit() {
