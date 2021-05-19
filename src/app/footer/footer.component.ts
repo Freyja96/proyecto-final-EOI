@@ -1,6 +1,7 @@
 import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -15,7 +16,8 @@ export class FooterComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -41,6 +43,7 @@ export class FooterComponent implements OnInit {
           (error) => {
             if (error.status == 401) {
               localStorage.clear();
+              this.router.navigate(['/login']);
             }
             console.log('Error:', error.error);
           }

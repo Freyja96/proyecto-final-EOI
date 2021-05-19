@@ -23,7 +23,6 @@ export class HeaderComponent implements OnInit {
   userProfile: any;
 
   ngOnInit() {
-
     this.logged = this.authService.isAuthenticated();
 
     if (this.logged) {
@@ -46,6 +45,7 @@ export class HeaderComponent implements OnInit {
           (error) => {
             if (error.status == 401) {
               localStorage.clear();
+              this.router.navigate(['/login']);
             }
             console.log('Error:', error.error);
           }
