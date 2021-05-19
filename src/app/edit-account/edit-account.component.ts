@@ -12,7 +12,7 @@ import { AuthService } from './../services/auth/auth.service';
 export class EditAccountComponent implements OnInit {
   userPassword = '';
   titulo = 'GardenForYou';
-  messsageInfo = '';
+  messageInfo = '';
   messageError = '';
   dateOfBirth = '';
   showDeleteModal = false;
@@ -62,7 +62,7 @@ export class EditAccountComponent implements OnInit {
   }
 
   updateDate() {
-    this.messsageInfo = '';
+    this.messageInfo = '';
     this.messageError = '';
 
     let newDate = this.dateForm.controls['dateOfBirth'].value;
@@ -84,7 +84,7 @@ export class EditAccountComponent implements OnInit {
       .subscribe(
         (returnData: any) => {
           if (returnData.success != null) {
-            this.messsageInfo =
+            this.messageInfo =
               'Los fecha de nacimiento se ha actualizado correctamente';
           }
         },
@@ -100,7 +100,7 @@ export class EditAccountComponent implements OnInit {
   }
 
   updateEmail() {
-    this.messsageInfo = '';
+    this.messageInfo = '';
     this.messageError = '';
     let newEmail = this.emailForm.controls['email'].value;
     let repeatEmail = this.emailForm.controls['repeatEmail'].value;
@@ -114,7 +114,7 @@ export class EditAccountComponent implements OnInit {
       (returnData: any) => {
         this.emailForm.controls['repeatEmail'].setValue('');
         if (returnData.success != null) {
-          this.messsageInfo = 'El correo se ha actualizado correctamente';
+          this.messageInfo = 'El correo se ha actualizado correctamente';
         }
       },
       (error) => {
@@ -131,7 +131,7 @@ export class EditAccountComponent implements OnInit {
   }
 
   updatePass() {
-    this.messsageInfo = '';
+    this.messageInfo = '';
     this.messageError = '';
 
     let password = this.passForm.controls['password'].value;
@@ -147,7 +147,7 @@ export class EditAccountComponent implements OnInit {
         this.passForm.controls['password'].setValue('');
         this.passForm.controls['repeatPassword'].setValue('');
         if (returnData.success != null) {
-          this.messsageInfo = 'La contraseña se ha actualizado correctamente';
+          this.messageInfo = 'La contraseña se ha actualizado correctamente';
         }
       },
       (error) => {
@@ -162,7 +162,7 @@ export class EditAccountComponent implements OnInit {
   }
 
   deleteAccount() {
-    this.messsageInfo = '';
+    this.messageInfo = '';
     this.messageError = '';
 
     this.userService.deleteUser().subscribe(
