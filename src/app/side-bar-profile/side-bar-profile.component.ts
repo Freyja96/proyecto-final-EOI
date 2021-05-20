@@ -12,11 +12,7 @@ export class SideBarProfileComponent implements OnInit {
   userProfile: any;
   logged = false;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private userService: UserService
-  ) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
     this.logged = this.authService.isAuthenticated();
@@ -33,7 +29,6 @@ export class SideBarProfileComponent implements OnInit {
   }
 
   goToProfile() {
-    console.log(this.userProfile);
     this.router.navigate(['/user/' + this.userProfile.username]);
   }
 }
