@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicProfileComponent implements OnInit {
   products = [1, 2, 3, 5, 6, 7, 8];
+  image = null;
 
   userProfile = {
     username: 'Nombre de usuario',

@@ -3,9 +3,9 @@
         <div class="col-12 bg-light">
             <div class="row">
                 <div class="col-sm-12 col-md-3 p-3">
-                    <a class="nav-link text-body" [routerLink]="['/edit/profile']">
-                        <img *ngIf="image != null" class="rounded" src="{{ image }}" width="45" height="45" />
-                        <i *ngIf="image == null" class="fas fa-user-circle text-white header-icon"></i>
+                    <a class="nav-link text-body" [routerLink]="['/edit/profile']"></a>
+                    <img *ngIf="image != null" class="rounded" src="{{ userProfile.image.url }}" width="45" height="45" />
+                    <i *ngIf="image == null" class="fas fa-user-circle text-white header-icon"></i>
                 </div>
                 <div class="col-sm-12 col-md-9 p-2 text-center">
                     <h1>
