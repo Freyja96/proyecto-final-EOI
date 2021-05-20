@@ -1,48 +1,68 @@
 <div class="image d-none d-sm-block">
-    <div class="container-fluid p-5 justify-content-center">
-        <div class="row">
-            <div class="col-3 bg-light px-3 py-4 rounded shadow-gray text-center">
-                <p class="h5 card-title">¡Te damos la bienvenida a {{ titulo }}!</p>
-                <p class="card-text">
-                    Vende o compra plantas e insectos de otros usuarios.
-                </p>
-                <button type="button" *ngIf="!logged" [routerLink]="['/signup']" class="btn btn-primary font-weight-bold">
-                  <p class="mb-0">Empieza a vender. ¡Es gratis!</p>
-                </button>
-                <button type="button" *ngIf="logged" [routerLink]="['/update/product']" class="btn btn-primary font-weight-bold">
-                      <p class="mb-0">Sube un producto</p>
-                </button>
-                <a href="#" class="card-link float-right font-weight-bold">¿Cómo funciona?</a>
-            </div>
-        </div>
+  <div class="container-fluid p-5 justify-content-center">
+    <div class="row">
+      <div class="col-3 bg-light px-3 py-4 rounded shadow-gray text-center">
+        <p class="h5 card-title">¡Te damos la bienvenida a {{ titulo }}!</p>
+        <p class="card-text">
+          Vende o compra plantas e insectos de otros usuarios.
+        </p>
+        <button
+          type="button"
+          *ngIf="!logged"
+          [routerLink]="['/signup']"
+          class="btn btn-primary font-weight-bold"
+        >
+          <p class="mb-0">Empieza a vender. ¡Es gratis!</p>
+        </button>
+        <button
+          type="button"
+          *ngIf="logged"
+          [routerLink]="['/update/product']"
+          class="btn btn-primary font-weight-bold"
+        >
+          <p class="mb-0">Sube un producto</p>
+        </button>
+        <a href="#" class="card-link float-right font-weight-bold"
+          >¿Cómo funciona?</a
+        >
+      </div>
     </div>
+  </div>
 </div>
 <div class="container-fluid bg-light">
-    <div class="row mx-auto py-4">
-        <div class="col-12 text-center">
-            <p class="h2">¿Qué estás buscando?</p>
-        </div>
-        <div class="col-sm-12 col-md-6 mx-auto">
-            <div class="row">
-                <button [routerLink]="['/insects']" type="button" class="btn btn-light col-6 my-3 text-center border-0">
+  <div class="row mx-auto py-4">
+    <div class="col-12 text-center">
+      <p class="h2">¿Qué estás buscando?</p>
+    </div>
+    <div class="col-sm-12 col-md-6 mx-auto">
+      <div class="row">
+        <button
+          [routerLink]="['/insects']"
+          type="button"
+          class="btn btn-light col-6 my-3 text-center border-0"
+        >
           <p>Insectos</p>
           <i class="fas fa-bug ml-1"></i>
         </button>
-                <button [routerLink]="['/plants']" type="button" class="btn btn-light col-6 my-3 text-center border-0">
+        <button
+          [routerLink]="['/plants']"
+          type="button"
+          class="btn btn-light col-6 my-3 text-center border-0"
+        >
           <p>Plantas</p>
           <i class="fas fa-seedling ml-1"></i>
         </button>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
 <div class="container-fluid bg-light">
-    <div class="col-6 py-4 mx-auto text-center">
-        <p class="h2">Los más destacados</p>
+  <div class="col-6 py-4 mx-auto text-center">
+    <p class="h2">Los más destacados</p>
+  </div>
+  <div class="row pl-md-5 pr-md-5">
+    <div *ngFor="let product of products" class="col-md-3 col-sm-12 mb-2">
+      <app-product-item [product]="product"></app-product-item>
     </div>
-    <div class="row pl-md-5 pr-md-5">
-        <div *ngFor="let product of products" class="col-md-3 col-sm-12 mb-2">
-            <app-product-item></app-product-item>
-        </div>
-    </div>
+  </div>
 </div>
