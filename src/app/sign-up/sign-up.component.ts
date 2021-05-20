@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class SignUpComponent implements OnInit {
   titulo = 'GardenForYou';
   mForm: FormGroup;
-  logged = true;
+  logged = false;
   error = "";
 
   constructor(

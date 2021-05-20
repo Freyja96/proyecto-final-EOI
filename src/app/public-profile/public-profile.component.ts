@@ -10,6 +10,8 @@ export class PublicProfileComponent implements OnInit {
 
   userProfile = {
     username: 'Nombre de usuario',
+    firstName: 'Nembre',
+    lastName: 'Apellido',
     image: {
       url:
         'https://xavierferras.com/wp-content/uploads/2019/02/266-Persona.jpg',

@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class SignInComponent implements OnInit {
   titulo = 'GardenForYou';
   loginForm: FormGroup;
-  logged = true;
+  logged = false;
   error = '';
 
   constructor(
