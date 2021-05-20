@@ -10,8 +10,6 @@ import { AuthService } from './../services/auth/auth.service';
   styleUrls: ['./edit-account.component.scss'],
 })
 export class EditAccountComponent implements OnInit {
-  userPassword = '';
-  titulo = 'GardenForYou';
   messageInfo = '';
   messageError = '';
   dateOfBirth = '';

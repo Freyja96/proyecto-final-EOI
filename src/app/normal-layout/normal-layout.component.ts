@@ -20,7 +20,11 @@ export class NormalLayoutComponent implements OnInit {
     this.logged = this.authService.isAuthenticated();
 
     if (this.logged) {
-      this.userProfile = localStorage.getItem('userProfile');
+      let data = localStorage.getItem('userProfile');
+
+      if (data != null) {
+        this.userProfile = JSON.parse(data);
+      }
 
       if (!this.userProfile) {
         this.userService.getUser().subscribe(
