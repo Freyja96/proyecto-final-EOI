@@ -11,8 +11,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class EditProfileComponent implements OnInit {
   infoForm: FormGroup;
+  imageForm: FormGroup;
   messageInfo = '';
   messageError = '';
+  image = null;
 
   constructor(
     private router: Router,
@@ -25,6 +27,9 @@ export class EditProfileComponent implements OnInit {
       lastName: [''],
       location: [''],
     });
+    this.imageForm = this.formBuilder.group({
+      image: null,
+    });
   }
 
   ngOnInit() {
@@ -33,11 +38,17 @@ export class EditProfileComponent implements OnInit {
     }
     this.userService.getUser().subscribe(
       (data: any) => {
-        localStorage.setItem('userProfile', JSON.stringify(data));
+        if (data != null) {
+          localStorage.setItem('userProfile', JSON.stringify(data));
 
-        this.infoForm.controls['firstName'].setValue(data.firstName);
-        this.infoForm.controls['lastName'].setValue(data.lastName);
-        this.infoForm.controls['location'].setValue(data.location);
+          this.infoForm.controls['firstName'].setValue(data.firstName);
+          this.infoForm.controls['lastName'].setValue(data.lastName);
+          this.infoForm.controls['location'].setValue(data.location);
+
+          if (data.image != null && data.image.url != null) {
+            this.image = data.image.url;
+          }
+        }
       },
       (error) => {
         if (error.status == 500) {
@@ -74,5 +85,9 @@ export class EditProfileComponent implements OnInit {
         }
       }
     );
+  }
+
+  updateImage() {
+    console.log(this.imageForm.controls['image'].value);
   }
 }

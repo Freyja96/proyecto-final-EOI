@@ -1,71 +1,132 @@
 <div class="row">
-    <div class="col-md-2 col-sm-12">
-        <app-side-bar-profile></app-side-bar-profile>
+  <div class="col-md-2 col-sm-12">
+    <app-side-bar-profile></app-side-bar-profile>
+  </div>
+  <div class="col-md-8 order-md-1">
+    <div
+      *ngIf="messageInfo != ''"
+      class="row mt-3 alert alert-primary"
+      role="alert"
+    >
+      {{ messageInfo }}
     </div>
-    <div class="col-md-8 order-md-1">
-        <div *ngIf="messageInfo != ''" class="row mt-3 alert alert-primary" role="alert">
-            {{ messageInfo }}
+    <form ngNativeValidate [formGroup]="imageForm" id="imageForm">
+      <div class="row py-2 my-3 bg-white shadow-gray">
+        <div class="col-md-12 mb-0">
+          <p>Foto de perfil</p>
         </div>
-        <div class="row py-2 my-3 bg-white shadow-gray">
-            <div class="col-md-12 mb-0">
-                <p>Foto de perfil</p>
-            </div>
-            <div class="col-md-5 col-sm-12 mx-md-auto mb-4 mt-2 text-center">
-                <div class="input-group p-1 rounded-pill bg-white shadow-gray">
-                    <input id="upload" type="file" onchange="readURL(this);" class="form-control" />
-                    <label id="upload-label" for="upload" class="font-weight-light text-muted pl-3">Cambiar foto</label
-          >
-          <div class="input-group-append">
+        <div class="col-md-5 col-sm-12 mx-md-auto mb-4 mt-2 text-center">
+          <div class="input-group p-1 rounded-pill bg-white shadow-gray">
+            <input
+              formControlName="image"
+              id="upload"
+              type="file"
+              class="form-control"
+              (change)="updateImage()"
+            />
             <label
+              id="upload-label"
               for="upload"
-              class="btn btn-light m-0 rounded-pill py-1 px-4 bg-white"
+              class="font-weight-light text-muted pl-3"
+              >Cambiar foto</label
             >
-              <p class="text-uppercase font-weight-bold text-muted mt-3">
-                Cambiar foto
-              </p>
-            </label>
-                </div>
+            <div class="input-group-append">
+              <label
+                for="upload"
+                class="btn btn-light m-0 rounded-pill py-1 px-4 bg-white"
+              >
+                <p class="text-uppercase font-weight-bold text-muted mt-3">
+                  Cambiar foto
+                </p>
+              </label>
             </div>
+          </div>
         </div>
         <div class="col-auto mt-0 mr-md-4 mb-4 mx-auto text-center">
-            <div class="image-area p-5">
-                <img id="imageResult" src="#" alt="" class="img-fluid rounded-pill shadow-sm mx-auto d-block" />
-            </div>
+          <div class="image-area p-1">
+            <img
+              *ngIf="image != null"
+              id="imageResult"
+              src="{{ image }}"
+              alt=""
+              class="rounded-pill shadow-sm"
+            />
+          </div>
         </div>
-    </div>
-    <form ngNativeValidate [formGroup]="infoForm" id="infoForm" (ngSubmit)="onSaveButton()">
-        <div class="row py-2 bg-white shadow-gray">
-            <div class="col-12 mb-3">
-                <span class="text-muted">Información pública</span>
-            </div>
-            <div class="col-md-6 mb-3 border-bottom form-group">
-                <label for="name">Nombre</label>
-                <input type="text" class="form-control mb-3" id="name" formControlName="firstName" placeholder required />
-            </div>
-            <div class="col-md-6 mb-3 border-bottom form-group">
-                <label for="surName">Apellidos</label>
-                <input type="text" class="form-control mb-3" formControlName="lastName" id="surName" placeholder required />
-            </div>
-            <div class="col-12 form-group">
-                <label for="address">Ubicación de tus productos</label>
-                <input type="text" class="form-control" formControlName="location" id="address" required />
-            </div>
-            <div class="col-12 mx-auto">
-                <div id="map-container-google-1" class="z-depth-1-half map-container position-relative my-1">
-                    <iframe class="border-0 ml-0 mt-0" id="ubicationResult" src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="col-12 mt-0">
-                <p class="text-muted">
-                    Aquí está ubicado tu perfil y donde aparecerá todo lo que subas.
-                </p>
-            </div>
+      </div>
+    </form>
+    <form
+      ngNativeValidate
+      [formGroup]="infoForm"
+      id="infoForm"
+      (ngSubmit)="onSaveButton()"
+    >
+      <div class="row py-2 bg-white shadow-gray">
+        <div class="col-12 mb-3">
+          <span class="text-muted">Información pública</span>
         </div>
+        <div class="col-md-6 mb-3 border-bottom form-group">
+          <label for="name">Nombre</label>
+          <input
+            type="text"
+            class="form-control mb-3"
+            id="name"
+            formControlName="firstName"
+            placeholder
+            required
+          />
+        </div>
+        <div class="col-md-6 mb-3 border-bottom form-group">
+          <label for="surName">Apellidos</label>
+          <input
+            type="text"
+            class="form-control mb-3"
+            formControlName="lastName"
+            id="surName"
+            placeholder
+            required
+          />
+        </div>
+        <div class="col-12 form-group">
+          <label for="address">Ubicación de tus productos</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="location"
+            id="address"
+            required
+          />
+        </div>
+        <div class="col-12 mx-auto">
+          <div
+            id="map-container-google-1"
+            class="z-depth-1-half map-container position-relative my-1"
+          >
+            <iframe
+              class="border-0 ml-0 mt-0"
+              id="ubicationResult"
+              src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="col-12 mt-0">
+          <p class="text-muted">
+            Aquí está ubicado tu perfil y donde aparecerá todo lo que subas.
+          </p>
+        </div>
+      </div>
     </form>
     <div class="row my-3 text-center">
-        <button type="button" class="btn btn-primary position-relative mt-1 mb-4 font-weight-bold" type="submit" form="infoForm">
+      <button
+        type="button"
+        class="btn btn-primary position-relative mt-1 mb-4 font-weight-bold"
+        type="submit"
+        form="infoForm"
+      >
         Guardar cambios
       </button>
     </div>
-</div>
+  </div>
 </div>
