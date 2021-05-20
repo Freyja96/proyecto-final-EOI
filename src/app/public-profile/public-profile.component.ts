@@ -1,27 +1,31 @@
+import { UserService } from './../services/user.service';
+import { Observable } from 'rxjs';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-public-profile',
   templateUrl: './public-profile.component.html',
   styleUrls: ['./public-profile.component.scss'],
 })
 export class PublicProfileComponent implements OnInit {
-  products = [1, 2, 3, 5, 6, 7, 8];
   image = null;
+  username: any;
+  userProfile: any;
 
-  userProfile = {
-    username: 'Nombre de usuario',
-    firstName: 'Nembre',
-    lastName: 'Apellido',
-    image: {
-      url:
-        'https://xavierferras.com/wp-content/uploads/2019/02/266-Persona.jpg',
-    },
-    emailVerified: true,
-    location: 'Madrid',
-  };
+  constructor(private route: ActivatedRoute, private userService: UserService) {}
 
-  constructor() {}
+  ngOnInit() {
+    this.username = this.route.snapshot.paramMap.get('username');
+    console.log(this.username);
 
-  ngOnInit() {}
+    this.userService.getUserProfile(this.username).subscribe(
+      (data:any) => {
+        this.userProfile = data;
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
 }

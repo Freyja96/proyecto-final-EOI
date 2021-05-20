@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,23 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-item.component.scss'],
 })
 export class ProductItemComponent implements OnInit {
-  product = {
-    _id: 'unaid',
-    publisherId: {
-      _id: 'string',
-    },
-    images: [
-      {
-        _id: 'string',
-        url:
-          'https://www.hola.com/imagenes/decoracion/20200609169726/plantas-de-interior-cuidados-duren-tiempo-mc/0-833-734/trucos-plantas-interior-duren-1-z.jpg',
-      },
-    ],
-    title: 'Nombre del producto',
-    price: 1.26,
-    type: 'plant',
-    description: 'Detalles del producto, origen, tipo de cuidados, etc...',
-  };
+  @Input() product: any;
 
   constructor(private router: Router) {}
 

@@ -37,8 +37,8 @@ export class UserService {
     );
   };
 
-  getUserProfile():Observable<any>{
-    return this.httpClient.get(`${environment.apiUrl}/profile`).pipe(
+  getUserProfile(username: string):Observable<any>{
+    return this.httpClient.get(`${environment.apiUrl}/users/${username}/profile`).pipe(
       catchError((error) => {
         return throwError(error);
       })

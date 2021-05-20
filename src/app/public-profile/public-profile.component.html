@@ -26,8 +26,8 @@
                         Listado de productos
                     </p>
                 </div>
-                <div *ngFor="let item of products" class="col-md-4 col-sm-12 mb-2">
-                    <app-product-item></app-product-item>
+                <div *ngFor="let product of userProfile.products" class="col-md-4 col-sm-12 mb-2">
+                    <app-product-item [product]="product"></app-product-item>
                 </div>
             </div>
         </div>
