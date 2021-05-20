@@ -1,3 +1,4 @@
+import { FirebaseStorageService } from './../services/firebase-storage.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { UserService } from '../services/user.service';
@@ -15,12 +16,14 @@ export class EditProfileComponent implements OnInit {
   messageInfo = '';
   messageError = '';
   image = null;
+  userProfile: any;
 
   constructor(
     private router: Router,
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private firebaseStorage: FirebaseStorageService
   ) {
     this.infoForm = this.formBuilder.group({
       firstName: [''],
@@ -40,13 +43,13 @@ export class EditProfileComponent implements OnInit {
       (data: any) => {
         if (data != null) {
           localStorage.setItem('userProfile', JSON.stringify(data));
-
+          this.userProfile = data;
           this.infoForm.controls['firstName'].setValue(data.firstName);
           this.infoForm.controls['lastName'].setValue(data.lastName);
           this.infoForm.controls['location'].setValue(data.location);
 
-          if (data.image != null && data.image.url != null) {
-            this.image = data.image.url;
+          if (data.image != null && data.image != null) {
+            this.image = data.image;
           }
         }
       },
@@ -87,7 +90,47 @@ export class EditProfileComponent implements OnInit {
     );
   }
 
-  updateImage() {
-    console.log(this.imageForm.controls['image'].value);
+  uploadImage(event: any) {
+    if (
+      event != null &&
+      event.target != null &&
+      event.target.files[0] != null
+    ) {
+      let file = event.target.files[0];
+      let fileName = file.name + '-' + this.userProfile.username;
+
+      this.firebaseStorage.uploadImage(fileName, file).then(() => {
+        this.firebaseStorage
+          .getRefImage(fileName)
+          .getDownloadURL()
+          .subscribe((url) => {
+            this.image = url;
+            this.updateProfileImage(url);
+          });
+      });
+    }
+  }
+
+  updateProfileImage(url: string) {
+    this.messageInfo = '';
+    this.messageError = '';
+
+    if (url != null) {
+      this.userService.updateUser({ image: url }, 'updateimage').subscribe(
+        (returnData: any) => {
+          if (returnData.success != null) {
+            this.messageInfo = 'Los foto se ha actualizado correctamente';
+          }
+        },
+        (error) => {
+          if (error.status == 500) {
+            this.messageError = 'No se ha podido conectar con el servidor';
+          } else if (error.status == 401) {
+            localStorage.clear();
+            this.router.navigate(['/login']);
+          }
+        }
+      );
+    }
   }
 }

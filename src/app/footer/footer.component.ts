@@ -19,12 +19,8 @@ export class FooterComponent implements OnInit {
     this.logged = this.authService.isAuthenticated();
 
     if (this.logged) {
-      if (
-        this.userProfile != null &&
-        this.userProfile.image != null &&
-        this.userProfile.image.url != null
-      ) {
-        this.image = this.userProfile.image.url;
+      if (this.userProfile != null && this.userProfile.image != null) {
+        this.image = this.userProfile.image;
       }
     }
   }

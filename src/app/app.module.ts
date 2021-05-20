@@ -26,6 +26,9 @@ import { ChatListComponent } from './chat-list/chat-list.component';
 import { ChatInfoComponent } from './chat-info/chat-info.component';
 import { ChatComponent } from './chat/chat.component';
 import { InterceptorService } from './services/interceptors/interceptor.service';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +59,8 @@ import { InterceptorService } from './services/interceptors/interceptor.service'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
   ],
   providers: [
     {
@@ -65,7 +70,7 @@ import { InterceptorService } from './services/interceptors/interceptor.service'
     },
     {
       provide: JWT_OPTIONS,
-      useValue: JWT_OPTIONS
+      useValue: JWT_OPTIONS,
     },
     JwtHelperService,
     FormBuilder,
