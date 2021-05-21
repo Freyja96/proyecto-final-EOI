@@ -23,12 +23,13 @@
               type="file"
               class="form-control"
               (change)="uploadImage($event)"
+              accept="image/x-png,image/gif,image/jpeg"
             />
             <label
               id="upload-label"
               for="upload"
               class="font-weight-light text-muted pl-3"
-              >Cambiar foto</label
+              >Cambiar foto. El tamaño de la imagen es de 1mb</label
             >
             <div class="input-group-append">
               <label
