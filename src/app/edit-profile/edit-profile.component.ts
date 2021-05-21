@@ -98,6 +98,7 @@ export class EditProfileComponent implements OnInit {
     ) {
       let file = event.target.files[0];
       let fileName = file.name + '-' + this.userProfile.username;
+      this.messageInfo = 'Se está guardando la imagen, espera un momento';
 
       this.firebaseStorage.uploadImage(fileName, file).then(() => {
         this.firebaseStorage
