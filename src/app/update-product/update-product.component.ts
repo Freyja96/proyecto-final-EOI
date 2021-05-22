@@ -13,6 +13,7 @@ import { AuthService } from '../services/auth/auth.service';
   styleUrls: ['./update-product.component.scss'],
 })
 export class UpdateProductComponent implements OnInit {
+  messageInfo = '';
   messageError = '';
   productType = '';
   productId: any = null;
@@ -27,10 +28,10 @@ export class UpdateProductComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private categoryService: CategoryService,
-    private productServide: ProductService
+    private productService: ProductService
   ) {
     this.productForm = this.formBuilder.group({
-      tittle: [''],
+      title: [''],
       description: [''],
       price: [''],
       category: new FormControl({ value: '', disabled: true }),
@@ -46,13 +47,41 @@ export class UpdateProductComponent implements OnInit {
     this.productId = this.route.snapshot.paramMap.get('id');
 
     if (this.productId) {
-      this.productServide.getProduct(this.productId).subscribe(
+      this.productService.getProduct(this.productId).subscribe(
         (returnData: Product) => {
           console.log(returnData);
+          this.productType = returnData.type ? returnData.type : 'plant';
+          this.productForm.controls['title'].setValue(returnData.title);
+          this.productForm.controls['description'].setValue(
+            returnData.description
+          );
+          this.productForm.controls['price'].setValue(returnData.price);
+          this.productForm.controls['size'].setValue(
+            returnData.size ? returnData.size : ''
+          );
+          this.updateCategories();
+
+          if (returnData.category) {
+            this.categoryService.getCategory(returnData.category).subscribe(
+              (cat: Category) => {
+                this.productForm.controls['category'].enable();
+                this.productForm.controls['category'].setValue(cat.category);
+                this.updateSubCategories();
+                if (cat.subcategory) {
+                  this.productForm.controls['subcategory'].enable();
+                  this.productForm.controls['subcategory'].setValue(
+                    cat.subcategory
+                  );
+                }
+              },
+              (error) => {}
+            );
+          }
         },
         (error) => {
           if (error.status == 500) {
-            this.messageError = 'No se ha podido conectar con el servidor';
+            this.messageError =
+              'No se ha podido conectar con el servidor. Intentalo de nuevo en unos minutos';
           } else if (error.status == 401) {
             localStorage.clear();
             this.router.navigate(['/login']);
@@ -61,6 +90,77 @@ export class UpdateProductComponent implements OnInit {
           }
         }
       );
+    }
+  }
+
+  updateProduct() {
+    this.messageInfo = '';
+    this.messageError = '';
+    let userData = localStorage.getItem('userProfile');
+    if (userData != null) {
+      let userProfile = JSON.parse(userData);
+
+      if (this.productType != 'plant' && this.productType != 'insect') {
+        this.messageError =
+          'Tienes que elegir que quieres vender. Una planta o un insecto';
+        return;
+      }
+
+      let productData = {
+        publisherId: userProfile._id,
+        image:
+          'https://rockcontent.com/es/wp-content/uploads/sites/3/2019/02/o-que-e-produto-no-mix-de-marketing.png',
+        title: this.productForm.controls['title'].value,
+        price: this.productForm.controls['price'].value,
+        description: this.productForm.controls['description'].value,
+        type: this.productType,
+        size: this.productForm.controls['size'].value,
+        category: this.productForm.controls['category'].value,
+        subcategory: this.productForm.controls['subcategory'].value,
+      };
+
+      if (this.productId) {
+        this.productService
+          .updateProduct(this.productId, productData)
+          .subscribe(
+            (returnData: any) => {
+              console.log(returnData);
+              this.messageInfo = 'El producto se ha actualizado correctamente.';
+            },
+            (error) => {
+              if (error.status == 500) {
+                this.messageError =
+                  'No se ha podido conectar con el servidor. Intentalo de nuevo en unos minutos';
+              } else if (error.status == 401) {
+                localStorage.clear();
+                this.router.navigate(['/login']);
+              } else if (error.status == 403) {
+                this.router.navigate(['/']);
+              }
+            }
+          );
+      } else {
+        this.productService.addProduct(productData).subscribe(
+          (returnData: Product) => {
+            console.log(returnData);
+            this.router.navigate(['/update/product/' + returnData._id]);
+          },
+          (error) => {
+            if (error.status == 500) {
+              this.messageError =
+                'No se ha podido conectar con el servidor. Intentalo de nuevo en unos minutos';
+            } else if (error.status == 401) {
+              localStorage.clear();
+              this.router.navigate(['/login']);
+            } else if (error.status == 400) {
+              this.messageError = error.error;
+            }
+          }
+        );
+      }
+    } else {
+      localStorage.clear();
+      this.router.navigate(['/login']);
     }
   }
 
@@ -95,7 +195,8 @@ export class UpdateProductComponent implements OnInit {
           }
         },
         (error) => {
-          this.messageError = 'No se ha podido conectar con el servidor';
+          this.messageError =
+            'No se ha podido conectar con el servidor. Intentalo de nuevo en unos minutos';
         }
       );
     }

@@ -1,7 +1,12 @@
 <form class="needs-validation" novalidate>
   <div class="row background d-flex justify-content-center">
     <div class="col-md-8 col-sm-12 bg-light shadow-gray my-2 pt-4">
-      <form ngNativeValidate [formGroup]="productForm" id="productForm">
+      <form
+        ngNativeValidate
+        [formGroup]="productForm"
+        id="productForm"
+        (ngSubmit)="updateProduct()"
+      >
         <div class="row">
           <div *ngIf="productId == null" class="col-12 text-center mb-2">
             <p class="h2 mt-2">¿Qué quieres vender?</p>
@@ -40,7 +45,7 @@
           </div>
           <div class="col-md-10 col-sm-12 my-2 float-end">
             <input
-              formControlName="tittle"
+              formControlName="title"
               type="text"
               class="form-control"
               id="title"
@@ -156,6 +161,20 @@
           </div>
         </div>
       </form>
+      <div
+        *ngIf="messageInfo != ''"
+        class="col-12 text-center mt-3 alert alert-primary"
+        role="alert"
+      >
+        {{ messageInfo }}
+      </div>
+      <div
+        *ngIf="messageError != ''"
+        class="col-12 text-center mt-3 alert alert-danger"
+        role="alert"
+      >
+        {{ messageError }}
+      </div>
       <div class="col-12 text-center">
         <button
           type="submit"

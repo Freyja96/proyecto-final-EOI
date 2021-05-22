@@ -19,4 +19,12 @@ export class CategoryService {
         })
       );
   }
+
+  getCategory(id: string): Observable<any> {
+    return this.httpClient.get(`${environment.apiUrl}/categories/${id}`).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
+  }
 }

@@ -1,8 +1,6 @@
-import { Category } from './category.model';
-import { User } from './user.model';
 export class Product {
   _id?: string;
-  publisherId?: User;
+  publisherId?: string;
   images?: any;
   title?: string;
   size?: string;
@@ -11,5 +9,5 @@ export class Product {
   description?: string;
   publishedDate?: Date;
   sold?: boolean;
-  category?: Category;
+  category?: string;
 }
