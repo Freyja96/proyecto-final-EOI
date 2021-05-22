@@ -1,60 +1,113 @@
 <form class="needs-validation" novalidate>
-    <div class="row background d-flex justify-content-center">
-        <div class="col-md-8 col-sm-12 bg-light shadow-gray my-2 pt-4">
-            <div class="row">
-                <div class="col-12 text-center mb-2">
-                    <p class="h2 mt-2">¿Qué quieres vender?</p>
-                </div>
-                <div class="col-12 mx-md-auto mb-2 text-center">
-                    <button type="button" class="btn btn-light col-3 my-3" (click)="(!plant)">
-                      <p>Insecto</p>
-                      <i class="fas fa-bug ml-1"></i>
-                    </button>
-                    <button type="button" class="btn btn-light col-3 my-3" (click)="(plant)">
-                      <p>Planta</p>
-                      <i class="fas fa-seedling ml-1"></i>
-                    </button>
-                </div>
-                <div class="col-2 my-2">
-                    <label for="title">Título</label>
-                </div>
-                <div class="col-md-10 col-sm-12 my-2 float-end">
-                    <input type="text" class="form-control" id="title" value required />
-                    <div class="invalid-feedback">Un título es requerido.</div>
-                </div>
-                <div class="col-12 mb-3">
-                    <label for="description">Descripción</label>
-                    <textarea class="form-control" id="description" value required></textarea>
-                    <div class="invalid-feedback">
-                        Una descripción es requerida.
-                    </div>
-                </div>
-                <!-- Upload image input-->
-                <div class="col-lg-12 mx-auto my-2 border-top border-bottom pt-2 pb-4">
-                    <p class="text-left text-muted mb-0">
-                        <small>Sube hasta 5 fotos de lo que quieres vender.</small>
-                    </p>
-                    <div class="image-area px-4 bg-white">
-                        <div class="input-group pl-5 py-5">
-                            <p for="upload" class="btn btn-primary rounded-pill mx-auto shadow-sm font-weight-light">
-                                <i class="fas fa-plus"></i> Sube fotos
-                            </p>
-                            <input id="upload" type="file" onchange="readURL(this);" />
-                        </div>
-                    </div>
-                </div>
-                <!-- Uploaded image area-->
-                <div class="col-md-6 col-sm-12 my-2">
-                    <label>Categoría</label>
-                    <select name="plants-category" class="form-control">
-                      <option value="flor">Plantas de flor</option>
-                      <option value="interior">Plantas de interior</option>
-                      <option value="hortícolas">Plantas hortícolas</option>
-                      <option value="exterior">Plantas de exterior</option>
-                      <option value="cactus-suculentas">Cactus y suculentas</option>
-                      <option value="arboles-arbustos">Árboles y arbustos</option>
-                    </select>
-                    <!--
+  <div class="row background d-flex justify-content-center">
+    <div class="col-md-8 col-sm-12 bg-light shadow-gray my-2 pt-4">
+      <form ngNativeValidate [formGroup]="productForm" id="productForm">
+        <div class="row">
+          <div *ngIf="productId == null" class="col-12 text-center mb-2">
+            <p class="h2 mt-2">¿Qué quieres vender?</p>
+          </div>
+          <div
+            *ngIf="productId == null"
+            class="col-12 mx-md-auto mb-2 text-center"
+          >
+            <button
+              type="button"
+              class="btn col-3 my-3"
+              (click)="setProductType('insect')"
+              [ngClass]="{
+                'btn-light': productType != 'insect',
+                'btn-success': productType == 'insect'
+              }"
+            >
+              <p>Insecto</p>
+              <i class="fas fa-bug ml-1"></i>
+            </button>
+            <button
+              type="button"
+              class="btn col-3 my-3"
+              (click)="setProductType('plant')"
+              [ngClass]="{
+                'btn-light': productType != 'plant',
+                'btn-success': productType == 'plant'
+              }"
+            >
+              <p>Planta</p>
+              <i class="fas fa-seedling ml-1"></i>
+            </button>
+          </div>
+          <div class="col-2 my-2">
+            <label for="title">Título</label>
+          </div>
+          <div class="col-md-10 col-sm-12 my-2 float-end">
+            <input
+              formControlName="tittle"
+              type="text"
+              class="form-control"
+              id="title"
+              maxlength="200"
+              minlength="5"
+              required
+            />
+            <div class="invalid-feedback">Un título es requerido.</div>
+          </div>
+          <div class="col-12 mb-3">
+            <label for="description">Descripción</label>
+            <textarea
+              class="form-control"
+              id="description"
+              formControlName="description"
+              minlength="2"
+              maxlength="500"
+              required
+            ></textarea>
+            <div class="invalid-feedback">Una descripción es requerida.</div>
+          </div>
+          <!-- Upload image input-->
+          <div
+            class="col-lg-12 mx-auto my-2 border-top border-bottom pt-2 pb-4"
+          >
+            <p class="text-left text-muted mb-0">
+              <small>Sube hasta 3 fotos de lo que quieres vender.</small>
+            </p>
+            <div class="image-area px-4 bg-white">
+              <div class="input-group pl-5 py-5">
+                <label
+                  for="images-upload"
+                  class="
+                    btn btn-primary
+                    rounded-pill
+                    mx-auto
+                    shadow-sm
+                    font-weight-light
+                  "
+                >
+                  <i class="fas fa-plus"></i> Sube fotos
+                </label>
+                <input
+                  id="images-upload"
+                  type="file"
+                  class="d-none"
+                  accept="image/x-png,image/gif,image/jpeg"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Uploaded image area-->
+          <div class="col-md-6 col-sm-12 my-2">
+            <label>Categoría</label>
+            <select
+              name="plants-category"
+              formControlName="category"
+              class="form-control"
+            >
+              <option value="flor">Plantas de flor</option>
+              <option value="interior">Plantas de interior</option>
+              <option value="hortícolas">Plantas hortícolas</option>
+              <option value="exterior">Plantas de exterior</option>
+              <option value="cactus-suculentas">Cactus y suculentas</option>
+              <option value="arboles-arbustos">Árboles y arbustos</option>
+            </select>
+            <!--
                 <ng-template #selectInsect>
                     <select name="insects-category" class="form-control">
                       <option value="aracnidos">Arácnidos</option>
@@ -71,41 +124,60 @@
                     </select>
                 </ng-template>
               -->
-                </div>
-                <div class="col-5 my-2 border-dm-top mr-0">
-                    <label for="price">Precio</label>
-                    <input type="number" class="form-control" id="price" placeholder value required />
-                    <div class="invalid-feedback">
-                        Tienes que poner un precio.
-                    </div>
-                </div>
-                <div class="col-1 pt-5 text-muted ml-0">
-                    <i class="fas fa-euro-sign"></i>
-                </div>
-                <div class="col-md-6 col-sm-12 my-2">
-                    <label>Subcategoría</label>
-                    <select name="insect-subcategory" class="form-control">
-                    <option value="corteza">insectos corteza</option>
-                    <option value="hoja">insectos hoja</option>
-                    <option value="palo">insectos palo</option>
-                </select>
-                </div>
-                <div class="col-md-6 col-sm-12 my-2">
-                    <label>Tamaño</label>
-                    <select name="plants-size" class="form-control">
-                    <option value="semilla">semilla</option>
-                    <option value="bulbo">bulbo</option>
-                    <option value="esqueje">esqueje</option>
-                    <option value="planta">planta</option>
-                  </select>
-                </div>
-            </div>
-            <div class="col-12 text-center">
-                <button type="button" class="btn btn-primary font-weight-bold mt-2 mb-4">
-                  <div *ngIf="isNew">Subir producto</div>
-                  <div *ngIf="!isNew">Guardar cambios</div>
-                </button>
-            </div>
+          </div>
+          <div class="col-5 my-2 border-dm-top mr-0">
+            <label for="price">Precio</label>
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              min="0.00"
+              step="0.1"
+              formControlName="price"
+              required
+            />
+            <div class="invalid-feedback">Tienes que poner un precio.</div>
+          </div>
+          <div class="col-1 pt-5 text-muted ml-0">
+            <i class="fas fa-euro-sign"></i>
+          </div>
+          <div class="col-md-6 col-sm-12 my-2">
+            <label>Subcategoría</label>
+            <select
+              name="insect-subcategory"
+              class="form-control"
+              formControlName="subcategory"
+            >
+              <option value="corteza">insectos corteza</option>
+              <option value="hoja">insectos hoja</option>
+              <option value="palo">insectos palo</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-sm-12 my-2">
+            <label>Tamaño</label>
+            <select
+              name="plants-size"
+              class="form-control"
+              formControlName="size"
+            >
+              <option value="semilla">semilla</option>
+              <option value="bulbo">bulbo</option>
+              <option value="esqueje">esqueje</option>
+              <option value="planta">planta</option>
+            </select>
+          </div>
         </div>
+      </form>
+      <div class="col-12 text-center">
+        <button
+          type="submit"
+          form="productForm"
+          class="btn btn-primary font-weight-bold mt-2 mb-4"
+        >
+          <span *ngIf="productId == null">Subir producto</span>
+          <span *ngIf="productId != null">Guardar cambios</span>
+        </button>
+      </div>
     </div>
+  </div>
 </form>

@@ -1,59 +1,45 @@
-@import '../../styles';
+@import "../../styles";
 .row.background {
-    background-color: $gray-100;
+  background-color: $gray-100;
 }
 
 .btn {
-    transition: all 0.6s ease;
-}
-
-.btn-light {
-    color: $green;
-    &:hover {
-        color: $dark-green
-    }
-    p {
-        color: $black;
-    }
+  transition: all 0.6s ease;
 }
 
 i {
-    font-size: 64px;
+  font-size: 64px;
 }
 
 i.fas.fa-plus {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 i.fas.fa-euro-sign {
-    font-size: 18px;
+  font-size: 18px;
 }
-
 
 /*-el área de insertar imagen-----------------------*/
 
 i.fas.fa-plus {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 #upload {
-    opacity: 0;
-    margin-top: -30%;
-    margin-left: -30%;
+  opacity: 0;
+  margin-top: -30%;
+  margin-left: -30%;
 }
 
 .image-area {
-    border: 2px dashed $gray-200;
-    padding-right: 50%;
-    padding-left: 50%;
-    position: relative;
+  border: 2px dashed $gray-200;
+  position: relative;
 }
 
 .image-area img {
-    z-index: 2;
-    position: relative;
+  z-index: 2;
+  position: relative;
 }
-
 
 /*-----------va hasta aquí-----------------------
 --------------------------------------------------*/
