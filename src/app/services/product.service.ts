@@ -10,6 +10,7 @@ import { Observable, throwError } from 'rxjs';
 })
 export class ProductService {
   constructor(private httpClient: HttpClient) {}
+
   getProducts(): Observable<any> {
     return this.httpClient.get(`${environment.apiUrl}/products`).pipe(
       catchError((error) => {
@@ -18,36 +19,37 @@ export class ProductService {
     );
   }
 
-  /*
-saveProduct(product: Product): Observable<any> {
-  return this.httpClient.post(`${environment.apiUrl}/product`, product)
+  getProduct(id: string): Observable<any> {
+    return this.httpClient.get(`${environment.apiUrl}/products/${id}`).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
+  }
+
+  addProduct(data: any): Observable<any> {
+    return this.httpClient.post(`${environment.apiUrl}/products`, data).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
+  }
+
+  updateProduct(id: string, data: any): Observable<any> {
+    return this.httpClient
+      .put(`${environment.apiUrl}/products/${id}`, data)
       .pipe(
-        catchError(error => {
-          return error;
+        catchError((error) => {
+          return throwError(error);
         })
       );
-}
-getProduct(id: string |null): Observable<any> {
-  return this.httpClient.get(`${environment.apiUrl}/product/${id}`).pipe(
-    catchError(error => {
-      return error;
-    })
-  );
-}
+  }
 
-updateProduct(product: Product): Observable<any> {
-  return this.httpClient.put(`${environment.apiUrl}/product/${product._id}`, product).pipe(
-    catchError(error => {
-      return error;
-    })
-  );
-}
-deleteProduct(id: string): Observable<any> {
-  return this.httpClient.delete(`${environment.apiUrl}/product/${id}`).pipe(
-    catchError(error => {
-      return error;
-    })
-  );
-}
-*/
+  deleteProduct(id: string): Observable<any> {
+    return this.httpClient.delete(`${environment.apiUrl}/products/${id}`).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
+  }
 }

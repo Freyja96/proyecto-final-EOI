@@ -26,7 +26,8 @@ export class UpdateProductComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private productServide: ProductService
   ) {
     this.productForm = this.formBuilder.group({
       tittle: [''],
@@ -43,6 +44,24 @@ export class UpdateProductComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     this.productId = this.route.snapshot.paramMap.get('id');
+
+    if (this.productId) {
+      this.productServide.getProduct(this.productId).subscribe(
+        (returnData: any) => {
+          console.log(returnData);
+        },
+        (error) => {
+          if (error.status == 500) {
+            this.messageError = 'No se ha podido conectar con el servidor';
+          } else if (error.status == 401) {
+            localStorage.clear();
+            this.router.navigate(['/login']);
+          } else if (error.status == 404) {
+            this.router.navigate(['/404']);
+          }
+        }
+      );
+    }
   }
 
   setProductType(type: string) {
