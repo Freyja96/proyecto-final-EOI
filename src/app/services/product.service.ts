@@ -1,4 +1,3 @@
-import { FormGroup } from '@angular/forms';
 import { Product } from './../models/product.model';
 import { environment } from './../../environments/environment';
 import { HttpClient, HttpClientModule } from '@angular/common/http';

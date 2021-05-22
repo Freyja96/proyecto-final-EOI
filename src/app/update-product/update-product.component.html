@@ -36,7 +36,7 @@
             </button>
           </div>
           <div class="col-2 my-2">
-            <label for="title">Título</label>
+            <label for="title">Título <span class="text-danger">*</span></label>
           </div>
           <div class="col-md-10 col-sm-12 my-2 float-end">
             <input
@@ -48,10 +48,11 @@
               minlength="5"
               required
             />
-            <div class="invalid-feedback">Un título es requerido.</div>
           </div>
           <div class="col-12 mb-3">
-            <label for="description">Descripción</label>
+            <label for="description"
+              >Descripción <span class="text-danger">*</span></label
+            >
             <textarea
               class="form-control"
               id="description"
@@ -60,9 +61,7 @@
               maxlength="500"
               required
             ></textarea>
-            <div class="invalid-feedback">Una descripción es requerida.</div>
           </div>
-          <!-- Upload image input-->
           <div
             class="col-lg-12 mx-auto my-2 border-top border-bottom pt-2 pb-4"
           >
@@ -92,54 +91,21 @@
               </div>
             </div>
           </div>
-          <!-- Uploaded image area-->
           <div class="col-md-6 col-sm-12 my-2">
             <label>Categoría</label>
             <select
               name="plants-category"
               formControlName="category"
               class="form-control"
+              (change)="updateSubCategories()"
             >
-              <option value="flor">Plantas de flor</option>
-              <option value="interior">Plantas de interior</option>
-              <option value="hortícolas">Plantas hortícolas</option>
-              <option value="exterior">Plantas de exterior</option>
-              <option value="cactus-suculentas">Cactus y suculentas</option>
-              <option value="arboles-arbustos">Árboles y arbustos</option>
+              <option
+                *ngFor="let category of categories"
+                value="{{ category }}"
+              >
+                {{ category }}
+              </option>
             </select>
-            <!--
-                <ng-template #selectInsect>
-                    <select name="insects-category" class="form-control">
-                      <option value="aracnidos">Arácnidos</option>
-                      <option value="chinches">Chinches</option>
-                      <option value="coleoptero">Coleóptero</option>
-                      <option value="cucarachas">Cucarachas</option>
-                      <option value="fasmidos">Fásmidos</option>
-                      <option value="hormigas">Hormigas</option>
-                      <option value="isopodos">Isópodos</option>
-                      <option value="lepidopteros">Lepidópteros</option>
-                      <option value="mantis">Mantis</option>
-                      <option value="milpies">Milpies</option>
-                      <option value="disecados">ARTRÓPODOS DISECADOS</option>
-                    </select>
-                </ng-template>
-              -->
-          </div>
-          <div class="col-5 my-2 border-dm-top mr-0">
-            <label for="price">Precio</label>
-            <input
-              type="number"
-              class="form-control"
-              id="price"
-              min="0.00"
-              step="0.1"
-              formControlName="price"
-              required
-            />
-            <div class="invalid-feedback">Tienes que poner un precio.</div>
-          </div>
-          <div class="col-1 pt-5 text-muted ml-0">
-            <i class="fas fa-euro-sign"></i>
           </div>
           <div class="col-md-6 col-sm-12 my-2">
             <label>Subcategoría</label>
@@ -148,22 +114,44 @@
               class="form-control"
               formControlName="subcategory"
             >
-              <option value="corteza">insectos corteza</option>
-              <option value="hoja">insectos hoja</option>
-              <option value="palo">insectos palo</option>
+              <option
+                *ngFor="let subcategory of subCategories"
+                value="{{ subcategory }}"
+              >
+                {{ subcategory }}
+              </option>
             </select>
           </div>
-          <div class="col-md-6 col-sm-12 my-2">
+          <div class="col-auto my-2 border-dm-top mr-0">
+            <label for="price">Precio <span class="text-danger">*</span></label>
+            <div class="input-group">
+              <input
+                type="number"
+                class="form-control"
+                id="price"
+                min="0.00"
+                step="0.1"
+                formControlName="price"
+                required
+              />
+              <div class="input-group-append">
+                <span class="input-group-text"
+                  ><i class="fas fa-euro-sign"></i
+                ></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto my-2">
             <label>Tamaño</label>
             <select
               name="plants-size"
               class="form-control"
               formControlName="size"
             >
-              <option value="semilla">semilla</option>
-              <option value="bulbo">bulbo</option>
-              <option value="esqueje">esqueje</option>
-              <option value="planta">planta</option>
+              <option value="semilla">Semilla</option>
+              <option value="bulbo">Bulbo</option>
+              <option value="esqueje">Esqueje</option>
+              <option value="planta">Planta</option>
             </select>
           </div>
         </div>
