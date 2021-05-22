@@ -1,13 +1,12 @@
-export class User{
+export class User {
   username?: string;
   firstName?: string;
   email?: string;
   password?: string;
   lastName?: string;
   dateOfBirth?: string;
-  image?:{
-    url?: string;
-  };
+  image?: string;
   emailVerified?: boolean;
   location?: string;
+  createDate?: Date;
 }

@@ -47,7 +47,7 @@ export class UpdateProductComponent implements OnInit {
 
     if (this.productId) {
       this.productServide.getProduct(this.productId).subscribe(
-        (returnData: any) => {
+        (returnData: Product) => {
           console.log(returnData);
         },
         (error) => {
