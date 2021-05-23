@@ -39,7 +39,6 @@ export class ProductComponent implements OnInit {
       this.productService.getProduct(productId).subscribe(
         (returnData: any) => {
           this.product = returnData;
-          console.log(returnData);
           if (returnData.publisherId) {
             this.userService.getUserById(returnData.publisherId).subscribe(
               (data: any) => {
