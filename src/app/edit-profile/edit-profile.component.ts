@@ -100,15 +100,27 @@ export class EditProfileComponent implements OnInit {
       let fileName = file.name + '-' + this.userProfile.username;
       this.messageInfo = 'Se está guardando la imagen, espera un momento';
 
-      this.firebaseStorage.uploadImage(fileName, file).then(() => {
-        this.firebaseStorage
-          .getRefImage(fileName)
-          .getDownloadURL()
-          .subscribe((url) => {
-            this.image = url;
-            this.updateProfileImage(url);
-          });
-      });
+      if (this.image != null) {
+        this.firebaseStorage.deleteImage(this.image);
+      }
+
+      this.firebaseStorage
+        .uploadImage(fileName, file)
+        .catch((error) => {
+          this.messageError =
+            'No se ha podido subir la imagen. El tamaño maximo es 1Mb';
+          this.messageInfo = '';
+          console.log(error);
+        })
+        .then(() => {
+          this.firebaseStorage
+            .getRefImage(fileName)
+            .getDownloadURL()
+            .subscribe((url) => {
+              this.image = url;
+              this.updateProfileImage(url);
+            });
+        });
     }
   }
 

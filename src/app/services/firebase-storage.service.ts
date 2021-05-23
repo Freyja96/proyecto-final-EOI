@@ -14,4 +14,8 @@ export class FirebaseStorageService {
   public getRefImage(name: string) {
     return this.storage.ref(name);
   }
+
+  public deleteImage(url: any) {
+    return this.storage.refFromURL(url).delete();
+  }
 }

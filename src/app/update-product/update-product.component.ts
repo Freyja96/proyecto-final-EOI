@@ -6,6 +6,7 @@ import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../services/auth/auth.service';
+import { FirebaseStorageService } from './../services/firebase-storage.service';
 
 @Component({
   selector: 'app-update-product',
@@ -21,6 +22,8 @@ export class UpdateProductComponent implements OnInit {
   categories: Array<string> = new Array();
   subCategories: Array<string> = new Array();
   allCategories: Array<Category> = [];
+  userProfile = { username: '' };
+  imageList: Array<string> = new Array();
 
   constructor(
     private router: Router,
@@ -28,7 +31,8 @@ export class UpdateProductComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private categoryService: CategoryService,
-    private productService: ProductService
+    private productService: ProductService,
+    private firebaseStorage: FirebaseStorageService
   ) {
     this.productForm = this.formBuilder.group({
       title: [''],
@@ -44,6 +48,11 @@ export class UpdateProductComponent implements OnInit {
     if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/login']);
     }
+    let userData = localStorage.getItem('userProfile');
+    if (userData != null) {
+      this.userProfile = JSON.parse(userData);
+    }
+
     this.productId = this.route.snapshot.paramMap.get('id');
 
     if (this.productId) {
@@ -59,6 +68,11 @@ export class UpdateProductComponent implements OnInit {
           this.productForm.controls['size'].setValue(
             returnData.size ? returnData.size : ''
           );
+
+          if (returnData.images) {
+            this.imageList = returnData.images;
+          }
+
           this.updateCategories();
 
           if (returnData.category) {
@@ -108,8 +122,6 @@ export class UpdateProductComponent implements OnInit {
 
       let productData = {
         publisherId: userProfile._id,
-        image:
-          'https://rockcontent.com/es/wp-content/uploads/sites/3/2019/02/o-que-e-produto-no-mix-de-marketing.png',
         title: this.productForm.controls['title'].value,
         price: this.productForm.controls['price'].value,
         description: this.productForm.controls['description'].value,
@@ -117,6 +129,7 @@ export class UpdateProductComponent implements OnInit {
         size: this.productForm.controls['size'].value,
         category: this.productForm.controls['category'].value,
         subcategory: this.productForm.controls['subcategory'].value,
+        images: this.imageList,
       };
 
       if (this.productId) {
@@ -124,7 +137,6 @@ export class UpdateProductComponent implements OnInit {
           .updateProduct(this.productId, productData)
           .subscribe(
             (returnData: any) => {
-              console.log(returnData);
               this.messageInfo = 'El producto se ha actualizado correctamente.';
             },
             (error) => {
@@ -142,8 +154,7 @@ export class UpdateProductComponent implements OnInit {
       } else {
         this.productService.addProduct(productData).subscribe(
           (returnData: Product) => {
-            console.log(returnData);
-            this.router.navigate(['/update/product/' + returnData._id]);
+            this.router.navigate(['/product/' + returnData._id]);
           },
           (error) => {
             if (error.status == 500) {
@@ -220,5 +231,42 @@ export class UpdateProductComponent implements OnInit {
     } else {
       this.productForm.controls['subcategory'].enable();
     }
+  }
+
+  uploadImage(event: any) {
+    if (
+      event != null &&
+      event.target != null &&
+      event.target.files[0] != null
+    ) {
+      let file = event.target.files[0];
+      let fileName = file.name + '-' + this.userProfile.username;
+      this.messageError = '';
+      this.messageInfo = 'Se está guardando la imagen, espera un momento';
+
+      this.firebaseStorage
+        .uploadImage(fileName, file)
+        .catch((error) => {
+          this.messageError =
+            'No se ha podido subir la imagen. El tamaño maximo es 1Mb';
+          this.messageInfo = '';
+          console.log(error);
+        })
+        .then(() => {
+          this.firebaseStorage
+            .getRefImage(fileName)
+            .getDownloadURL()
+            .subscribe((url) => {
+              this.imageList.push(url);
+              this.messageInfo =
+                'Imagen subida correctamente. Recuerda guardar los cambios';
+            });
+        });
+    }
+  }
+
+  deleteImage(url: string) {
+    this.messageError = '';
+    this.imageList = this.imageList.filter((image) => image != url);
   }
 }

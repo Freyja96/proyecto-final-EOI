@@ -70,31 +70,46 @@
           <div
             class="col-lg-12 mx-auto my-2 border-top border-bottom pt-2 pb-4"
           >
-            <p class="text-left text-muted mb-0">
-              <small>Sube hasta 3 fotos de lo que quieres vender.</small>
-            </p>
-            <div class="image-area px-4 bg-white">
-              <div class="input-group pl-5 py-5">
-                <label
-                  for="images-upload"
-                  class="
-                    btn btn-primary
-                    rounded-pill
-                    mx-auto
-                    shadow-sm
-                    font-weight-light
-                  "
-                >
-                  <i class="fas fa-plus"></i> Sube fotos
-                </label>
-                <input
-                  id="images-upload"
-                  type="file"
-                  class="d-none"
-                  accept="image/x-png,image/gif,image/jpeg"
-                />
+            <div *ngIf="imageList.length < 3" class="input-group">
+              <label
+                for="images-upload"
+                class="
+                  btn btn-primary
+                  rounded-pill
+                  mx-auto
+                  shadow-sm
+                  font-weight-light
+                "
+              >
+                <i class="fas fa-plus"></i> Subir fotos
+              </label>
+              <input
+                id="images-upload"
+                type="file"
+                class="d-none"
+                (change)="uploadImage($event)"
+                accept="image/x-png,image/gif,image/jpeg"
+              />
+            </div>
+            <div class="image-area p-2 bg-white">
+              <div class="row">
+                <div *ngFor="let image of imageList" class="col-md-3 col-sm-9">
+                  <img src="{{ image }}" class="img-fluid" />
+                  <button
+                    class="btn btn-danger btn-block rounded-0"
+                    (click)="deleteImage(image)"
+                  >
+                    Eliminar esta foto
+                  </button>
+                </div>
               </div>
             </div>
+            <p class="text-left text-muted mb-0">
+              <small
+                >Sube hasta 3 fotos de lo que quieres vender. El tamaño máximo
+                de las imagenes es de 1Mb</small
+              >
+            </p>
           </div>
           <div class="col-md-6 col-sm-12 my-2">
             <label>Categoría</label>
