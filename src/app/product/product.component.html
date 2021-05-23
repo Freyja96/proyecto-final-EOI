@@ -1,32 +1,61 @@
 <div class="container-fluid bg-light">
   <div class="row">
     <div class="col-sm-12 col-md-6 mx-auto bg-white rounded my-3 p-3">
+      <div
+        *ngIf="messageError != ''"
+        class="row mt-3 alert alert-danger"
+        role="alert"
+      >
+        {{ messageError }}
+      </div>
       <div class="row">
         <div class="col-12" id="user-part">
+          <div *ngIf="image == null">
+            <i class="fas fa-user-circle text-white header-icon"></i>
+          </div>
           <img
-            src="{{ owner.image }}"
+            *ngIf="image != null"
+            src="{{ image }}"
             class="rounded"
             alt="Imagen del usuario"
             (click)="goToProfile()"
           />
           <span class="h3 ml-2" (click)="goToProfile()">{{
-            owner.firstName
+            owner?.firstName
           }}</span>
           <button
-            *ngIf="!isTheOwner"
+            *ngIf="!isTheOwner && !product.sold"
             type="button"
             class="btn btn-success rounded text-white float-right"
           >
             Chat
           </button>
+          <button
+            *ngIf="!isTheOwner && product.sold"
+            type="button"
+            class="btn btn-success rounded text-white float-right"
+            disabled
+          >
+            Este producto esta vendido
+          </button>
           <div class="btn-group float-right" role="group" *ngIf="isTheOwner">
-            <button type="button" class="btn btn-danger text-white">
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="showDeleteModal = true"
+            >
               Borrar
             </button>
-            <button type="button" class="btn btn-success text-white">
-              Vendido
+            <button
+              type="button"
+              class="btn btn-success text-white"
+              (click)="markAsSold()"
+            >
+              <span *ngIf="!product.sold">Lo he vendido</span>
+              <span *ngIf="product.sold">No está vendido</span>
             </button>
             <button
+              *ngIf="!product.sold"
               type="button"
               class="btn btn-secondary text-white"
               (click)="goToEditProduct()"
@@ -94,16 +123,16 @@
                 product?.type == "plant" ? "Planta" : "Insecto"
               }}</span>
             </div>
-            <div *ngIf="productCategory.category" class="col">
+            <div *ngIf="productCategory?.category" class="col">
               Categoría
               <span class="ml-1 text-muted">{{
-                productCategory.category
+                productCategory?.category
               }}</span>
             </div>
-            <div *ngIf="productCategory.subcategory" class="col">
+            <div *ngIf="productCategory?.subcategory" class="col">
               Subcategoría
               <span class="ml-1 text-muted">{{
-                productCategory.subcategory
+                productCategory?.subcategory
               }}</span>
             </div>
             <div *ngIf="product?.size" class="col">
@@ -120,6 +149,49 @@
           <span class="ml-1 text-muted">{{
             product?.publishedDate | date: "dd/MM/yyyy"
           }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showDeleteModal" class="modal fade show d-block" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Borrar Producto</h5>
+          <button
+            type="button"
+            class="close"
+            (click)="showDeleteModal = false"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Una vez des a
+            <span class="text-danger">Borrar Producto</span> el producto será
+            borrado, esta acción no es reversible. Te recomendamos editar el
+            producto.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            (click)="showDeleteModal = false"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            No quiero borrar el producto
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="deleteProduct()"
+          >
+            Borrar Producto
+          </button>
         </div>
       </div>
     </div>

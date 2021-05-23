@@ -15,8 +15,11 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class ProductComponent implements OnInit {
   isTheOwner = false;
+  showDeleteModal = false;
+  messageError = '';
+  image = null;
 
-  product?: Product;
+  product: any;
   owner: any;
   productCategory: any;
 
@@ -36,11 +39,14 @@ export class ProductComponent implements OnInit {
       this.productService.getProduct(productId).subscribe(
         (returnData: any) => {
           this.product = returnData;
+          console.log(returnData);
           if (returnData.publisherId) {
             this.userService.getUserById(returnData.publisherId).subscribe(
               (data: any) => {
-                console.log(data);
                 this.owner = data;
+                if (this.owner != null && this.owner.image != null) {
+                  this.image = this.owner.image;
+                }
                 if (this.authService.isAuthenticated()) {
                   let userData = localStorage.getItem('userProfile');
                   if (userData != null) {
@@ -57,12 +63,11 @@ export class ProductComponent implements OnInit {
             );
           }
           if (returnData.category) {
-            this.categoryService.getCategory(returnData.category).subscribe(
-              (cat: Category) => {
+            this.categoryService
+              .getCategory(returnData.category)
+              .subscribe((cat: Category) => {
                 this.productCategory = cat;
-              },
-              (error) => {}
-            );
+              });
           }
         },
         (error) => {
@@ -87,6 +92,53 @@ export class ProductComponent implements OnInit {
   goToEditProduct() {
     if (this.product) {
       this.router.navigate(['update/product', this.product._id]);
+    }
+  }
+
+  markAsSold() {
+    if (this.owner) {
+      if (this.product && this.product._id) {
+        if (this.product.sold) {
+          this.product.sold = false;
+        } else {
+          this.product.sold = true;
+        }
+        this.productService
+          .updateProduct(this.product._id, this.product)
+          .subscribe(
+            (returnData: any) => {
+              this.ngOnInit();
+            },
+            (error) => {
+              if (error.status == 500) {
+                this.messageError =
+                  'No se ha podido conectar con el servidor. Intentalo de nuevo en unos minutos';
+              } else if (error.status == 401) {
+                localStorage.clear();
+                this.router.navigate(['/login']);
+              } else if (error.status == 403) {
+                this.router.navigate(['/']);
+              }
+            }
+          );
+      }
+    } else {
+      this.messageError = 'Este producto no es tuyo';
+    }
+  }
+
+  deleteProduct() {
+    this.messageError = '';
+    if (this.product && this.product._id) {
+      this.productService.deleteProduct(this.product._id).subscribe(
+        (data: any) => {
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          this.messageError = 'No hemos podido borrar el producto';
+          console.log(error.error);
+        }
+      );
     }
   }
 }
