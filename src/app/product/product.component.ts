@@ -1,5 +1,12 @@
+import { Category } from './../models/category.model';
+import { CategoryService } from './../services/category.service';
+import { User } from './../models/user.model';
+import { Product } from './../models/product.model';
+import { UserService } from './../services/user.service';
+import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-product',
@@ -7,60 +14,79 @@ import { Router } from '@angular/router';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  isTheOwner = true;
+  isTheOwner = false;
 
-  product = {
-    _id: 'unaid',
-    publisherId: {
-      _id: 'string',
-      firstName: 'Pepito',
-      username: 'Nombre de usuario',
-      image: {
-        url:
-          'https://xavierferras.com/wp-content/uploads/2019/02/266-Persona.jpg',
-      },
-      emailVerified: true,
-      location: 'Madrid',
-    },
-    images: [
-      {
-        _id: 'string',
-        url:
-          'https://www.hola.com/imagenes/decoracion/20200609169726/plantas-de-interior-cuidados-duren-tiempo-mc/0-833-734/trucos-plantas-interior-duren-1-z.jpg',
-      },
-      {
-        _id: 'string',
-        url:
-          'https://images.pexels.com/photos/1924867/pexels-photo-1924867.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      },
-      {
-        _id: 'string',
-        url:
-          'https://images.pexels.com/photos/4068015/pexels-photo-4068015.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      },
-    ],
-    title: 'Nombre del producto',
-    price: 1.26,
-    type: 'plant',
-    size: null,
-    publishedDate: '2019-08-24',
-    description: 'Detalles del producto, origen, tipo de cuidados, etc...',
-    category: {
-      type: 'plant',
-      category: 'Un tipo',
-      subcategory: 'El subtipo',
-    },
-  };
+  product?: Product;
+  owner: any;
+  productCategory: any;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    private userService: UserService,
+    private authService: AuthService,
+    private categoryService: CategoryService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let productId = this.route.snapshot.paramMap.get('id');
+
+    if (productId) {
+      this.productService.getProduct(productId).subscribe(
+        (returnData: any) => {
+          this.product = returnData;
+          if (returnData.publisherId) {
+            this.userService.getUserById(returnData.publisherId).subscribe(
+              (data: any) => {
+                console.log(data);
+                this.owner = data;
+                if (this.authService.isAuthenticated()) {
+                  let userData = localStorage.getItem('userProfile');
+                  if (userData != null) {
+                    let userProfile = JSON.parse(userData);
+                    if (data._id == userProfile._id) {
+                      this.isTheOwner = true;
+                    }
+                  }
+                }
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+          }
+          if (returnData.category) {
+            this.categoryService.getCategory(returnData.category).subscribe(
+              (cat: Category) => {
+                this.productCategory = cat;
+              },
+              (error) => {}
+            );
+          }
+        },
+        (error) => {
+          if (error.status == 500) {
+            this.router.navigate(['/']);
+          } else {
+            this.router.navigate(['/404']);
+          }
+        }
+      );
+    } else {
+      this.router.navigate(['/404']);
+    }
+  }
 
   goToProfile() {
-    this.router.navigate(['user', this.product.publisherId._id]);
+    if (this.owner) {
+      this.router.navigate(['user', this.owner.username]);
+    }
   }
 
   goToEditProduct() {
-    this.router.navigate(['update/product', this.product._id]);
+    if (this.product) {
+      this.router.navigate(['update/product', this.product._id]);
+    }
   }
 }

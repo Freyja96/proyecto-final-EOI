@@ -19,7 +19,7 @@ export class UserService {
         return throwError(error);
       })
     );
-  };
+  }
 
   userLogin(user: User): Observable<any> {
     return this.httpClient.post(`${environment.apiUrl}/login`, user).pipe(
@@ -27,7 +27,7 @@ export class UserService {
         return throwError(error);
       })
     );
-  };
+  }
 
   getUser(): Observable<any> {
     return this.httpClient.get(`${environment.apiUrl}/users`).pipe(
@@ -35,32 +35,43 @@ export class UserService {
         return throwError(error);
       })
     );
-  };
+  }
 
-  getUserProfile(username: string):Observable<any>{
-    return this.httpClient.get(`${environment.apiUrl}/users/${username}/profile`).pipe(
-      catchError((error) => {
-        return throwError(error);
-      })
-    )
-  };
-
-  confirmationEmail(code: string): Observable<any> {
-    return this.httpClient.post(`${environment.apiUrl}/confirmation`, {code: code}).pipe(
+  getUserById(id: string): Observable<any> {
+    return this.httpClient.get(`${environment.apiUrl}/users/${id}`).pipe(
       catchError((error) => {
         return throwError(error);
       })
     );
-  };
+  }
 
-  resendTokenEmail(): Observable<any> {
+  getUserProfile(username: string): Observable<any> {
     return this.httpClient
-      .get(`${environment.apiUrl}/confirmation`).pipe(
+      .get(`${environment.apiUrl}/users/${username}/profile`)
+      .pipe(
         catchError((error) => {
           return throwError(error);
         })
       );
-  };
+  }
+
+  confirmationEmail(code: string): Observable<any> {
+    return this.httpClient
+      .post(`${environment.apiUrl}/confirmation`, { code: code })
+      .pipe(
+        catchError((error) => {
+          return throwError(error);
+        })
+      );
+  }
+
+  resendTokenEmail(): Observable<any> {
+    return this.httpClient.get(`${environment.apiUrl}/confirmation`).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
+  }
 
   updateUser(data: Object, action: string): Observable<any> {
     return this.httpClient
@@ -70,7 +81,7 @@ export class UserService {
           return throwError(error);
         })
       );
-  };
+  }
 
   deleteUser(): Observable<any> {
     return this.httpClient.delete(`${environment.apiUrl}/users`).pipe(
@@ -78,5 +89,5 @@ export class UserService {
         return throwError(error.error);
       })
     );
-  };
+  }
 }

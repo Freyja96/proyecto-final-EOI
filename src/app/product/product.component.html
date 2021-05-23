@@ -4,13 +4,13 @@
       <div class="row">
         <div class="col-12" id="user-part">
           <img
-            src="{{ product.publisherId.image.url }}"
+            src="{{ owner.image }}"
             class="rounded"
             alt="Imagen del usuario"
             (click)="goToProfile()"
           />
           <span class="h3 ml-2" (click)="goToProfile()">{{
-            product.publisherId.firstName
+            owner.firstName
           }}</span>
           <button
             *ngIf="!isTheOwner"
@@ -43,16 +43,16 @@
           >
             <div class="carousel-inner">
               <div
-                *ngFor="let image of product.images; index as i"
+                *ngFor="let image of product?.images; index as i"
                 class="carousel-item"
                 [ngClass]="{
                   active: i == 0
                 }"
               >
                 <img
-                  src="{{ image.url }}"
+                  src="{{ image }}"
                   class="d-block w-100 overflow-hidden"
-                  alt="{{ image._id }}"
+                  alt="{{ image }}"
                 />
               </div>
             </div>
@@ -83,51 +83,43 @@
           </div>
         </div>
         <div class="col-12 pt-3">
-          <p class="h2 float-right">{{ product.price }}€</p>
-          <h1 class="font-weight-normal">{{ product.title }}</h1>
+          <p class="h2 float-right">{{ product?.price }}€</p>
+          <h1 class="font-weight-normal">{{ product?.title }}</h1>
         </div>
         <div class="col-12 py-2 my-2 border-top border-bottom border-success">
           <div class="row">
             <div class="col">
               Tipo
               <span class="ml-1 text-muted">{{
-                product.type == "plant" ? "Planta" : "Insecto"
+                product?.type == "plant" ? "Planta" : "Insecto"
               }}</span>
             </div>
-            <div *ngIf="product.category.category" class="col">
+            <div *ngIf="productCategory.category" class="col">
               Categoría
               <span class="ml-1 text-muted">{{
-                product.category.category
+                productCategory.category
               }}</span>
             </div>
-            <div *ngIf="product.category.subcategory" class="col">
+            <div *ngIf="productCategory.subcategory" class="col">
               Subcategoría
               <span class="ml-1 text-muted">{{
-                product.category.subcategory
+                productCategory.subcategory
               }}</span>
             </div>
-            <div *ngIf="product.size" class="col">
+            <div *ngIf="product?.size" class="col">
               Formato
-              <span class="ml-1 text-muted">{{ product.size }}</span>
+              <span class="ml-1 text-muted">{{ product?.size }}</span>
             </div>
           </div>
         </div>
         <div class="col-12 pt-2">
-          <p class="font-weight-normal">{{ product.description }}</p>
+          <p class="font-weight-normal">{{ product?.description }}</p>
         </div>
-        <div class="col-12 pt-2">
-          <div id="map-container-google-1" class="w-100" style="height: 200px">
-            <iframe
-              id="ubicationResult"
-              class="w-100 h-100 border-0"
-              src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              frameborder="0"
-            ></iframe>
-          </div>
-        </div>
-        <div *ngIf="product.publishedDate" class="col-12 pt-2">
+        <div *ngIf="product?.publishedDate" class="col-12 pt-2">
           Fecha de publicación
-          <span class="ml-1 text-muted">{{ product.publishedDate }}</span>
+          <span class="ml-1 text-muted">{{
+            product?.publishedDate | date: "dd/MM/yyyy"
+          }}</span>
         </div>
       </div>
     </div>
