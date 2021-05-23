@@ -8,12 +8,18 @@ import { Router } from '@angular/router';
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: any;
+  userProduct: any = null;
+  image: null;
 
   constructor(private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.userProduct != null && this.userProduct.image != null && this.userProduct.image.url != null) {
+      this.image = this.userProduct.image.url;
+    }
+  }
 
   goToProduct() {
     this.router.navigate(['product', this.product._id]);
   }
-}
+  }

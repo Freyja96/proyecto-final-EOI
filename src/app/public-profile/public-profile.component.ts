@@ -11,6 +11,7 @@ export class PublicProfileComponent implements OnInit {
   image = null;
   username: any;
   userProfile: any;
+  noProducts: null;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {}
 
@@ -28,4 +29,7 @@ export class PublicProfileComponent implements OnInit {
       }
     )
   }
+  //dontHaveProducts(this.userService.getUserProfile()==){
+
+  //}
 }

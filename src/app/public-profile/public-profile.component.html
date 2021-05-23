@@ -12,10 +12,6 @@
                         {{ userProfile.firstName }} {{ userProfile.lastName }}
                         <i *ngIf="userProfile.emailVerified" title="Correo verificado" class="fas fa-check fa-sm text-success"></i>
                     </h1>
-                    <label for="address">{{ userProfile.location }}</label>
-                    <div id="map-container-google-1" class="w-100" style="height: 150px">
-                        <iframe id="ubicationResult" class="h-100 border-0" src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"></iframe>
-                    </div>
                 </div>
             </div>
         </div>
@@ -26,6 +22,11 @@
                         Listado de productos
                     </p>
                 </div>
+                <!--
+                <div *ngIf="expression">
+                    No hay productos que mostrar.
+                </div>
+                -->
                 <div *ngFor="let product of userProfile.products" class="col-md-4 col-sm-12 mb-2">
                     <app-product-item [product]="product"></app-product-item>
                 </div>

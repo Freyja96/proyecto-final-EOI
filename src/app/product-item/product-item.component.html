@@ -1,16 +1,12 @@
 <div class="card" (click)="goToProduct()">
-  <div class="image-part overflow-hidden">
-    <img
-      src="{{ product.images[0].url }}"
-      class="w-100 h-100"
-      alt="{{ product.title }}"
-    />
-  </div>
-  <div class="card-body text-center">
-    <h5 class="card-title overflow-hidden">{{ product.title }}</h5>
-    <p class="card-text text-break">
-      {{ product.description }}
-    </p>
-    <p class="h5 font-weight-bold">{{ product.price }}€</p>
-  </div>
+    <div class="image-part overflow-hidden">
+        <img src="" class="w-100 h-100" alt="{{ product.title }}" />
+    </div>
+    <div class="card-body text-center">
+        <h5 class="card-title overflow-hidden">{{ product.title }}</h5>
+        <p class="card-text text-break">
+            {{ product.description }}
+        </p>
+        <p class="h5 font-weight-bold">{{ product.price }}€</p>
+    </div>
 </div>
