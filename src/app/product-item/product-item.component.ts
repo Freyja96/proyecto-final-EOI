@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class ProductItemComponent implements OnInit {
   @Input() product: any;
   userProduct: any = null;
-  image: null;
+  image = null;
 
   constructor(private router: Router) {}
 

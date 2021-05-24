@@ -1,3 +1,7 @@
+<div *ngIf="product==null">
+    No hay productos que mostrar.
+</div>
+
 <div class="card" (click)="goToProduct()">
     <div class="image-part overflow-hidden">
         <img src="" class="w-100 h-100" alt="{{ product.title }}" />
