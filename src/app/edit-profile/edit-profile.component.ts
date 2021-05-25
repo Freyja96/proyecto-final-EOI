@@ -108,7 +108,7 @@ export class EditProfileComponent implements OnInit {
         .uploadImage(fileName, file)
         .catch((error) => {
           this.messageError =
-            'No se ha podido subir la imagen. El tamaño maximo es 1Mb';
+            'No se ha podido subir la imagen. El tamaño maximo es 2Mb';
           this.messageInfo = '';
           console.log(error);
         })

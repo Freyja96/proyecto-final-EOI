@@ -107,7 +107,7 @@
             <p class="text-left text-muted mb-0">
               <small
                 >Sube hasta 3 fotos de lo que quieres vender. El tamaño máximo
-                de las imagenes es de 1Mb</small
+                de las imagenes es de 2Mb</small
               >
             </p>
           </div>
@@ -161,7 +161,7 @@
               </div>
             </div>
           </div>
-          <div class="col-auto my-2">
+          <div *ngIf="productType == 'plant'" class="col-auto my-2">
             <label>Tamaño</label>
             <select
               name="plants-size"
