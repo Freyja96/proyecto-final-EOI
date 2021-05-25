@@ -16,10 +16,12 @@ export class ProductItemComponent implements OnInit {
   ngOnInit() {
     if(this.userProduct != null && this.userProduct.image != null && this.userProduct.image.url != null) {
       this.image = this.userProduct.image.url;
+    } else {
+      //this.image =
     }
   }
 
   goToProduct() {
     this.router.navigate(['product', this.product._id]);
   }
-  }
+}

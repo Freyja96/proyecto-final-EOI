@@ -8,7 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./public-profile.component.scss'],
 })
 export class PublicProfileComponent implements OnInit {
-  @Input() product: any;
   image = null;
   username: any;
   userProfile: any;
@@ -24,17 +23,16 @@ export class PublicProfileComponent implements OnInit {
       (data:any) => {
         this.userProfile = data;
         console.log(data);
+        if(data.products.length==0) {
+          this.noProducts=true;
+        } else {
+          this.noProducts=false;
+        };
       },
       (error) => {
         console.log(error);
       }
     )
-    //no me hace ni caso
-    if(this.product==null) {
-      this.noProducts=true;
-    } else {
-      this.noProducts=false;
-    };
   }
 
   //dontHaveProducts(this.userService.getUserProfile()==){

@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-12 col-md-9 p-2 text-center">
                     <h1>
-                        {{ userProfile.firstName }} {{ userProfile.lastName }}
+                        {{ userProfile?.firstName }}
                         <i *ngIf="userProfile.emailVerified" title="Correo verificado" class="fas fa-check fa-sm text-success"></i>
                     </h1>
                 </div>
@@ -28,7 +28,7 @@
                     <p *ngIf="noProducts==true" class="h4 text-center">Lo sentimos, ahora mismo no hay productos que mostrar.</p>
                 </div>
 -->
-                <div class="col-12" *ngIf="product==null">
+                <div class="col-12" *ngIf="noProducts">
                     <p class="h4 text-center">Lo sentimos, ahora mismo no hay productos que mostrar.</p>
                 </div>
                 <div class="col-md-4 col-sm-12 mb-2" *ngFor="let product of userProfile.products">
