@@ -126,7 +126,10 @@ export class UpdateProductComponent implements OnInit {
         price: this.productForm.controls['price'].value,
         description: this.productForm.controls['description'].value,
         type: this.productType,
-        size: this.productForm.controls['size'].value,
+        size:
+          this.productType == 'plant'
+            ? this.productForm.controls['size'].value
+            : undefined,
         category: this.productForm.controls['category'].value,
         subcategory: this.productForm.controls['subcategory'].value,
         images: this.imageList,
@@ -248,7 +251,7 @@ export class UpdateProductComponent implements OnInit {
         .uploadImage(fileName, file)
         .catch((error) => {
           this.messageError =
-            'No se ha podido subir la imagen. El tamaño maximo es 1Mb';
+            'No se ha podido subir la imagen. El tamaño maximo es 2Mb';
           this.messageInfo = '';
           console.log(error);
         })
