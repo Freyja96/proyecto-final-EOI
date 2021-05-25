@@ -61,7 +61,10 @@
     <p class="h2">Los más destacados</p>
   </div>
   <div class="row pl-md-5 pr-md-5">
-    <div *ngFor="let product of products" class="col-md-3 col-sm-12 mb-2">
+    <div
+      *ngFor="let product of products"
+      class="col-xl-3 col-md-4 col-sm-12 mb-2"
+    >
       <app-product-item [product]="product"></app-product-item>
     </div>
   </div>
