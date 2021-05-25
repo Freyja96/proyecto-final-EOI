@@ -12,6 +12,9 @@
                         {{ userProfile?.firstName }}
                         <i *ngIf="userProfile.emailVerified" title="Correo verificado" class="fas fa-check fa-sm text-success"></i>
                     </h1>
+                    <p>
+                        {{ userProfile?.location }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -22,12 +25,6 @@
                         Listado de productos
                     </p>
                 </div>
-
-                <!--no me hace ni caso
-                <div class="col-12">
-                    <p *ngIf="noProducts==true" class="h4 text-center">Lo sentimos, ahora mismo no hay productos que mostrar.</p>
-                </div>
--->
                 <div class="col-12" *ngIf="noProducts">
                     <p class="h4 text-center">Lo sentimos, ahora mismo no hay productos que mostrar.</p>
                 </div>
