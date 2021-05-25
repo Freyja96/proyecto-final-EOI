@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-sm-12 col-md-3 p-3">
                     <a class="nav-link text-body" [routerLink]="['/edit/profile']"></a>
-                    <img *ngIf="image != null" class="rounded" src="{{ userProfile.image.url }}" width="45" height="45" />
-                    <i *ngIf="image == null" class="fas fa-user-circle text-white header-icon"></i>
+                    <img *ngIf="userProfile.image != null" class="rounded" src="{{ userProfile.image }}" width="100" height="auto" />
+                    <i *ngIf="userProfile.image == null" class="fas fa-user-circle text-white header-icon"></i>
                 </div>
                 <div class="col-sm-12 col-md-9 p-2 text-center">
                     <h1>

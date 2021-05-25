@@ -32,7 +32,7 @@ export class ProductListComponent implements OnInit {
       category: new FormControl({ value: '', disabled: true }),
       subcategory: new FormControl({ value: '', disabled: true }),
     });
-    this.isPlants = this.router.url == '/plants' ? true : false;
+    this.isPlants = this.router.url == '/plants';
     this.imageUrl = this.isPlants
       ? '../../assets/images/plants.jpg'
       : '../../assets/images/insets.jpg';

@@ -1,7 +1,6 @@
 <div class="card" (click)="goToProduct()">
     <div class="image-part overflow-hidden">
-        <div *ngIf="product.images.url==null" class="w-100 h-100 bg-dark"></div>
-        <img src="{{ product.images.url }}" class="w-100 h-100" alt="{{ product.title }}" />
+        <img src="{{ image }}" class="w-100 h-100" alt="{{ product.title }}" />
     </div>
     <div class="card-body text-center">
         <h5 class="card-title overflow-hidden">{{ product.title }}</h5>

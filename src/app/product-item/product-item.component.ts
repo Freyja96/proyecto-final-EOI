@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
@@ -8,16 +7,16 @@ import { Router } from '@angular/router';
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: any;
-  userProduct: any = null;
-  image = null;
+  image:any = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.image = '../../assets/images/no-image.jpg'
+
+  }
 
   ngOnInit() {
-    if(this.userProduct != null && this.userProduct.image != null && this.userProduct.image.url != null) {
-      this.image = this.userProduct.image.url;
-    } else {
-      //this.image =
+    if(this.product.images.length!=0){
+      this.image=this.product.images[0];
     }
   }
 

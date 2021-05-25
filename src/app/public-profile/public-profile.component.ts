@@ -8,7 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./public-profile.component.scss'],
 })
 export class PublicProfileComponent implements OnInit {
-  image = null;
   username: any;
   userProfile: any;
   noProducts: boolean=false;
@@ -34,8 +33,4 @@ export class PublicProfileComponent implements OnInit {
       }
     )
   }
-
-  //dontHaveProducts(this.userService.getUserProfile()==){
-
-  //}
 }
