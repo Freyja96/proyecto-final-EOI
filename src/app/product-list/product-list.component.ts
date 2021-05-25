@@ -16,11 +16,11 @@ export class ProductListComponent implements OnInit {
   subCategories: Array<string> = new Array();
   allCategories: Array<Category> = [];
   filterForm: FormGroup;
-
-  productType = '';
-  isPlants = false;
-  imageUrl = '';
-  title = 'Plantas';
+  productType: string = '';
+  isPlants: boolean = false;
+  imageUrl: string = '';
+  title: string = 'Plantas';
+  moreProducts: boolean = false;
 
   constructor(
     private router: Router,
@@ -31,6 +31,7 @@ export class ProductListComponent implements OnInit {
     this.filterForm = this.formBuilder.group({
       category: new FormControl({ value: '', disabled: true }),
       subcategory: new FormControl({ value: '', disabled: true }),
+      size: [''],
     });
     this.isPlants = this.router.url == '/plants';
     this.imageUrl = this.isPlants
@@ -43,7 +44,11 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     this.productService.getProducts().subscribe(
       (data: any) => {
+        console.log(data);
         this.products = data;
+        if (data.length >= 10) {
+          this.moreProducts = true;
+        }
         this.updateCategories();
       },
       (error) => {
