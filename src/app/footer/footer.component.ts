@@ -1,7 +1,5 @@
 import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -13,7 +11,7 @@ export class FooterComponent implements OnInit {
   image = null;
   @Input() userProfile: any;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.logged = this.authService.isAuthenticated();

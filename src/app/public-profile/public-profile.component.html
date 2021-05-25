@@ -2,34 +2,31 @@
     <div class="row">
         <div class="col-12 bg-light">
             <div class="row">
-                <div class="col-sm-12 col-md-3 p-3">
+                <div class="col-2 p-3">
                     <a class="nav-link text-body" [routerLink]="['/edit/profile']"></a>
                     <img *ngIf="userProfile.image != null" class="rounded" src="{{ userProfile.image }}" width="100" height="auto" />
                     <i *ngIf="userProfile.image == null" class="fas fa-user-circle text-white header-icon"></i>
                 </div>
-                <div class="col-sm-12 col-md-9 p-2 text-center">
+                <div class="col-10 p-2 text-center">
                     <h1>
                         {{ userProfile?.firstName }}
                         <i *ngIf="userProfile.emailVerified" title="Correo verificado" class="fas fa-check fa-sm text-success"></i>
                     </h1>
+                    <p>
+                        {{ userProfile?.location }}
+                    </p>
                 </div>
             </div>
         </div>
         <div class="col-12">
             <div class="row">
                 <div class="col-12">
-                    <p class="text-muted h2 py-2 mt-2 border-bottom border-success">
+                    <p class="text-muted h2 py-2 mt-3 border-bottom border-success">
                         Listado de productos
                     </p>
                 </div>
-
-                <!--no me hace ni caso
-                <div class="col-12">
-                    <p *ngIf="noProducts==true" class="h4 text-center">Lo sentimos, ahora mismo no hay productos que mostrar.</p>
-                </div>
--->
                 <div class="col-12" *ngIf="noProducts">
-                    <p class="h4 text-center">Lo sentimos, ahora mismo no hay productos que mostrar.</p>
+                    <p class="h4 text-center py-4">Lo sentimos, ahora mismo no hay productos que mostrar.</p>
                 </div>
                 <div class="col-md-4 col-sm-12 mb-2" *ngFor="let product of userProfile.products">
                     <app-product-item [product]="product"></app-product-item>
