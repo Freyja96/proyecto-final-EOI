@@ -24,14 +24,14 @@
             owner?.firstName
           }}</span>
           <button
-            *ngIf="!isTheOwner && !product.sold"
+            *ngIf="!isTheOwner && !product?.sold"
             type="button"
             class="btn btn-success rounded text-white float-right"
           >
             Chat
           </button>
           <button
-            *ngIf="!isTheOwner && product.sold"
+            *ngIf="!isTheOwner && product?.sold"
             type="button"
             class="btn btn-success rounded text-white float-right"
             disabled
@@ -55,7 +55,7 @@
               <span *ngIf="product?.sold">No está vendido</span>
             </button>
             <button
-              *ngIf="!product.sold"
+              *ngIf="!product?.sold"
               type="button"
               class="btn btn-secondary text-white"
               (click)="goToEditProduct()"
@@ -110,6 +110,13 @@
               <span class="sr-only">Siguiente</span>
             </a>
           </div>
+        </div>
+        <div *ngIf="product?.images.length == 0" class="col-12 text-center">
+          <img
+            src="../../assets/images/no-image.jpg"
+            class="img-fluid"
+            alt="Sin imagen"
+          />
         </div>
         <div class="col-12 pt-3">
           <p class="h2 float-right">{{ product?.price }}€</p>

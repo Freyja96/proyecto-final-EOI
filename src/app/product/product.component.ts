@@ -17,11 +17,11 @@ export class ProductComponent implements OnInit {
   isTheOwner = false;
   showDeleteModal = false;
   messageError = '';
-  image = null;
+  image?: any = null;
 
-  product: any;
-  owner: any;
-  productCategory: any;
+  product?: Product;
+  owner?: User;
+  productCategory?: Category;
 
   constructor(
     private router: Router,

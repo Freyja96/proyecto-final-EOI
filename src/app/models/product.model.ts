@@ -8,6 +8,6 @@ export class Product {
   type?: string;
   description?: string;
   publishedDate?: Date;
-  sold?: boolean;
+  sold: boolean = false;
   category?: string;
 }
