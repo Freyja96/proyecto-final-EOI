@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.logged = this.authService.isAuthenticated();
-    this.productService.getProducts().subscribe(
+    this.productService.getProducts(null).subscribe(
       (data: any) => {
         this.products = data;
       },

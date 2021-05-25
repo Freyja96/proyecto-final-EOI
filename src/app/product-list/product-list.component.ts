@@ -4,6 +4,7 @@ import { CategoryService } from './../services/category.service';
 import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-product-list',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-  products = [];
+  products: Array<Product> = [];
   categories: Array<string> = new Array();
   subCategories: Array<string> = new Array();
   allCategories: Array<Category> = [];
@@ -21,6 +22,8 @@ export class ProductListComponent implements OnInit {
   imageUrl: string = '';
   title: string = 'Plantas';
   moreProducts: boolean = false;
+  order: string = 'date';
+  page: number = 1;
 
   constructor(
     private router: Router,
@@ -42,9 +45,8 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(
+    this.productService.getProducts({ type: this.productType }).subscribe(
       (data: any) => {
-        console.log(data);
         this.products = data;
         if (data.length >= 10) {
           this.moreProducts = true;
@@ -104,5 +106,83 @@ export class ProductListComponent implements OnInit {
     } else {
       this.filterForm.controls['subcategory'].enable();
     }
+    this.updateProductList();
+  }
+
+  getParams() {
+    let categorySelect = this.filterForm.controls['category'].value;
+    let subCategorySelect = this.filterForm.controls['subcategory'].value;
+
+    let params: any = {
+      type: this.productType,
+    };
+
+    if (categorySelect) {
+      let allSubcategories = this.allCategories.filter(
+        (category) => category.category == categorySelect
+      );
+      if (allSubcategories.length > 1 && subCategorySelect) {
+        let lastFilter = allSubcategories.filter(
+          (category) => category.subcategory == subCategorySelect
+        );
+        if (lastFilter.length > 0) {
+          params.categoryId = lastFilter[0]._id;
+        }
+      } else if (allSubcategories.length > 0) {
+        params.categoryId = allSubcategories[0]._id;
+      }
+    }
+
+    if (this.isPlants && this.filterForm.controls['size'].value) {
+      params.size = this.filterForm.controls['size'].value;
+    }
+
+    if (this.order.includes('Asc')) {
+      params.sort = 'asc';
+    }
+
+    if (this.order.includes('date')) {
+      params.orderby = 'date';
+    } else {
+      params.orderby = 'price';
+    }
+
+    return params;
+  }
+
+  updateProductList() {
+    let params = this.getParams();
+
+    this.productService.getProducts(params).subscribe(
+      (data: any) => {
+        this.products = data;
+        if (data.length >= 10) {
+          this.moreProducts = true;
+        }
+      },
+      (error) => {
+        this.products = [];
+        console.log('Error:', error.error);
+      }
+    );
+  }
+
+  loadMore() {
+    let params = this.getParams();
+
+    params.page = this.page + 1;
+
+    this.productService.getProducts(params).subscribe(
+      (data: Array<Product>) => {
+        this.products.concat(data);
+        if (data.length >= 10) {
+          this.moreProducts = true;
+        }
+      },
+      (error) => {
+        this.products = [];
+        console.log('Error:', error.error);
+      }
+    );
   }
 }

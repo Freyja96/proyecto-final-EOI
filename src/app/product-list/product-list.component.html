@@ -67,6 +67,7 @@
                 formControlName="subcategory"
                 class="custom-select"
                 id="subCategorySelect"
+                (change)="updateProductList()"
               >
                 <option
                   *ngFor="let subcategory of subCategories"
@@ -85,6 +86,7 @@
                 id="plant-size"
                 class="form-control"
                 formControlName="size"
+                (change)="updateProductList()"
               >
                 <option value="semilla">Semilla</option>
                 <option value="bulbo">Bulbo</option>
@@ -102,10 +104,15 @@
           <div class="row">
             <div class="col-3 ml-auto">
               <div class="input-group mb-3">
-                <select class="custom-select" id="orderSelect">
+                <select
+                  (change)="updateProductList()"
+                  class="custom-select"
+                  id="orderSelect"
+                  [(ngModel)]="order"
+                >
                   <option value="date">Novedades</option>
                   <option value="priceAsc">De más barato a más caro</option>
-                  <option value="priceDesct">De más caro a más barato</option>
+                  <option value="price">De más caro a más barato</option>
                   <option value="dateAsc">Más antiguos primero</option>
                 </select>
               </div>
@@ -115,8 +122,16 @@
         <div *ngFor="let item of products" class="col-md-4 col-sm-12 mb-2">
           <app-product-item [product]="item"></app-product-item>
         </div>
+        <div
+          *ngIf="products?.length == 0"
+          class="mx-auto col-8 text-center mt-3 alert alert-danger"
+        >
+          Lo sentimos nuestro jardín todavia no tiene nada con esos filtros,
+          prueba con otras categorías.
+        </div>
         <div *ngIf="moreProducts" class="col-sm-12 col-md-3 mx-auto">
           <button
+            (click)="loadMore()"
             type="button"
             class="btn btn-success btn-block text-white mx-auto"
           >

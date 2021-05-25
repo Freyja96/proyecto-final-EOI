@@ -51,8 +51,8 @@
               class="btn btn-success text-white"
               (click)="markAsSold()"
             >
-              <span *ngIf="!product.sold">Lo he vendido</span>
-              <span *ngIf="product.sold">No está vendido</span>
+              <span *ngIf="!product?.sold">Lo he vendido</span>
+              <span *ngIf="product?.sold">No está vendido</span>
             </button>
             <button
               *ngIf="!product.sold"
