@@ -27,6 +27,7 @@ const routes: Routes = [
       { path: 'update/product/:id', component: UpdateProductComponent },
       /*{ path: "update/product/new", component: UpdateProductComponent },*/
       { path: 'update', redirectTo: 'update/product' },
+      { path: 'search', component: ProductListComponent },
       { path: 'plants', component: ProductListComponent },
       { path: 'insects', component: ProductListComponent },
       { path: 'product/:id', component: ProductComponent },

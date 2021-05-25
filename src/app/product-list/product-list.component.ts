@@ -3,7 +3,7 @@ import { Category } from './../models/category.model';
 import { CategoryService } from './../services/category.service';
 import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Product } from '../models/product.model';
 
 @Component({
@@ -19,33 +19,49 @@ export class ProductListComponent implements OnInit {
   filterForm: FormGroup;
   productType: string = '';
   isPlants: boolean = false;
+  isSearch: boolean = false;
   imageUrl: string = '';
   title: string = 'Plantas';
   moreProducts: boolean = false;
   order: string = 'date';
   page: number = 1;
+  filter: any;
 
   constructor(
     private router: Router,
     private productService: ProductService,
     private categoryService: CategoryService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
   ) {
     this.filterForm = this.formBuilder.group({
       category: new FormControl({ value: '', disabled: true }),
       subcategory: new FormControl({ value: '', disabled: true }),
       size: [''],
     });
-    this.isPlants = this.router.url == '/plants';
+    this.isSearch = this.router.url.includes('/search');
+    this.isPlants = this.router.url.includes('/plants');
     this.imageUrl = this.isPlants
       ? '../../assets/images/plants.jpg'
       : '../../assets/images/insets.jpg';
-    this.productType = this.isPlants ? 'plant' : 'insect';
-    this.title = this.isPlants ? 'Plantas' : 'Insectos';
+    this.productType = this.isSearch ? '' : this.isPlants ? 'plant' : 'insect';
+    this.title = this.isSearch
+      ? 'Busqueda'
+      : this.isPlants
+      ? 'Plantas'
+      : 'Insectos';
   }
 
   ngOnInit() {
-    this.productService.getProducts({ type: this.productType }).subscribe(
+    this.filter = {};
+
+    if (this.route.snapshot.queryParams.search) {
+      this.filter.title = this.route.snapshot.queryParams.search;
+    } else {
+      this.filter.type = this.productType;
+    }
+
+    this.productService.getProducts(this.filter).subscribe(
       (data: any) => {
         this.products = data;
         if (data.length >= 10) {
@@ -109,13 +125,11 @@ export class ProductListComponent implements OnInit {
     this.updateProductList();
   }
 
-  getParams() {
+  updateFilter() {
     let categorySelect = this.filterForm.controls['category'].value;
     let subCategorySelect = this.filterForm.controls['subcategory'].value;
 
-    let params: any = {
-      type: this.productType,
-    };
+    this.filter.type = this.productType;
 
     if (categorySelect) {
       let allSubcategories = this.allCategories.filter(
@@ -126,34 +140,30 @@ export class ProductListComponent implements OnInit {
           (category) => category.subcategory == subCategorySelect
         );
         if (lastFilter.length > 0) {
-          params.categoryId = lastFilter[0]._id;
+          this.filter.categoryId = lastFilter[0]._id;
         }
       } else if (allSubcategories.length > 0) {
-        params.categoryId = allSubcategories[0]._id;
+        this.filter.categoryId = allSubcategories[0]._id;
       }
     }
 
     if (this.isPlants && this.filterForm.controls['size'].value) {
-      params.size = this.filterForm.controls['size'].value;
+      this.filter.size = this.filterForm.controls['size'].value;
     }
 
     if (this.order.includes('Asc')) {
-      params.sort = 'asc';
+      this.filter.sort = 'asc';
     }
 
     if (this.order.includes('date')) {
-      params.orderby = 'date';
+      this.filter.orderby = 'date';
     } else {
-      params.orderby = 'price';
+      this.filter.orderby = 'price';
     }
-
-    return params;
   }
 
   updateProductList() {
-    let params = this.getParams();
-
-    this.productService.getProducts(params).subscribe(
+    this.productService.getProducts(this.filter).subscribe(
       (data: any) => {
         this.products = data;
         if (data.length >= 10) {
@@ -168,11 +178,9 @@ export class ProductListComponent implements OnInit {
   }
 
   loadMore() {
-    let params = this.getParams();
+    this.filter.page = this.page + 1;
 
-    params.page = this.page + 1;
-
-    this.productService.getProducts(params).subscribe(
+    this.productService.getProducts(this.filter).subscribe(
       (data: Array<Product>) => {
         this.products.concat(data);
         if (data.length >= 10) {

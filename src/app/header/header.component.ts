@@ -26,6 +26,11 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateToSearch() {
-    this.router.navigate(['/search']);
+    if (this.searchProduct.length > 0) {
+      this.router.navigate(['/search'], {
+        queryParams: { search: this.searchProduct },
+      });
+      this.searchProduct = '';
+    }
   }
 }
