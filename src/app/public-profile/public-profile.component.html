@@ -18,9 +18,12 @@
                         {{ userProfile?.location }}
                     </p>
                 </div>
-                <div class="col-2 text-right pt-3" *ngIf="ownUser">
-                    <button type="button" class="btn btn-secondary font-weight-bold text-white" [routerLink]="['/edit/profile']">
+                <div class="col-2 text-right pt-3">
+                    <button type="button" *ngIf="ownUser" class="btn btn-secondary font-weight-bold text-white" [routerLink]="['/edit/profile']">
                       Editar
+                    </button>
+                    <button type="button" *ngIf="ownUser==false" class="btn btn-success font-weight-bold text-white" [routerLink]="['/chat/:chatid']">
+                      Chat
                     </button>
                 </div>
             </div>

@@ -11,7 +11,7 @@ export class PublicProfileComponent implements OnInit {
   userProfile: any;
   noProducts: boolean=false;
   image = null;
-  ownUser = true;
+  ownUser = false;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {}
 
@@ -26,6 +26,13 @@ export class PublicProfileComponent implements OnInit {
         } else {
           this.noProducts=false;
         };
+        let userData = localStorage.getItem('userProfile');
+          if (userData != null) {
+            let userProfile = JSON.parse(userData);
+              if (data._id == userProfile._id) {
+                this.ownUser = true;
+              }
+          }
       },
       (error) => {
         console.log(error);
