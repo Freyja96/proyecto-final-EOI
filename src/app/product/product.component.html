@@ -24,7 +24,7 @@
             owner?.firstName
           }}</span>
           <button
-            *ngIf="!isTheOwner && !product?.sold"
+            *ngIf="isLogued && !isTheOwner && !product?.sold"
             type="button"
             class="btn btn-success rounded text-white float-right"
           >

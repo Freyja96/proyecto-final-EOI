@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
   showDeleteModal = false;
   messageError = '';
   image?: any = null;
+  isLogued: boolean = false;
 
   product?: Product;
   owner?: User;
@@ -46,7 +47,8 @@ export class ProductComponent implements OnInit {
                 if (this.owner != null && this.owner.image != null) {
                   this.image = this.owner.image;
                 }
-                if (this.authService.isAuthenticated()) {
+                this.isLogued = this.authService.isAuthenticated();
+                if (this.isLogued) {
                   let userData = localStorage.getItem('userProfile');
                   if (userData != null) {
                     let userProfile = JSON.parse(userData);
