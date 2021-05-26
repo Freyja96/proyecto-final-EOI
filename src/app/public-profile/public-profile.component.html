@@ -1,22 +1,27 @@
-<div class="container mt-2">
-    <div class="row">
-        <div class="col-12 bg-light shadow-gray">
+<div class="container-md pt-4">
+    <div class="row align-items-center">
+        <div class="col-12 bg-light">
             <div class="row">
-                <div class="col-3 p-3 text-center">
-                    <img *ngIf="userProfile?.image != null" class="rounded" src="{{ userProfile?.image }}" width="100" height="auto" />
+                <div class="col-3 p-3">
+                    <img *ngIf="userProfile?.image != null" class="rounded" src="{{ userProfile?.image }}" width="150" height="auto" />
                     <i *ngIf="userProfile?.image == null" class="fas fa-user-circle header-icon mb-1 mx-5"></i>
-                    <a *ngIf="ownUser" class="btn btn-secondary font-weight-bold text-white" [routerLink]="['/edit/profile']">
-                      Editar
-                    </a>
                 </div>
                 <div class="col-7 p-3 text-center">
-                    <h1>
+                    <h1 class="mb-0">
                         {{ userProfile?.firstName }}
                         <i *ngIf="userProfile?.emailVerified" title="Correo verificado" class="fas fa-check fa-sm text-success"></i>
                     </h1>
+                    <p class="text-muted mt-0">
+                        {{ userProfile?.username }}
+                    </p>
                     <p>
                         {{ userProfile?.location }}
                     </p>
+                </div>
+                <div class="col-2 text-right pt-3" *ngIf="ownUser">
+                    <button type="button" class="btn btn-secondary font-weight-bold text-white" [routerLink]="['/edit/profile']">
+                      Editar
+                    </button>
                 </div>
             </div>
         </div>
