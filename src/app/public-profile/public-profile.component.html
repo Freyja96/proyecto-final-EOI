@@ -1,16 +1,18 @@
 <div class="container mt-2">
     <div class="row">
-        <div class="col-12 bg-light">
+        <div class="col-12 bg-light shadow-gray">
             <div class="row">
-                <div class="col-2 p-3">
-                    <a class="nav-link text-body" [routerLink]="['/edit/profile']"></a>
-                    <img *ngIf="userProfile.image != null" class="rounded" src="{{ userProfile.image }}" width="100" height="auto" />
-                    <i *ngIf="userProfile.image == null" class="fas fa-user-circle text-white header-icon"></i>
+                <div class="col-3 p-3 text-center">
+                    <img *ngIf="userProfile?.image != null" class="rounded" src="{{ userProfile?.image }}" width="100" height="auto" />
+                    <i *ngIf="userProfile?.image == null" class="fas fa-user-circle header-icon mb-1 mx-5"></i>
+                    <a *ngIf="ownUser" class="btn btn-secondary font-weight-bold text-white" [routerLink]="['/edit/profile']">
+                      Editar
+                    </a>
                 </div>
-                <div class="col-10 p-2 text-center">
+                <div class="col-7 p-3 text-center">
                     <h1>
                         {{ userProfile?.firstName }}
-                        <i *ngIf="userProfile.emailVerified" title="Correo verificado" class="fas fa-check fa-sm text-success"></i>
+                        <i *ngIf="userProfile?.emailVerified" title="Correo verificado" class="fas fa-check fa-sm text-success"></i>
                     </h1>
                     <p>
                         {{ userProfile?.location }}
@@ -26,9 +28,14 @@
                     </p>
                 </div>
                 <div class="col-12" *ngIf="noProducts">
-                    <p class="h4 text-center py-4">Lo sentimos, ahora mismo no hay productos que mostrar.</p>
+                    <p class="h4 text-center py-4">
+                        Lo sentimos, ahora mismo no hay productos que mostrar.
+                    </p>
+                    <a *ngIf="ownUser" class="btn btn-success">
+                      Subir un producto ahora
+                    </a>
                 </div>
-                <div class="col-md-4 col-sm-12 mb-2" *ngFor="let product of userProfile.products">
+                <div class="col-md-4 col-sm-12 mb-2" *ngFor="let product of userProfile?.products">
                     <app-product-item [product]="product"></app-product-item>
                 </div>
             </div>

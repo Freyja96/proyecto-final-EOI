@@ -1,17 +1,15 @@
 @import "../../styles";
-
 .card {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .image-part {
-  height: 250px;
-
-  img {
-    object-fit: cover;
-  }
+    height: 250px;
+    img {
+        object-fit: cover;
+    }
 }
 
 .card-text {
-  height: 80px;
+    height: 80px;
 }
