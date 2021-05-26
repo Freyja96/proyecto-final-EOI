@@ -2,31 +2,34 @@
     <nav class="navbar navbar-expand-sm p-0 bg-light fixed-top">
         <div class="col-12">
             <div class="row">
-                <div class="col-md-3 col-sm-4">
-                    <div class="row">
-                        <a class="navbar-brand mr-0 px-3 font-weight-bold" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <div class="col-md-2 col-sm-1 col-xs-2">
+                    <!--hidden only on xs and sm, logotipo con logo-->
+                    <div class="d-none d-md-block">
+                        <a class="navbar-brand mr-0 font-weight-bold" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                           {{ titulo }}
                         </a>
                     </div>
+                    <!--visible only on xs and sm-->
+                    <div class="d-block d-md-none">
+                        <!--solo el logo-->
+                    </div>
                 </div>
-                <div class="col-md-6 col-sm-7">
-                    <div class="row">
-                        <div class="input-group mb-0 mx-lg-3 pt-2">
-                            <div class="input-group-text bg-white" id="basic-addon1">
-                                <i class="fas fa-search pr-0"></i>
-                            </div>
-                            <input type="search" class="form-control pl-0" id="search-input" [(ngModel)]="searchProduct" placeholder="¿Qué estás buscando?" aria-label="Search with button addon" aria-describedby="button-addon1" (keyup.enter)="navigateToSearch()" />
-                            <div class="input-group-prepend">
-                                <button (click)="navigateToSearch()" class="btn btn-outline-secondary text-dark" type="button" id="button-addon1">
-                                  Buscar
-                                </button>
-                            </div>
+                <div class="col-md-8 col-sm-8 col-xs-5">
+                    <div class="input-group mb-0 mx-lg-3 pt-2 mb-xs-5">
+                        <div class="input-group-text bg-white" id="basic-addon1">
+                            <i class="fas fa-search mr-0 pr-0"></i>
+                        </div>
+                        <input type="search" class="form-control pl-0" id="search-input" [(ngModel)]="searchProduct" placeholder="¿Qué estás buscando?" aria-label="Search with button addon" aria-describedby="button-addon1" (keyup.enter)="navigateToSearch()" />
+                        <div class="input-group-prepend">
+                            <button (click)="navigateToSearch()" class="btn btn-outline-secondary bg-light text-dark" type="button" id="button-addon1">
+                              Buscar
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-sm-3 col-md-2 col-xs-0">
                     <div class="row float-right">
-                        <div class="navbar-collapse d-none d-sm-block" id="navbarSupportedContent">
+                        <div class="d-none d-sm-block" id="navbarSupportedContent">
                             <ul *ngIf="!logged" class="navbar-nav text-center">
                                 <li class="nav-item text-nowrap py-3 bg-light">
                                     <a class="nav-link sign-in" [routerLink]="['/login']">Inicia sesión
