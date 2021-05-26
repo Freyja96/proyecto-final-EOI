@@ -10,18 +10,17 @@ export class PublicProfileComponent implements OnInit {
   username: any;
   userProfile: any;
   noProducts: boolean=false;
-
+  image = null;
   ownUser = true;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {}
 
   ngOnInit() {
     this.username = this.route.snapshot.paramMap.get('username');
-    console.log(this.username);
+
     this.userService.getUserProfile(this.username).subscribe(
       (data:any) => {
         this.userProfile = data;
-        console.log(data);
         if(data.products.length==0) {
           this.noProducts=true;
         } else {
