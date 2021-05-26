@@ -1,3 +1,5 @@
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { PrivacityAndUseComponent } from './privacity-and-use/privacity-and-use.component';
 import { ChatComponent } from './chat/chat.component';
 import { ValidateEmailComponent } from './validate-email/validate-email.component';
 import { ProductComponent } from './product/product.component';
@@ -39,6 +41,8 @@ const routes: Routes = [
   },
   { path: 'login', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
+  { path: 'legal-terms', component: PrivacityAndUseComponent },
+  { path: 'contactus', component: ContactUsComponent },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' },
 ];
