@@ -1,5 +1,5 @@
 import { ContactUsComponent } from './contact-us/contact-us.component';
-import { PrivacityAndUseComponent } from './privacity-and-use/privacity-and-use.component';
+import { PrivacyAndUseComponent } from './privacy-and-use/privacy-and-use.component';
 import { ChatComponent } from './chat/chat.component';
 import { ValidateEmailComponent } from './validate-email/validate-email.component';
 import { ProductComponent } from './product/product.component';
@@ -37,7 +37,7 @@ const routes: Routes = [
       { path: 'chat/:chatid', component: ChatComponent },
       { path: '', component: HomeComponent },
       { path: 'validate', component: ValidateEmailComponent },
-      { path: 'legal-terms', component: PrivacityAndUseComponent },
+      { path: 'legal-terms', component: PrivacyAndUseComponent },
       { path: 'contactus', component: ContactUsComponent },
     ],
   },

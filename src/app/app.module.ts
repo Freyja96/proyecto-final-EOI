@@ -29,10 +29,10 @@ import { InterceptorService } from './services/interceptors/interceptor.service'
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
-import { PrivacityAndUseComponent } from './privacity-and-use/privacity-and-use.component';
+import { PrivacyAndUseComponent } from './privacy-and-use/privacy-and-use.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
     HeaderComponent,
     ProductItemComponent,
@@ -54,7 +54,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     ChatListComponent,
     ChatInfoComponent,
     ChatComponent,
-      PrivacityAndUseComponent,
+      PrivacyAndUseComponent,
       ContactUsComponent
    ],
   imports: [

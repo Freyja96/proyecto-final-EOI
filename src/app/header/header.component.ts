@@ -33,4 +33,8 @@ export class HeaderComponent implements OnInit {
       this.searchProduct = '';
     }
   }
+
+  goToProfile() {
+    this.router.navigate(['/user/' + this.userProfile.username]);
+  }
 }

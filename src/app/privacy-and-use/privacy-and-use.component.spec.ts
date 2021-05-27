@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { PrivacityAndUseComponent } from './privacity-and-use.component';
+import { PrivacyAndUseComponent } from './privacy-and-use.component';
 
-describe('PrivacityAndUseComponent', () => {
-  let component: PrivacityAndUseComponent;
-  let fixture: ComponentFixture<PrivacityAndUseComponent>;
+describe('PrivacyAndUseComponent', () => {
+  let component: PrivacyAndUseComponent;
+  let fixture: ComponentFixture<PrivacyAndUseComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrivacityAndUseComponent ]
+      declarations: [ PrivacyAndUseComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrivacityAndUseComponent);
+    fixture = TestBed.createComponent(PrivacyAndUseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
