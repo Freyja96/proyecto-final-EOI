@@ -1,3 +1,4 @@
+import { ChatService } from './../services/chat.service';
 import { Category } from './../models/category.model';
 import { CategoryService } from './../services/category.service';
 import { User } from './../models/user.model';
@@ -30,7 +31,8 @@ export class ProductComponent implements OnInit {
     private productService: ProductService,
     private userService: UserService,
     private authService: AuthService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private chatService: ChatService
   ) {}
 
   ngOnInit(): void {
@@ -137,6 +139,20 @@ export class ProductComponent implements OnInit {
         },
         (error) => {
           this.messageError = 'No hemos podido borrar el producto';
+          console.log(error.error);
+        }
+      );
+    }
+  }
+
+  sendMessage() {
+    if (this.product && this.product._id) {
+      this.chatService.makeNewChat(this.product._id).subscribe(
+        (data: any) => {
+          this.router.navigate(['/chat']);
+        },
+        (error) => {
+          this.messageError = 'Tenemos problemas al mandar contactar';
           console.log(error.error);
         }
       );

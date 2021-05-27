@@ -31,6 +31,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { PrivacyAndUseComponent } from './privacy-and-use/privacy-and-use.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { MessageItemComponent } from './message-item/message-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,9 +55,10 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     ChatListComponent,
     ChatInfoComponent,
     ChatComponent,
-      PrivacyAndUseComponent,
-      ContactUsComponent
-   ],
+    PrivacyAndUseComponent,
+    ContactUsComponent,
+    MessageItemComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

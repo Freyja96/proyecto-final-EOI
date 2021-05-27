@@ -70,26 +70,11 @@
             #allChatsContainer
             [scrollTop]="allChatsContainer.scrollHeight"
           >
-            <div
-              class="my-3"
-              *ngFor="let message of messages"
-              [ngClass]="{
-                'text-right': message.senderId == userId,
-                'text-left': message.senderId != userId
-              }"
-            >
-              <p>
-                <span
-                  [ngClass]="{
-                    'bg-light': message.senderId == userId,
-                    'bg-white': message.senderId != userId
-                  }"
-                  class="p-2 border border-light rounded shadow"
-                >
-                  {{ message.text }}
-                </span>
-              </p>
-              <p class="text-muted">{{ message.date | date: "short" }}</p>
+            <div class="my-3" *ngFor="let message of messages">
+              <app-message-item
+                [userId]="userId"
+                [message]="message"
+              ></app-message-item>
             </div>
           </div>
         </div>

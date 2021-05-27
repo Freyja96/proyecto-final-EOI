@@ -1,6 +1,7 @@
+import { ChatService } from './../services/chat.service';
 import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -33,163 +34,31 @@ export class ChatComponent implements OnInit {
     product: { title: 'Huevos de samia ricini' },
   };
 
-  messages = [
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'unaid12345',
-      text: 'Un texto',
-      date: '2019-08-24T11:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'string',
-      text: 'Otro Texto',
-      date: '2019-08-24T12:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'string',
-      text: 'asdasd',
-      date: '2019-08-24T13:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'unaid12345',
-      text: 'entonces lo vendes o no',
-      date: '2019-08-24T14:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'string',
-      text: 'pues no se',
-      date: '2019-08-24T15:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'unaid12345',
-      text: 'pues dime',
-      date: '2019-08-24T16:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'unaid12345',
-      text: 'Un texto',
-      date: '2019-08-24T11:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'string',
-      text: 'Otro Texto',
-      date: '2019-08-24T12:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'string',
-      text: 'asdasd',
-      date: '2019-08-24T13:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'unaid12345',
-      text: 'entonces lo vendes o no',
-      date: '2019-08-24T14:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'string',
-      text: 'pues no se',
-      date: '2019-08-24T15:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'unaid12345',
-      text: 'pues dime',
-      date: '2019-08-24T16:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'unaid12345',
-      text: 'Un texto',
-      date: '2019-08-24T11:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'string',
-      text: 'Otro Texto',
-      date: '2019-08-24T12:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'string',
-      text: 'asdasd',
-      date: '2019-08-24T13:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'unaid12345',
-      text: 'entonces lo vendes o no',
-      date: '2019-08-24T14:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'string',
-      text: 'pues no se',
-      date: '2019-08-24T15:15:22Z',
-      hasRead: true,
-    },
-    {
-      _id: 'string',
-      chatId: 'string',
-      senderId: 'unaid12345',
-      text: 'pues dime',
-      date: '2019-08-24T16:15:22Z',
-      hasRead: true,
-    },
-  ];
+  messages: Array<Object> = new Array();
 
-  constructor(private activeRoute: ActivatedRoute, private authService: AuthService, private router: Router) {
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private authService: AuthService,
+    private router: Router,
+    private chatService: ChatService
+  ) {
     this.activeRoute.params.subscribe((param) => {
       this.chatId = param.chatid != null ? param.chatid : null;
-      console.log(param.chatid);
     });
   }
 
   ngOnInit() {
     if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     }
+
+    this.chatService.getChats().subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
