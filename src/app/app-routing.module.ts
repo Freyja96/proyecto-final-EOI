@@ -1,3 +1,4 @@
+import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PrivacyAndUseComponent } from './privacy-and-use/privacy-and-use.component';
 import { ChatComponent } from './chat/chat.component';
@@ -37,8 +38,9 @@ const routes: Routes = [
       { path: 'chat/:chatid', component: ChatComponent },
       { path: '', component: HomeComponent },
       { path: 'validate', component: ValidateEmailComponent },
-      { path: 'legal-terms', component: PrivacyAndUseComponent },
-      { path: 'contactus', component: ContactUsComponent },
+      { path: 'legal/privacy-policies', component: PrivacyAndUseComponent },
+      { path: 'legal/terms-of-use', component: TermsOfUseComponent },
+      { path: 'support/contactus', component: ContactUsComponent },
     ],
   },
   { path: 'login', component: SignInComponent },

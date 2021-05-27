@@ -32,8 +32,9 @@ import { environment } from '../environments/environment';
 import { PrivacyAndUseComponent } from './privacy-and-use/privacy-and-use.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MessageItemComponent } from './message-item/message-item.component';
+import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HeaderComponent,
     ProductItemComponent,
@@ -58,7 +59,8 @@ import { MessageItemComponent } from './message-item/message-item.component';
     PrivacyAndUseComponent,
     ContactUsComponent,
     MessageItemComponent,
-  ],
+      TermsOfUseComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
