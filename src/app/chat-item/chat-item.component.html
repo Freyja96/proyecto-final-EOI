@@ -1,10 +1,23 @@
-<div class="container">
-    <a class="text-decoration-none" href="chat/:chatid">
-        <div class="media py-1">
-            <img class="mr-2 mt-2 rounded" src="{{userProfile.image.url}}" width="50" height="50" />
-            <p class="media-body mb-0 small lh-125 border-bottom border-gray">
-                {{userProfile.username}}<strong class="d-block">{{userProfile.product.title}}</strong> {{message}}
-            </p>
-        </div>
-    </a>
+<div
+  role="button"
+  class="container border-bottom border-gray"
+  (click)="openChat()"
+>
+  <div class="media py-1">
+    <div *ngIf="image == null">
+      <i class="fas fa-user-circle text-success header-icon p-2"></i>
+    </div>
+    <img
+      *ngIf="image != null"
+      class="mr-2 mt-2 rounded"
+      src="{{ image }}"
+      width="50"
+      height="50"
+    />
+    <p class="media-body mb-0 small lh-125">
+      {{ userProfile?.username
+      }}<strong class="d-block">{{ product?.title }}</strong>
+      {{ message }}
+    </p>
+  </div>
 </div>

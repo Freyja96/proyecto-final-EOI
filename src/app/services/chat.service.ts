@@ -21,6 +21,17 @@ export class ChatService {
     );
   }
 
+  getChat(chatId: string): Observable<any> {
+    return this.httpClient.get(`${environment.apiUrl}/chats/${chatId}`).pipe(
+      map((data) => {
+        return data;
+      }),
+      catchError((error: any) => {
+        return throwError(error);
+      })
+    );
+  }
+
   makeNewChat(idProduct: string): Observable<any> {
     return this.httpClient
       .post(`${environment.apiUrl}/chats`, { idProduct: idProduct })
@@ -35,14 +46,16 @@ export class ChatService {
   }
 
   getMessages(chatId: string): Observable<any> {
-    return this.httpClient.get(`${environment.apiUrl}/chats/${chatId}`).pipe(
-      map((data) => {
-        return data;
-      }),
-      catchError((error: any) => {
-        return throwError(error);
-      })
-    );
+    return this.httpClient
+      .get(`${environment.apiUrl}/chats/${chatId}/messages`)
+      .pipe(
+        map((data) => {
+          return data;
+        }),
+        catchError((error: any) => {
+          return throwError(error);
+        })
+      );
   }
 
   addMessages(chatId: string, message: string): Observable<any> {

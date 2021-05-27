@@ -1,4 +1,5 @@
-<div class="container-fluid">
+<app-header [userProfile]="userProfile"></app-header>
+<div class="container-fluid pt-2">
   <div class="row">
     <div
       class="col-sm-12 col-md-3 border-right border-light"
@@ -9,7 +10,7 @@
       <app-chat-list></app-chat-list>
     </div>
     <div
-      class="col-sm-12 col-md-6"
+      class="col-sm-12 col-md-6 border-right border-light"
       [ngClass]="{
         'd-none d-md-block': chatId == null
       }"
@@ -23,7 +24,7 @@
         </div>
         <div
           id="chat-part-top"
-          *ngIf="chatId != null"
+          *ngIf="chatId != null && otherUser != null"
           class="
             align-self-start
             col-12
@@ -33,10 +34,14 @@
           "
         >
           <img
+            *ngIf="image != null"
             class="d-block overflow-hidden"
-            src="{{ otherUser.image.url }}"
+            src="{{ image }}"
           />
-          <p class="ml-2 my-auto font-weight-bold">{{ otherUser.username }}</p>
+          <div *ngIf="image == null">
+            <i class="fas fa-user-circle text-success p-1 header-icon"></i>
+          </div>
+          <p class="ml-2 my-auto font-weight-bold">{{ otherUser?.username }}</p>
           <div class="dropdown ml-auto d-block d-md-none">
             <button
               class="btn btn-outline-secondary"
@@ -52,14 +57,13 @@
               <a class="dropdown-item text-primary" href="#">Ver producto</a>
               <a
                 class="dropdown-item text-info"
-                *ngIf="product.idPublisher == userId"
+                *ngIf="product.idPublisher == userProfile._id"
                 href="#"
                 >Marcar como vendido</a
               >
               <a class="dropdown-item text-danger" href="#"
                 >Eliminar conversación</a
               >
-              <a class="dropdown-item text-danger" href="#">Reportar usuario</a>
             </div>
           </div>
         </div>
@@ -72,13 +76,15 @@
           >
             <div class="my-3" *ngFor="let message of messages">
               <app-message-item
-                [userId]="userId"
+                [userId]="userProfile._id"
                 [message]="message"
               ></app-message-item>
             </div>
           </div>
         </div>
-        <div id="chat-part-bot" class="align-self-end input-group">
+      </div>
+      <div class="col-sm-12 col-md-6 fixed-bottom mx-auto">
+        <div id="chat-part-bot" class="input-group">
           <input
             type="text"
             class="form-control"
@@ -96,7 +102,7 @@
         </div>
       </div>
     </div>
-    <div class="d-none d-md-block col-3">
+    <div *ngIf="chatId != null" class="d-none d-md-block col-3">
       <app-chat-info></app-chat-info>
     </div>
   </div>
