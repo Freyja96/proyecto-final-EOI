@@ -7,33 +7,121 @@
                         Legal > Condiciones de uso y privacidad
                     </p>
                 </div>
-                <div class="d-flex flex-column d-none d-md-block p-2">
+                <div class="d-flex flex-column fixed-start d-none d-md-block p-2">
                     <div class="nav-item">
-                        <a class="nav-link" [routerLink]="['/legal-terms/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        <a class="nav-link" [routerLink]="['/legal-terms']" fragment="privacy-policies" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                           Términos y condiciones de uso
                         </a>
+                        <ul>
+                            <li>
+                                <a class="nav-link text-muted" [routerLink]="['/legal-terms']" fragment="about-us" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                  ¿Quiénes somos?
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-muted" [routerLink]="['/legal-terms']" fragment="whos-user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                    ¿Quién puede ser usuario de GardenForYou?
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-muted" [routerLink]="['/legal-terms']" fragment="personal-data" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                    Datos personales
+                                </a>
+                            </li>
+                        </ul>
+
                     </div>
                     <div class="nav-item">
-                        <a class="nav-link" [routerLink]="['/legal-terms/']" routerLinkActive="active">
+                        <a class="nav-link" [routerLink]="['/legal-terms']" fragment="terms-of-use" routerLinkActive="active">
                           Política de privacidad
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col-9" id="terms-of-use">
-                <h1 class="font-weight-normal text-center">
+                <h1 class="font-weight-normal pt-3 text-center">
                     Términos y condiciones de uso
                 </h1>
-                <p>
-                    Aquí se describen los términos y condiciones generales aplicables al uso de los contenidos y productos a través de GardenForYou.
+                <p class="mt-3">Aquí se describen los términos y condiciones generales aplicables al uso de los contenidos, productos y servicios a través de GardenForYou.</p>
+                <p class="h5 mt-4 text-uppercase" id="about-us">
+                    ¿Quiénes somos?
                 </p>
-                <p class="h4 mt-1 text-center">
-                    INFORMACIÓN RELEVANTE
+                <p>GardenForYou es un servicio de alojamiento en línea intermediario que permite a los usuarios ponerse en contacto mediante el envío de mensajes privados para realizar el proceso de intercambio y/o venta de insectos y bichos, etc.</p>
+                <p>GardenForYou solo facilita la comunicación para realizar la compra, venta o intercambio de plantas y bichos, no compra, vende o intercambia los insectos o bichos mostrados en el sitio web.</p>
+                <p>Esta plataforma está gestionada por la empresa GardenForYou, con sede en Castilla-La Mancha, España, y número de registro 000000000 en el registro mercantil de España.</p>
+                <p class="h5 mt-4 text-uppercase" id="whos-user">
+                    ¿Quién puede ser usuario de GardenForYou?
                 </p>
-                <p>
-                    Para adquirir cualquier insecto o planta, será necesario el registro por parte del usuario, con ingreso de datos personales fidedignos y definición de una contraseña.
+                <p>Puede ser usuario de GardenForYou toda aquella persona física que sea mayor de 18 años y se haya registrado en el sitio. Para los menores de edad, el uso de los servicios deberá estar controlado y supervisado por el padre/la madre o tutor/tutora
+                    (mayor de edad) del menor. GardenForYou se reserva el derecho a comprobar en cualquier momento la edad de los usuarios de su Página Web
+                    <!-- y aplicación. Así como toda persona jurídica que indique en su perfil que es un perfil profesional.-->
+                    . Los usuarios pueden ser compradores y/o vendedores en el sitio.</p>
+                <p>Los usuarios tienen derecho a utilizar todos los servicios de GardenForYou con el fin de satisfacer sus intereses personales no relacionados con la actividad profesional. No se permiten actividades comerciales en GardenForYou. Si el vendedor
+                    se presenta en GardenForYou como consumidor o como vendedor no profesional cuando en realidad es un vendedor profesional, dicho vendedor se enfrentará a las siguientes sanciones relacionadas con prácticas comerciales engañosas:
                 </p>
+                <p>España: Una multa de hasta 601 012 € (artículos 49 y siguientes del Real Decreto Legislativo 1/2007 para la Defensa de los Consumidores). Dichos vendedores también podrán estar sujetos a obligaciones sociales y fiscales.</p>
+                <!--
+                <p>Francia: Prisión de hasta 2 años y multa de 300 000 € (artículo L 132-2 del código de Consumo francés).</p>
+                <p>Bélgica: Una multa de 80 000 € (artículo XV. 83, 13.º del Código de Derecho económico belga). También podrán estar sujetos a obligaciones sociales y fiscales.</p>
+                <p>Países Bajos: Una multa de hasta 900 000 € o el 10% de facturación del vendedor, si este importe es superior (artículos 2.15(2) y 8.8 de la Ley neerlandesa de protección del consumidor y el artículo 6:193b del Código Civil neerlandés).
+                    El vendedor también podrá ser considerado responsable de daños causados y el acuerdo suscrito, por ello, es anulable (artículos 6:193b y 6:193j del Código Civil neerlandés).  Dichos vendedores también podrán estar sujetos a obligaciones sociales
+                    y fiscales.
+                </p>
+                <p>Luxemburgo: Una multa de un máximo de 120 000 euros (artículo L 122-8 del Código de Consumo de Luxemburgo). Dichos vendedores también podrán estar sujetos a obligaciones sociales y fiscales.</p>
+                <p>Alemania: Podrá ser considerado responsable de los daños y perjuicios (incluido el decomiso de beneficios) causados como consecuencia de prácticas comerciales engañosas(artículo 3, apartado 3 y n.º 23 del anexo del Código de competencia
+                    desleal de Alemania, los artículos 8, 9 y 10 del Código de competencia desleal de Alemania y el artículo 823, apartado 2 del Código Civil alemán, así como el artículo 280 y el artículo 241 del Código Civil alemán). Asimismo, el acuerdo
+                    suscrito podrá declararse nulo de conformidad con el artículo 119, apartado 2 del Código Civil alemán. Si el consumidor, a pesar del engaño del vendedor, decide no anular el contrato, el derecho de desistimiento no rescinde después
+                    de 14 días (como ocurriría normalmente), sino después de 1 año y 14 días según el artículo 356, apartado 3 del Código Civil alemán, dado que el vendedor no cumplió con sus obligaciones de informar al consumidor de conformidad con la
+                    legislación alemana (artículo 246 y siguientes de la Ley alemana de introducción al Código Civil o EGBGB). También podrán estar sujetos a obligaciones sociales y fiscales.</p>
+                <p>Italia: Una multa de entre 5 000 y 5 000 000 euros, prevista en el artículo 27, apartado 9 del Código de consumo italiano. Dichos vendedores también podrán estar sujetos a obligaciones sociales y fiscales.</p>
+                <p>Austria: Podrá ser considerado responsable de los daños y perjuicios causados como consecuencia de las prácticas comerciales engañosas de conformidad con los artículos 1 y siguientes de la Ley de competencia desleal de Austria, así como los
+                    artículos 14 y siguientes de la Ley de competencia desleal de Austria  y los artículos 1295 y siguientes del Código Civil austriaco. Asimismo, el acuerdo suscrito podrá declararse nulo de conformidad con los artículos 870 y siguientes
+                    del Código Civil austriaco. Si el consumidor, a pesar del engaño del vendedor, decidiese no anular el contrato, el derecho de desistimiento no rescindiría después de 14 días (como ocurriría normalmente), sino después de 1 año y 14 días
+                    según el artículo 12 de la Ley de transacciones externas y distancia de Austria, dado que el vendedor no cumplió con sus obligaciones de informar al consumidor de conformidad con la sección 4 de la Ley de transacciones externas y distancia
+                    de Austria.</p>
+                -->
+                <p class="h5 mt-4 text-uppercase" id="personal-data">
+                    Datos personales
+                </p>
+                <p>GardenForYou recaba solamente los datos estrictamente necesarios para la consecución de las finalidades de obtención de los mismos.</p>
+                <p>En el caso de que usted se haya registrado en nuestra Página Web
+                    <!-- y/o en nuestra Aplicación-->, las finalidades de tratar sus Datos personales son:</p>
+                <p>Para ponerse en contacto para adquirir cualquier insecto o planta, será necesario el registro por parte del usuario, con ingreso de datos personales fidedignos y definición de una contraseña.</p>
+                <ul>
+                    <li>
+                        <p>Para velar por el buen uso de nuestros servicios y productos, impidiendo que se lleven a cabo usos ilícitos o contrarios a nuestra política y condiciones de uso, pudiendo incluso darle de baja como usuario registrado. La base legitimadora
+                            de dicho tratamiento es el cumplimiento por parte de GardenForYou de determinadas obligaciones legales, así como el interés legítimo de proteger nuestros servicios y productos.</p>
+                    </li>
+                    <li>
+                        <p>Conocer su fecha de nacimiento para poder verificar la edad y permitirle acceder a ciertas funcionalidades en nuestra Página web
+                            <!-- y/o Aplicación-->
+                        </p>
+                    </li>
+                    <li>
+                        <p>Mostrarle publicidad ajustada a sus hábitos de consumo y navegación obtenidos del uso de nuestra
+                            <!-- aplicación o-->página web, en atención a nuestro interés legítimo para la mejora de la oferta comercial.</p>
+                    </li>
+                    <!--
+                    <li>
+                        <p>Remitirle, por cualquier medio, incluidos por medios electrónicos, comunicaciones comerciales en relación a los productos y servicios ofrecidos por GardenForYou, comunicaciones que podrán dirigirse en atención a sus hábitos de consumo, navegación o utilización de nuestra Página Web y/o nuestra Aplicación. GardenForYou realizará dicho tratamiento en atención a la relación mantenida con usted, teniendo en cuenta que las citadas comunicaciones siempre versarán sobre nuestros productos y servicios. </p>
+                    </li>
+                    -->
+                    <li>
+                        <p>Analizar el contenido de los chats en los que interactúe con otros usuarios, al objeto de verificar que se hace un uso lícito de nuestros servicios. Tratamiento que realizaremos al amparo de nuestro interés legítimo para para evitar
+                            fraude o actos ilícitos.</p>
+                    </li>
+                    <p>Gestionar las quejas y consultas sobre los productos y/o servicios adquiridos a través de nuestro correo de contacto
+                        <!--nuestra Página Web y/o de nuestra Aplicación-->, siendo la base legitimadora de este tratamiento la obligación legal de GardenForYou de acuerdo con la normativa de defensa de los consumidores y usuarios.</p>
+                </ul>
+                <p>En el caso de no facilitarnos dichos Datos no podremos gestionar el registro solicitado, prestarle el servicio solicitado, facilitarle la información requerida que corresponda en cada caso.</p>
+                <p class="h5 mt-4 text-uppercase" id="personal-data">
+                    ¿Cuánto tiempo tenemos tus datos personales?
+                </p>
+                <p></p>
+                <p></p>
+                <p></p>
             </div>
+
             <div class="col-9" id="privacy-policies">
                 <h1 class="font-weight-normal">
                     Política de privacidad
