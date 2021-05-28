@@ -1,41 +1,76 @@
-import { Component, OnInit } from '@angular/core';
+import { ChatService } from './../services/chat.service';
+import { ProductService } from './../services/product.service';
+import { Router } from '@angular/router';
+import { Product } from './../models/product.model';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-chat-info',
   templateUrl: './chat-info.component.html',
-  styleUrls: ['./chat-info.component.scss']
+  styleUrls: ['./chat-info.component.scss'],
 })
 export class ChatInfoComponent implements OnInit {
-  ownProduct = true;
-  userProfile = {
-    username: 'Max',
-    image: {
-      url:
-        'https://thispersondoesnotexist.com/image',
-    },
-    emailVerified: true,
-    location: 'Albacete',
-  };
+  userProfile: any;
 
-  product = {
-    _id: 'otraid',
-    publisherId: {
-      _id: 'string',
-    },
-    images:
-      {
-        url:
-          'https://www.hola.com/imagenes/decoracion/20200609169726/plantas-de-interior-cuidados-duren-tiempo-mc/0-833-734/trucos-plantas-interior-duren-1-z.jpg',
-      },
-    title: 'Planta',
-    price: 10,
-    type: 'plant',
-    description: 'No sé qué planta es.',
-  };
+  image = '../../assets/images/no-image.jpg';
 
-  constructor() { }
+  @Input() product: any;
+  @Input() chatid: string = '';
+
+  constructor(
+    private router: Router,
+    private productService: ProductService,
+    private chatService: ChatService
+  ) {}
 
   ngOnInit() {
+    if (this.product.images != null && this.product.images.lenght > 0) {
+      this.image = this.product.images[0];
+    }
+
+    let data = localStorage.getItem('userProfile');
+    if (data != null) {
+      this.userProfile = JSON.parse(data);
+    }
   }
 
+  goToProduct() {
+    this.router.navigate(['product', this.product._id]);
+  }
+
+  markAsSold() {
+    if (this.product && this.product._id) {
+      if (this.product.sold) {
+        this.product.sold = false;
+      } else {
+        this.product.sold = true;
+      }
+      this.productService
+        .updateProduct(this.product._id, this.product)
+        .subscribe(
+          (returnData: any) => {},
+          (error) => {
+            if (error.status == 401) {
+              localStorage.clear();
+              this.router.navigate(['/login']);
+            } else if (error.status == 403) {
+              this.router.navigate(['/']);
+            }
+          }
+        );
+    }
+  }
+
+  deleteChat() {
+    if (this.chatid.length > 0) {
+      this.chatService.deleteChat(this.chatid).subscribe(
+        (returnData: any) => {
+          this.router.navigate(['/chat']);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+  }
 }

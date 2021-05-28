@@ -1,34 +1,46 @@
 <div class="row" id="background">
-    <div class="container m-2 p-2" id="product-box">
-
-        <a class="text-decoration-none" href="product/:id">
-            <div class="row">
-                <div class="col-12">
-                    <img class="rounded img-fluid" src="{{product.images.url}}" />
-                </div>
-            </div>
-        </a>
-
-        <div *ngIf="ownProduct" class="row">
-            <div class="col-12">
-                <div class="row justify-content-center my-2">
-                    <button class="btn btn-danger px-5 d-block mx-2">Vendido</button>
-                </div>
-            </div>
+  <div class="col-10 mx-auto p-2 mt-2" id="product-box">
+    <div role="button" (click)="goToProduct()">
+      <div class="row">
+        <div class="col-12">
+          <img class="rounded img-fluid" src="{{ image }}" />
         </div>
-
-        <a class="text-decoration-none mb-0" href="product/:id">
-            <div class="row">
-                <div class="col-12 ml-2">
-                    <p class="font-weight-bold">{{product.title}}</p>
-                    <p>{{product.price}}€</p>
-                </div>
-            </div>
-        </a>
+      </div>
     </div>
-    <div class="col-12">
-        <div class="d-flex justify-content-center">
-            <button class="btn btn-light my-1">Eliminar conversación</button>
+    <div class="row">
+      <div class="col-12">
+        <div class="row justify-content-center my-2">
+          <button
+            *ngIf="product.publisherId == userProfile._id"
+            class="btn btn-success px-5 d-block mx-2"
+            (click)="markAsSold()"
+          >
+            <span *ngIf="!product?.sold">Lo he vendido</span>
+            <span *ngIf="product?.sold">No está vendido</span>
+          </button>
+          <button
+            *ngIf="product.publisherId != userProfile._id && product?.sold"
+            type="button"
+            class="btn btn-success rounded text-white float-right"
+            disabled
+          >
+            Este producto esta vendido
+          </button>
         </div>
+      </div>
     </div>
+    <div role="button" class="mb-0 mt-2 row" (click)="goToProduct()">
+      <div class="col-12 text-center">
+        <p class="font-weight-bold">{{ product.title }}</p>
+        <p>{{ product.price }}€</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="d-flex justify-content-center">
+      <button class="btn btn-light my-1" (click)="deleteChat()">
+        Eliminar conversación
+      </button>
+    </div>
+  </div>
 </div>

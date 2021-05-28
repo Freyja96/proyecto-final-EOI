@@ -14,4 +14,12 @@
     {{ message.text }}
   </span>
 </p>
-<p class="text-muted">{{ message.date | date: "short" }}</p>
+<p
+  [ngClass]="{
+    'text-right': message.senderId == userId,
+    'text-left': message.senderId != userId
+  }"
+  class="text-muted"
+>
+  {{ message.date | date: "short" }}
+</p>

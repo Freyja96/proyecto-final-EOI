@@ -12,7 +12,6 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ChatItemComponent implements OnInit {
   @Input() chat: any;
 
-  message = 'Ah pues es un buen envío';
   image?: any = null;
   userProfile?: User;
   product?: Product;

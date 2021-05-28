@@ -1,3 +1,5 @@
+import { ProductService } from './../services/product.service';
+import { Product } from './../models/product.model';
 import { UserService } from './../services/user.service';
 import { ChatService } from './../services/chat.service';
 import { AuthService } from './../services/auth/auth.service';
@@ -16,19 +18,8 @@ export class ChatComponent implements OnInit {
   image = null;
   chat: any = null;
   otherUser: any;
-
-  product = {
-    idPublisher: 'unaid12345',
-    image: 'http://example.com',
-    title: 'string',
-    specie: 'string',
-    size: 'string',
-    egg: true,
-    price: 0,
-    climate: 'string',
-    type: 'plant',
-    description: 'string',
-  };
+  messageInput = '';
+  product?: Product;
 
   messages: Array<Object> = new Array();
 
@@ -37,7 +28,8 @@ export class ChatComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private chatService: ChatService,
-    private userService: UserService
+    private userService: UserService,
+    private productService: ProductService
   ) {
     this.activeRoute.params.subscribe((param) => {
       this.chatId = param.chatid != null ? param.chatid : null;
@@ -69,47 +61,60 @@ export class ChatComponent implements OnInit {
     }
 
     if (this.chatId != null) {
-      this.chatService.getMessages(this.chatId).subscribe(
-        (data: any) => {
-          this.messages = data;
-          console.log('Messages');
-          console.log(data);
-        },
-        (error) => {
-          this.messageError =
-            'Hemos tenido un problema al acceder a los mensajes';
-          console.log(error);
-        }
-      );
-
-      this.chatService.getChat(this.chatId).subscribe(
-        (data: any) => {
-          this.chat = data;
-          console.log('Chat');
-          console.log(data);
-
-          if (this.chat != null) {
-            if (this.chat.buyerId == this.userProfile._id) {
-              this.updateUser(this.chat.sellerId);
-            } else if (this.chat.sellerId == this.userProfile._id) {
-              this.updateUser(this.chat.buyerId);
-            }
-          }
-        },
-        (error) => {
-          this.messageError = 'Hemos tenido un problema al acceder al chat';
-          console.log(error);
-        }
-      );
+      setInterval(() => this.updateChat(), 1000 * 60);
+      this.updateChat();
     }
+  }
+
+  updateChat() {
+    this.chatService.getMessages(this.chatId).subscribe(
+      (data: any) => {
+        this.messages = data;
+      },
+      (error) => {
+        this.messageError =
+          'Hemos tenido un problema al acceder a los mensajes';
+        console.log(error);
+        this.router.navigate(['/chat']);
+      }
+    );
+
+    this.chatService.getChat(this.chatId).subscribe(
+      (data: any) => {
+        this.chat = data;
+        if (this.chat != null) {
+          if (this.chat.buyerId == this.userProfile._id) {
+            this.updateUser(this.chat.sellerId);
+          } else if (this.chat.sellerId == this.userProfile._id) {
+            this.updateUser(this.chat.buyerId);
+          }
+          this.updateProduct(this.chat.productId);
+        }
+      },
+      (error) => {
+        this.messageError = 'Hemos tenido un problema al acceder al chat';
+        console.log(error);
+      }
+    );
+  }
+
+  updateProduct(productId: string) {
+    this.productService.getProduct(productId).subscribe(
+      (data: any) => {
+        this.product = data;
+      },
+      (error) => {
+        this.messageError =
+          'Hemos tenido un problema al acceder a los datos del producto';
+        console.log(error);
+      }
+    );
   }
 
   updateUser(userid: string) {
     this.userService.getUserById(userid).subscribe(
       (data: any) => {
         this.otherUser = data;
-        console.log('Other user');
-        console.log(this.otherUser);
         if (this.otherUser != null && this.otherUser.image != null) {
           this.image = this.otherUser.image;
         }
@@ -118,5 +123,19 @@ export class ChatComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  sendMessage() {
+    if (this.messageInput.length > 0 && this.chatId != null) {
+      this.chatService.addMessage(this.chatId, this.messageInput).subscribe(
+        (data: any) => {
+          this.updateChat();
+        },
+        (error) => {
+          this.messageError = 'No se ha podido mandar el mensaje';
+          console.log(error);
+        }
+      );
+    }
   }
 }

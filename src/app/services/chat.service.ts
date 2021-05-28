@@ -58,7 +58,7 @@ export class ChatService {
       );
   }
 
-  addMessages(chatId: string, message: string): Observable<any> {
+  addMessage(chatId: string, message: string): Observable<any> {
     return this.httpClient
       .post(`${environment.apiUrl}/chats/${chatId}`, { message: message })
       .pipe(
