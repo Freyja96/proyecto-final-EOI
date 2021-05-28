@@ -67,7 +67,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="chatId != null" class="col-12 mb-3">
+        <div *ngIf="chatId != null" class="col-12 mb-4 pb-2">
           <div
             id="allChats"
             class="overflow-auto"
@@ -101,7 +101,7 @@
             [(ngModel)]="messageInput"
             (keyup.enter)="sendMessage()"
           />
-          <div class="input-group-append">
+          <div class="input-group-append bg-white">
             <button
               class="btn btn-outline-primary"
               type="button"
