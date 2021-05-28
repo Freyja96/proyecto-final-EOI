@@ -4,7 +4,7 @@
     'text-left': message.senderId != userId
   }"
 >
-  <span
+  <div
     [ngClass]="{
       'bg-light': message.senderId == userId,
       'bg-white': message.senderId != userId
@@ -12,7 +12,7 @@
     class="p-2 border border-light rounded shadow"
   >
     {{ message.text }}
-  </span>
+  </div>
 </p>
 <p
   [ngClass]="{
