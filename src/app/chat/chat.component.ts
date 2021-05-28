@@ -129,6 +129,7 @@ export class ChatComponent implements OnInit {
     if (this.messageInput.length > 0 && this.chatId != null) {
       this.chatService.addMessage(this.chatId, this.messageInput).subscribe(
         (data: any) => {
+          this.messageInput = '';
           this.updateChat();
         },
         (error) => {
