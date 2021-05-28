@@ -1,5 +1,5 @@
-<div class="row" id="background">
-  <div class="col-10 mx-auto p-2 mt-2" id="product-box">
+<div class="row">
+  <div class="col-10 mx-auto p-2 mt-2 bg-light shadow-lg" id="product-box">
     <div role="button" (click)="goToProduct()">
       <div class="row">
         <div class="col-12">
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div role="button" class="mb-0 mt-2 row" (click)="goToProduct()">
+    <div role="button" class="m-2 row" (click)="goToProduct()">
       <div class="col-12 text-center">
         <p class="font-weight-bold">{{ product.title }}</p>
         <p>{{ product.price }}€</p>
@@ -38,7 +38,7 @@
   </div>
   <div class="col-12">
     <div class="d-flex justify-content-center">
-      <button class="btn btn-light my-1" (click)="deleteChat()">
+      <button class="btn btn-danger my-2" (click)="deleteChat()">
         Eliminar conversación
       </button>
     </div>

@@ -46,25 +46,38 @@
             <button
               class="btn btn-outline-secondary"
               type="button"
-              id="dropdownChatMenu"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+              (click)="showMenu = !showMenu"
             >
               <i class="fas fa-bars"></i>
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownChatMenu">
-              <a class="dropdown-item text-primary" href="#">Ver producto</a>
-              <a
-                class="dropdown-item text-info"
-                *ngIf="product?.publisherId == userProfile._id"
-                href="#"
-                >Marcar como vendido</a
-              >
-              <a class="dropdown-item text-danger" href="#"
-                >Eliminar conversación</a
-              >
-            </div>
+          </div>
+          <div
+            [ngClass]="{ show: showMenu }"
+            class="dropdown-menu col-12"
+            aria-labelledby="dropdownChatMenu"
+          >
+            <button
+              *ngIf="product?.publisherId != userProfile._id && product?.sold"
+              type="button"
+              class="dropdown-item text-info bg-light"
+              disabled
+            >
+              Este producto está vendido
+            </button>
+            <button class="dropdown-item text-primary" (click)="goToProduct()">
+              Ver producto
+            </button>
+            <button
+              class="dropdown-item text-info"
+              *ngIf="product?.publisherId == userProfile._id"
+              (click)="deleteChat()"
+            >
+              <span *ngIf="!product?.sold">Lo he vendido</span>
+              <span *ngIf="product?.sold">No está vendido</span>
+            </button>
+            <button class="dropdown-item text-danger" (click)="markAsSold()">
+              Eliminar conversación
+            </button>
           </div>
         </div>
         <div *ngIf="chatId != null" class="col-12 mb-4 pb-2">

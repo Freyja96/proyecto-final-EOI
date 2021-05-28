@@ -20,6 +20,7 @@ export class ChatComponent implements OnInit {
   otherUser: any;
   messageInput = '';
   product?: Product;
+  showMenu: boolean = false;
 
   messages: Array<Object> = new Array();
 
@@ -137,6 +138,48 @@ export class ChatComponent implements OnInit {
           console.log(error);
         }
       );
+    }
+  }
+
+  goToProduct() {
+    if (this.product) {
+      this.router.navigate(['product', this.product._id]);
+    }
+  }
+
+  deleteChat() {
+    if (this.chatId) {
+      this.chatService.deleteChat(this.chatId).subscribe(
+        (returnData: any) => {
+          this.router.navigate(['/chat']);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  markAsSold() {
+    if (this.product && this.product._id) {
+      if (this.product.sold) {
+        this.product.sold = false;
+      } else {
+        this.product.sold = true;
+      }
+      this.productService
+        .updateProduct(this.product._id, this.product)
+        .subscribe(
+          (returnData: any) => {},
+          (error) => {
+            if (error.status == 401) {
+              localStorage.clear();
+              this.router.navigate(['/login']);
+            } else if (error.status == 403) {
+              this.router.navigate(['/']);
+            }
+          }
+        );
     }
   }
 }
