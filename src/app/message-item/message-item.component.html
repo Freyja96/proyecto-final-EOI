@@ -1,7 +1,8 @@
-<p
+<div
+  class="row"
   [ngClass]="{
-    'text-right': message.senderId == userId,
-    'text-left': message.senderId != userId
+    'justify-content-end': message.senderId == userId,
+    'justify-content-start': message.senderId != userId
   }"
 >
   <div
@@ -9,11 +10,11 @@
       'bg-light': message.senderId == userId,
       'bg-white': message.senderId != userId
     }"
-    class="p-2 border border-light rounded shadow"
+    class="p-2 mx-3 col-auto border border-light rounded shadow"
   >
     {{ message.text }}
   </div>
-</p>
+</div>
 <p
   [ngClass]="{
     'text-right': message.senderId == userId,
