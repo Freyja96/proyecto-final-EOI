@@ -4,7 +4,7 @@ import { UserService } from './../services/user.service';
 import { ChatService } from './../services/chat.service';
 import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -34,6 +34,14 @@ export class ChatComponent implements OnInit {
   ) {
     this.activeRoute.params.subscribe((param) => {
       this.chatId = param.chatid != null ? param.chatid : null;
+    });
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.activeRoute.params.subscribe((param) => {
+          this.chatId = param.chatid != null ? param.chatid : null;
+          this.ngOnInit();
+        });
+      }
     });
   }
 

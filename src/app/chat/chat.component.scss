@@ -19,3 +19,8 @@ img {
     height: 100%;
   }
 }
+
+#allchats {
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
