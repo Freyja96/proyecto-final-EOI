@@ -163,6 +163,7 @@ export class ProductListComponent implements OnInit {
   }
 
   updateProductList() {
+    this.updateFilter();
     this.productService.getProducts(this.filter).subscribe(
       (data: any) => {
         this.products = data;

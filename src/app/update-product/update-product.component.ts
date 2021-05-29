@@ -58,7 +58,6 @@ export class UpdateProductComponent implements OnInit {
     if (this.productId) {
       this.productService.getProduct(this.productId).subscribe(
         (returnData: Product) => {
-          console.log(returnData);
           this.productType = returnData.type ? returnData.type : 'plant';
           this.productForm.controls['title'].setValue(returnData.title);
           this.productForm.controls['description'].setValue(
