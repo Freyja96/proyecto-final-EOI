@@ -126,6 +126,8 @@ export class ChatComponent implements OnInit {
         this.otherUser = data;
         if (this.otherUser != null && this.otherUser.image != null) {
           this.image = this.otherUser.image;
+        } else {
+          this.image = null;
         }
       },
       (error) => {
