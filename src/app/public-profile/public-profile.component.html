@@ -36,9 +36,11 @@
                     <p class="h4 text-center py-4">
                         Lo sentimos, ahora mismo no hay productos que mostrar.
                     </p>
-                    <a *ngIf="ownUser" class="btn btn-success">
-                      Subir un producto ahora
-                    </a>
+                </div>
+                <div class="col-12 text-center" *ngIf="ownUser" [routerLink]="['/update/product']">
+                    <button class="btn btn-success text-white font-weight-bold py-2 px-3 mt-1 mb-5">
+                      Sube un producto
+                    </button>
                 </div>
                 <div class="col-md-4 col-sm-12 mb-2" *ngFor="let product of userProfile?.products">
                     <app-product-item [product]="product"></app-product-item>
