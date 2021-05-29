@@ -3,11 +3,11 @@
         <div class="col-12 bg-light">
             <div class="row">
                 <div class="col-sm-2 col-xs-12 py-3 d-flex justify-content-center">
-                    <img *ngIf="userProfile?.image != null" class="rounded" src="{{ userProfile?.image }}" width="150" height="auto" />
+                    <img *ngIf="userProfile?.image != null" class="rounded" src="{{ userProfile?.image }}" width="150" height="150" />
                     <i *ngIf="userProfile?.image == null" class="fas fa-user-circle header-icon mb-1 mx-5"></i>
                 </div>
                 <div class="col-sm-10 col-xs-12">
-                    <div class="text-right pb-0">
+                    <div class="text-right pb-0 pt-3">
                         <button type="button" *ngIf="ownUser" class="btn btn-secondary font-weight-bold text-white" [routerLink]="['/edit/profile']">
                           Editar
                         </button>
