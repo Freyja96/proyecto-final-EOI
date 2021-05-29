@@ -4,6 +4,10 @@
     color: $gray-200;
 }
 
-#edit {
-    margin-bottom: -50px;
+button {
+    z-index: 3;
+}
+
+#info {
+    z-index: 1;
 }

@@ -3,7 +3,7 @@
         <div class="col-12">
             <div class="row">
                 <!--hidden only on xs and sm-->
-                <div class="col-md-3 col-2 d-none d-md-block">
+                <div class="col-lg-3 col-xl-2 col-md-3 col-2 d-none d-md-block">
                     <a [routerLink]="['']">
                         <img src="{{ title }}" height="50px" width="auto" />
                     </a>
@@ -14,7 +14,7 @@
                         <img src="{{ logo }}" height="40px" width="auto" />
                     </a>
                 </div>
-                <div class="col-md-6 col-sm-8 col-10">
+                <div class="col-md-6 col-sm-8 col-lg-7 col-xl-8 col-10">
                     <div class="input-group mb-0 pt-2">
                         <div class="input-group-text bg-white" id="basic-addon1">
                             <i class="fas fa-search p-0"></i>
@@ -26,7 +26,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-3 d-none d-sm-block" id="navbarSupportedContent" *ngIf="!logged">
+                <div class="col-3 col-lg-2 d-none d-sm-block" id="navbarSupportedContent" *ngIf="!logged">
                     <div class="row float-right">
                         <ul class="navbar-nav text-center">
                             <li class="nav-item text-nowrap pt-2 pb-2 bg-success">
@@ -39,7 +39,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3 col-0 d-none d-sm-block" id="navbarSupportedContent" *ngIf="logged">
+                <div class="col-sm-3 col-0 col-lg-2 d-none d-sm-block" id="navbarSupportedContent" *ngIf="logged">
                     <div class="row float-right">
                         <ul class="navbar-nav text-center">
                             <li class="nav-item btn btn-primary rounded-0 text-nowrap">
@@ -47,13 +47,18 @@
                                     <i class="fas fa-envelope text-white header-icon"></i>
                                 </a>
                             </li>
-                            <li class="nav-item btn btn-primary rounded-0 text-nowrap p-0">
-                                <a class="nav-link text-body" (click)="goToProfile()">
-                                    <img *ngIf="image != null" class="rounded" src="{{ image }}" width="45" height="45" />
-                                    <div *ngIf="image == null">
-                                        <i class="fas fa-user-circle text-white header-icon"></i>
-                                    </div>
-                                </a>
+                            <li class="dropdown rounded-0 bg-success">
+                                <button class="btn btn-success rounded-0 dropdown-toggle text-white pr-4" type="button" data-toggle="dropdown">
+                                        <img *ngIf="image != null" class="float-left rounded" src="{{ image }}" width="40" height="40" />
+                                        <div *ngIf="image == null">
+                                          <i class="fas fa-user-circle text-white header-icon float-left py-1"></i>
+                                        </div>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <p class="text-muted font-weight-light ml-2">CUENTA</p>
+                                    <a class="dropdown-item" (click)="goToProfile()">Mi perfil</a>
+                                    <a class="dropdown-item" href="/edit/profile">Ajustes</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
