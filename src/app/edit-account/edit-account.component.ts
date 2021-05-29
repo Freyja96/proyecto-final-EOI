@@ -49,11 +49,11 @@ export class EditAccountComponent implements OnInit {
         this.emailForm.controls['email'].setValue(data.email);
       },
       (error) => {
-        if (error.status == 500) {
-          this.messageError = 'No se ha podido conectar con el servidor';
-        } else if (error.status == 401) {
+        if (error.status == 401) {
           localStorage.clear();
           this.router.navigate(['/login']);
+        } else {
+          this.messageError = 'No se ha podido conectar con el servidor';
         }
       }
     );
@@ -116,13 +116,13 @@ export class EditAccountComponent implements OnInit {
         }
       },
       (error) => {
-        if (error.status == 500) {
-          this.messageError = 'No se ha podido conectar con el servidor';
-        } else if (error.status == 409) {
+        if (error.status == 409) {
           this.messageError = 'Este correo ya existe';
         } else if (error.status == 401) {
           localStorage.clear();
           this.router.navigate(['/login']);
+        } else {
+          this.messageError = 'No se ha podido conectar con el servidor';
         }
       }
     );
@@ -149,11 +149,11 @@ export class EditAccountComponent implements OnInit {
         }
       },
       (error) => {
-        if (error.status == 500) {
-          this.messageError = 'No se ha podido conectar con el servidor';
-        } else if (error.status == 401) {
+        if (error.status == 401) {
           localStorage.clear();
           this.router.navigate(['/login']);
+        } else {
+          this.messageError = 'No se ha podido conectar con el servidor';
         }
       }
     );
@@ -169,11 +169,11 @@ export class EditAccountComponent implements OnInit {
         this.router.navigate(['/']);
       },
       (error) => {
-        if (error.status == 500) {
-          this.messageError = 'No se ha podido conectar con el servidor';
-        } else if (error.status == 401) {
+        if (error.status == 401) {
           localStorage.clear();
           this.router.navigate(['/login']);
+        } else {
+          this.messageError = 'No se ha podido conectar con el servidor';
         }
       }
     );
