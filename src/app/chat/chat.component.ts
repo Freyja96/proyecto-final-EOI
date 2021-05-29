@@ -157,6 +157,12 @@ export class ChatComponent implements OnInit {
     }
   }
 
+  goToProfile() {
+    if (this.otherUser) {
+      this.router.navigate(['user', this.otherUser.username]);
+    }
+  }
+
   deleteChat() {
     if (this.chatId) {
       this.chatService.deleteChat(this.chatId).subscribe(

@@ -37,11 +37,19 @@
             *ngIf="image != null"
             class="d-block overflow-hidden"
             src="{{ image }}"
+            role="button"
+            (click)="goToProfile()"
           />
-          <div *ngIf="image == null">
+          <div *ngIf="image == null" role="button" (click)="goToProfile()">
             <i class="fas fa-user-circle text-success p-1 header-icon"></i>
           </div>
-          <p class="ml-2 my-auto font-weight-bold">{{ otherUser?.username }}</p>
+          <p
+            class="ml-2 my-auto font-weight-bold"
+            role="button"
+            (click)="goToProfile()"
+          >
+            {{ otherUser?.username }}
+          </p>
           <div class="dropdown ml-auto d-block d-md-none">
             <button
               class="btn btn-outline-secondary"
