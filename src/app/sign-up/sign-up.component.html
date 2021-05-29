@@ -3,8 +3,10 @@
         <div class="col-12 d-flex justify-content-center">
             <form ngNativeValidate [formGroup]="mForm" (ngSubmit)="signUp()" class="form-group">
                 <div class="col-12">
-                    <div class="row justify-content-center mt-1">
-                        <a class="h3 font-weight-bold mt-4" [routerLink]="['']">{{titulo}}</a>
+                    <div class="row justify-content-center mt-2">
+                        <a [routerLink]="['']">
+                            <img src="{{ title }}" height="100px" width="auto" />
+                        </a>
                     </div>
                     <div class="row justify-content-center">
                         <h1 class="font-weight-normal mt-1 mb-3">Registro</h1>

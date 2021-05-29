@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-  titulo = 'GardenForYou'; //cuando esté el logo: titulo = '../../assets/images/GardenForYou.png'
+  title = '../../assets/images/logotipo GardenForYou.png';
   logged = false;
   image = null;
   @Input() userProfile: any;

@@ -10,10 +10,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
-  titulo = 'GardenForYou';
   loginForm: FormGroup;
   logged = false;
   error = '';
+  title = '../../assets/images/logotipo GardenForYou.png';
 
   constructor(
     private router: Router,

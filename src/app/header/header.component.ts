@@ -7,7 +7,8 @@ import { AuthService } from '../services/auth/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  titulo = 'GardenForYou';
+  title = '../../assets/images/logotipo GardenForYou.png';
+  logo = '../../assets/images/GardenForYou Logo final.png';
   logged = false;
   searchProduct = '';
   image = null;

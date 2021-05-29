@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnInit {
+  title = '../../assets/images/logotipo GardenForYou.png';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }
