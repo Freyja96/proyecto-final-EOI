@@ -1,22 +1,22 @@
-<div class="container-fluid mb-5">
+<div class="container-sm mb-5">
     <nav class="navbar navbar-expand-sm p-0 bg-light fixed-top">
         <div class="col-12">
             <div class="row">
-                <div class="col-md-3 col-sm-1 col-xs-1">
-                    <!--hidden only on xs and sm, logotipo con logo-->
+                <div class="col-md-3 col-sm-1">
+                    <!--hidden only on xs and sm-->
                     <div class="d-none d-md-block">
                         <a [routerLink]="['']">
-                            <img src="{{ title }}" height="65px" width="auto" />
+                            <img src="{{ title }}" height="50px" width="auto" />
                         </a>
                     </div>
                     <!--visible only on xs and sm-->
-                    <div class="d-block d-md-none">
-                        <a [routerLink]="['']" class="pt-2">
+                    <div class="d-block d-md-none mt-2">
+                        <a [routerLink]="['']">
                             <img src="{{ logo }}" height="40px" width="auto" />
                         </a>
                     </div>
                 </div>
-                <div class="col-md-7 col-sm-8 col-xs-5">
+                <div class="col-md-7 col-sm-9">
                     <div class="input-group mb-0 pt-2">
                         <div class="input-group-text bg-white" id="basic-addon1">
                             <i class="fas fa-search p-0"></i>
@@ -27,39 +27,36 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-sm-3 col-md-2">
+                <div class="col-2 d-none d-sm-block" id="navbarSupportedContent" *ngIf="!logged">
                     <div class="row float-right">
-                        <div class="d-none d-sm-block" id="navbarSupportedContent">
-                            <ul *ngIf="!logged" class="navbar-nav text-center ml-4">
-                                <li class="nav-item text-nowrap py-3 bg-light">
-                                    <a class="nav-link sign-in" [routerLink]="['/login']">Inicia sesión
-                                      <i class="fas fa-user"></i>
-                                      <span class="sr-only">(current)</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item text-nowrap py-auto">
-                                    <a class="nav-link sign-up text-body" [routerLink]="['/signup']">
-                                        <p class="mb-0">¿No tienes cuenta?</p>
-                                        ¡Regístrate!<span class="sr-only">(current)</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul *ngIf="logged" class="navbar-nav text-center">
-                                <li class="nav-item btn btn-primary rounded-0 text-nowrap">
-                                    <a class="nav-link text-body p-1" [routerLink]="['/chat']">
-                                        <i class="fas fa-envelope text-white header-icon"></i>
-                                    </a>
-                                </li>
-                                <li class="nav-item btn btn-primary rounded-0 text-nowrap p-0">
-                                    <a class="nav-link text-body" (click)="goToProfile()">
-                                        <img *ngIf="image != null" class="rounded" src="{{ image }}" width="45" height="45" />
-                                        <div *ngIf="image == null">
-                                            <i class="fas fa-user-circle text-white header-icon"></i>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="navbar-nav text-center">
+                            <li class="nav-item text-nowrap pt-2 pb-2 bg-success">
+                                <a class="nav-link font-weight-bold text-white" [routerLink]="['/login']">
+                                  Accede
+                                    <i class="fas fa-user"></i>
+                                    <span class="sr-only">(current)</span>
+                                  </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-2 d-none d-sm-block" id="navbarSupportedContent" *ngIf="logged">
+                    <div class="row float-right">
+                        <ul class="navbar-nav text-center">
+                            <li class="nav-item btn btn-primary rounded-0 text-nowrap">
+                                <a class="nav-link text-body p-1" [routerLink]="['/chat']">
+                                    <i class="fas fa-envelope text-white header-icon"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item btn btn-primary rounded-0 text-nowrap p-0">
+                                <a class="nav-link text-body" (click)="goToProfile()">
+                                    <img *ngIf="image != null" class="rounded" src="{{ image }}" width="45" height="45" />
+                                    <div *ngIf="image == null">
+                                        <i class="fas fa-user-circle text-white header-icon"></i>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -36,22 +36,11 @@ button {
     }
 }
 
-ul.navbar-nav.text-center {
-    li.nav-item.text-nowrap.py-3.bg-light {
-        a.nav-link.sign-in {
-            transition: all 0.6s ease;
-            color: $gray;
-            &:hover {
-                color: $black;
-            }
-        }
-    }
-    li.nav-item.text-nowrap.py-auto {
-        transition: all 0.6s ease;
-        background-color: $green;
-        &:hover {
-            background-color: $darkergreen;
-        }
+a.nav-link.sign-in {
+    transition: all 0.6s ease;
+    color: $gray;
+    &:hover {
+        color: $black;
     }
 }
 
