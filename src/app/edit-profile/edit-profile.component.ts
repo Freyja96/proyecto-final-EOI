@@ -54,11 +54,11 @@ export class EditProfileComponent implements OnInit {
         }
       },
       (error) => {
-        if (error.status == 500) {
-          this.messageError = 'No se ha podido conectar con el servidor';
-        } else if (error.status == 401) {
+        if (error.status == 401) {
           localStorage.clear();
           this.router.navigate(['/login']);
+        } else {
+          this.messageError = 'No se ha podido conectar con el servidor';
         }
       }
     );
@@ -80,11 +80,11 @@ export class EditProfileComponent implements OnInit {
         }
       },
       (error) => {
-        if (error.status == 500) {
-          this.messageError = 'No se ha podido conectar con el servidor';
-        } else if (error.status == 401) {
+        if (error.status == 401) {
           localStorage.clear();
           this.router.navigate(['/login']);
+        } else {
+          this.messageError = 'No se ha podido conectar con el servidor';
         }
       }
     );
@@ -136,11 +136,11 @@ export class EditProfileComponent implements OnInit {
           }
         },
         (error) => {
-          if (error.status == 500) {
-            this.messageError = 'No se ha podido conectar con el servidor';
-          } else if (error.status == 401) {
+          if (error.status == 401) {
             localStorage.clear();
             this.router.navigate(['/login']);
+          } else {
+            this.messageError = 'No se ha podido conectar con el servidor';
           }
         }
       );
