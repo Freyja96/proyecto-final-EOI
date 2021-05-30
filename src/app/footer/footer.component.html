@@ -46,22 +46,27 @@
 
 <div class="container-fluid fixed-bottom d-block d-sm-none bg-success">
     <div class="row">
-        <div class="col-4 text-center pt-2">
-            <a href="" class="icon pl-4 pr-0">
+        <div class="col-4 pt-2">
+            <a href="" class="icon d-flex justify-content-center">
                 <i class="fas fa-home"></i>
             </a>
         </div>
-        <div class="col-3">
-            <a href="update/product" class="icon ml-3 mr-0">
+        <div class="col-4" *ngIf="!logged">
+            <a href="update/product" class="icon d-flex justify-content-center">
+                <i class="fas fa-plus-circle"></i>
+            </a>
+        </div>
+        <div class="col-3" *ngIf="logged">
+            <a href="update/product" class="icon d-flex justify-content-center">
                 <i class="fas fa-plus-circle"></i>
             </a>
         </div>
         <div *ngIf="!logged" class="col-4">
-            <div class="row py-2 pl-2 text-center bg-none">
-                <a href="login" class="font-weight-bold ml-4 mt-1" id="access">Accede</a>
+            <div class="row py-2 bg-none d-flex justify-content-center">
+                <a href="login" class="font-weight-bold mt-1" id="access">Accede</a>
             </div>
         </div>
-        <div *ngIf="logged" class="col-4 pr-1">
+        <div *ngIf="logged" class="col-5">
             <div class="row justify-content-end">
                 <div class="col-6 pt-2 pb-1">
                     <a href="chat" class="icon">
