@@ -1,12 +1,12 @@
 import { AuthService } from './../services/auth/auth.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })
-export class FooterComponent implements OnInit {
-  title = '../../assets/images/logotipo GardenForYou.png';
+export class FooterComponent implements OnInit, OnChanges {
+  title = '../../assets/images/logotipo-gardenforyou.png';
   logged = false;
   image = null;
   @Input() userProfile: any;
@@ -21,5 +21,9 @@ export class FooterComponent implements OnInit {
         this.image = this.userProfile.image;
       }
     }
+  }
+
+  ngOnChanges() {
+    this.ngOnInit();
   }
 }

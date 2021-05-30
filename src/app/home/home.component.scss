@@ -1,34 +1,35 @@
 @import "../../styles";
 .image {
-    background-image: url("../../assets/images/fondo-home.jpeg");
-    background-color: $light;
+  background-image: url("/assets/images/fondo-home.jpeg");
+  background-size: cover;
+  background-color: $light;
 }
 
 p {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 i {
-    font-size: 64px;
+  font-size: 64px;
 }
 
 a {
-    text-decoration: underline;
-    &:hover {
-        color: $dark-green;
-    }
+  text-decoration: underline;
+  &:hover {
+    color: $dark-green;
+  }
 }
 
 .btn-light {
-    color: $green;
-    &:hover {
-        color: $dark-green;
-    }
-    p {
-        color: $black;
-    }
+  color: $green;
+  &:hover {
+    color: $dark-green;
+  }
+  p {
+    color: $black;
+  }
 }
 
 .btn {
-    transition: all 0.6s ease;
+  transition: all 0.6s ease;
 }
