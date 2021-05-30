@@ -1,5 +1,5 @@
 import { UserService } from './../services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-public-profile',
@@ -9,34 +9,47 @@ import { Component, OnInit } from '@angular/core';
 export class PublicProfileComponent implements OnInit {
   username: any;
   userProfile: any;
-  noProducts: boolean=false;
+  noProducts: boolean = false;
   image = null;
   ownUser = false;
 
-  constructor(private route: ActivatedRoute, private userService: UserService) {}
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private userService: UserService,
+    private router: Router
+  ) {
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.activeRoute.params.subscribe((param) => {
+          this.username = param.username != null ? param.username : null;
+          this.ngOnInit();
+        });
+      }
+    });
+  }
 
   ngOnInit() {
-    this.username = this.route.snapshot.paramMap.get('username');
+    this.username = this.activeRoute.snapshot.paramMap.get('username');
 
     this.userService.getUserProfile(this.username).subscribe(
-      (data:any) => {
+      (data: any) => {
         this.userProfile = data;
-        if(data.products.length==0) {
-          this.noProducts=true;
+        if (data.products.length == 0) {
+          this.noProducts = true;
         } else {
-          this.noProducts=false;
-        };
+          this.noProducts = false;
+        }
         let userData = localStorage.getItem('userProfile');
-          if (userData != null) {
-            let userProfile = JSON.parse(userData);
-              if (data._id == userProfile._id) {
-                this.ownUser = true;
-              }
+        if (userData != null) {
+          let userProfile = JSON.parse(userData);
+          if (data._id == userProfile._id) {
+            this.ownUser = true;
           }
+        }
       },
       (error) => {
         console.log(error);
       }
-    )
+    );
   }
 }

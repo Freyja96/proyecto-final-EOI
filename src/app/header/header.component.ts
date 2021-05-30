@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 @Component({
@@ -6,9 +6,9 @@ import { AuthService } from '../services/auth/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  title = '../../assets/images/logotipo GardenForYou.png';
-  logo = '../../assets/images/GardenForYou Logo final.png';
+export class HeaderComponent implements OnInit, OnChanges {
+  title = '../../assets/images/logotipo-gardenforyou.png';
+  logo = '../../assets/images/gardenforyou-logo-final.png';
   logged = false;
   searchProduct = '';
   image = null;
@@ -24,6 +24,10 @@ export class HeaderComponent implements OnInit {
         this.image = this.userProfile.image;
       }
     }
+  }
+
+  ngOnChanges() {
+    this.ngOnInit();
   }
 
   navigateToSearch() {

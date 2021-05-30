@@ -13,7 +13,7 @@ export class SignInComponent implements OnInit {
   loginForm: FormGroup;
   logged = false;
   error = '';
-  title = '../../assets/images/logotipo GardenForYou.png';
+  title = '../../assets/images/logotipo-gardenforyou.png';
 
   constructor(
     private router: Router,

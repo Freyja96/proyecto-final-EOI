@@ -1,15 +1,14 @@
 import { ChatService } from './../services/chat.service';
 import { ProductService } from './../services/product.service';
 import { Router } from '@angular/router';
-import { Product } from './../models/product.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-chat-info',
   templateUrl: './chat-info.component.html',
   styleUrls: ['./chat-info.component.scss'],
 })
-export class ChatInfoComponent implements OnInit {
+export class ChatInfoComponent implements OnInit, OnChanges {
   userProfile: any;
 
   image = '../../assets/images/no-image.jpg';
@@ -24,7 +23,7 @@ export class ChatInfoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.product.images != null && this.product.images.lenght > 0) {
+    if (this.product.images != null && this.product.images.length > 0) {
       this.image = this.product.images[0];
     }
 
@@ -32,6 +31,10 @@ export class ChatInfoComponent implements OnInit {
     if (data != null) {
       this.userProfile = JSON.parse(data);
     }
+  }
+
+  ngOnChanges() {
+    this.ngOnInit();
   }
 
   goToProduct() {
