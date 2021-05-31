@@ -1,69 +1,120 @@
 <div class="container-sm mb-5">
-    <nav class="navbar navbar-expand-sm p-0 bg-light fixed-top">
-        <div class="col-12">
-            <div class="row">
-                <!--hidden only on xs and sm-->
-                <div class="col-lg-3 col-xl-2 col-md-3 col-2 d-none d-md-block">
-                    <a [routerLink]="['']">
-                        <img src="{{ title }}" height="50px" width="auto" />
-                    </a>
-                </div>
-                <!--visible only on xs and sm-->
-                <div class="col-2 col-sm-1 d-block d-md-none mt-2 pb-2">
-                    <a [routerLink]="['']">
-                        <img src="{{ logo }}" height="40px" width="auto" />
-                    </a>
-                </div>
-                <div class="col-md-6 col-sm-8 col-lg-7 col-xl-8 col-10">
-                    <div class="input-group mb-0 pt-2">
-                        <div class="input-group-text bg-white" id="basic-addon1">
-                            <i class="fas fa-search p-0"></i>
-                        </div>
-                        <input type="search" class="form-control p-0 text-truncate text-nowrap" id="search-input" [(ngModel)]="searchProduct" placeholder="¿Qué estás buscando?" aria-label="Search with button addon" aria-describedby="button-addon1" (keyup.enter)="navigateToSearch()"
-                        />
-                        <button (click)="navigateToSearch()" class="btn btn-outline-secondary bg-light text-dark" type="button" id="button-addon1">
-                          Buscar
-                        </button>
-                    </div>
-                </div>
-                <div class="col-3 col-lg-2 d-none d-sm-block" id="navbarSupportedContent" *ngIf="!logged">
-                    <div class="row float-right">
-                        <ul class="navbar-nav text-center">
-                            <li class="nav-item text-nowrap pt-2 pb-2 bg-success">
-                                <a class="nav-link font-weight-bold text-white" [routerLink]="['/login']">
-                                  Accede
-                                    <i class="fas fa-user"></i>
-                                    <span class="sr-only">(current)</span>
-                                  </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-0 col-lg-2 d-none d-sm-block" id="navbarSupportedContent" *ngIf="logged">
-                    <div class="row float-right">
-                        <ul class="navbar-nav text-center">
-                            <li class="nav-item btn btn-light rounded-0">
-                                <a class="nav-link text-body p-1" [routerLink]="['/chat']">
-                                    <i class="fas fa-envelope text-success header-icon"></i>
-                                </a>
-                            </li>
-                            <li class="dropdown rounded-0 bg-success">
-                                <button class="btn btn-success rounded-0 dropdown-toggle text-white" type="button" data-toggle="dropdown">
-                                        <img *ngIf="image != null" class="float-left rounded" src="{{ image }}" width="40" height="40" />
-                                        <div *ngIf="image == null">
-                                          <i class="fas fa-user-circle text-white header-icon float-left py-1 pr-4"></i>
-                                        </div>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <p class="text-muted font-weight-light ml-2 my-0 py-0">CUENTA</p>
-                                    <a class="dropdown-item my-0" (click)="goToProfile()">Mi perfil</a>
-                                    <a class="dropdown-item my-0" href="/edit/profile">Ajustes</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+  <nav class="navbar navbar-expand-sm p-0 bg-light fixed-top">
+    <div class="col-12">
+      <div class="row">
+        <!--hidden only on xs and sm-->
+        <div class="col-lg-3 col-xl-2 col-md-3 col-2 d-none d-md-block">
+          <a [routerLink]="['']">
+            <img src="{{ title }}" height="50px" width="auto" />
+          </a>
         </div>
-    </nav>
+        <!--visible only on xs and sm-->
+        <div class="col-2 col-sm-1 d-block d-md-none mt-2 pb-2">
+          <a [routerLink]="['']">
+            <img src="{{ logo }}" height="40px" width="auto" />
+          </a>
+        </div>
+        <div class="col-md-6 col-sm-8 col-lg-7 col-xl-8 col-10">
+          <div class="input-group mb-0 pt-2">
+            <div class="input-group-text bg-white" id="basic-addon1">
+              <i class="fas fa-search p-0"></i>
+            </div>
+            <input
+              type="search"
+              class="form-control p-0 text-truncate text-nowrap"
+              id="search-input"
+              [(ngModel)]="searchProduct"
+              placeholder="¿Qué estás buscando?"
+              aria-label="Search with button addon"
+              aria-describedby="button-addon1"
+              (keyup.enter)="navigateToSearch()"
+            />
+            <button
+              (click)="navigateToSearch()"
+              class="btn btn-outline-secondary bg-light text-dark"
+              type="button"
+              id="button-addon1"
+            >
+              Buscar
+            </button>
+          </div>
+        </div>
+        <div
+          class="col-3 col-lg-2 d-none d-sm-block"
+          id="navbarSupportedContent"
+          *ngIf="!logged"
+        >
+          <div class="row float-right">
+            <ul class="navbar-nav text-center">
+              <li class="nav-item text-nowrap pt-2 pb-2 bg-success">
+                <a
+                  class="nav-link font-weight-bold text-white"
+                  [routerLink]="['/login']"
+                >
+                  Accede
+                  <i class="fas fa-user"></i>
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="col-sm-3 col-0 col-lg-2 d-none d-sm-block"
+          id="navbarSupportedContent"
+          *ngIf="logged"
+        >
+          <div class="row float-right">
+            <ul class="navbar-nav text-center">
+              <li class="nav-item btn btn-light rounded-0">
+                <a class="nav-link text-body p-1" [routerLink]="['/chat']">
+                  <i class="fas fa-envelope text-success header-icon"></i>
+                </a>
+              </li>
+              <li class="dropdown rounded-0 bg-success">
+                <button
+                  class="btn btn-success rounded-0 dropdown-toggle text-white"
+                  type="button"
+                  data-toggle="dropdown"
+                >
+                  <img
+                    *ngIf="image != null"
+                    class="float-left rounded"
+                    src="{{ image }}"
+                    width="40"
+                    height="40"
+                  />
+                  <div *ngIf="image == null">
+                    <i
+                      class="
+                        fas
+                        fa-user-circle
+                        text-white
+                        header-icon
+                        float-left
+                        py-1
+                        pr-4
+                      "
+                    ></i>
+                  </div>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <p class="text-muted font-weight-light ml-2 my-0 py-0">
+                    CUENTA
+                  </p>
+                  <a class="dropdown-item my-0" (click)="goToProfile()"
+                    >Mi perfil</a
+                  >
+                  <a class="dropdown-item my-0" href="/edit/profile">Ajustes</a>
+                  <a class="dropdown-item my-0" (click)="closeSession()"
+                    >Cerrar Sesión</a
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 </div>

@@ -39,6 +39,11 @@ export class HeaderComponent implements OnInit, OnChanges {
     }
   }
 
+  closeSession() {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   goToProfile() {
     this.router.navigate(['/user/' + this.userProfile.username]);
   }
