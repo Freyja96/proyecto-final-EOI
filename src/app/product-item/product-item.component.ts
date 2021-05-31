@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss'],
 })
+
 export class ProductItemComponent implements OnInit {
   @Input() product: any;
   image:any = null;

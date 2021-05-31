@@ -1,11 +1,11 @@
 <div class="card" (click)="goToProduct()">
-    <div class="image-part d-flex justify-content-center pt-2">
-        <img src="{{ image }}" class="w-auto h-100" alt="{{ product.title }}" />
+    <div class="image-part d-flex justify-content-center">
+        <img src="{{ image }}" class="w-100 h-100" alt="{{ product.title }}" />
     </div>
     <div class="card-body">
-        <h5 class="card-title text-center text-truncate text-nowrap overflow-hidden pb-1 text-uppercase">{{ product.title }}</h5>
+        <h4 class="card-title text-center text-truncate text-nowrap overflow-hidden pb-1">{{ product.title | titlecase }}</h4>
         <p class="card-text overflow-hidden pb-0">
-            {{ product.description }}
+            {{ product.description}}
         </p>
         <p class="h5 font-weight-bold text-center pt-0">{{ product.price }}€</p>
     </div>
