@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { UserService } from '../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-profile',
