@@ -1,9 +1,9 @@
 <div class="container-md pt-4 position-relative">
     <div class="row justify-contents-center align-items-center">
-        <div class="col-12 bg-light">
+        <div class="col-12 bg-light mb-2">
             <div class="row">
                 <div class="col-sm-2 col-xs-12 py-3 d-flex justify-content-center">
-                    <img *ngIf="userProfile?.image != null" class="rounded" src="{{ userProfile?.image }}" width="150" height="150" />
+                    <img *ngIf="userProfile?.image != null" class="rounded" src="{{ userProfile?.image }}" width="auto" height="150" />
                     <i *ngIf="userProfile?.image == null" class="fas fa-user-circle header-icon mb-1 mx-5"></i>
                 </div>
                 <div class="col-sm-10 col-xs-12">
@@ -32,12 +32,19 @@
             </div>
         </div>
         <div class="col-12">
-            <div class="row">
-                <div class="col-12">
-                    <p class="text-muted h2 py-2 mt-3 border-bottom border-success">
+            <div class="row border-bottom border-success mb-3">
+                <div class="col-9">
+                    <p class="text-muted h2">
                         Listado de productos
                     </p>
                 </div>
+                <div class="col-3 text-right">
+                    <button *ngIf="ownUser" class="btn btn-success px-3 text-white font-weight-bold" [routerLink]="['/update/product']">
+                      Sube un producto
+                    </button>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-12" *ngIf="noProducts">
                     <p class="h4 text-center py-4">
                         Lo sentimos, ahora mismo no hay productos que mostrar.
@@ -45,11 +52,6 @@
                 </div>
                 <div class="col-md-4 col-sm-12 mb-2" *ngFor="let product of userProfile?.products">
                     <app-product-item [product]="product"></app-product-item>
-                </div>
-                <div class="col-12 text-center" *ngIf="ownUser" [routerLink]="['/update/product']">
-                    <button class="btn btn-success text-white font-weight-bold py-2 px-3 mt-1 mb-5">
-                    Sube un producto
-                  </button>
                 </div>
             </div>
         </div>
