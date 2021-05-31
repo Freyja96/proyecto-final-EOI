@@ -75,6 +75,15 @@ export class ProductListComponent implements OnInit {
     );
   }
 
+  changeType(type: string) {
+    if (this.filter.title != null) {
+      this.productType = type == 'plants' ? 'plant' : 'insect';
+      this.updateCategories();
+    } else {
+      this.router.navigate(['/' + type]);
+    }
+  }
+
   updateCategories() {
     if (this.productType) {
       this.categoryService

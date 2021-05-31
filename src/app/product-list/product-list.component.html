@@ -23,7 +23,7 @@
           <div class="col-12">
             <div class="row">
               <button
-                [routerLink]="'/insects'"
+                (click)="changeType('insects')"
                 type="button"
                 class="btn btn-light col-6 my-3 text-center border-0"
                 [disabled]="!isSearch && !isPlants"
@@ -32,7 +32,7 @@
                 <i class="fas fa-bug ml-1"></i>
               </button>
               <button
-                [routerLink]="'/plants'"
+                (click)="changeType('plants')"
                 type="button"
                 class="btn btn-light col-6 my-3 text-center border-0"
                 [disabled]="isPlants"
