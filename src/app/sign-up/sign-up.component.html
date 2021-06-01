@@ -45,6 +45,14 @@
                             <input type="password" class="form-control mt-0" formControlName="repitPassword" id="inputAgainPassword" placeholder="Repite la contraseña" required>
                         </div>
                     </div>
+                    <div class="row my-3">
+                        <div class="col-1 mr-0">
+                            <input type="checkbox" class="form-control" formControlName="acceptPrivacyAndUse" id="checkPrivacyUse" required>
+                        </div>
+                        <div class="col-11 pl-0 ml-0 mt-2">
+                            <label for="checkPrivacyUse">He leído y acepto las <a href="legal/terms-of-use">Condiciones de Uso</a> y <a href="legal/privacy-policies">Política de Privacidad</a>.</label>
+                        </div>
+                    </div>
                     <div *ngIf="error != ''" class="alert alert-danger" role="alert">
                         {{error}}
                     </div>

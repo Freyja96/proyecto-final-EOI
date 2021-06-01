@@ -29,6 +29,7 @@ export class SignUpComponent implements OnInit {
       repitPassword: ['', Validators.required],
       lastName: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
+      checkPrivacyUse: [Validators.required]
     });
   }
 
