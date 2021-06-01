@@ -32,7 +32,7 @@ export class ProductListComponent implements OnInit {
     private productService: ProductService,
     private categoryService: CategoryService,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {
     this.filterForm = this.formBuilder.group({
       category: new FormControl({ value: '', disabled: true }),
@@ -46,23 +46,28 @@ export class ProductListComponent implements OnInit {
       : '../../assets/images/insets.jpg';
     this.productType = this.isSearch ? '' : this.isPlants ? 'plant' : 'insect';
     this.title = this.isSearch
-      ? 'Busqueda'
+      ? 'Búsqueda'
       : this.isPlants
       ? 'Plantas'
       : 'Insectos';
 
-      router.events.subscribe((event) => {
-        if (event instanceof NavigationStart) {
-          this.route.params.subscribe((param) => {
-            this.ngOnInit();
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.route.params.subscribe(() => {
+          this.route.queryParams.subscribe((params) => {
+            if (params.search) {
+              this.filter.title = params.search;
+              this.ngOnInit();
+            }
           });
-        }
-      });
+        });
+      }
+    });
   }
 
   ngOnInit() {
     this.filter = {};
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       if (params.search) {
         this.filter.title = params.search;
       }
@@ -71,12 +76,13 @@ export class ProductListComponent implements OnInit {
       this.filter.type = this.productType;
     }
 
-    console.log(this.filter);
     this.productService.getProducts(this.filter).subscribe(
       (data: any) => {
         this.products = data;
         if (data.length >= 10) {
           this.moreProducts = true;
+        } else {
+          this.moreProducts = false;
         }
         this.updateCategories();
       },
@@ -184,12 +190,13 @@ export class ProductListComponent implements OnInit {
 
   updateProductList() {
     this.updateFilter();
-    console.log(this.filter);
     this.productService.getProducts(this.filter).subscribe(
       (data: any) => {
         this.products = data;
         if (data.length >= 10) {
           this.moreProducts = true;
+        } else {
+          this.moreProducts = false;
         }
       },
       (error) => {
@@ -207,6 +214,8 @@ export class ProductListComponent implements OnInit {
         this.products.concat(data);
         if (data.length >= 10) {
           this.moreProducts = true;
+        } else {
+          this.moreProducts = false;
         }
       },
       (error) => {
