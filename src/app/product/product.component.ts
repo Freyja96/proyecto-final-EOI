@@ -149,7 +149,11 @@ export class ProductComponent implements OnInit {
     if (this.product && this.product._id) {
       this.chatService.makeNewChat(this.product._id).subscribe(
         (data: any) => {
-          this.router.navigate(['/chat']);
+          if (data != null && data._id != null) {
+            this.router.navigate(['chat', data._id]);
+          } else {
+            this.router.navigate(['/chat']);
+          }
         },
         (error) => {
           this.messageError = 'Tenemos problemas al mandar contactar';
