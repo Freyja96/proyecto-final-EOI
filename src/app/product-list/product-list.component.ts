@@ -3,7 +3,7 @@ import { Category } from './../models/category.model';
 import { CategoryService } from './../services/category.service';
 import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 import { Product } from '../models/product.model';
 
 @Component({
@@ -32,7 +32,7 @@ export class ProductListComponent implements OnInit {
     private productService: ProductService,
     private categoryService: CategoryService,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {
     this.filterForm = this.formBuilder.group({
       category: new FormControl({ value: '', disabled: true }),
@@ -50,17 +50,28 @@ export class ProductListComponent implements OnInit {
       : this.isPlants
       ? 'Plantas'
       : 'Insectos';
+
+      router.events.subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          this.route.params.subscribe((param) => {
+            this.ngOnInit();
+          });
+        }
+      });
   }
 
   ngOnInit() {
     this.filter = {};
-
-    if (this.route.snapshot.queryParams.search) {
-      this.filter.title = this.route.snapshot.queryParams.search;
-    } else {
+    this.route.queryParams.subscribe(params => {
+      if (params.search) {
+        this.filter.title = params.search;
+      }
+    });
+    if (!this.filter.title) {
       this.filter.type = this.productType;
     }
 
+    console.log(this.filter);
     this.productService.getProducts(this.filter).subscribe(
       (data: any) => {
         this.products = data;
@@ -173,6 +184,7 @@ export class ProductListComponent implements OnInit {
 
   updateProductList() {
     this.updateFilter();
+    console.log(this.filter);
     this.productService.getProducts(this.filter).subscribe(
       (data: any) => {
         this.products = data;
