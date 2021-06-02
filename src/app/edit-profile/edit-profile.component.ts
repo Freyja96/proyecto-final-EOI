@@ -37,7 +37,7 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
     if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     }
     this.userService.getUser().subscribe(
       (data: any) => {

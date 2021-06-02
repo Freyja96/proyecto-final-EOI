@@ -31,4 +31,9 @@ export class SideBarProfileComponent implements OnInit {
   goToProfile() {
     this.router.navigate(['/user/' + this.userProfile.username]);
   }
+
+  logout() {
+    localStorage.clear();
+    window.location.reload();
+  }
 }

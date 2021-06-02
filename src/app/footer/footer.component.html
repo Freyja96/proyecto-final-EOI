@@ -74,7 +74,7 @@
                     </a>
                 </div>
                 <div class="col-6 py-1">
-                    <a href="edit/profile" class="icon">
+                    <a class="icon" (click)="goToProfile()">
                         <img *ngIf="image != null" class="rounded" src="{{ image }}" width="50" height="50" />
                         <i *ngIf="image == null" class="fas fa-user-circle text-white header-icon mt-1"></i>
                     </a>

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 @Component({
@@ -11,7 +12,7 @@ export class FooterComponent implements OnInit, OnChanges {
   image = null;
   @Input() userProfile: any;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.logged = this.authService.isAuthenticated();
@@ -25,5 +26,9 @@ export class FooterComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.ngOnInit();
+  }
+
+  goToProfile() {
+    this.router.navigate(['/user/' + this.userProfile.username]);
   }
 }
