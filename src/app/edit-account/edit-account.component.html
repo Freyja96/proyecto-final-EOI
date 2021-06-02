@@ -1,110 +1,205 @@
-<div class="row">
+<div class="container-fluid">
+  <div class="row">
     <div class="col-xl-3 col-lg-4 col-md-4 col-12">
-        <app-side-bar-profile></app-side-bar-profile>
+      <app-side-bar-profile></app-side-bar-profile>
     </div>
     <div class="col-xl-7 col-lg-7 col-md-8 col-12">
-        <div *ngIf="messageInfo != ''" class="row mt-3 alert alert-primary" role="alert">
-            {{ messageInfo }}
+      <div
+        *ngIf="messageInfo != ''"
+        class="row mt-3 alert alert-primary"
+        role="alert"
+      >
+        {{ messageInfo }}
+      </div>
+      <div
+        *ngIf="messageError != ''"
+        class="row mt-3 alert alert-danger"
+        role="alert"
+      >
+        {{ messageError }}
+      </div>
+      <div class="row py-2 my-3 bg-white shadow-gray">
+        <div class="col-md-6 col-sm-12 mb-3">
+          <label for="dateOfBirth"
+            >Fecha de nacimiento: <span class="text-danger">*</span></label
+          >
         </div>
-        <div *ngIf="messageError != ''" class="row mt-3 alert alert-danger" role="alert">
-            {{ messageError }}
+        <div class="col-md-6 col-sm-12 mt-1 mb-3">
+          <form
+            [formGroup]="dateForm"
+            id="dateForm"
+            ngNativeValidate
+            (ngSubmit)="updateDate()"
+          >
+            <input
+              type="date"
+              id="dateOfBirth"
+              formControlName="dateOfBirth"
+              class="form-control"
+              value="{{ dateOfBirth | date: 'yyyy-MM-dd' }}"
+              required
+            />
+          </form>
         </div>
-        <div class="row py-2 my-3 bg-white shadow-gray">
-            <div class="col-md-6 col-sm-12 mb-3">
-                <label for="dateOfBirth">Fecha de nacimiento: <span class="text-danger">*</span></label>
-            </div>
-            <div class="col-md-6 col-sm-12 mt-1 mb-3">
-                <form [formGroup]="dateForm" id="dateForm" ngNativeValidate (ngSubmit)="updateDate()">
-                    <input type="date" id="dateOfBirth" formControlName="dateOfBirth" class="form-control" value="{{ dateOfBirth | date: 'yyyy-MM-dd' }}" required />
-                </form>
-            </div>
-            <div class="col-12 py-2 text-center">
-                <button class="btn btn-primary font-weight-bold" form="dateForm" type="submit">
-                    Guardar cambios
-                </button>
-            </div>
+        <div class="col-12 py-2 text-center">
+          <button
+            class="btn btn-primary font-weight-bold"
+            form="dateForm"
+            type="submit"
+          >
+            Guardar cambios
+          </button>
         </div>
-        <div class="row py-2 my-3 shadow-gray">
-            <div class="col-12 mb-3">
-                <p class="text-muted">Información de la cuenta</p>
-            </div>
-            <div class="col-12">
-                <form [formGroup]="emailForm" id="emailForm" ngNativeValidate (ngSubmit)="updateEmail()">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input class="form-control mb-0" type="email" formControlName="email" id="newEmail" placeholder="Email" required />
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="form-group">
-                                <label for="new-email">Repite el nuevo email</label>
-                                <input class="form-control mb-0" type="email" formControlName="repeatEmail" id="repeatEmail" placeholder="Confirma tu nuevo email" required />
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3 text-right">
-                            <button type="submit" form="emailForm" class="btn btn-primary mb-3">
-                                Cambiar email
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-12">
-                <form [formGroup]="passForm" id="passForm" ngNativeValidate (ngSubmit)="updatePass()">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <div class="form-group">
-                                <label for="new-password">Nueva Contraseña</label>
-                                <input class="form-control mb-0" type="password" formControlName="password" id="newPassword" placeholder="Introduce tu nueva contraseña" required />
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="form-group">
-                                <label for="new-password">Confirma la nueva Contraseña</label>
-                                <input class="form-control mb-0" type="password" formControlName="repeatPassword" id="repeatPassword" placeholder="Introduce tu nueva contraseña" required />
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3 text-right">
-                            <button type="submit" form="passForm" class="btn btn-primary">
-                                Cambiar Contraseña
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-12">
-                <p class="text-muted">
-                    Si ya no quieres formar parte de nuestra web puedes darte de baja pulsando en el siguiente enlace para
-                    <span class="text-danger" (click)="showDeleteModal = true">eliminar la cuenta</span>.
-                </p>
-            </div>
+      </div>
+      <div class="row py-2 my-3 shadow-gray">
+        <div class="col-12 mb-3">
+          <p class="text-muted">Información de la cuenta</p>
         </div>
-        <div *ngIf="showDeleteModal" class="modal fade show d-block" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Borrar cuenta</h5>
-                        <button type="button" class="close" (click)="showDeleteModal = false" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            Una vez des a <span class="text-danger">Borrar Cuenta</span> borraremos tu cuenta en un plazo de 7 días, puedes cancelar el borrado de tu cuenta si te vuelves a conectar a nuestra web en ese plazo
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" (click)="showDeleteModal = false" class="btn btn-secondary" data-dismiss="modal">
-                            No quiero borrar la cuenta
-                        </button>
-                        <button type="button" class="btn btn-danger" (click)="deleteAccount()">
-                            Borrar Cuenta
-                        </button>
-                    </div>
+        <div class="col-12">
+          <form
+            [formGroup]="emailForm"
+            id="emailForm"
+            ngNativeValidate
+            (ngSubmit)="updateEmail()"
+          >
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    class="form-control mb-0"
+                    type="email"
+                    formControlName="email"
+                    id="newEmail"
+                    placeholder="Email"
+                    required
+                  />
                 </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  <label for="new-email">Repite el nuevo email</label>
+                  <input
+                    class="form-control mb-0"
+                    type="email"
+                    formControlName="repeatEmail"
+                    id="repeatEmail"
+                    placeholder="Confirma tu nuevo email"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-12 mb-3 text-right">
+                <button
+                  type="submit"
+                  form="emailForm"
+                  class="btn btn-primary mb-3"
+                >
+                  Cambiar email
+                </button>
+              </div>
             </div>
+          </form>
         </div>
+        <div class="col-12">
+          <form
+            [formGroup]="passForm"
+            id="passForm"
+            ngNativeValidate
+            (ngSubmit)="updatePass()"
+          >
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  <label for="new-password">Nueva Contraseña</label>
+                  <input
+                    class="form-control mb-0"
+                    type="password"
+                    formControlName="password"
+                    id="newPassword"
+                    placeholder="Introduce tu nueva contraseña"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  <label for="new-password">Confirma la nueva Contraseña</label>
+                  <input
+                    class="form-control mb-0"
+                    type="password"
+                    formControlName="repeatPassword"
+                    id="repeatPassword"
+                    placeholder="Introduce tu nueva contraseña"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-12 mb-3 text-right">
+                <button type="submit" form="passForm" class="btn btn-primary">
+                  Cambiar Contraseña
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-12">
+          <p class="text-muted">
+            Si ya no quieres formar parte de nuestra web puedes darte de baja
+            pulsando en el siguiente enlace para
+            <span class="text-danger" (click)="showDeleteModal = true"
+              >eliminar la cuenta</span
+            >.
+          </p>
+        </div>
+      </div>
+      <div
+        *ngIf="showDeleteModal"
+        class="modal fade show d-block"
+        tabindex="-1"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Borrar cuenta</h5>
+              <button
+                type="button"
+                class="close"
+                (click)="showDeleteModal = false"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Una vez des a
+                <span class="text-danger">Borrar Cuenta</span> borraremos tu
+                cuenta en un plazo de 7 días, puedes cancelar el borrado de tu
+                cuenta si te vuelves a conectar a nuestra web en ese plazo
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                (click)="showDeleteModal = false"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                No quiero borrar la cuenta
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="deleteAccount()"
+              >
+                Borrar Cuenta
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
