@@ -1,34 +1,56 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12 pt-3 pb-2 bg-light">
-            <div class="row">
-                <div class="col-sm-12 col-md-3 mx-auto">
-                    <img src="{{ imageUrl }}" class="rounded rounded-circle img-fluid" alt="Imagen de portada" />
-                    <h1 id="text-image-title" class="p-3 rounded-circle bg-light text-success">
-                        {{ title }}
-                    </h1>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-12 pt-3 pb-2 bg-light">
+      <div class="row">
+        <div class="col-sm-12 col-md-3 mx-auto">
+          <img
+            src="{{ imageUrl }}"
+            class="rounded rounded-circle img-fluid"
+            alt="Imagen de portada"
+          />
+          <h1
+            id="text-image-title"
+            class="p-3 rounded-circle bg-light text-success"
+          >
+            {{ title }}
+          </h1>
         </div>
-        <div class="col-sm-12 col-md-2">
-            <form [formGroup]="filterForm" id="filterForm">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="row">
-                            <button (click)="changeType('insects')" type="button" class="btn btn-light col-6 my-3 text-center border-0" [disabled]="!isSearch && !isPlants">
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-2">
+      <form [formGroup]="filterForm" id="filterForm">
+        <div class="row">
+          <div class="col-12">
+            <div class="row">
+              <button
+                (click)="changeType('insects')"
+                type="button"
+                class="btn btn-light col-6 my-3 text-center border-0"
+                [disabled]="!isSearch && !isPlants"
+              >
                 <p>Insectos</p>
                 <i class="fas fa-bug ml-1"></i>
               </button>
-                            <button (click)="changeType('plants')" type="button" class="btn btn-light col-6 my-3 text-center border-0" [disabled]="isPlants">
+              <button
+                (click)="changeType('plants')"
+                type="button"
+                class="btn btn-light col-6 my-3 text-center border-0"
+                [disabled]="isPlants"
+              >
                 <p>Plantas</p>
                 <i class="fas fa-seedling ml-1"></i>
               </button>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-12">
-                        <div class="form-group mb-3">
-                            <label for="categorySelect">Categoría </label>
-                            <select formControlName="category" (change)="updateSubCategories()" class="custom-select" id="categorySelect">
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-12">
+            <div class="form-group mb-3">
+              <label for="categorySelect">Categoría </label>
+              <select
+                formControlName="category"
+                (change)="updateSubCategories()"
+                class="custom-select"
+                id="categorySelect"
+              >
                 <option
                   *ngFor="let category of categories"
                   value="{{ category }}"
@@ -36,12 +58,17 @@
                   {{ category }}
                 </option>
               </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-12">
-                        <div class="form-group mb-3">
-                            <label for="subCategorySelect">Subcategoría</label>
-                            <select formControlName="subcategory" class="custom-select" id="subCategorySelect" (change)="updateProductList()">
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-12">
+            <div class="form-group mb-3">
+              <label for="subCategorySelect">Subcategoría</label>
+              <select
+                formControlName="subcategory"
+                class="custom-select"
+                id="subCategorySelect"
+                (change)="updateProductList()"
+              >
                 <option
                   *ngFor="let subcategory of subCategories"
                   value="{{ subcategory }}"
@@ -49,50 +76,69 @@
                   {{ subcategory }}
                 </option>
               </select>
-                        </div>
-                    </div>
-                    <div *ngIf="productType == 'plant'" class="col-sm-6 col-md-12">
-                        <div class="form-group mb-3">
-                            <label for="plant-size">Tamaño</label>
-                            <select name="plants-size" id="plant-size" class="form-control" formControlName="size" (change)="updateProductList()">
+            </div>
+          </div>
+          <div *ngIf="productType == 'plant'" class="col-sm-6 col-md-12">
+            <div class="form-group mb-3">
+              <label for="plant-size">Tamaño</label>
+              <select
+                name="plants-size"
+                id="plant-size"
+                class="form-control"
+                formControlName="size"
+                (change)="updateProductList()"
+              >
                 <option value="semilla">Semilla</option>
                 <option value="bulbo">Bulbo</option>
                 <option value="esqueje">Esqueje</option>
                 <option value="planta">Planta</option>
               </select>
-                        </div>
-                    </div>
-                </div>
-            </form>
+            </div>
+          </div>
         </div>
-        <div class="col-sm-12 col-md-10 mt-3">
-            <div class="row">
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-12 ml-auto">
-                            <div class="input-group mb-3">
-                                <select (change)="updateProductList()" class="custom-select" id="orderSelect" [(ngModel)]="order">
+      </form>
+    </div>
+    <div class="col-sm-12 col-md-10 mt-3">
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-md-3 col-sm-12 ml-auto">
+              <div class="input-group mb-3">
+                <select
+                  (change)="updateProductList()"
+                  class="custom-select"
+                  id="orderSelect"
+                  [(ngModel)]="order"
+                >
                   <option value="date">Novedades</option>
                   <option value="priceAsc">De más barato a más caro</option>
                   <option value="price">De más caro a más barato</option>
                   <option value="dateAsc">Más antiguos primero</option>
                 </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div *ngFor="let item of products" class="col-md-4 col-sm-12 mb-2">
-                    <app-product-item [product]="item"></app-product-item>
-                </div>
-                <div *ngIf="products?.length == 0" class="mx-auto col-8 text-center mt-3 alert alert-danger">
-                    Lo sentimos nuestro jardín todavia no tiene nada con esos filtros, prueba con otras categorías o revisa tu conexión.
-                </div>
-                <div *ngIf="moreProducts" class="col-sm-12 col-md-3 mx-auto">
-                    <button (click)="loadMore()" type="button" class="btn btn-success btn-block text-white mx-auto">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let item of products" class="col-md-4 col-sm-12 mb-2">
+          <app-product-item [product]="item"></app-product-item>
+        </div>
+        <div
+          *ngIf="products?.length == 0"
+          class="mx-auto col-8 text-center mt-3 alert alert-danger"
+        >
+          Lo sentimos nuestro jardín todavia no tiene nada con esos filtros,
+          prueba con otras categorías o revisa tu conexión.
+        </div>
+        <div *ngIf="moreProducts" class="col-sm-12 col-md-3 mx-auto">
+          <button
+            (click)="loadMore()"
+            type="button"
+            class="btn btn-success btn-block text-white mx-auto"
+          >
             Ver más
           </button>
-                </div>
-            </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
