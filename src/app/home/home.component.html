@@ -1,78 +1,55 @@
 <div class="image d-none d-sm-block">
-  <div class="container-fluid p-5 justify-content-center">
-    <div class="row">
-      <div
-        class="
-          col-sm-8 col-md-6 col-lg-3
-          bg-light
-          px-3
-          py-4
-          rounded
-          shadow-gray
-          text-center
-        "
-      >
-        <p class="h5 card-title">¡Te damos la bienvenida a GardenForYou!</p>
-        <p class="card-text">
-          Vende o compra plantas e insectos de otros usuarios.
-        </p>
-        <button
-          type="button"
-          *ngIf="!logged"
-          [routerLink]="['/signup']"
-          class="btn btn-primary font-weight-bold"
-        >
-          <p class="mb-0">Empieza a vender. ¡Es gratis!</p>
-        </button>
-        <button
-          type="button"
-          *ngIf="logged"
-          [routerLink]="['/update/product']"
-          class="btn btn-primary font-weight-bold"
-        >
-          <p class="mb-0">Sube un producto</p>
-        </button>
-      </div>
+    <div class="container-fluid p-5 justify-content-center">
+        <div class="row">
+            <div class="col-sm-8 col-md-6 col-lg-3 bg-light px-3 py-4 rounded shadow-gray text-center">
+                <p class="h5 card-title">¡Te damos la bienvenida a GardenForYou!</p>
+                <p class="card-text">
+                    Vende o compra plantas e insectos de otros usuarios.
+                </p>
+                <button id="start-selling" type="button" *ngIf="!logged" [routerLink]="['/signup']" class="btn btn-primary font-weight-bold">
+                  <label for="start-selling" class="mb-0">Empieza a vender. ¡Es gratis!</label>
+                </button>
+                <button id="upload-product" type="button" *ngIf="logged" [routerLink]="['/update/product']" class="btn btn-primary font-weight-bold">
+                  <label for="upload-product" class="mb-0">Sube un producto</label>
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <div class="container-fluid bg-light">
-  <div class="row mx-auto py-4">
-    <div class="col-12 text-center">
-      <p class="h2">¿Qué estás buscando?</p>
+    <div class="row mx-auto py-4">
+        <div class="col-12 text-center">
+            <p class="h2">¿Qué estás buscando?</p>
+        </div>
+        <div class="col-sm-12 col-md-6 mx-auto">
+            <div class="row">
+                <button id="insects-btn" [routerLink]="['/insects']" type="button" class="btn btn-light col-6 my-3 text-center border-0">
+                <p>
+                  <label for="insects-btn">
+                    Insectos
+                  </label>
+                </p>
+                <i class="fas fa-bug ml-1"></i>
+              </button>
+                <button id="plants-btn" [routerLink]="['/plants']" type="button" class="btn btn-light col-6 my-3 text-center border-0">
+                <p>
+                  <label for="plants-btn">
+                    Plantas
+                  </label>
+                </p>
+                <i class="fas fa-seedling ml-1"></i>
+              </button>
+            </div>
+        </div>
     </div>
-    <div class="col-sm-12 col-md-6 mx-auto">
-      <div class="row">
-        <button
-          [routerLink]="['/insects']"
-          type="button"
-          class="btn btn-light col-6 my-3 text-center border-0"
-        >
-          <p>Insectos</p>
-          <i class="fas fa-bug ml-1"></i>
-        </button>
-        <button
-          [routerLink]="['/plants']"
-          type="button"
-          class="btn btn-light col-6 my-3 text-center border-0"
-        >
-          <p>Plantas</p>
-          <i class="fas fa-seedling ml-1"></i>
-        </button>
-      </div>
-    </div>
-  </div>
 </div>
 <div class="container-fluid bg-light">
-  <div class="col-12 py-4 text-center">
-    <p class="h2">Novedades</p>
-  </div>
-  <div class="row px-md-5">
-    <div
-      *ngFor="let product of products"
-      class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2"
-    >
-      <app-product-item [product]="product"></app-product-item>
+    <div class="col-12 py-4 text-center">
+        <p class="h2">Novedades</p>
     </div>
-  </div>
+    <div class="row px-md-5">
+        <div *ngFor="let product of products" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-2">
+            <app-product-item [product]="product"></app-product-item>
+        </div>
+    </div>
 </div>
