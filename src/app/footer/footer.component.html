@@ -2,7 +2,7 @@
     <div class="row text-center pb-5 mb-5 pb-md-0 mb-md-0">
         <div class="col-sm-10 col-md-4">
             <p class="font-weight-bold pt-3" id="title">
-                <img src="{{ title }}" height="70px" width="auto" />
+                <img alt="Garden For You" src="{{ title }}" height="70px" width="auto" />
             </p>
             <p class="font-weight-bold copyright my-0">
                 Copyright © 2021 GardenForYou©
@@ -43,41 +43,40 @@
     </div>
 </div>
 
-
 <div class="container-fluid fixed-bottom d-block d-sm-none bg-success">
     <div class="row">
         <div class="col-4 pt-2">
-            <a href="" class="icon d-flex justify-content-center">
-                <i class="fas fa-home"></i>
+            <a href="/" class="icon d-flex justify-content-center">
+                <i class="fas fa-home text-white"></i>
             </a>
         </div>
         <div class="col-4" *ngIf="!logged">
             <a href="update/product" class="icon d-flex justify-content-center">
-                <i class="fas fa-plus-circle"></i>
+                <i class="fas fa-plus-circle text-white"></i>
             </a>
         </div>
         <div class="col-3" *ngIf="logged">
             <a href="update/product" class="icon d-flex justify-content-center">
-                <i class="fas fa-plus-circle"></i>
+                <i class="fas fa-plus-circle text-white"></i>
             </a>
         </div>
         <div *ngIf="!logged" class="col-4">
             <div class="row py-2 bg-none">
-                <a href="login" class="font-weight-bold mt-1" id="access">Accede</a>
+                <a href="login" class="font-weight-bold mt-1 text-white" id="access">Accede</a>
             </div>
         </div>
         <div *ngIf="logged" class="col-5">
             <div class="row justify-content-end">
                 <div class="col-6 pt-2 pb-1">
-                    <a href="chat" class="icon">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+                    <button href="chat" class="icon bg-success border-0">
+                        <i class="fas fa-envelope text-white"></i>
+                    </button>
                 </div>
                 <div class="col-6 py-1">
-                    <a class="icon" (click)="goToProfile()">
-                        <img *ngIf="image != null" class="rounded" src="{{ image }}" width="50" height="50" />
+                    <button class="icon bg-success border-0" (click)="goToProfile()">
+                        <img alt="imagen de usuario" *ngIf="image != null" class="rounded" src="{{ image }}" width="50" height="50" />
                         <i *ngIf="image == null" class="fas fa-user-circle text-white header-icon mt-1"></i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>

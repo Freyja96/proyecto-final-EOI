@@ -1,28 +1,11 @@
 @import "../../styles";
-//-footer-mobile----------
-#access {
-    font-size: large;
-    color: $white
-}
-
-.icon {
-    i {
-        font-size: 45px;
-        color: $white;
-    }
-}
-
-i.fas.fa-plus-circle {
-    font-size: 60px;
-}
-
 //-footer-general----------------------
+a {
+    color: $black;
+}
+
 .bg-gray-100 {
     background-color: $gray-100;
-}
-
-a {
-    color: $dark-green;
 }
 
 #title {
@@ -31,4 +14,19 @@ a {
 
 .copyright {
     font-size: 14px;
+}
+
+//-footer-mobile----------
+#access {
+    font-size: large;
+}
+
+.icon {
+    i {
+        font-size: 45px;
+    }
+}
+
+i.fas.fa-plus-circle {
+    font-size: 60px;
 }

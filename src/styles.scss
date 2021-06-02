@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
-
-$green: #8ec06c;
+$green: #6ebf36;
 //when &:hover
-$darkergreen: #7aa55d;
+$darkergreen: #60A72F;
 //Color fonts:
 $black: black;
 $gray: #737373;
@@ -27,26 +26,24 @@ $info: #354829;
 $gray-900: $black;
 $light: #eceff1;
 @import "../node_modules/bootstrap/scss/bootstrap";
-
 //-----------custom-class---------------------
-
 * {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 .shadow-gray {
-  box-shadow: 0px 2px 15px $gray-200;
+    box-shadow: 0px 2px 15px $gray-200;
 }
 
 .btn {
-  transition: all 0.6s ease;
+    transition: all 0.6s ease;
 }
 
 .btn.btn-primary {
-  color: white;
-  transition: all 0.6s ease;
+    color: white;
+    transition: all 0.6s ease;
 }
 
 .header-icon {
-  font-size: 2em;
+    font-size: 2em;
 }

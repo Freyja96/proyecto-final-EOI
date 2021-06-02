@@ -14,6 +14,7 @@ export class ValidateEmailComponent implements OnInit {
   okey = '';
   validateForm: FormGroup;
   code = "";
+  resendToken = false;
 
   constructor(private userService: UserService,
     private formBuilder: FormBuilder,
@@ -55,6 +56,7 @@ export class ValidateEmailComponent implements OnInit {
         console.log(error)
       }
     )
+    this.resendToken=true;
   }
 
   ngOnInit() {

@@ -21,12 +21,21 @@
                     <div *ngIf="okey != ''" class="alert alert-success mt-2" role="alert">
                         {{okey}}
                     </div>
+                    <div *ngIf="resendToken" class="alert alert-success mt-2" role="alert">
+                        Se ha reenviado correctamente, esta operación puede tardar unos minutos.
+                    </div>
                     <div class="row justify-content-center my-2">
                         <div class="col-md-6 col-sm-12">
-                            <button type="button" class="btn btn-secondary btn-lg btn-block p-2" (click)="resendEmail()">Reenviar correo</button>
+                            <button id="resendMail" type="button" class="btn btn-secondary btn-lg btn-block p-2" (click)="resendEmail()">
+                              Reenviar correo
+                            </button>
+                            <label src-only="reenviar correo" for="resendMail"></label>
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block p-2">Validar</button>
+                            <button id="validate" type="submit" class="btn btn-primary btn-lg btn-block p-2">
+                              Validar
+                            </button>
+                            <label src-only="validar correo" for="validate"></label>
                         </div>
                     </div>
                     <div class="row justify-content-center mt-5">

@@ -5,13 +5,13 @@
                 <!--hidden only on xs and sm-->
                 <div class="col-lg-3 col-xl-2 col-md-3 col-2 d-none d-md-block">
                     <a [routerLink]="['']">
-                        <img src="{{ title }}" height="50px" width="auto" />
+                        <img alt="Garden For You" src="{{ title }}" height="50px" width="auto" />
                     </a>
                 </div>
                 <!--visible only on xs and sm-->
                 <div class="col-2 col-sm-1 d-block d-md-none mt-2 pb-2">
                     <a [routerLink]="['']">
-                        <img src="{{ logo }}" height="40px" width="auto" />
+                        <img alt="Garden For You" src="{{ logo }}" height="40px" width="auto" />
                     </a>
                 </div>
                 <div class="col-md-6 col-sm-8 col-lg-7 col-xl-8 col-10">
@@ -49,7 +49,7 @@
                             </li>
                             <li class="dropdown rounded-0 bg-success">
                                 <button class="btn btn-success rounded-0 dropdown-toggle text-white py-2" type="button" data-toggle="dropdown">
-                                        <img *ngIf="image != null" class="float-left rounded" src="{{ image }}" width="40" height="40" />
+                                        <img *ngIf="image != null" class="float-left rounded" alt="imagen de usuario" src="{{ image }}" width="40" height="40" />
                                         <div *ngIf="image == null">
                                           <i class="fas fa-user-circle header-icon float-left py-1 pr-4"></i>
                                         </div>
@@ -69,13 +69,13 @@
                             <!--hidden only on xs and sm-->
                             <div class="col-lg-3 col-xl-2 col-md-3 col-2 d-none d-md-block">
                                 <a [routerLink]="['']">
-                                    <img src="{{ title }}" height="50px" width="auto" />
+                                    <img alt="Garden For You" src="{{ title }}" height="50px" width="auto" />
                                 </a>
                             </div>
                             <!--visible only on xs and sm-->
                             <div class="col-2 col-sm-1 d-block d-md-none mt-2 pb-2">
                                 <a [routerLink]="['']">
-                                    <img src="{{ logo }}" height="40px" width="auto" />
+                                    <img alt="Garden For You" src="{{ logo }}" height="40px" width="auto" />
                                 </a>
                             </div>
                             <div class="col-md-6 col-sm-8 col-lg-7 col-xl-8 col-10">
@@ -113,7 +113,7 @@
                                         </li>
                                         <li class="dropdown rounded-0 bg-success">
                                             <button class="btn btn-success rounded-0 dropdown-toggle text-white py-2" type="button" data-toggle="dropdown">
-                                              <img *ngIf="image != null" class="float-left rounded" src="{{ image }}" width="40" height="40"/>
+                                              <img *ngIf="image != null" class="float-left rounded" src="{{ image }}" width="40" height="40" alt="imagen de usuario"/>
                                               <div *ngIf="image == null">
                                                   <i class="fas fa-user-circle text-white header-icon float-left py-1 pr-4"></i>
                                               </div>
