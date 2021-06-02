@@ -11,7 +11,7 @@ export class ProductItemComponent implements OnInit {
   image:any = null;
 
   constructor(private router: Router) {
-    this.image = '../../assets/images/no-image.jpg'
+    this.image = '../../assets/images/no-image.png'
 
   }
 
