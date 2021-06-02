@@ -1,69 +1,137 @@
 <div class="row">
-    <div class="col-xl-3 col-lg-4 col-md-4 col-12">
-        <app-side-bar-profile></app-side-bar-profile>
+  <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+    <app-side-bar-profile></app-side-bar-profile>
+  </div>
+  <div class="col-xl-7 col-lg-7 col-md-8 col-12">
+    <div
+      *ngIf="messageInfo != ''"
+      class="row mt-3 alert alert-primary"
+      role="alert"
+    >
+      {{ messageInfo }}
     </div>
-    <div class="col-xl-7 col-lg-7 col-md-8 col-12">
-        <div *ngIf="messageInfo != ''" class="row mt-3 alert alert-primary" role="alert">
-            {{ messageInfo }}
-        </div>
-        <div *ngIf="messageError != ''" class="row mt-3 alert alert-danger" role="alert">
-            {{ messageError }}
-        </div>
-        <form ngNativeValidate [formGroup]="imageForm" id="imageForm">
-            <div class="row pt-2 my-3 bg-white shadow-gray">
-                <div class="col-md-12 mb-0">
-                    <p>
-                        Foto de perfil
-                        <span class="text-muted d-block">
-                          El tamaño máximo de la imagen es de 2MB
-                        </span>
-                    </p>
-                </div>
-                <div class="col-sm-5 col-6 mt-md-3 pt-0 pb-5 text-center input-group">
-                    <input formControlName="image" id="upload" type="file" class="form-control" (change)="uploadImage($event)" accept="image/x-png,image/gif,image/jpeg" />
-                    <div class="input-group-append">
-                        <label for="upload" class="btn btn-light m-0 rounded-pill shadow-gray py-md-1 px-md-4 bg-white">
-                              <p class="text-uppercase font-weight-bold text-muted mt-3">
-                                Cambiar foto
-                              </p>
-                            </label>
-                    </div>
-                </div>
-                <div class="col-sm-2 col-1 mt-0 mr-md-4 mb-4 mx-auto text-center">
-                    <div class="image-area rounded">
-                        <img *ngIf="image != null" id="imageResult" src="{{ image }}" class="img-fluid rounded" />
-                    </div>
-                </div>
-            </div>
-        </form>
-        <form ngNativeValidate [formGroup]="infoForm" id="infoForm" (ngSubmit)="onSaveButton()">
-            <div class="row py-2 bg-white shadow-gray">
-                <div class="col-12 mb-3">
-                    <span class="text-muted">Información pública</span>
-                </div>
-                <div class="col-md-6 mb-3 border-bottom form-group">
-                    <label for="name">Nombre <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control mb-3" id="name" formControlName="firstName" placeholder required />
-                </div>
-                <div class="col-md-6 mb-3 border-bottom form-group">
-                    <label for="surName">
-                      Apellidos <span class="text-danger">*</span>
-                    </label>
-                    <input type="text" class="form-control mb-3" formControlName="lastName" id="surName" placeholder required />
-                </div>
-                <div class="col-12 form-group">
-                    <label for="address">
-                      Ubicación de tus productos
-                      <span class="text-danger">*</span>
-                    </label>
-                    <input type="text" class="form-control" formControlName="location" id="address" required />
-                </div>
-            </div>
-        </form>
-        <div class="row my-3 text-center">
-            <button type="button" class="btn btn-primary position-relative mx-auto mt-1 mb-4 font-weight-bold" type="submit" form="infoForm">
-                Guardar cambios
-            </button>
-        </div>
+    <div
+      *ngIf="messageError != ''"
+      class="row mt-3 alert alert-danger"
+      role="alert"
+    >
+      {{ messageError }}
     </div>
+    <form ngNativeValidate [formGroup]="imageForm" id="imageForm">
+      <div class="row pt-2 my-3 bg-white shadow-gray">
+        <div class="col-md-12 mb-0">
+          <p>
+            Foto de perfil
+            <span class="text-muted d-block">
+              El tamaño máximo de la imagen es de 2MB
+            </span>
+          </p>
+        </div>
+        <div class="col-sm-5 col-6 mt-md-3 pt-0 pb-5 text-center input-group">
+          <input
+            formControlName="image"
+            id="upload"
+            type="file"
+            class="form-control"
+            (change)="uploadImage($event)"
+            accept="image/x-png,image/gif,image/jpeg"
+          />
+          <div class="input-group-append">
+            <label
+              for="upload"
+              class="
+                btn btn-light
+                m-0
+                rounded-pill
+                shadow-gray
+                py-md-1
+                px-md-4
+                bg-white
+              "
+            >
+              <p class="text-uppercase font-weight-bold text-muted mt-3">
+                Cambiar foto
+              </p>
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-2 col-6 mt-0 mr-md-4 mb-4 mx-auto text-center">
+          <div class="image-area rounded">
+            <img
+              *ngIf="image != null"
+              id="imageResult"
+              src="{{ image }}"
+              class="img-fluid rounded"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+    <form
+      ngNativeValidate
+      [formGroup]="infoForm"
+      id="infoForm"
+      (ngSubmit)="onSaveButton()"
+    >
+      <div class="row py-2 bg-white shadow-gray">
+        <div class="col-12 mb-3">
+          <span class="text-muted">Información pública</span>
+        </div>
+        <div class="col-md-6 mb-3 border-bottom form-group">
+          <label for="name">Nombre <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            class="form-control mb-3"
+            id="name"
+            formControlName="firstName"
+            placeholder
+            required
+          />
+        </div>
+        <div class="col-md-6 mb-3 border-bottom form-group">
+          <label for="surName">
+            Apellidos <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control mb-3"
+            formControlName="lastName"
+            id="surName"
+            placeholder
+            required
+          />
+        </div>
+        <div class="col-12 form-group">
+          <label for="address">
+            Ubicación de tus productos
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="location"
+            id="address"
+            required
+          />
+        </div>
+      </div>
+    </form>
+    <div class="row my-3 text-center">
+      <button
+        type="button"
+        class="
+          btn btn-primary
+          position-relative
+          mx-auto
+          mt-1
+          mb-4
+          font-weight-bold
+        "
+        type="submit"
+        form="infoForm"
+      >
+        Guardar cambios
+      </button>
+    </div>
+  </div>
 </div>
