@@ -1,200 +1,209 @@
-<div class="row background">
-  <div class="col-md-8 col-sm-12 bg-light shadow-gray my-2 pt-4">
-    <form
-      ngNativeValidate
-      [formGroup]="productForm"
-      id="productForm"
-      (ngSubmit)="updateProduct()"
-    >
-      <div class="row">
-        <div *ngIf="productId == null" class="col-12 text-center mb-2">
-          <p class="h2 mt-2">¿Qué quieres vender?</p>
-        </div>
-        <div
-          *ngIf="productId == null"
-          class="col-12 mx-md-auto mb-2 text-center"
-        >
-          <button
-            type="button"
-            class="btn col-3 my-3"
-            (click)="setProductType('insect')"
-            [ngClass]="{
-              'btn-light text-success': productType != 'insect',
-              'btn-success text-light': productType == 'insect'
-            }"
+<div class="container">
+  <div class="row">
+    <div class="col-12 bg-light shadow-gray my-4">
+      <form
+        ngNativeValidate
+        [formGroup]="productForm"
+        id="productForm"
+        (ngSubmit)="updateProduct()"
+      >
+        <div class="row">
+          <div *ngIf="productId == null" class="col-12 text-center mb-2">
+            <p class="h2 mt-2">¿Qué quieres vender?</p>
+          </div>
+          <div
+            *ngIf="productId == null"
+            class="col-12 mx-md-auto mb-2 text-center"
           >
-            <p>Insecto</p>
-            <i class="fas fa-bug ml-1"></i>
-          </button>
-          <button
-            type="button"
-            class="btn col-3 my-3"
-            (click)="setProductType('plant')"
-            [ngClass]="{
-              'btn-light text-success': productType != 'plant',
-              'btn-success text-light': productType == 'plant'
-            }"
-          >
-            <p>Planta</p>
-            <i class="fas fa-seedling ml-1"></i>
-          </button>
-        </div>
-        <div class="col-md-2 col-sm-12 my-2">
-          <label for="title">Título <span class="text-danger">*</span></label>
-        </div>
-        <div class="col-md-10 col-sm-12 my-2 float-end">
-          <input
-            formControlName="title"
-            type="text"
-            class="form-control"
-            id="title"
-            maxlength="200"
-            minlength="5"
-            required
-          />
-        </div>
-        <div class="col-12 mb-3">
-          <label for="description"
-            >Descripción
-            <span class="text-danger">*</span>
-          </label>
-          <textarea
-            class="form-control"
-            id="description"
-            formControlName="description"
-            minlength="2"
-            maxlength="500"
-            required
-          >
-          </textarea>
-        </div>
-        <div class="col-lg-12 mx-auto my-2 border-top border-bottom pt-2 pb-4">
-          <div *ngIf="imageList.length < 3" class="input-group">
-            <label
-              for="images-upload"
-              class="
-                btn btn-primary
-                rounded-pill
-                mx-auto
-                shadow-sm
-                font-weight-light
-              "
-            >
-              <i class="fas fa-plus"></i> Subir fotos
-            </label>
+            <div class="row justify-content-md-center my-3">
+              <button
+                type="button"
+                class="btn col-md-3 col-6"
+                (click)="setProductType('insect')"
+                [ngClass]="{
+                  'btn-light text-success': productType != 'insect',
+                  'btn-success text-light': productType == 'insect'
+                }"
+              >
+                <p>Insecto</p>
+                <i class="fas fa-bug ml-1"></i>
+              </button>
+              <button
+                type="button"
+                class="btn col-md-3 col-6"
+                (click)="setProductType('plant')"
+                [ngClass]="{
+                  'btn-light text-success': productType != 'plant',
+                  'btn-success text-light': productType == 'plant'
+                }"
+              >
+                <p>Planta</p>
+                <i class="fas fa-seedling ml-1"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-12 my-2">
+            <label for="title">Título <span class="text-danger">*</span></label>
+          </div>
+          <div class="col-md-10 col-sm-12 my-2 float-end">
             <input
-              id="images-upload"
-              type="file"
-              class="d-none"
-              (change)="uploadImage($event)"
-              accept="image/x-png,image/gif,image/jpeg"
+              formControlName="title"
+              type="text"
+              class="form-control"
+              id="title"
+              maxlength="200"
+              minlength="5"
+              required
             />
           </div>
-          <div class="image-area p-2 bg-white">
-            <div class="row">
-              <div *ngFor="let image of imageList" class="col-md-3 col-sm-9">
-                <img src="{{ image }}" class="img-fluid" />
-                <button
-                  class="btn btn-danger btn-block rounded-0"
-                  (click)="deleteImage(image)"
-                >
-                  Eliminar esta foto
-                </button>
+          <div class="col-12 mb-3">
+            <label for="description"
+              >Descripción
+              <span class="text-danger">*</span>
+            </label>
+            <textarea
+              class="form-control"
+              id="description"
+              formControlName="description"
+              minlength="2"
+              maxlength="500"
+              required
+            >
+            </textarea>
+          </div>
+          <div
+            class="col-lg-12 mx-auto my-2 border-top border-bottom pt-2 pb-4"
+          >
+            <div *ngIf="imageList.length < 3" class="input-group">
+              <label
+                for="images-upload"
+                class="
+                  btn btn-primary
+                  rounded-pill
+                  mx-auto
+                  shadow-sm
+                  font-weight-light
+                "
+              >
+                <i class="fas fa-plus"></i> Subir fotos
+              </label>
+              <input
+                id="images-upload"
+                type="file"
+                class="d-none"
+                (change)="uploadImage($event)"
+                accept="image/x-png,image/gif,image/jpeg"
+              />
+            </div>
+            <div class="image-area p-2 bg-white">
+              <div class="row">
+                <div *ngFor="let image of imageList" class="col-md-3 col-sm-9">
+                  <img src="{{ image }}" class="img-fluid" />
+                  <button
+                    class="btn btn-danger btn-block rounded-0"
+                    (click)="deleteImage(image)"
+                  >
+                    Eliminar esta foto
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p class="text-left text-muted mb-0">
+              <small
+                >Sube hasta 3 fotos de lo que quieres vender. El tamaño máximo
+                de las imagenes es de 2MB</small
+              >
+            </p>
+          </div>
+          <div class="col-md-6 col-sm-12 my-2">
+            <label>Categoría</label>
+            <select
+              name="plants-category"
+              formControlName="category"
+              class="form-control"
+              (change)="updateSubCategories()"
+            >
+              <option
+                *ngFor="let category of categories"
+                value="{{ category }}"
+              >
+                {{ category }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-6 col-sm-12 my-2">
+            <label>Subcategoría</label>
+            <select
+              name="insect-subcategory"
+              class="form-control"
+              formControlName="subcategory"
+            >
+              <option
+                *ngFor="let subcategory of subCategories"
+                value="{{ subcategory }}"
+              >
+                {{ subcategory }}
+              </option>
+            </select>
+          </div>
+          <div class="col-auto my-2 border-dm-top mr-0">
+            <label for="price">Precio <span class="text-danger">*</span></label>
+            <div class="input-group">
+              <input
+                type="number"
+                class="form-control"
+                id="price"
+                min="0.00"
+                step="0.1"
+                formControlName="price"
+                required
+              />
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fas fa-euro-sign"></i>
+                </span>
               </div>
             </div>
           </div>
-          <p class="text-left text-muted mb-0">
-            <small
-              >Sube hasta 3 fotos de lo que quieres vender. El tamaño máximo de
-              las imagenes es de 2MB</small
-            >
-          </p>
-        </div>
-        <div class="col-md-6 col-sm-12 my-2">
-          <label>Categoría</label>
-          <select
-            name="plants-category"
-            formControlName="category"
-            class="form-control"
-            (change)="updateSubCategories()"
-          >
-            <option *ngFor="let category of categories" value="{{ category }}">
-              {{ category }}
-            </option>
-          </select>
-        </div>
-        <div class="col-md-6 col-sm-12 my-2">
-          <label>Subcategoría</label>
-          <select
-            name="insect-subcategory"
-            class="form-control"
-            formControlName="subcategory"
-          >
-            <option
-              *ngFor="let subcategory of subCategories"
-              value="{{ subcategory }}"
-            >
-              {{ subcategory }}
-            </option>
-          </select>
-        </div>
-        <div class="col-auto my-2 border-dm-top mr-0">
-          <label for="price">Precio <span class="text-danger">*</span></label>
-          <div class="input-group">
-            <input
-              type="number"
+          <div *ngIf="productType == 'plant'" class="col-auto my-2">
+            <label>Tamaño</label>
+            <select
+              name="plants-size"
               class="form-control"
-              id="price"
-              min="0.00"
-              step="0.1"
-              formControlName="price"
-              required
-            />
-            <div class="input-group-append">
-              <span class="input-group-text">
-                <i class="fas fa-euro-sign"></i>
-              </span>
-            </div>
+              formControlName="size"
+            >
+              <option value="semilla">Semilla</option>
+              <option value="bulbo">Bulbo</option>
+              <option value="esqueje">Esqueje</option>
+              <option value="planta">Planta</option>
+            </select>
           </div>
         </div>
-        <div *ngIf="productType == 'plant'" class="col-auto my-2">
-          <label>Tamaño</label>
-          <select
-            name="plants-size"
-            class="form-control"
-            formControlName="size"
-          >
-            <option value="semilla">Semilla</option>
-            <option value="bulbo">Bulbo</option>
-            <option value="esqueje">Esqueje</option>
-            <option value="planta">Planta</option>
-          </select>
-        </div>
-      </div>
-    </form>
-    <div
-      *ngIf="messageInfo != ''"
-      class="col-12 text-center mt-3 alert alert-primary"
-      role="alert"
-    >
-      {{ messageInfo }}
-    </div>
-    <div
-      *ngIf="messageError != ''"
-      class="col-12 text-center mt-3 alert alert-danger"
-      role="alert"
-    >
-      {{ messageError }}
-    </div>
-    <div class="col-12 text-center">
-      <button
-        type="submit"
-        form="productForm"
-        class="btn btn-primary font-weight-bold mt-2 mb-4"
+      </form>
+      <div
+        *ngIf="messageInfo != ''"
+        class="col-12 text-center mt-3 alert alert-primary"
+        role="alert"
       >
-        <span *ngIf="productId == null">Subir producto</span>
-        <span *ngIf="productId != null">Guardar cambios</span>
-      </button>
+        {{ messageInfo }}
+      </div>
+      <div
+        *ngIf="messageError != ''"
+        class="col-12 text-center mt-3 alert alert-danger"
+        role="alert"
+      >
+        {{ messageError }}
+      </div>
+      <div class="col-12 text-center">
+        <button
+          type="submit"
+          form="productForm"
+          class="btn btn-primary font-weight-bold mt-2 mb-4"
+        >
+          <span *ngIf="productId == null">Subir producto</span>
+          <span *ngIf="productId != null">Guardar cambios</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>
