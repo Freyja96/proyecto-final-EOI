@@ -1,59 +1,82 @@
 <div class="container-md pt-4 position-relative">
-    <div class="row justify-contents-center align-items-center">
-        <div class="col-12 bg-light mb-2">
-            <div class="row">
-                <div class="col-sm-2 col-xs-12 py-3 d-flex justify-content-center">
-                    <img *ngIf="userProfile?.image != null" class="rounded" src="{{ userProfile?.image }}" width="auto" height="150" />
-                    <i *ngIf="userProfile?.image == null" class="fas fa-user-circle header-icon mb-1 mx-5"></i>
-                </div>
-                <div class="col-sm-10 col-xs-12">
-                    <div class="text-right pb-0 pt-3">
-                        <button type="button" *ngIf="ownUser" class="btn btn-secondary font-weight-bold text-white" [routerLink]="['/edit/profile']">
-                          Editar
-                        </button>
-                    </div>
-                    <div class="row" id="info">
-                        <div class="col-12">
-                            <div class="pb-3 text-center">
-                                <h1 class="mb-0">
-                                    {{ userProfile?.firstName }}
-                                    <i *ngIf="userProfile?.emailVerified" title="Correo verificado" class="fas fa-check fa-sm text-success"></i>
-                                </h1>
-                                <p class="text-muted mt-0">
-                                    {{ userProfile?.username }}
-                                </p>
-                                <p>
-                                    {{ userProfile?.location }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="row justify-contents-center align-items-center">
+    <div class="col-12 bg-light mb-2">
+      <div class="row">
+        <div class="col-sm-2 col-xs-12 py-3 d-flex justify-content-center">
+          <img
+            *ngIf="userProfile?.image != null"
+            class="rounded"
+            src="{{ userProfile?.image }}"
+            width="auto"
+            height="150"
+          />
+          <i
+            *ngIf="userProfile?.image == null"
+            class="fas fa-user-circle header-icon mb-1 mx-5"
+          ></i>
         </div>
-        <div class="col-12">
-            <div class="row border-bottom border-success mb-3">
-                <div class="col-sm-7 col-lg-9">
-                    <p class="text-muted h3">
-                        Listado de productos
-                    </p>
-                </div>
-                <div class="col-sm-5 col-lg-3 text-right d-none d-sm-block">
-                    <button *ngIf="ownUser" class="btn btn-success px-3 text-white font-weight-bold" [routerLink]="['/update/product']">
-                      Sube un producto
-                    </button>
-                </div>
+        <div class="col-sm-10 col-xs-12">
+          <div class="text-right pb-0 pt-3">
+            <button
+              type="button"
+              *ngIf="ownUser"
+              class="btn btn-secondary font-weight-bold text-white"
+              [routerLink]="['/edit/profile']"
+            >
+              Editar
+            </button>
+          </div>
+          <div class="row" id="info">
+            <div class="col-12">
+              <div class="pb-3 text-center">
+                <h1 class="mb-0">
+                  {{ userProfile?.firstName }}
+                  <i
+                    *ngIf="userProfile?.emailVerified"
+                    title="Correo verificado"
+                    class="fas fa-check fa-sm text-success"
+                  ></i>
+                </h1>
+                <p class="text-muted mt-0">
+                  {{ userProfile?.username }}
+                </p>
+                <p>
+                  {{ userProfile?.location }}
+                </p>
+              </div>
             </div>
-            <div class="row">
-                <div class="col-12" *ngIf="noProducts">
-                    <p class="h4 text-center py-4">
-                        Lo sentimos, ahora mismo no hay productos que mostrar.
-                    </p>
-                </div>
-                <div class="col-md-4 col-sm-12 mb-2" *ngFor="let product of userProfile?.products">
-                    <app-product-item [product]="product"></app-product-item>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
+    <div class="col-12">
+      <div class="row border-bottom border-success mb-3">
+        <div class="col-sm-7 col-lg-9">
+          <p class="text-muted h3">Listado de productos</p>
+        </div>
+        <div class="col-sm-5 col-lg-3 text-right d-none d-sm-block">
+          <button
+            *ngIf="ownUser"
+            class="btn btn-success px-3 text-white font-weight-bold"
+            [routerLink]="['/update/product']"
+          >
+            Sube un producto
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12" *ngIf="noProducts">
+          <p class="h4 text-center py-4">
+            Lo sentimos, ahora mismo no hay productos que mostrar.
+          </p>
+        </div>
+        <div
+          class="col-md-4 col-sm-12 mb-2"
+          *ngFor="let product of userProfile?.products"
+        >
+          <app-product-item [product]="product"></app-product-item>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
