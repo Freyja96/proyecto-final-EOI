@@ -1,47 +1,26 @@
 <div class="row">
-  <div class="col-md-2 col-sm-12">
-    <app-side-bar-profile></app-side-bar-profile>
-  </div>
-  <div class="col-md-8 col-sm-12 px-4">
-    <div
-      *ngIf="messageInfo != ''"
-      class="row mt-3 alert alert-primary"
-      role="alert"
-    >
-      {{ messageInfo }}
+    <div class="col-md-2 col-sm-12">
+        <app-side-bar-profile></app-side-bar-profile>
     </div>
-    <div
-      *ngIf="messageError != ''"
-      class="row mt-3 alert alert-danger"
-      role="alert"
-    >
-      {{ messageError }}
-    </div>
-    <form ngNativeValidate [formGroup]="imageForm" id="imageForm">
-      <div class="row py-2 my-3 bg-white shadow-gray">
-        <div class="col-md-12 mb-0">
-          <p>
-            Foto de perfil
-            <span class="text-muted d-block d-lg-none"
-              >El tamaño máximo de la imagen es de 2MB</span
-            >
-          </p>
+    <div class="col-md-8 col-sm-12">
+        <div *ngIf="messageInfo != ''" class="row mt-3 alert alert-primary" role="alert">
+            {{ messageInfo }}
         </div>
-        <div class="col-md-5 col-sm-12 mx-md-auto mb-4 mt-2 text-center">
-          <div class="input-group p-1 rounded-pill bg-white shadow-gray">
-            <input
-              formControlName="image"
-              id="upload"
-              type="file"
-              class="form-control"
-              (change)="uploadImage($event)"
-              accept="image/x-png,image/gif,image/jpeg"
-            />
-            <label
-              id="upload-label"
-              for="upload"
-              class="font-weight-light text-muted pl-3 d-none d-lg-block"
-              >El tamaño máximo es de 2MB</label
+        <div *ngIf="messageError != ''" class="row mt-3 alert alert-danger" role="alert">
+            {{ messageError }}
+        </div>
+        <form ngNativeValidate [formGroup]="imageForm" id="imageForm">
+            <div class="row py-2 my-3 bg-white shadow-gray">
+                <div class="col-md-12 mb-0">
+                    <p>
+                        Foto de perfil
+                        <span class="text-muted d-block d-lg-none">El tamaño máximo de la imagen es de 2MB</span>
+                    </p>
+                </div>
+                <div class="col-md-5 col-sm-12 mx-md-auto mb-4 mt-2 text-center">
+                    <div class="input-group p-1 rounded-pill bg-white shadow-gray">
+                        <input formControlName="image" id="upload" type="file" class="form-control" (change)="uploadImage($event)" accept="image/x-png,image/gif,image/jpeg" />
+                        <label id="upload-label" for="upload" class="font-weight-light text-muted pl-3 d-none d-lg-block">El tamaño máximo es de 2MB</label
             >
             <div class="input-group-append">
               <label
@@ -52,46 +31,27 @@
                   Cambiar foto
                 </p>
               </label>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-auto mt-0 mr-md-4 mb-4 mx-auto text-center">
-          <div class="image-area p-1 rounded">
-            <img
-              *ngIf="image != null"
-              id="imageResult"
-              src="{{ image }}"
-              alt=""
-              class="img-fluid"
-            />
-          </div>
-        </div>
-      </div>
+            <div class="col-auto mt-0 mr-md-4 mb-4 mx-auto text-center">
+                <div class="image-area p-1 rounded">
+                    <img *ngIf="image != null" id="imageResult" src="{{ image }}" alt="" class="img-fluid" />
+                </div>
+            </div>
+    </div>
     </form>
-    <form
-      ngNativeValidate
-      [formGroup]="infoForm"
-      id="infoForm"
-      (ngSubmit)="onSaveButton()"
-    >
-      <div class="row py-2 bg-white shadow-gray">
-        <div class="col-12 mb-3">
-          <span class="text-muted">Información pública</span>
-        </div>
-        <div class="col-md-6 mb-3 border-bottom form-group">
-          <label for="name">Nombre <span class="text-danger">*</span></label>
-          <input
-            type="text"
-            class="form-control mb-3"
-            id="name"
-            formControlName="firstName"
-            placeholder
-            required
-          />
-        </div>
-        <div class="col-md-6 mb-3 border-bottom form-group">
-          <label for="surName"
-            >Apellidos <span class="text-danger">*</span></label
+    <form ngNativeValidate [formGroup]="infoForm" id="infoForm" (ngSubmit)="onSaveButton()">
+        <div class="row py-2 bg-white shadow-gray">
+            <div class="col-12 mb-3">
+                <span class="text-muted">Información pública</span>
+            </div>
+            <div class="col-md-6 mb-3 border-bottom form-group">
+                <label for="name">Nombre <span class="text-danger">*</span></label>
+                <input type="text" class="form-control mb-3" id="name" formControlName="firstName" placeholder required />
+            </div>
+            <div class="col-md-6 mb-3 border-bottom form-group">
+                <label for="surName">Apellidos <span class="text-danger">*</span></label
           >
           <input
             type="text"
