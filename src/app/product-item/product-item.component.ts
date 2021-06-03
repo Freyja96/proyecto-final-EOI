@@ -10,6 +10,7 @@ export class ProductItemComponent implements OnInit {
   @Input() product: any;
   image:any = null;
 
+
   constructor(private router: Router) {
     this.image = '../../assets/images/no-image.png'
 

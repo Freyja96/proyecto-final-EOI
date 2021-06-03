@@ -1,40 +1,44 @@
 @import "../../styles";
 .text-muted {
-  font-size: 17px;
+    font-size: 17px;
+}
+
+.container-fluid {
+    height: 120vh;
 }
 
 //-IMAGE-AREA--------------------------------------
 #upload {
-  opacity: 0;
+    opacity: 0;
 }
 
 #upload-label {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .image-area {
-  border: 2px dashed $gray-200;
-  border-radius: 50%;
-  position: relative;
-  img {
-    z-index: 2;
+    border: 2px dashed $gray-200;
+    border-radius: 50%;
     position: relative;
-  }
-  width: 100px;
-  height: 100px;
+    img {
+        z-index: 2;
+        position: relative;
+    }
+    width: 100px;
+    height: 100px;
 }
 
 .image-area::before {
-  content: "IMAGEN SUBIDA";
-  font-weight: bold;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.8rem;
-  z-index: 1;
+    content: "IMAGEN SUBIDA";
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    z-index: 1;
 }
 
 //-----------------------------------------------------
