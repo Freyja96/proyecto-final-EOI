@@ -5,28 +5,31 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-validate-email',
   templateUrl: './validate-email.component.html',
-  styleUrls: ['./validate-email.component.scss']
+  styleUrls: ['./validate-email.component.scss'],
 })
 export class ValidateEmailComponent implements OnInit {
   titulo = 'GardenForYou';
   error = '';
   okeyMsg = '';
   validateForm: FormGroup;
-  code = "";
+  code = '';
   btnDisabled = false;
 
-  constructor(private userService: UserService,
-    private formBuilder: FormBuilder, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {
     this.validateForm = this.formBuilder.group({
-      code: ["", Validators.required]
-    })
-  };
+      code: ['', Validators.required],
+    });
+  }
 
-  get f(){
-    return this.validateForm.controls
-  };
+  get f() {
+    return this.validateForm.controls;
+  }
 
-  validationCode(){
+  validationCode() {
     let code = this.f.code.value;
 
     this.userService.confirmationEmail(code).subscribe(
@@ -36,32 +39,30 @@ export class ValidateEmailComponent implements OnInit {
       },
       (error) => {
         if (error.status == 405) {
-          this.error = 'La cuenta ya ha sido verificada'
+          this.error = 'La cuenta ya ha sido verificada';
         } else {
-          this.error = 'El código no es correcto, inténtalo de nuevo'
+          this.error = 'El código no es correcto, inténtalo de nuevo';
         }
       }
-    )
-  };
+    );
+  }
 
   resendEmail() {
     this.userService.resendTokenEmail().subscribe(
       (data: any) => {
         console.log(data);
-        this.okeyMsg = 'Se ha reenviado correctamente, esta operación puede tardar unos minutos';
+        this.okeyMsg =
+          'Se ha reenviado el token correctamente, si no te llega podrás volver a pedir el reenvio en 5 minutos';
         this.btnDisabled = true;
         setTimeout(() => {
-        this.btnDisabled = false;
-         }, 40000);
+          this.btnDisabled = false;
+        }, 300000);
       },
       (error) => {
-        console.log(error)
+        console.log(error);
       }
-    )
+    );
   }
 
-  ngOnInit() {
-
-  };
-
+  ngOnInit() {}
 }
