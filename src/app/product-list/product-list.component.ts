@@ -179,6 +179,8 @@ export class ProductListComponent implements OnInit {
 
     if (this.order.includes('Asc')) {
       this.filter.sort = 'asc';
+    } else {
+      this.filter.sort = 'desc';
     }
 
     if (this.order.includes('date')) {
