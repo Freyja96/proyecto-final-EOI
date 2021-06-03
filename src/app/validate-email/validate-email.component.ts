@@ -11,15 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class ValidateEmailComponent implements OnInit {
   titulo = 'GardenForYou';
   error = '';
-  okey = '';
+  okeyMsg = '';
   validateForm: FormGroup;
   code = "";
-  resendToken = false;
+  btnDisabled = false;
 
   constructor(private userService: UserService,
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private authService: AuthService) {
+    private formBuilder: FormBuilder, private router: Router) {
     this.validateForm = this.formBuilder.group({
       code: ["", Validators.required]
     })
@@ -34,11 +32,11 @@ export class ValidateEmailComponent implements OnInit {
 
     this.userService.confirmationEmail(code).subscribe(
       (data: any) => {
+        this.okeyMsg = 'Tu cuenta ha sido verificada correctamente';
+        this.router.navigate(['/']);
       },
       (error) => {
-        if (error.status == 200) {
-          this.okey = 'Tu cuenta ha sido verificada correctamente'
-        } else if (error.status == 405) {
+        if (error.status == 405) {
           this.error = 'La cuenta ya ha sido verificada'
         } else {
           this.error = 'El código no es correcto, inténtalo de nuevo'
@@ -50,16 +48,18 @@ export class ValidateEmailComponent implements OnInit {
   resendEmail() {
     this.userService.resendTokenEmail().subscribe(
       (data: any) => {
-        console.log(data)
+        console.log(data);
+        this.btnDisabled = true;
+        this.okeyMsg = 'Se ha reenviado correctamente, esta operación puede tardar unos minutos'
       },
       (error) => {
         console.log(error)
       }
     )
-    this.resendToken=true;
   }
 
   ngOnInit() {
+
   };
 
 }
