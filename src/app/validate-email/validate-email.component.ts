@@ -1,4 +1,3 @@
-import { AuthService } from './../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from './../services/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -49,8 +48,11 @@ export class ValidateEmailComponent implements OnInit {
     this.userService.resendTokenEmail().subscribe(
       (data: any) => {
         console.log(data);
+        this.okeyMsg = 'Se ha reenviado correctamente, esta operación puede tardar unos minutos';
         this.btnDisabled = true;
-        this.okeyMsg = 'Se ha reenviado correctamente, esta operación puede tardar unos minutos'
+        setTimeout(() => {
+        this.btnDisabled = false;
+         }, 40000);
       },
       (error) => {
         console.log(error)
